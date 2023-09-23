@@ -159,16 +159,16 @@ class HttpHandler(BaseHandler):
             status_code = 200
             status_text="OK"
             body = get_data(route, id)
-            msg = dialogue.reply(
-                performative=HttpMessage.Performative.RESPONSE,
-                target_message=dialogue.last_incoming_message,
-                headers="Content-Type: application/json",
-                version="",
-                body=body,
-                status_code=status_code,
-                status_text=status_text,
-            )
-            return msg
+        msg = dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=dialogue.last_incoming_message,
+            headers="Content-Type: application/json",
+            version="",
+            body=body,
+            status_code=status_code,
+            status_text=status_text,
+        )
+        return msg
         
 
     def teardown(self) -> None:
