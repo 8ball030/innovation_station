@@ -1,6 +1,7 @@
 {
     "dev": {
         "skill/eightballer/innovation_station_api/0.1.0": "bafybeiaowtdhlip4vgvxwym57bwtsae53j2leg4jolbrxdoc4gctl6vch4",
+        "skill/zarathustra/subgraph_query/0.1.0": "bafybeiaowtdhlip4vgvxwym57bwtsae53j2leg4jolbrxdoc4gctl6vch4",
         "agent/eightballer/innovation_station/0.1.0": "bafybeig6d72su2rbak5x4lbtwxdrxmtghy7ktkbdabadvb425o26oxbap4",
         "connection/eightballer/http_client/0.1.0": "bafybeidzz2cn27jpouim44ngql626d42qimv46mpud6onf2y3md7aur5zq",
         "service/eightballer/innovation_station/0.1.0": "bafybeigieomccwddlrlb2irpkvlpp3a2ozw6h7sbcd76ewsjexrhvt7gmm"
