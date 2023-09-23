@@ -60,13 +60,14 @@ class CollectedSubgraphResponseBehaviour(SubgraphQueryBaseBehaviour):
 
     matching_round: Type[AbstractRound] = CollectedSubgraphResponseRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
+            subgraph = yield from self._request_subgraph_data()
             sender = self.context.agent_address
-            payload = CollectedSubgraphResponsePayload(sender=sender, content=...)
+            content = json.dumps({"subgraph": subgraph})
+            payload = CollectedSubgraphResponsePayload(sender=sender, content=content)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
@@ -74,19 +75,35 @@ class CollectedSubgraphResponseBehaviour(SubgraphQueryBaseBehaviour):
 
         self.set_done()
 
+    def _request_subgraph_data(self):
+        """Perform a http request to the subgraph api."""
+        self.context.logger.info("Requesting subgraph data.")
+        url = self.context.params.config["subgraph_url"]
+        query = self.synchronized_data.subgraph_query
+        data = json.dumps({"query": query})
+        response = yield from self.get_http_response(
+            method="POST",
+            url=url,
+            content=data.encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        response_data = json.loads(response.body)["data"]
+        self.context.logger.info(f"Received subgraph data!")
+        return response_data
+
 
 class PrepareSubgraphQueryBehaviour(SubgraphQueryBaseBehaviour):
     """PrepareSubgraphQueryBehaviour"""
 
     matching_round: Type[AbstractRound] = PrepareSubgraphQueryRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
+            query = self.context.params.config["subgraph_query"]
             sender = self.context.agent_address
-            payload = PrepareSubgraphQueryPayload(sender=sender, content=...)
+            payload = PrepareSubgraphQueryPayload(sender=sender, content=query)
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
