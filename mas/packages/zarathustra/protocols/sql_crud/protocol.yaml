@@ -1,7 +1,7 @@
 name: sql_crud
 author: zarathustra
 version: 0.1.0
-protocol_specification_id: your_name/sql_crud:0.1.0
+protocol_specification_id: zarathustra/sql_crud:0.1.0
 type: protocol
 description: A protocol for SQL CRUD functionality.
 license: Apache-2.0

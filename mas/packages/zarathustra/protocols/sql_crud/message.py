@@ -43,7 +43,7 @@ class SqlCrudMessage(Message):
     """A protocol for SQL CRUD functionality."""
 
     protocol_id = PublicId.from_str("zarathustra/sql_crud:0.1.0")
-    protocol_specification_id = PublicId.from_str("your_name/sql_crud:0.1.0")
+    protocol_specification_id = PublicId.from_str("zarathustra/sql_crud:0.1.0")
 
     ErrorCode = CustomErrorCode
 

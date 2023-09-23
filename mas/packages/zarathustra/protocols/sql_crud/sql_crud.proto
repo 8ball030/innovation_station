@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package aea.your_name.sql_crud.v0_1_0;
+package aea.zarathustra.sql_crud.v0_1_0;
 
 message SqlCrudMessage{
 

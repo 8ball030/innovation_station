@@ -14,7 +14,7 @@ version: 0.1.0
 description: A protocol for SQL CRUD functionality.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
-protocol_specification_id: your_name/sql_crud:0.1.0
+protocol_specification_id: zarathustra/sql_crud:0.1.0
 speech_acts:
   create:
     table_name: pt:str
