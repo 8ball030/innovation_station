@@ -28,7 +28,9 @@ from packages.valory.skills.abstract_round_abci.base import (
     AbstractRound,
     AppState,
     BaseSynchronizedData,
+    CollectSameUntilAllRound,
     DegenerateRound,
+    get_name,
     EventToTimeout,
 )
 
@@ -52,57 +54,55 @@ class SynchronizedData(BaseSynchronizedData):
     This data is replicated by the tendermint application.
     """
 
+    @property
+    def subgraph_query(self) -> Dict[str, Dict[str, Any]]:
+        """Return the subgraph query."""
+        return cast(Dict[str, Dict[str, Any]], self.db.get_str("subgraph_query"))
 
-class CollectedSubgraphResponseRound(AbstractRound):
-    """CollectedSubgraphResponseRound"""
-
-    payload_class = CollectedSubgraphResponsePayload
-    payload_attribute = ""  # TODO: update
-    synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
-
-    def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
-        """Process the end of the block."""
-        raise NotImplementedError
-
-    def check_payload(self, payload: CollectedSubgraphResponsePayload) -> None:
-        """Check payload."""
-        raise NotImplementedError
-
-    def process_payload(self, payload: CollectedSubgraphResponsePayload) -> None:
-        """Process payload."""
-        raise NotImplementedError
+    @property
+    def subgraph_response(self) -> Any:
+        """Return the last subgraph response"""
+        return self.db.get_str("subgraph_response")
 
 
-class PrepareSubgraphQueryRound(AbstractRound):
+class PrepareSubgraphQueryRound(CollectSameUntilAllRound):
     """PrepareSubgraphQueryRound"""
 
     payload_class = PrepareSubgraphQueryPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "subgraph_query"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
 
-    def check_payload(self, payload: PrepareSubgraphQueryPayload) -> None:
-        """Check payload."""
-        raise NotImplementedError
+        if self.collection_threshold_reached:
+            payloads_json = json.loads(
+                self.collection[list(self.collection)[0]].content
+            )
+            state = self.synchronized_data.update(
+                synchronized_data_class=self.synchronized_data_class,
+                **{get_name(SynchronizedData.subgraph_query): payloads_json}
+            )
+            return state, Event.DONE
 
-    def process_payload(self, payload: PrepareSubgraphQueryPayload) -> None:
-        """Process payload."""
-        raise NotImplementedError
+
+class CollectedSubgraphResponseRound(CollectSameUntilAllRound):
+    """CollectedSubgraphResponseRound"""
+
+    payload_class = CollectedSubgraphResponsePayload
+    payload_attribute = "subgraph_response"
+    synchronized_data_class = SynchronizedData
+
+    def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
+        """Process the end of the block."""
+
+        if self.collection_threshold_reached:
+            subgraph_response = self.collection[list(self.collection)[0]].subgraph_response
+            state = self.synchronized_data.update(
+                synchronized_data_class=self.synchronized_data_class,
+                **{get_name(SynchronizedData.subgraph_response): strategy_decision}
+            )
+            return state, Event.DONE
 
 
 class FailedSubgraphQueryRound(DegenerateRound):
