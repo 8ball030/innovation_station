@@ -27,6 +27,7 @@ from aea.skills.base import Handler
 from packages.eightballer.protocols.http.message import HttpMessage
 from packages.eightballer.skills.innovation_station_api.strategy import Strategy
 from packages.eightballer.skills.innovation_station_api.dialogues import HttpDialogue
+from packages.eightballer.skills.innovation_station_api.data import COMPONENT_TO_DATA
 
 from aea.configurations.constants import (
     PROTOCOL,
@@ -43,6 +44,7 @@ def echo_message(message) -> None:
     print("Received message: {}".format(message))
 
 COMPONENT_TO_WORKFLOW_MAPPING = {
+    "authors": echo_message,
     PROTOCOL: echo_message,
     CONNECTION: echo_message,
     CONTRACT: echo_message,
@@ -112,7 +114,15 @@ class BaseHandler(Handler):
 
 
 def get_data(route, id):
-    return b"{}"
+    data = COMPONENT_TO_DATA.get(route)
+    if data is None:
+        return b"Not found!"
+    if id is None:
+        return json.dumps(data).encode("utf-8")
+    else:
+        return json.dumps(data.get(int(id))).encode("utf-8")
+
+
 
 class HttpHandler(BaseHandler):
 
