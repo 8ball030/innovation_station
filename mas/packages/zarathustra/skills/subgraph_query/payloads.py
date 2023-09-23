@@ -28,12 +28,12 @@ from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 class CollectedSubgraphResponsePayload(BaseTxPayload):
     """Represent a transaction payload for the CollectedSubgraphResponseRound."""
 
-    # TODO: define your attributes
+    content: str
 
 
 @dataclass(frozen=True)
 class PrepareSubgraphQueryPayload(BaseTxPayload):
     """Represent a transaction payload for the PrepareSubgraphQueryRound."""
 
-    # TODO: define your attributes
+    content: str
 
