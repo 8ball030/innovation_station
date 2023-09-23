@@ -19,6 +19,7 @@
 
 "This package contains a scaffold of a handler."
 
+import json
 from typing import cast
 
 from aea.skills.base import Handler
@@ -27,6 +28,28 @@ from packages.eightballer.protocols.http.message import HttpMessage
 from packages.eightballer.skills.innovation_station_api.strategy import Strategy
 from packages.eightballer.skills.innovation_station_api.dialogues import HttpDialogue
 
+from aea.configurations.constants import (
+    PROTOCOL,
+    CONNECTION,
+    CONTRACT,
+    SKILL,
+    AGENT,
+    SERVICE,
+
+)
+
+def echo_message(message) -> None:
+    """Echo a message."""
+    print("Received message: {}".format(message))
+
+COMPONENT_TO_WORKFLOW_MAPPING = {
+    PROTOCOL: echo_message,
+    CONNECTION: echo_message,
+    CONTRACT: echo_message,
+    SKILL: echo_message,
+    AGENT: echo_message,
+    SERVICE: echo_message,
+}
 class BaseHandler(Handler):
     """This class scaffolds a handler."""
 
@@ -60,7 +83,7 @@ class BaseHandler(Handler):
 
         status_code = 200
         if path is None or content is None:
-            self.context.logger.warning("Context not found for path: {}".format(path))
+            self.context.logger.debug("Context not found for path: {}".format(path))
             content = b"Not found!"
             status_code = 404
 
@@ -88,6 +111,8 @@ class BaseHandler(Handler):
         return response_msg
 
 
+def get_data(route, id):
+    return b"{}"
 
 class HttpHandler(BaseHandler):
 
@@ -96,13 +121,55 @@ class HttpHandler(BaseHandler):
         "Set up the handler."
         self.strategy = cast(Strategy, self.context.strategy)
 
-    def handle_get(self, route, id=None):
+    def handle_post(self, route, dialogue=None, id=None, prompt=None ):
         "handle get protocol"
-        raise NotImplementedError
+        self.context.logger.info("Handling post for route: {}".format(route))
 
-    def handle_post(self, route, id, body):
+        workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
+        if workflow is None:
+            self.context.logger.info("Received unexpected route: {}".format(route))
+            status_code = 404
+            body = b"Not found!"
+        
+        else:
+            status_code = 200
+            body = get_data(route, id)
+
+        msg = dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=dialogue.last_incoming_message,
+            status_code=200,
+            headers="Content-Type: application/json",
+            version="",
+            status_text="OK",
+            body=body,
+        )
+        return msg
+
+    def handle_get(self, route, id=None, dialogue=None):
         "handle get protocol"
-        raise NotImplementedError
+        workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
+        self.context.logger.info("Received get for route: {}".format(route))
+        if workflow is None:
+            self.context.logger.info("Received unexpected route: {}".format(route))
+            status_code=404
+            body = b"Not found!"
+            status_text="Not found!"
+        else:
+            status_code = 200
+            status_text="OK"
+            body = get_data(route, id)
+            msg = dialogue.reply(
+                performative=HttpMessage.Performative.RESPONSE,
+                target_message=dialogue.last_incoming_message,
+                headers="Content-Type: application/json",
+                version="",
+                body=body,
+                status_code=status_code,
+                status_text=status_text,
+            )
+            return msg
+        
 
     def teardown(self) -> None:
         "Tear down the handler."
@@ -115,18 +182,34 @@ class HttpHandler(BaseHandler):
 
         url = message.url
         parts = url.split('/')
-        if len(parts) == 3:
-            route = parts[-2]
-            id = parts[-1]
+        parts = [part for part in parts if part != '']
+        dialogue = self.context.http_dialogues.update(message)
+        if len(parts) == 3 and message.method.lower() == "post":
             body = json.loads(message.body.decode("utf-8"))
-            msg = self.handle_post(route, id, body)
-        elif len(parts) == 2:
-            route = parts[1]
-            msg = self.handle_get(route)
-        msg = self.handle_unexpected_message(message)
+            route = parts[-1]
+            msg = self.handle_post(route=route, dialogue=dialogue, prompt=body)
+        elif message.method.lower() == "get":
+            if len(parts) == 3:
+                route = parts[-1]
+                id = None
+            else:
+                route = parts[-2]
+                id = parts[-1]
+            msg = self.handle_get(route, dialogue=dialogue, id=id)
+        else:
+            msg = self.handle_unexpected_message(message)
         return self.context.outbox.put_message(msg)
 
-    def handle_unexpected_message(self, message):
+    def handle_unexpected_message(self, message, dialogue):
         "handler for unexpected messages"
         self.context.logger.info("received unexpected message: {}".format(message))
-        raise NotImplementedError
+        msg = dialogue.reply(
+            performative=HttpMessage.Performative.RESPONSE,
+            target_message=dialogue.last_incoming_message,
+            headers="Content-Type: application/json",
+            version="",
+            body=body,
+            status_code=500,
+            status_text="Internal Server Error",
+        )
+        return msg
