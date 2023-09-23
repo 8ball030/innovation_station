@@ -19,31 +19,20 @@
 
 """This package contains the tests for rounds of SubgraphQuery."""
 
-from typing import Any, Type, Dict, List, Callable, Hashable, Mapping
 from dataclasses import dataclass, field
+from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 
 import pytest
 
-from packages.zarathustra.skills.subgraph_query.payloads import (
-    CollectedSubgraphResponsePayload,
-    PrepareSubgraphQueryPayload,
-)
+from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
+from packages.valory.skills.abstract_round_abci.test_tools.rounds import BaseRoundTestClass
 from packages.zarathustra.skills.subgraph_query.rounds import (
     AbstractRound,
-    Event,
-    SynchronizedData,
     CollectedSubgraphResponseRound,
+    Event,
     PrepareSubgraphQueryRound,
+    SynchronizedData,
 )
-from packages.valory.skills.abstract_round_abci.base import (
-    BaseTxPayload,
-)
-from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
-    BaseRoundTestClass,
-    BaseOnlyKeeperSendsRoundTest,
-    BaseCollectDifferentUntilThresholdRoundTest,
-    BaseCollectSameUntilThresholdRoundTest,
- )
 
 
 @dataclass
@@ -115,4 +104,3 @@ class TestPrepareSubgraphQueryRound(BaseSubgraphQueryRoundTest):
         """Run tests."""
 
         self.run_test(test_case)
-

@@ -19,16 +19,12 @@
 
 """This package contains payload tests for the SubgraphQueryAbciApp."""
 
-from typing import Type, Hashable
 from dataclasses import dataclass
+from typing import Hashable, Type
 
 import pytest
 
-from packages.zarathustra.skills.subgraph_query.payloads import (
-    BaseTxPayload,
-    CollectedSubgraphResponsePayload,
-    PrepareSubgraphQueryPayload,
-)
+from packages.zarathustra.skills.subgraph_query.payloads import BaseTxPayload
 
 
 @dataclass
@@ -48,4 +44,3 @@ def test_payloads(test_case: PayloadTestCase) -> None:
     payload = test_case.payload_cls(sender="sender", content=test_case.content)
     assert payload.sender == "sender"
     assert payload.from_json(payload.json) == payload
-

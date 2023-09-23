@@ -23,21 +23,15 @@ from abc import ABC
 from typing import Generator, Set, Type, cast
 
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
-
+from packages.valory.skills.abstract_round_abci.behaviours import AbstractRoundBehaviour, BaseBehaviour
 from packages.zarathustra.skills.subgraph_query.models import Params
 from packages.zarathustra.skills.subgraph_query.rounds import (
-    SynchronizedData,
-    SubgraphQueryAbciApp,
-    CollectedSubgraphResponseRound,
-    PrepareSubgraphQueryRound,
-)
-from packages.zarathustra.skills.subgraph_query.rounds import (
     CollectedSubgraphResponsePayload,
+    CollectedSubgraphResponseRound,
     PrepareSubgraphQueryPayload,
+    PrepareSubgraphQueryRound,
+    SubgraphQueryAbciApp,
+    SynchronizedData,
 )
 
 
@@ -117,7 +111,4 @@ class SubgraphQueryRoundBehaviour(AbstractRoundBehaviour):
 
     initial_behaviour_cls = PrepareSubgraphQueryBehaviour
     abci_app_cls = SubgraphQueryAbciApp  # type: ignore
-    behaviours: Set[Type[BaseBehaviour]] = [
-        CollectedSubgraphResponseBehaviour,
-        PrepareSubgraphQueryBehaviour
-    ]
+    behaviours: Set[Type[BaseBehaviour]] = [CollectedSubgraphResponseBehaviour, PrepareSubgraphQueryBehaviour]

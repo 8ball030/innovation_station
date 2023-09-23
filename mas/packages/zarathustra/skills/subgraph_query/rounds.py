@@ -20,20 +20,18 @@
 """This package contains the rounds of SubgraphQueryAbciApp."""
 
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
+from typing import Dict, Optional, Set, Tuple
 
 from packages.valory.skills.abstract_round_abci.base import (
     AbciApp,
     AbciAppTransitionFunction,
-    AbstractRound,
     AppState,
     BaseSynchronizedData,
     CollectSameUntilAllRound,
     DegenerateRound,
-    get_name,
     EventToTimeout,
+    get_name,
 )
-
 from packages.zarathustra.skills.subgraph_query.payloads import (
     CollectedSubgraphResponsePayload,
     PrepareSubgraphQueryPayload,
@@ -76,12 +74,10 @@ class PrepareSubgraphQueryRound(CollectSameUntilAllRound):
         """Process the end of the block."""
 
         if self.collection_threshold_reached:
-            payloads_json = json.loads(
-                self.collection[list(self.collection)[0]].content
-            )
+            payloads_json = json.loads(self.collection[list(self.collection)[0]].content)
             state = self.synchronized_data.update(
                 synchronized_data_class=self.synchronized_data_class,
-                **{get_name(SynchronizedData.subgraph_query): payloads_json}
+                **{get_name(SynchronizedData.subgraph_query): payloads_json},
             )
             return state, Event.DONE
 
@@ -97,10 +93,10 @@ class CollectedSubgraphResponseRound(CollectSameUntilAllRound):
         """Process the end of the block."""
 
         if self.collection_threshold_reached:
-            subgraph_response = self.collection[list(self.collection)[0]].subgraph_response
+            self.collection[list(self.collection)[0]].subgraph_response
             state = self.synchronized_data.update(
                 synchronized_data_class=self.synchronized_data_class,
-                **{get_name(SynchronizedData.subgraph_response): strategy_decision}
+                **{get_name(SynchronizedData.subgraph_response): strategy_decision},
             )
             return state, Event.DONE
 
@@ -119,16 +115,13 @@ class SubgraphQueryAbciApp(AbciApp[Event]):
     initial_round_cls: AppState = PrepareSubgraphQueryRound
     initial_states: Set[AppState] = {PrepareSubgraphQueryRound}
     transition_function: AbciAppTransitionFunction = {
-        PrepareSubgraphQueryRound: {
-            Event.DONE: CollectedSubgraphResponseRound,
-            Event.FAILED: FailedSubgraphQueryRound
-        },
+        PrepareSubgraphQueryRound: {Event.DONE: CollectedSubgraphResponseRound, Event.FAILED: FailedSubgraphQueryRound},
         CollectedSubgraphResponseRound: {
             Event.DONE: FinalizedSubgraphQueryRound,
-            Event.FAILED: FailedSubgraphQueryRound
+            Event.FAILED: FailedSubgraphQueryRound,
         },
         FinalizedSubgraphQueryRound: {},
-        FailedSubgraphQueryRound: {}
+        FailedSubgraphQueryRound: {},
     }
     final_states: Set[AppState] = {FinalizedSubgraphQueryRound, FailedSubgraphQueryRound}
     event_to_timeout: EventToTimeout = {}
@@ -138,5 +131,5 @@ class SubgraphQueryAbciApp(AbciApp[Event]):
     }
     db_post_conditions: Dict[AppState, Set[str]] = {
         FinalizedSubgraphQueryRound: [],
-    	FailedSubgraphQueryRound: [],
+        FailedSubgraphQueryRound: [],
     }

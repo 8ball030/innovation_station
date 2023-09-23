@@ -36,4 +36,3 @@ class PrepareSubgraphQueryPayload(BaseTxPayload):
     """Represent a transaction payload for the PrepareSubgraphQueryRound."""
 
     content: str
-

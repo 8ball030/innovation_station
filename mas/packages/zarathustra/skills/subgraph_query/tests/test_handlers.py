@@ -24,4 +24,3 @@ import packages.zarathustra.skills.subgraph_query.handlers  # noqa
 
 def test_import() -> None:
     """Test that the 'handlers.py' of the SubgraphQuery can be imported."""
-
