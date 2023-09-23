@@ -20,7 +20,8 @@
 """This package contains the rounds of SubgraphQueryAbciApp."""
 
 from enum import Enum
-from typing import Dict, Optional, Set, Tuple
+import json
+from typing import Dict, Optional, Set, Tuple, Any, cast
 
 from packages.valory.skills.abstract_round_abci.base import (
     AbciApp,
@@ -80,6 +81,7 @@ class PrepareSubgraphQueryRound(CollectSameUntilAllRound):
                 **{get_name(SynchronizedData.subgraph_query): payloads_json},
             )
             return state, Event.DONE
+        return None
 
 
 class CollectedSubgraphResponseRound(CollectSameUntilAllRound):
@@ -93,12 +95,13 @@ class CollectedSubgraphResponseRound(CollectSameUntilAllRound):
         """Process the end of the block."""
 
         if self.collection_threshold_reached:
-            self.collection[list(self.collection)[0]].subgraph_response
+            subgraph_response = self.collection[list(self.collection)[0]].subgraph_response
             state = self.synchronized_data.update(
                 synchronized_data_class=self.synchronized_data_class,
-                **{get_name(SynchronizedData.subgraph_response): strategy_decision},
+                **{get_name(SynchronizedData.subgraph_response): subgraph_response},
             )
             return state, Event.DONE
+        return None
 
 
 class FailedSubgraphQueryRound(DegenerateRound):

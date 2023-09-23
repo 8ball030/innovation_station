@@ -85,14 +85,12 @@ class BaseSubgraphQueryTest(FSMBehaviourBaseCase):
         assert self.current_behaviour_id == self.next_behaviour_class.behaviour_id
 
 
-class TestCollectedSubgraphResponseBehaviour(BaseSubgraphQueryTest):
-    """Tests CollectedSubgraphResponseBehaviour"""
+class TestPrepareSubgraphQueryBehaviour(BaseSubgraphQueryTest):
+    """Tests PrepareSubgraphQueryBehaviour"""
 
-    # TODO: set next_behaviour_class
-    behaviour_class: Type[BaseBehaviour] = CollectedSubgraphResponseBehaviour
-    next_behaviour_class: Type[BaseBehaviour] = ...
+    behaviour_class: Type[BaseBehaviour] = PrepareSubgraphQueryBehaviour
+    next_behaviour_class: Type[BaseBehaviour] = CollectedSubgraphResponseBehaviour
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
@@ -103,14 +101,12 @@ class TestCollectedSubgraphResponseBehaviour(BaseSubgraphQueryTest):
         self.complete(test_case.event)
 
 
-class TestPrepareSubgraphQueryBehaviour(BaseSubgraphQueryTest):
-    """Tests PrepareSubgraphQueryBehaviour"""
+class TestCollectedSubgraphResponseBehaviour(BaseSubgraphQueryTest):
+    """Tests CollectedSubgraphResponseBehaviour"""
 
-    # TODO: set next_behaviour_class
-    behaviour_class: Type[BaseBehaviour] = PrepareSubgraphQueryBehaviour
+    behaviour_class: Type[BaseBehaviour] = CollectedSubgraphResponseBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""

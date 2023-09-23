@@ -20,6 +20,7 @@
 """This package contains round behaviours of SubgraphQueryAbciApp."""
 
 from abc import ABC
+import json
 from typing import Generator, Set, Type, cast
 
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
@@ -82,7 +83,7 @@ class CollectedSubgraphResponseBehaviour(SubgraphQueryBaseBehaviour):
             headers={"Content-Type": "application/json"},
         )
         response_data = json.loads(response.body)["data"]
-        self.context.logger.info(f"Received subgraph data!")
+        self.context.logger.info("Received subgraph data!")
         return response_data
 
 

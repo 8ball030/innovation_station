@@ -25,9 +25,9 @@ from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 import pytest
 
 from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
-from packages.valory.skills.abstract_round_abci.test_tools.rounds import BaseRoundTestClass
+from packages.valory.skills.abstract_round_abci.test_tools.rounds import BaseCollectSameUntilAllRoundTest
+from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.zarathustra.skills.subgraph_query.rounds import (
-    AbstractRound,
     CollectedSubgraphResponseRound,
     Event,
     PrepareSubgraphQueryRound,
@@ -51,7 +51,7 @@ class RoundTestCase:
 MAX_PARTICIPANTS: int = 4
 
 
-class BaseSubgraphQueryRoundTest(BaseRoundTestClass):
+class BaseSubgraphQueryRoundTest(BaseCollectSameUntilAllRoundTest):
     """Base test class for SubgraphQuery rounds."""
 
     round_cls: Type[AbstractRound]
@@ -85,7 +85,6 @@ class TestCollectedSubgraphResponseRound(BaseSubgraphQueryRoundTest):
 
     round_class = CollectedSubgraphResponseRound
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: RoundTestCase) -> None:
         """Run tests."""
@@ -98,7 +97,6 @@ class TestPrepareSubgraphQueryRound(BaseSubgraphQueryRoundTest):
 
     round_class = PrepareSubgraphQueryRound
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: RoundTestCase) -> None:
         """Run tests."""
