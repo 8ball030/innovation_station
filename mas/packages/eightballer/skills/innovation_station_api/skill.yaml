@@ -1,0 +1,37 @@
+name: innovation_station_api
+author: eightballer
+version: 0.1.0
+type: skill
+description: The scaffold skill is a scaffold for your own skill implementation.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeignso5r673wgfgmdjwnhcba3viyhxlx3aam6y67e374gq4kj7n23i
+  data.py: bafybeig67rx5q3ev6movya3lty7r4kvuc745hdxnsryedzy2jx7aj3nxta
+  dialogues.py: bafybeihpitrmlmwukpdtpj7c7ieyr67i2res54ig3xuk4qyrspj6ahmfr4
+  handlers.py: bafybeidx4kido7hzzzajivtdb4xhtmbcnkvr5vqtqubhbkdgxwog3lcf3y
+  strategy.py: bafybeiecsgszgrx5jir34xveeqkmnrmntx6jc7s2bj5i33qcviniyz3lv4
+fingerprint_ignore_patterns: []
+connections: []
+contracts: []
+protocols:
+- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+skills: []
+dependencies: {}
+is_abstract: false
+behaviours: {}
+models:
+  http_dialogues:
+    args: {}
+    class_name: HttpDialogues
+  strategy:
+    args:
+      frontend:
+        enabled: true
+        ipfs_hash: bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu
+        directory: www
+    class_name: Strategy
+handlers:
+  http_handler:
+    args: {}
+    class_name: HttpHandler

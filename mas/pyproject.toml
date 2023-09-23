@@ -1,0 +1,110 @@
+
+
+[tool]
+[tool.poetry]
+name = "test"
+version = "0.2.9"
+homepage = "https://github.com/8ball030/test"
+description = "A collection of tooling to enable open source development of autonomy tools"
+authors = ["8ball030"]
+readme = "readme.md"
+license =  "Apache-2.0"
+classifiers=[
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: Apache Software License',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+]
+packages = [
+    { include = "test" },
+]
+
+
+[tool.poetry.dependencies]
+python = ">=3.9,<=3.11"
+open-aea-ledger-solana = "^1.34.0"
+open-aea-ledger-cosmos = "^1.34.0"
+open-aea-ledger-ethereum = "^1.34.0"
+open-aea-test-autonomy = "0.10.7"
+open-aea-cli-ipfs = "1.35.0"
+open-autonomy = "~0.10"
+autonomy-dev = {extras = ["all"], version = "^0.2.2"}
+dateparser = "1.1.1"
+hypothesis = "6.21.6"
+py-ecc = "5.2.0"
+ecdsa = "<=0.17.0"
+eth-typing = ">=2.1.0,<3.0.0"
+openapi-core = "0.14.5"
+openapi-spec-validator = "0.2.8"
+typing-extensions = ">=3.10.0.2"
+aioprometheus = "<21.0.0,>=20.0.0"
+aiohttp = "<=3.8.1,>=3.7.4"
+protobuf = "<=3.20.1,>=3.19"
+psutil = "^5.9.5"
+responses = "^0.23.1"
+sqlalchemy = "1.4.45"
+psycopg2-binary = "2.9.6"
+pandas = "1.3.5"
+autoflake = "^2.2.0"
+python-socketio = "5.9.0"
+
+[tool.poetry.dev-dependencies]
+
+
+[tool.poetry.extras]
+dev = ["pre-commit", "virtualenv", "pip", "twine", "toml", "bump2version"]
+doc = [
+    "mkdocs",
+    "mkdocs-include-markdown-plugin",
+    "mkdocs-material",
+    "mkdocstrings",
+    "mkdocs-material-extension",
+    "mkdocs-autorefs"
+    ]
+
+[tool.poetry.scripts]
+adev = 'auto_dev.cli:cli'
+
+[tool.poetry.group.dev.dependencies]
+twine = "^4.0.2"
+
+[tool.black]
+line-length = 120
+skip-string-normalization = true
+target-version = ['py37', 'py38', 'py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 120
+skip_gitignore = true
+# you can skip files as below
+#skip_glob = docs/conf.py
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "setuptools"]
+

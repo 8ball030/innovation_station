@@ -1,0 +1,47 @@
+agent_name: innovation_station
+author: eightballer
+version: 0.1.0
+license: Apache-2.0
+description: ''
+aea_version: '>=1.35.0, <2.0.0'
+fingerprint: {}
+fingerprint_ignore_patterns: []
+connections:
+- eightballer/http_client:0.1.0:bafybeidzz2cn27jpouim44ngql626d42qimv46mpud6onf2y3md7aur5zq
+- eightballer/http_server:0.1.0:bafybeic5m2px4wanaqjc6jc3ileqmc76k2loitjrsmlffqvafx7bznwrba
+contracts: []
+protocols:
+- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+- open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
+skills:
+- eightballer/innovation_station_api:0.1.0:bafybeiefk27bxvo5xivs3bz73kkusyarfnizpgdzbm46z2qsaqz4aphf4u
+default_ledger: ethereum
+required_ledgers:
+- ethereum
+default_routing: {}
+connection_private_key_paths: {}
+private_key_paths: {}
+logging_config:
+  disable_existing_loggers: false
+  version: 1
+dependencies:
+  open-aea-ledger-cosmos: {}
+  open-aea-ledger-ethereum: {}
+default_connection: null
+---
+public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpyeahsoqorctys7uq6b3djq
+type: connection
+config:
+  target_skill_id: eightballer/innovation_station_api:0.1.0
+  port: 26658
+  host: 0.0.0.0
+---
+public_id: eightballer/innovation_station_api:0.1.0:bafybeifrtrzzdemrrlya45f3atvn45rrbdoezur45rpvglhcaxdv33goyy
+type: skill
+models:
+  strategy:
+    args:
+      frontend:
+        enabled: ${FRONTEND_ENABLED:bool:true}
+        ipfs_hash: ${IPFS_HASH:str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
+        directory: www
