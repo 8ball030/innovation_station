@@ -1,0 +1,146 @@
+name: subgraph_query
+author: zarathustra
+version: 0.1.0
+type: skill
+description: Skill to query subgraphs.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeic5elxhfv5lfvzslg2dd3dzohgz2va2w4ctk7vus7jyrxjpub3jle
+  behaviours.py: bafybeih5dy6njd5g4oyisffk7zzdnovheyq2h2pcnoqp4z6qzzx7r66kui
+  dialogues.py: bafybeifctfldyo6tpyiojzcpzviknthmbh7paz5fzkwvus4s2zl3qkdmvq
+  fsm_specification.yaml: bafybeihivgxvp7ujgwglp2t4qn3abso3pc5knp43w5zuxmwgzg5tzajx5i
+  handlers.py: bafybeibcozgwxigwt6ttzhkqg4hzqxpblrdgdjgerztytblxayehbznb34
+  models.py: bafybeigste2ja65gelpeo367e47ha4szupip7uqi2wslczmwo2lgt33hwu
+  payloads.py: bafybeihnqzkyadg7j5govqpzteem53k5sf7szlxiarujp7qmgufmd56uja
+  rounds.py: bafybeiatr7fjymcmjumixwjr5k4embg3j3gbocccfw4v6vu2ghyd77qyee
+  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
+  tests/test_behaviours.py: bafybeihscl5bjpz7673zcenfjcqabehd7ho2cd6jeol6tvfg33dcczc7na
+  tests/test_dialogues.py: bafybeiflq7j2dyzbjkm75gw3zxgkv6w4tinive2misirma3wwmxpt7xloe
+  tests/test_handlers.py: bafybeifhkssfmq3lkd5od6lmqdchikvoq4xaj3kv6ux6md2jb5u3m6ysvi
+  tests/test_models.py: bafybeidogabxvloxuqbxiwatrldyphiq6hxe3vnjhvad4h5vrarwbvl5li
+  tests/test_payloads.py: bafybeiewdcctmkzxuktho5bolyf6jk4up3lzmcb5dcmcfidjgixhmwkjki
+  tests/test_rounds.py: bafybeieahsevqthpvpa7ms6wvked7spaymmj2jmhpcjzzitpaz7j6zznme
+fingerprint_ignore_patterns: []
+connections: []
+contracts: []
+protocols: []
+skills:
+- valory/abstract_round_abci:0.1.0:bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia
+behaviours:
+  main:
+    args: {}
+    class_name: SubgraphQueryRoundBehaviour
+handlers:
+  abci:
+    args: {}
+    class_name: ABCIHandler
+  contract_api:
+    args: {}
+    class_name: ContractApiHandler
+  http:
+    args: {}
+    class_name: HttpHandler
+  ipfs:
+    args: {}
+    class_name: IpfsHandler
+  ledger_api:
+    args: {}
+    class_name: LedgerApiHandler
+  signing:
+    args: {}
+    class_name: SigningHandler
+  tendermint:
+    args: {}
+    class_name: TendermintHandler
+models:
+  abci_dialogues:
+    args: {}
+    class_name: AbciDialogues
+  benchmark_tool:
+    args:
+      log_dir: /logs
+    class_name: BenchmarkTool
+  contract_api_dialogues:
+    args: {}
+    class_name: ContractApiDialogues
+  http_dialogues:
+    args: {}
+    class_name: HttpDialogues
+  ipfs_dialogues:
+    args: {}
+    class_name: IpfsDialogues
+  ledger_api_dialogues:
+    args: {}
+    class_name: LedgerApiDialogues
+  params:
+    args:
+      cleanup_history_depth: 1
+      cleanup_history_depth_current: null
+      drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31
+      finalize_timeout: 60.0
+      genesis_config:
+        chain_id: chain-c4daS1
+        consensus_params:
+          block:
+            max_bytes: '22020096'
+            max_gas: '-1'
+            time_iota_ms: '1000'
+          evidence:
+            max_age_duration: '172800000000000'
+            max_age_num_blocks: '100000'
+            max_bytes: '1048576'
+          validator:
+            pub_key_types:
+            - ed25519
+          version: {}
+        genesis_time: '2022-05-20T16:00:21.735122717Z'
+        voting_power: '10'
+      history_check_timeout: 1205
+      ipfs_domain_name: null
+      keeper_allowed_retries: 3
+      keeper_timeout: 30.0
+      max_attempts: 10
+      max_healthcheck: 120
+      on_chain_service_id: null
+      request_retry_delay: 1.0
+      request_timeout: 10.0
+      reset_pause_duration: 10
+      reset_tendermint_after: 2
+      retry_attempts: 400
+      retry_timeout: 3
+      round_timeout_seconds: 30.0
+      service_id: subgraph_query
+      service_registry_address: null
+      setup:
+        all_participants:
+        - '0x0000000000000000000000000000000000000000'
+        consensus_threshold: null
+        safe_contract_address: '0x0000000000000000000000000000000000000000'
+      share_tm_config_on_startup: false
+      sleep_time: 1
+      tendermint_check_sleep_delay: 3
+      tendermint_com_url: http://localhost:8080
+      tendermint_max_retries: 5
+      tendermint_p2p_url: localhost:26656
+      tendermint_url: http://localhost:26657
+      tx_timeout: 10.0
+      validate_timeout: 1205
+      subgraph_query: "{ series\n  {\n    id\n    expiration\n    netDHVExposure\n\
+        \    strike\n    isPut\n    isBuyable\n    isSellable\n  }\n}\n"
+      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/arbitrum-one/0.1.17/gn
+    class_name: Params
+  requests:
+    args: {}
+    class_name: Requests
+  signing_dialogues:
+    args: {}
+    class_name: SigningDialogues
+  state:
+    args: {}
+    class_name: SharedState
+  tendermint_dialogues:
+    args: {}
+    class_name: TendermintDialogues
+dependencies: {}
+is_abstract: false
