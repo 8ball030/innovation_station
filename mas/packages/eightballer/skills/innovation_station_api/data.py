@@ -13,7 +13,7 @@ from aea.configurations.constants import (
 
 
 AUTHORS = {
-1: {
+0: {
         "name": "eightballer",
     }
 }
@@ -30,7 +30,7 @@ PROTOCOLS = {
         ],
         "protocol_specification_id": "eightballer/http:0.1.0",
     },
-    2: {
+    0: {
         "name": "websockets",
         "author": "eightballer",
         "version": "0.1.0",
@@ -44,7 +44,7 @@ PROTOCOLS = {
 }
 
 CONTRACTS = {
-    3: {
+    0: {
         "name": "eightballer",
         "author": "eightballer",
         "version": "0.1.0",
@@ -56,7 +56,7 @@ CONTRACTS = {
 }
 
 CONNECTIONS = {
-        4: {
+        0: {
             "name": "http_server",
             "author": "eightballer",
             "version": "0.1.0",
@@ -69,7 +69,7 @@ CONNECTIONS = {
 
 
 SKILLS = {
-5: {
+0: {
     "name": "innovation_station_api",
     "author": "eightballer",
     "version": "0.1.0",
@@ -81,7 +81,7 @@ SKILLS = {
 }
 
 SERVICES = {
-            6: {
+            0: {
                 "name": "innovation_station",
                 "author": "eightballer",
                 "version": "0.1.0",
@@ -92,7 +92,7 @@ SERVICES = {
             }
 }
 AGENTS = {
-    10: {
+    0: {
         "name": "innovation_station",
         "author": "eightballer",
         "version": "0.1.0",
