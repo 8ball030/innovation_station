@@ -18,6 +18,7 @@
 # ------------------------------------------------------------------------------
 
 "This package contains a scaffold of a handler."
+import asyncio
 
 import json
 from typing import cast
@@ -28,6 +29,7 @@ from packages.eightballer.protocols.http.message import HttpMessage
 from packages.eightballer.skills.innovation_station_api.strategy import Strategy
 from packages.eightballer.skills.innovation_station_api.dialogues import HttpDialogue
 from packages.eightballer.skills.innovation_station_api.data import COMPONENT_TO_DATA
+from packages.eightballer.skills.innovation_station_api.llm_workflows.protocol import generate as generate_protocol
 
 from aea.configurations.constants import (
     PROTOCOL,
@@ -45,7 +47,7 @@ def echo_message(message) -> None:
 
 COMPONENT_TO_WORKFLOW_MAPPING = {
     "authors": echo_message,
-    PROTOCOL: echo_message,
+    PROTOCOL: generate_protocol,
     CONNECTION: echo_message,
     CONTRACT: echo_message,
     SKILL: echo_message,
@@ -113,25 +115,53 @@ class BaseHandler(Handler):
         return response_msg
 
 
-def get_data(route, id):
-    data = COMPONENT_TO_DATA.get(route)
-    if data is None:
-        return b"Not found!"
-    if id is None:
-        return json.dumps(data).encode("utf-8")
-    else:
-        return json.dumps(data.get(int(id))).encode("utf-8")
-
-def add_data(route, prompt):
-    data = COMPONENT_TO_DATA.get(route)
-    if data is None:
-        return b"Not found!"
-    data[len(data)] = prompt
-    return json.dumps(data).encode("utf-8")
-
 
 
 class HttpHandler(BaseHandler):
+
+    def add_data(self, route, prompt, dialogue):
+        """
+        Add new data to the data from the component.
+        """
+        data = COMPONENT_TO_DATA.get(route)
+        if data is None:
+            return b"Not found!"
+        workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
+        if workflow is None:
+            return b"Not found!"
+        if "prompt" in prompt:
+            self.submit_workflow(workflow, 
+                prompt, 
+                callback=lambda result: data.update(result)
+            )
+        data[len(data)] = prompt
+        return json.dumps(data).encode("utf-8")
+
+    def get_data(self, route, id):
+        """
+        Retieve the data from the component.
+        """
+        data = COMPONENT_TO_DATA.get(route)
+        if data is None:
+            return b"Not found!"
+        if id is None:
+            return json.dumps(data).encode("utf-8")
+        else:
+            return json.dumps(data.get(int(id))).encode("utf-8")
+
+    def submit_workflow(self, workflow, prompt, callback):
+        """
+        Submit a new workflow the llm.
+        This an async operation.
+        """
+        self.context.logger.info("Submitting workflow to llm...")
+        task = asyncio.create_task(workflow(prompt))
+        task.callback = callback
+        self.strategy.pending_tasks.append(task)
+        self.context.logger.info("Workflow submitted to llm.")
+
+
+
 
     
     def setup(self) -> None:
@@ -150,8 +180,8 @@ class HttpHandler(BaseHandler):
         
         else:
             status_code = 201
-            add_data(route, prompt)
-            body = get_data(route, id)
+            self.add_data(route, prompt, dialogue)
+            body = self.get_data(route, id)
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
@@ -176,7 +206,7 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 200
             status_text="OK"
-            body = get_data(route, id)
+            body = self.get_data(route, id)
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
