@@ -24,9 +24,8 @@ from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 
 import pytest
 
-from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
+from packages.valory.skills.abstract_round_abci.base import AbstractRound, BaseTxPayload
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import BaseCollectSameUntilAllRoundTest
-from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.zarathustra.skills.subgraph_query.rounds import (
     CollectedSubgraphResponseRound,
     Event,

@@ -6,21 +6,21 @@ description: Skill to query subgraphs.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeid4yqrz2bognh7uiht2japnrardpnqoqryhwfji7dbbphr4fv7fiu
-  behaviours.py: bafybeidx223iysgj4ctiz3xsxfyjcos72ppuebqs5tgzzg4os7c3q7sxwm
-  dialogues.py: bafybeifctfldyo6tpyiojzcpzviknthmbh7paz5fzkwvus4s2zl3qkdmvq
+  __init__.py: bafybeieyhp3fowemsc2fkgpiwwpdebiiunv2dslhborhllbeswglojctfe
+  behaviours.py: bafybeiev46xhllkhlfd4xb7nvrkr3keec4lisdf5xl37qqcjqqmu56l2ne
+  dialogues.py: bafybeigosinl7bfll6aszry4vhegaiz3sbepoyfzuowluumejcghjewdhm
   fsm_specification.yaml: bafybeihivgxvp7ujgwglp2t4qn3abso3pc5knp43w5zuxmwgzg5tzajx5i
-  handlers.py: bafybeibcozgwxigwt6ttzhkqg4hzqxpblrdgdjgerztytblxayehbznb34
-  models.py: bafybeict66zxz4r33ehnz5uxnyhjnxvt4ozstzmi4a52hexriyaxe57t5u
-  payloads.py: bafybeifmzyjkvadcwxb3k4qjxdemfb53ibv4kr3j7ofls4xzw2jsmnefca
-  rounds.py: bafybeialu62dxxifl65kwdcqpj4g7z4hxyyl3lwyml2kyvgyutwbekifxy
-  tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
-  tests/test_behaviours.py: bafybeiaf5niediyr6jygsi4rvofnqi3gamxmkdjtwma6kgrdf3rfabffqa
+  handlers.py: bafybeidook52rvoltdp6ywbzi5cnk6wcpplpqeq7gunozb744bqzoiuqwy
+  models.py: bafybeic4z3waurcssxre2yi7budqmpfju4wnrpc5qjfwd7fpvwd2ykljru
+  payloads.py: bafybeibc4akklkrfnmwnaalfj5a4waabzg4ufuc5dsu3lz6hzhc5a4hbkq
+  rounds.py: bafybeicjvj6efx662sztv67esiynmngk2tov6tvy763aru3a3dicfa462a
+  tests/__init__.py: bafybeic6evwhxdwtdjvz7xv3dqqhdhd7uxyr55xhymeiqfe4ga7mfdptxm
+  tests/test_behaviours.py: bafybeiecbfjmrn26xjpbmm2u4gi3l326bew6yylr4famhhi4n6kk2gflri
   tests/test_dialogues.py: bafybeidyg2vzrm22si6n54xbvsupusns2czjo5hablcuj6hflswgc2oina
-  tests/test_handlers.py: bafybeihyceadjep6uzycw7ief53lpqg3bnwfl63blckreq2mjztj36bmse
-  tests/test_models.py: bafybeidjbqaht4kb5t7orvrnszwho6nimalt3frwhozxidrfcjqpma6r5a
-  tests/test_payloads.py: bafybeibizvi2h23dk5vlbefmhq3ikpsaoyxj7372orzks2rbbzr3vo4cu4
-  tests/test_rounds.py: bafybeiafl6bv3mb7d76glllqthi4rntzfj4fdup4ia74esjrh7xeamh22i
+  tests/test_handlers.py: bafybeidhb6537yso4uvkuwapkgn5lk6zwd5qfcetcm3socigkuk2xusniy
+  tests/test_models.py: bafybeig3ymd6zbvoohktemv2krcfvtpitnuis7dldh4x3n7rdpmplddnte
+  tests/test_payloads.py: bafybeihsw5fgcjsdyzyw6y3aii23cixamx27ngzf2s5l6i72q6pze55lk4
+  tests/test_rounds.py: bafybeibql7l7sgtnt2ogvpywzxc4ch6cka647zisexbg6us4sxtnpqdwli
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []

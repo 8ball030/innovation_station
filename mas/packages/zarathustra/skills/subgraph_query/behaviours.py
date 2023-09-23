@@ -19,8 +19,8 @@
 
 """This package contains round behaviours of SubgraphQueryAbciApp."""
 
-from abc import ABC
 import json
+from abc import ABC
 from typing import Generator, Set, Type, cast
 
 from packages.valory.skills.abstract_round_abci.base import AbstractRound

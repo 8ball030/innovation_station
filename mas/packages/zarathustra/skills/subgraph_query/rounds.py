@@ -19,9 +19,9 @@
 
 """This package contains the rounds of SubgraphQueryAbciApp."""
 
-from enum import Enum
 import json
-from typing import Dict, Optional, Set, Tuple, Any, cast
+from enum import Enum
+from typing import Any, Dict, Optional, Set, Tuple, cast
 
 from packages.valory.skills.abstract_round_abci.base import (
     AbciApp,
