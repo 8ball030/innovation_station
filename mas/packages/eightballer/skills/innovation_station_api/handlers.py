@@ -122,6 +122,13 @@ def get_data(route, id):
     else:
         return json.dumps(data.get(int(id))).encode("utf-8")
 
+def add_data(route, prompt):
+    data = COMPONENT_TO_DATA.get(route)
+    if data is None:
+        return b"Not found!"
+    data[len(data)] = prompt
+    return json.dumps(data).encode("utf-8")
+
 
 
 class HttpHandler(BaseHandler):
@@ -142,7 +149,8 @@ class HttpHandler(BaseHandler):
             body = b"Not found!"
         
         else:
-            status_code = 200
+            status_code = 201
+            add_data(route, prompt)
             body = get_data(route, id)
 
         msg = dialogue.reply(
