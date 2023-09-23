@@ -2,7 +2,7 @@ name: subgraph_query
 author: zarathustra
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: Skill to query subgraphs.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
@@ -126,6 +126,9 @@ models:
       tendermint_url: http://localhost:26657
       tx_timeout: 10.0
       validate_timeout: 1205
+      subgraph_query: "{ series\n  {\n    id\n    expiration\n    netDHVExposure\n\
+        \    strike\n    isPut\n    isBuyable\n    isSellable\n  }\n}\n"
+      subgraph_url: https://api.goldsky.com/api/public/project_clhf7zaco0n9j490ce421agn4/subgraphs/arbitrum-one/0.1.17/gn
     class_name: Params
   requests:
     args: {}
