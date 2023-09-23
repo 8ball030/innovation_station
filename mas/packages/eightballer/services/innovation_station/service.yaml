@@ -13,7 +13,7 @@ deployment:
   agent:
     ports:
       0:
-        26658: 26658
+        8001: 26658
 ---
 public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpyeahsoqorctys7uq6b3djq
 type: connection
