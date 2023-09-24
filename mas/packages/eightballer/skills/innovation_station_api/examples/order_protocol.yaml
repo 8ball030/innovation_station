@@ -1,0 +1,92 @@
+name: order
+author: eightballer
+version: 0.1.0
+description: A protocol for representing orders.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+protocol_specification_id: eightballer/order:0.1.0
+speech_acts:
+  create_order:
+    side: ct:OrderSide
+    size: pt:float
+    type: ct:OrderType
+    price: pt:optional[pt:float]
+    exchange_id: pt:str
+    market_id: pt:str
+  cancel_order:
+    exchange_id: pt:str
+    order_id: pt:str
+  get_orders:
+    exchange_id: pt:str
+    status: ct:OrderStatus
+  get_order:
+    order_id: pt:str
+  order:
+    order_id: pt:str
+    price: pt:optional[pt:float]
+    size: pt:float
+    filled_size: pt:float
+    side: ct:OrderSide
+    exchange_id: pt:str
+    type: ct:OrderType
+    status: ct:OrderStatus
+    market_id: pt:str
+    created_at: pt:int
+  error:
+    error_code: ct:ErrorCode
+    error_msg: pt:str
+  end: { }
+...
+---
+ct:ErrorCode: |
+  enum ErrorCodeEnum {
+      UNSUPPORTED_PROTOCOL = 0;
+      DECODING_ERROR = 1;
+      INVALID_MESSAGE = 2;
+      UNSUPPORTED_SKILL = 3;
+      INVALID_DIALOGUE = 4;
+    }
+  ErrorCodeEnum error_code = 1;
+ct:OrderStatus: |
+  enum OrderStatusEnum{
+      SUBMITTED = 0;
+      OPEN = 1;
+      PARTIALLY_FILLED = 2;
+      CANCELLED = 3;
+      FILLED = 4;
+      CLOSED = 5;
+      INVALID_DIALOGUE = 6;
+    }
+  OrderStatusEnum order_status = 1;
+ct:OrderType: |
+  enum OrderTypeEnum{
+      LIMIT = 0;
+      MARKET = 1;
+    }
+  OrderTypeEnum order_type = 1;
+ct:OrderSide: |
+  enum OrderSideEnum{
+      BUY = 0;
+      SELL = 1;
+    }
+  OrderSideEnum order_side = 1;
+...
+---
+initiation:
+- create_order
+- cancel_order
+- get_order
+- get_orders
+reply:
+  create_order: [ order, error ]
+  cancel_order: [ order, error ]
+  get_order: [ order, error ]
+  get_orders: [ order, error, end]
+  order: [ ]
+  error: [ ]
+  end: [ ]
+termination: [ order, end, error ]
+roles: { agent }
+end_states: [ end, error, order]
+keep_terminal_state_dialogues: true
+...
