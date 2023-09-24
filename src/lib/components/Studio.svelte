@@ -2,13 +2,25 @@
  import { Stepper, Step } from "@skeletonlabs/skeleton";
  import Share from "$lib/components/Share.svelte";
  import { getDrawerStore } from "@skeletonlabs/skeleton";
+ import { popup } from '@skeletonlabs/skeleton';
+ import type { PopupSettings } from '@skeletonlabs/skeleton';
 
+ // props
+ export let data: ComponentI[] = [];
+
+ // types
+ interface ComponentI {
+  author: string;
+  dependencies: Array<string>;
+  description: string;
+  name: string;
+  type: string;
+  version: string;
+ }
+
+ // configs
  const drawerStore = getDrawerStore();
-
- export let data: any = [];
-
- const components: any = {
-  Protocols: false,
+ const componentTypes: any = {
   Skills: false,
   Connections: false,
   Contratcs: false,
@@ -26,8 +38,6 @@
   top: 0;
   left: 0;`;
 
- let isMinted = false;
-
  const drawerSettings: any = {
   id: "info-drawer",
   bgDrawer: "text-white",
@@ -36,11 +46,24 @@
   width: "w-[380px] md:w-[550px]",
  };
 
+  const popupHover: PopupSettings = {
+   event: 'hover',
+   target: 'popupHover',
+   placement: 'top'
+ };
+
+  // state variables
+  let isMinted = false;
+  let search = '';
+
+
+ // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
  }
- console.log(components);
- $: selected = components;
+ $:filteredData = data.filter((d: any) => d.description.includes(search));
+ console.log("filteredData")
+ console.log(filteredData)
 </script>
 
 <div style={bgImage}>
@@ -53,24 +76,43 @@
      >
      What type of components would you like to generate today?
      <div class="mt-6">
-      {#each Object.keys(components) as f}
-       <span
-        class="chip mr-3 {components[f] ? 'variant-filled' : 'variant-soft'}"
-        on:click={() => {
-         components[f] = !components[f];
-         selected = components;
-        }}
-        on:keypress
+      <span
+        class="chip mr-3 variant-filled"
        >
-        {#if components[f]}<span>+</span>{/if}
+        <span>+</span>
+        <span class="capitalize">Protocols</span>
+      </span>
+      {#each Object.keys(componentTypes) as f}
+       <span
+        use:popup={popupHover}
+        class="chip mr-3 variant-soft"
+       >
         <span class="capitalize">{f}</span>
        </span>
+       <div class="card p-1 variant-filled-secondary" data-popup="popupHover">
+        <p>Comming Soon</p>
+        <div class="arrow variant-filled-secondary" />
+      </div>
       {/each}
      </div>
     </Step>
     <Step>
-     <svelte:fragment slot="header">header2</svelte:fragment>
-     content2
+     <svelte:fragment slot="header">Lets search existing protocols </svelte:fragment>
+     Enter the description of the protocol you want to use
+     <textarea bind:value={search} class="textarea mb-4" rows="2"  title="Protocol" placeholder="create me a read update sql crud protocol .. " />
+     Matching protocols
+     <select class="select">
+      {#each Object.values(filteredData) as protocol}
+        <option value="1">{protocol?.description}</option>
+      {/each}
+     </select>
+     {#if filteredData.length}
+      <div>We found {filteredData.length} matching protocols for you :D</div>
+      <div>Let's <button>Mint</button> one!?</div>
+      {:else}
+      <div>No matching protocols found :(</div>
+      <div>Let's <button>Build</button> it!?</div>
+      {/if}
     </Step>
    </Stepper>
    <button class="mt-10 help-btn" on:click={openDrawer}>Help Me !</button>

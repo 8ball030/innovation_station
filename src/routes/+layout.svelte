@@ -2,14 +2,18 @@
  import "../app.postcss";
  import { AppShell, AppBar } from "@skeletonlabs/skeleton";
  import LinkButton from "$lib/components/LinkButton.svelte";
+ import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+ import { storePopup } from '@skeletonlabs/skeleton';
 
- // WebConnect
+  // WebConnect
  import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi";
  import { mainnet, gnosis } from "@wagmi/core/chains";
  import { view } from "$lib/stores";
  import { initializeStores } from "@skeletonlabs/skeleton";
  import { Drawer, getDrawerStore } from "@skeletonlabs/skeleton";
  import Info from "$lib/components/Info.svelte";
+
+ storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
  initializeStores();
  let view_value: string;

@@ -14,9 +14,10 @@
  let data: any = [];
 
  onMount(() => {
-  fetch("http://46.101.6.36:8001/agent")
+  fetch("http://46.101.6.36:8001/protocol")
    .then((response) => response.json())
    .then((res) => {
+    console.log(res)
     data = Object.values(res);
    });
  });
