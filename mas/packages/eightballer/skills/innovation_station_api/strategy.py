@@ -49,6 +49,7 @@ class Strategy(Model):
         )
 
         super().__init__(**kwargs)
+        self.pending_tasks = []
 
     def setup(self) -> None:
         """

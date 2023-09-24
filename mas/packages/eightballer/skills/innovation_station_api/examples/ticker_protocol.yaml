@@ -1,0 +1,68 @@
+---
+name: ticker
+author: eightballer
+version: 0.1.0
+description: A protocol for passing tick data between compoents.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+protocol_specification_id: eightballer/ohlcv:0.1.0
+speech_acts:
+  get_tickers:
+    exchange_id: pt:str
+  get_ticker:
+    exchange_id: pt:str
+    market_name: pt:str
+  ticker:
+    exchange_id: pt:str
+    market_name: pt:str
+    open: pt:float
+    high: pt:float
+    low: pt:float
+    close: pt:float
+    volume: pt:float
+    timestamp: pt:int
+    bid: pt:int
+    ask: pt:int
+  error:
+    error_code: ct:ErrorCode
+    error_msg: pt:str
+    error_data: pt:dict[pt:str, pt:bytes]
+  end: { }
+...
+---
+ct:ErrorCode: |
+  enum ErrorCodeEnum {
+      UNSUPPORTED_TICKER = 0;
+      UNSUPPORTED_EXCHANGE = 1;
+      API_ERROR = 2;
+    }
+  ErrorCodeEnum error_code = 1;
+ct:Ticker: |
+  message Ticker {
+      string symbol = 1;
+      float open = 2;
+      float high = 3;
+      float low = 4;
+      float close = 5;
+      float volume = 6;
+      int32 timestamp = 7;
+      int32 bid = 8;
+      int32 ask = 9;
+    }
+ct:Tickers: |
+  message Tickers {
+      repeated Ticker tickers = 1;
+    }
+...
+---
+initiation: [get_ticker, get_tickers]
+reply:
+  get_ticker: [ticker, error]
+  get_tickers: [tickers, error]
+  tickers: [ ]
+  ticker: [ ]
+  error: [ ]
+termination: [ticker, tickers, error]
+roles: { agent }
+end_states: [ ticker, tickers, error]
+keep_terminal_state_dialogues: false

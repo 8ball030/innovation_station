@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package aea.zarathustra.sql_crud.v0_1_0;
+
+message SqlCrudMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_UNSUPPORTED_PROTOCOL = 0;
+      ERROR_CODE_ENUM_DECODING_ERROR = 1;
+      ERROR_CODE_ENUM_INVALID_MESSAGE = 2;
+      ERROR_CODE_ENUM_UNSUPPORTED_SKILL = 3;
+      ERROR_CODE_ENUM_INVALID_DIALOGUE = 4;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Create_Performative{
+    string table_name = 1;
+    map<string, bytes> data = 2;
+  }
+
+  message Read_Performative{
+    string table_name = 1;
+    string condition = 2;
+    bool condition_is_set = 3;
+  }
+
+  message Update_Performative{
+    string table_name = 1;
+    string condition = 2;
+    bool condition_is_set = 3;
+    map<string, bytes> data = 4;
+  }
+
+  message Delete_Performative{
+    string table_name = 1;
+    string condition = 2;
+    bool condition_is_set = 3;
+  }
+
+  message Result_Performative{
+    map<string, bytes> result = 1;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+  message End_Performative{
+  }
+
+
+  oneof performative{
+    Create_Performative create = 5;
+    Delete_Performative delete = 6;
+    End_Performative end = 7;
+    Error_Performative error = 8;
+    Read_Performative read = 9;
+    Result_Performative result = 10;
+    Update_Performative update = 11;
+  }
+}
