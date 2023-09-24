@@ -203,10 +203,12 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 201
             self.add_data(route, prompt, dialogue, chain_id)
-            new_id = len(CHAINS[int(chain_id)][route])
-            data = CHAINS[int(chain_id)][route][new_id -1] 
+            new_id = len(CHAINS[int(chain_id)][route]) -1
+            data = CHAINS[int(chain_id)][route][new_id] 
             data['id'] = new_id
+            CHAINS[int(chain_id)][route][new_id] = data
             body = json.dumps(data).encode("utf-8")
+
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
