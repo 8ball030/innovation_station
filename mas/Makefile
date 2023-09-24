@@ -70,3 +70,6 @@ commit: hashes
 run-mas:
 	MAS_KEYPATH=$(shell pwd)/keys.json poetry run bash scripts/start_mas.sh eightballer/innovation_station
 
+run-single:
+	rm -rf agent && bash scripts/run_single_agent.sh eightballer/innovation_station
+

@@ -143,7 +143,9 @@ class HttpHandler(BaseHandler):
         if workflow is None:
             return b"Not found!"
         self.context.logger.info("Adding data to component...")
-        data[len(data)] = prompt
+        new_id = len(data)
+        prompt['id'] = new_id
+        data[new_id] = prompt
 
         if "prompt" in prompt:
             self.submit_workflow(workflow, 
@@ -199,12 +201,13 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 201
             self.add_data(route, prompt, dialogue, chain_id)
-            body = self.get_data(route, id, str(chain_id))
+            id = len(CHAINS.get(chain_id).get(route)) - 1
+            body = self.get_data(route, id=id, chain_id=str(chain_id))
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
-            status_code=200,
+            status_code=status_code,
             headers="Content-Type: application/json\n" + self.get_headers(dialogue.last_incoming_message),
             version="",
             status_text="OK",
@@ -247,7 +250,10 @@ class HttpHandler(BaseHandler):
             return self.context.outbox.put_message(static_response)
 
         url = message.url
-        chain_id = str(url.split('?')[1].split('=')[1])
+        try:
+            chain_id = str(url.split('?')[1].split('=')[1])
+        except:
+            chain_id = 1
         url = url.split('?')[0]
         parts = url.split('/')
         parts = [part for part in parts if part != '']
@@ -265,11 +271,11 @@ class HttpHandler(BaseHandler):
                 id = parts[-1]
             msg = self.handle_get(route, dialogue=dialogue, id=id, chain_id=chain_id)
         else:
-            msg = self.handle_unexpected_message(message)
+            msg = self.handle_unexpected_message(message, dialogue, b"Not found! ")
         self.context.logger.info("Sending response: {}".format(msg))
         return self.context.outbox.put_message(msg)
 
-    def handle_unexpected_message(self, message, dialogue):
+    def handle_unexpected_message(self, message, dialogue, body):
         "handler for unexpected messages"
         self.context.logger.info("received unexpected message: {}".format(message))
         msg = dialogue.reply(
