@@ -1,9 +1,9 @@
 {
     "dev": {
-        "skill/eightballer/innovation_station_api/0.1.0": "bafybeifcgcei7afbdamuvminok4chfyckonb7pjb3ps7cbzvj5mnbhuz6u",
-        "agent/eightballer/innovation_station/0.1.0": "bafybeidw25kco42dz5lsrbxuxtmmcp2ev7jb5lbicoetgb3youijtgbdiu",
+        "skill/eightballer/innovation_station_api/0.1.0": "bafybeifolwdolwy3xr4pkfs536mpei5iji44euxevsy6ocufgvyedsbvve",
+        "agent/eightballer/innovation_station/0.1.0": "bafybeicojdmndytce7pxrjiclgm2kc3fjcmtlcrl3cayktkk4gmtinyhnm",
         "connection/eightballer/http_client/0.1.0": "bafybeidzz2cn27jpouim44ngql626d42qimv46mpud6onf2y3md7aur5zq",
-        "service/eightballer/innovation_station/0.1.0": "bafybeifn2d33uyn7chcksujst6jlf3rq4rkmxva7xfz63bsv5bbt5yzvqa",
+        "service/eightballer/innovation_station/0.1.0": "bafybeibadxwyxodmsdh4uy3zde4g6at5rukaxbcsgf47bh5walg5m5ga44",
         "protocol/zarathustra/sql_crud/0.1.0": "bafybeiekkiufpq6q5nzcnhpt26qlcbx2ds53evkcmahn4kzqjtuf7ccypu"
     },
     "third_party": {
