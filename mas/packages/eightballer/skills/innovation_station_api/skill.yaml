@@ -26,7 +26,11 @@ contracts: []
 protocols:
 - eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
 skills: []
-dependencies: {}
+dependencies:
+  llm-workflow:
+    version: '>=0.0.2'
+  openai:
+    version: '>=0.28.0'
 is_abstract: false
 behaviours:
   pending_tasks:

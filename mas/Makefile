@@ -61,5 +61,8 @@ hashes: clean
 	poetry run autonomy push-all
 
 rollout: hashes
+	git pull
 	sudo rm -rf service/ && poetry run bash scripts/start_mas.sh eightballer/innovation_station
-	
+
+commit: hashes
+	git add packages/ && git add . && git commit -m "Resolved" && git push
