@@ -19,7 +19,7 @@ fingerprint:
   examples/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
   handlers.py: bafybeiavvp4lv3clsz3ymqtxguwxruwwr7a4uh4urmhaf24yrguj46wub4
   llm_workflows/protocol.py: bafybeih6zouokdea4yckm5s2pue7x3l3zrbjw66a5x3rgzplv64fiy5toa
-  strategy.py: bafybeifrvptd7idmxapn5gqeig72jpu6belrnma4goesc3qhhwbrjuxwa4
+  strategy.py: bafybeiaox7l3uzl2pa2s65h524zma6usk7wwkcny44c5fwr3j4prlu7n7e
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
@@ -46,6 +46,7 @@ models:
         enabled: true
         ipfs_hash: bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu
         directory: www
+        openai_api_key: null
     class_name: Strategy
 handlers:
   http_handler:

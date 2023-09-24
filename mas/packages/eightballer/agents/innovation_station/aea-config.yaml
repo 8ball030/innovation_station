@@ -14,7 +14,7 @@ protocols:
 - eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
 skills:
-- eightballer/innovation_station_api:0.1.0:bafybeid6674rpuylmbzx7cpxoov4ehcs4ewc63af4fd6bpxj7psf7lsnca
+- eightballer/innovation_station_api:0.1.0:bafybeid3qp3pmvirp6y67gk4omgo7exbmzxtbuntgjq3c4xiq7ajwvwdze
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -45,3 +45,4 @@ models:
         enabled: ${FRONTEND_ENABLED:bool:true}
         ipfs_hash: ${str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
         directory: www
+        openai_api_key: ${str:}

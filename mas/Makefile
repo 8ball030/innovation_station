@@ -66,3 +66,7 @@ rollout: hashes
 
 commit: hashes
 	git add packages/ && git add . && git commit -m "Resolved" && git push
+
+run-mas:
+	MAS_KEYPATH=$(shell pwd)/keys.json poetry run bash scripts/start_mas.sh eightballer/innovation_station
+

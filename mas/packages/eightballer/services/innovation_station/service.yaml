@@ -7,7 +7,7 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station:0.1.0:bafybeidtssz5xhte2q5pjr3liglg2fbwcehu3g2eqx5a4f24aei3g7jspu
+agent: eightballer/innovation_station:0.1.0:bafybeifelsh3bs2jxhj2t4byxnmswrrqhgqjhjupjtxatocw334ojydtyi
 number_of_agents: 1
 deployment:
   agent:
@@ -31,3 +31,4 @@ models:
         enabled: true
         ipfs_hash: ${IPFS_HASH:str:}
         directory: www
+        openai_api_key: ${OPENAI_API_KEY:str:}

@@ -18,7 +18,7 @@
 # ------------------------------------------------------------------------------
 
 """This package contains a scaffold of a model."""
-
+import os
 from pathlib import Path
 from glob import glob
 
@@ -43,6 +43,13 @@ class Strategy(Model):
         frontend_config = kwargs.pop("frontend", {})
         self.frontend_enabled = frontend_config.get("enabled", self.frontend_enabled)
         self.ipfs_hash = frontend_config.get("ipfs_hash", self.ipfs_hash)
+        openai_key = frontend_config.get("openai_key", None)
+        if openai_key is not None:
+            os.environ["OPENAI_API_KEY"] = openai_key
+        if os.environ.get("OPENAI_API_KEY") is None:
+            if "SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY" not in os.environ:
+                raise ValueError("OPENAI_API_KEY environment variable not set.")
+            os.environ["OPENAI_API_KEY"] = os.environ.get("SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY")
 
         self.frontend_directory = Path(
             frontend_config.get("directory", self.frontend_directory)
