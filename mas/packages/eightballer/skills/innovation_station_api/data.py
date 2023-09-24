@@ -18,7 +18,6 @@ AUTHORS = {
     }
 }
 
-
 PROTOCOLS = {
     1:{ "is_minted": False,
         "name": "http",
@@ -28,16 +27,16 @@ PROTOCOLS = {
         "description": "This is a protocol for http.",
         "dependencies": [
         ],
-        "protocol_specification_id": "eightballer/http:0.1.0",
+        "protocol_specification_id": "eightballer/http:0.1.0"
     },
     2: {
         "is_minted": False,
         "output": {
-        "name": "{author}/{name}:{version}",
-        "description": "description",
-        "code_uri": "ipfs://{ipfs_hash}",
-        "image": "ipfs://{ipfs_hash}",
-        "attributes": [{"trait_type": "version", "value": f"[{name}]"}],
+            "name": "{author}/{name}:{version}",
+            "description": "description",
+            "code_uri": "ipfs://{ipfs_hash}",
+            "image": "ipfs://{ipfs_hash}",
+            "attributes": [{"trait_type": "version", "value": "[{name}]"}],
         },
         "name": "websockets",
         "author": "eightballer",
@@ -47,7 +46,7 @@ PROTOCOLS = {
         "dependencies": [
         ],
         "protocol_specification_id": "eightballer/http:0.1.0",
-    }
+    },
     0: {
         "is_minted": True,
         "output": {
@@ -55,7 +54,7 @@ PROTOCOLS = {
         "description": "description",
         "code_uri": "ipfs://{ipfs_hash}",
         "image": "ipfs://{ipfs_hash}",
-        "attributes": [{"trait_type": "version", "value": f"[{name}]"}],
+        "attributes": [{"trait_type": "version", "value": "[{name}]"}],
         },
         "name": "abci",
         "author": "eightballer",

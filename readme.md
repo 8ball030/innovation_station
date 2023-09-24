@@ -15,3 +15,19 @@ serviceId
 transactionHash
 }
 }
+
+
+```
+
+curl -X POST -H "Content-Type: application/json" --data '{"prompt": "Decribe a protocol to handle going to the pub" }' 'http://46.101.6.36:8001/protocol?chain_id=1' -i
+
+```
+
+```
+curl -X POST -H "Content-Type: application/json" --data '{"prompt": "Decribe a protocol to handle going to the pub" }' 'http://localhost:26658/protocol?chain_id=1' -i
+
+```
+
+
+```
+

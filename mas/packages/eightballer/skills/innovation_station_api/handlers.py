@@ -132,6 +132,7 @@ class HttpHandler(BaseHandler):
         """
         Add new data to the data from the component.
         """
+        chain_id = int(chain_id)
         chain_data = CHAINS.get(chain_id)
         if chain_data is None:
             return b"Not found!"
@@ -143,9 +144,10 @@ class HttpHandler(BaseHandler):
         if workflow is None:
             return b"Not found!"
         self.context.logger.info("Adding data to component...")
-        new_id = len(data)
+        new_id = len(data) 
         prompt['id'] = new_id
         data[new_id] = prompt
+        CHAINS[chain_id][route] = data
 
         if "prompt" in prompt:
             self.submit_workflow(workflow, 
@@ -154,7 +156,6 @@ class HttpHandler(BaseHandler):
                 data=data,
                 chain_id=chain_id
             )
-        CHAINS[chain_id][route] = data
         return json.dumps(data).encode("utf-8")
 
     def get_data(self, route, id, chain_id):
@@ -164,7 +165,6 @@ class HttpHandler(BaseHandler):
         chain_data = CHAINS.get(int(chain_id))
         if chain_data is None:
             self.context.logger.info("Chain id not found: {}".format(chain_id))
-            breakpoint()
             return b"Chain id  Not found!"
         
         data = chain_data.get(route)
@@ -203,9 +203,10 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 201
             self.add_data(route, prompt, dialogue, chain_id)
-            new_id = len(CHAINS[int(chain_id)][route]) - 1
-            body = self.get_data(route, id=new_id, chain_id=str(chain_id))
-            body['id'] = new_id
+            new_id = len(CHAINS[int(chain_id)][route])
+            data = CHAINS[int(chain_id)][route][new_id -1] 
+            data['id'] = new_id
+            body = json.dumps(data).encode("utf-8")
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
