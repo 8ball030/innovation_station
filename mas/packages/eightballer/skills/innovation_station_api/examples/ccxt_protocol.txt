@@ -1,0 +1,139 @@
+---
+name: ccxt
+author: eightballer
+version: 0.1.0
+description: A protocol for interacting with the ccxt library.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+protocol_specification_id: eightballer/ccxt:0.1.0
+speech_acts:
+  get_all_markets:
+    markets: pt:dict[pt:str, pt:bytes]
+  all_markets:
+    markets: pt:dict[pt:str, pt:bytes]
+  register_exchange:
+    exchange_id: pt:str
+    api_key: pt:str
+    api_secret: pt:str
+    subaccount: pt:optional[pt:str]
+  register_market:
+    asset_a: pt:str
+    asset_b: pt:str
+    exchange_id: pt:str
+    poll_interval: pt:int
+  create_order:
+    type: pt:str
+    size: pt:float
+    side: pt:str
+    price: pt:optional[pt:float]
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+  cancel_order:
+    order_id: pt:str
+  order_status:
+    order_id: pt:str
+  get_open_orders:
+    orders: pt:dict[pt:str, pt:bytes]
+  all_open_orders:
+    orders: pt:dict[pt:str, pt:bytes]
+  order:
+    order_id: pt:str
+    type: pt:str
+    size: pt:float
+    filled_size: pt:float
+    side: pt:str
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+    status: pt:str
+  filled_order:
+    order_id: pt:str
+    type: pt:str
+    size: pt:float
+    filled_size: pt:float
+    side: pt:str
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+    status: pt:str
+  cancelled_order:
+    order_id: pt:str
+    type: pt:str
+    size: pt:float
+    filled_size: pt:float
+    side: pt:str
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+    status: pt:str
+  trade_event:
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+    timestamp: pt:int
+  ohlcv_candle:
+    exchange_id: pt:str
+    asset_a: pt:str
+    asset_b: pt:str
+    timestamp: pt:int
+    interval: pt:int
+    open: pt:float
+    high: pt:float
+    low: pt:float
+    close: pt:float
+    volume: pt:float
+  balance_query:
+    exchange_id: pt:str
+    asset_id: pt:str
+  balance_result:
+    asset_id: pt:str
+    timestamp: pt:int
+    total: pt:float
+    free: pt:float
+    usd_value: pt:optional[pt:float]
+    available_without_borrow: pt:optional[pt:float]
+    spot_borrow: pt:optional[pt:float]
+  error:
+    error_code: ct:ErrorCode
+    error_msg: pt:str
+    error_data: pt:dict[pt:str, pt:bytes]
+  end: { }
+...
+---
+ct:ErrorCode: |
+  enum ErrorCodeEnum {
+      UNSUPPORTED_PROTOCOL = 0;
+      DECODING_ERROR = 1;
+      INVALID_MESSAGE = 2;
+      UNSUPPORTED_SKILL = 3;
+      INVALID_DIALOGUE = 4;
+    }
+  ErrorCodeEnum error_code = 1;
+...
+---
+initiation: [ get_all_markets, register_market, register_exchange, create_order, cancel_order, ohlcv_candle, trade_event, order_status, get_open_orders, balance_query ]
+reply:
+  get_all_markets: [ all_markets, error ]
+  register_market: [ end, error ]
+  register_exchange: [ end, error ]
+  create_order: [ order, filled_order, error ]
+  cancel_order: [ order, cancelled_order, error ]
+  order_status: [ order, error ]
+  get_open_orders: [ all_open_orders, error ]
+  balance_query: [ balance_result, error ]
+  all_open_orders: [ ]
+  all_markets: [ ]
+  balance_result: [ ]
+  order: [ error ]
+  filled_order: [ ]
+  cancelled_order: [ ]
+  ohlcv_candle: [ ]
+  trade_event: [ ]
+  error: [ ]
+  end: [ ]
+termination: [ all_markets, ohlcv_candle, trade_event, balance_result, all_open_orders , filled_order, cancelled_order, end, error ]
+roles: { agent }
+end_states: [ end, error ]
+keep_terminal_state_dialogues: true
+...

@@ -26,7 +26,7 @@ packages = [
 
 
 [tool.poetry.dependencies]
-python = ">=3.9,<=3.11"
+python = ">=3.10,<=3.11"
 open-aea-ledger-solana = "^1.34.0"
 open-aea-ledger-cosmos = "^1.34.0"
 open-aea-ledger-ethereum = "^1.34.0"
@@ -52,6 +52,8 @@ psycopg2-binary = "2.9.6"
 pandas = "1.3.5"
 autoflake = "^2.2.0"
 python-socketio = "5.9.0"
+llm-workflow = "^0.0.2"
+openai = "^0.28.0"
 
 [tool.poetry.dev-dependencies]
 

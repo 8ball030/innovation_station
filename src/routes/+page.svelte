@@ -2,7 +2,6 @@
  import Studio from "$lib/components/Studio.svelte";
  import ComponentsList from "$lib/components/ComponentsList.svelte";
  import Landing from "$lib/components/Landing.svelte";
- import LinkButton from "$lib/components/LinkButton.svelte";
  import { view } from "$lib/stores";
  import { page } from "$app/stores";
 

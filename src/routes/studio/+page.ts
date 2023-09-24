@@ -1,4 +1,5 @@
 import * as api from "$lib/api";
+export const ssr = false;
 
 export const prerender = true
 export async function load({ fetch }) {
@@ -6,3 +7,4 @@ export async function load({ fetch }) {
 
  return data;
 }
+

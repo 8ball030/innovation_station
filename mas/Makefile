@@ -58,5 +58,8 @@ all: fmt lint test hashes
 hashes: clean
 	poetry run autonomy hash all
 	poetry run autonomy packages lock
+	poetry run autonomy push-all
 
-
+rollout: hashes
+	sudo rm -rf service/ && poetry run bash scripts/start_mas.sh eightballer/innovation_station
+	
