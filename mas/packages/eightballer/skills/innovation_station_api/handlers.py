@@ -155,15 +155,10 @@ class HttpHandler(BaseHandler):
         This an async operation.
         """
         self.context.logger.info("Submitting workflow to llm...")
-        task = asyncio.create_task(workflow(prompt))
-        task.callback = callback
+        task = (workflow, prompt, callback)
         self.strategy.pending_tasks.append(task)
         self.context.logger.info("Workflow submitted to llm.")
 
-
-
-
-    
     def setup(self) -> None:
         "Set up the handler."
         self.strategy = cast(Strategy, self.context.strategy)
