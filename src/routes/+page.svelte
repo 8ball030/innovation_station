@@ -3,7 +3,7 @@
  import ComponentsList from "$lib/components/ComponentsList.svelte";
  import Landing from "$lib/components/Landing.svelte";
  import { view } from "$lib/stores";
- import { page } from "$app/stores";
+ import { onMount } from "svelte";
 
  let view_value: string;
 
@@ -11,7 +11,16 @@
   view_value = value;
  });
 
- const data = Object.values($page.data);
+ let data: any;
+
+ onMount(() => {
+  fetch("http://46.101.6.36:8001/agent")
+   .then((response) => response.json())
+   .then((res) => {
+    data = res;
+   });
+ });
+ console.log(data);
 </script>
 
 {#if view_value === "studio"}
