@@ -201,7 +201,7 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 201
             self.add_data(route, prompt, dialogue, chain_id)
-            id = len(CHAINS.get(str((chain_id)).get(route)) - 1
+            id = len(CHAINS.get(str((chain_id)).get(route))) - 1
             body = self.get_data(route, id=id, chain_id=str(chain_id))
 
         msg = dialogue.reply(
