@@ -139,7 +139,7 @@ class HttpHandler(BaseHandler):
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
             status_code=200,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(message),
             version="",
             status_text="OK",
             body=body,
@@ -162,7 +162,7 @@ class HttpHandler(BaseHandler):
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(message),
             version="",
             body=body,
             status_code=status_code,
@@ -198,11 +198,15 @@ class HttpHandler(BaseHandler):
             msg = self.handle_get(route, dialogue=dialogue, id=id)
         else:
             msg = self.handle_unexpected_message(message)
-        cors_headers = "Access-Control-Allow-Origin: *\n"
-        cors_headers += "Access-Control-Allow-Methods: POST\n"
-        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
-        msg.headers = cors_headers + msg.headers
         return self.context.outbox.put_message(msg)
+    def get_headers(self, msg):
+        """
+
+        """
+        cors_headers = "Access-Control-Allow-Origin: *\n"
+        cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
+        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
+        return cors_headers + msg.headers
 
     def handle_unexpected_message(self, message, dialogue):
         "handler for unexpected messages"
@@ -210,7 +214,7 @@ class HttpHandler(BaseHandler):
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(message),
             version="",
             body=body,
             status_code=500,
