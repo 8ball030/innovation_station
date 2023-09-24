@@ -18,7 +18,7 @@ fingerprint:
   examples/spot_asset_protocol.yaml: bafybeih3mcnc3bt55kqqr5653cvnx72mcnekn7ay6wtdailitifknse424
   examples/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
   handlers.py: bafybeicq22elxznlxyp3w3jpcopzvzqkyv32gajmfv5ridmm5njkazzqq4
-  llm_workflows/protocol.py: bafybeibagbmgogkzwvdl3q5gddmgdo6kotxtagx26fhhkhtjoe7comhx5q
+  llm_workflows/protocol.py: bafybeicdghhqyeoexyvjo3ljtmwrk5iqz5smbiasfopxmowcfuy6hfmjdq
   strategy.py: bafybeic442jhlewdie454b5muv5t6p6pbu44j6es4gtus4jtsxqtomaohe
 fingerprint_ignore_patterns: []
 connections: []
