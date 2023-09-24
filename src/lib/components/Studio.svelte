@@ -3,8 +3,8 @@
  import Share from "$lib/components/Share.svelte";
  import { getDrawerStore } from "@skeletonlabs/skeleton";
  import { popup } from "@skeletonlabs/skeleton";
- import { getWeb3Details } from "$lib/utils";
-
+ import { getWeb3Details, getMintContract, writeContract } from "$lib/utils";
+ import { postPrompt } from "$lib/actions/postPropmpt";
  import type { PopupSettings } from "@skeletonlabs/skeleton";
 
  // props
@@ -56,44 +56,47 @@
 
  // state variables
  let isMinted = false;
+ let isMinting = false;
  let search = "";
  let selectedProtocol = "none selected";
  let prompt = "";
- $: filteredData = data.filter((d: any) => d.description.includes(search));
+ let isMint = false;
+ $: filteredData = data.filter((d: any) => d?.description?.includes(search));
 
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
  }
 
- console.log("filteredData");
- console.log(filteredData);
+ function handleMint() {
+  const { account } = getWeb3Details();
+  const contract = getMintContract();
+  console.log(account);
+  const hash = writeContract(contract.abi, contract.address, "create", [
+   "0",
+   account?.address,
+   "0x2c7e51bea6c66e5c648508c007bb969c129c08805ad699475de6857992082551",
+   [],
+  ]);
 
- async function postPrompt() {
-  const { chainId } = getWeb3Details();
-
-  const response = await fetch(
-   `http://46.101.6.36:8001/protocol?chain_id=${chainId}`,
-   {
-    method: "POST",
-    mode: "cors",
-    headers: {
-     "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-     prompt,
-    }),
-   }
-  );
-  return response.json();
+  console.log(hash);
  }
 
  function handleBuild() {
+  handleMint();
+  if (prompt === "") {
+   alert("Please enter a prompt");
+   return;
+  }
   postPrompt().then((res) => {
    console.log("res");
    console.log(res);
-   isMinted = true;
+   isMinting = true;
+   handleMint();
   });
+ }
+ function setMint() {
+  isMint = true;
  }
 </script>
 
@@ -140,15 +143,16 @@
        <option value={protocol?.name}>{protocol?.description}</option>
       {/each}
      </select>
-     {#if filteredData.length}
-      <div>We found {filteredData.length} matching protocols for you :D</div>
-      <div>Select one to <button>Mint</button></div>
+     {#if filteredData?.length}
+      <div>We found {filteredData?.length} matching protocols for you :D</div>
+      <div>Select one to <button on:click={setMint}>Mint</button></div>
+      <div>Or lets <button>Build</button> a new one</div>
      {:else}
       <div>No matching protocols found :(</div>
       <div class="help-btn">Click Next to <button>Build</button> it!</div>
      {/if}
     </Step>
-    {#if filteredData.length}
+    {#if filteredData.length && isMint}
      <Step>
       <button class="btn">Mint</button>
      </Step>
