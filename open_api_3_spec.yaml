@@ -17,6 +17,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                prompt:
+                  type: string
       responses:
         '201':
           description: Successful response
@@ -46,6 +49,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                prompt:
+                  type: string
       responses:
         '201':
           description: Successful response
@@ -75,6 +81,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                prompt:
+                  type: string
               # Define your contract schema here
       responses:
         '201':
@@ -137,6 +146,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                prompt:
+                  type: string
       responses:
         '201':
           description: Successful response
@@ -167,6 +179,9 @@ paths:
           application/json:
             schema:
               type: object
+              properties:
+                prompt:
+                  type: string
       responses:
         '201':
           description: Successful response
