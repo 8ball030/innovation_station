@@ -59,6 +59,15 @@ class BaseHandler(Handler):
 
     SUPPORTED_PROTOCOL = HttpMessage.protocol_id
 
+    def get_headers(self, msg):
+        """
+
+        """
+        cors_headers = "Access-Control-Allow-Origin: *\n"
+        cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
+        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
+        return cors_headers + msg.headers
+
     def handle(self, message: HttpMessage) -> None:
         """
         Implement the reaction to an envelope.
@@ -107,7 +116,7 @@ class BaseHandler(Handler):
             performative=HttpMessage.Performative.RESPONSE,
             target_message=message,
             status_code=status_code,
-            headers=headers,
+            headers=headers + self.get_headers(message),
             version=message.version,
             status_text="OK",
             body=content,
@@ -182,7 +191,7 @@ class HttpHandler(BaseHandler):
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
             status_code=200,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(dialogue.last_incoming_message),
             version="",
             status_text="OK",
             body=body,
@@ -205,7 +214,7 @@ class HttpHandler(BaseHandler):
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(dialogue.last_incoming_message),
             version="",
             body=body,
             status_code=status_code,
@@ -249,7 +258,7 @@ class HttpHandler(BaseHandler):
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
-            headers="Content-Type: application/json",
+            headers="Content-Type: application/json\n" + self.get_headers(message),
             version="",
             body=body,
             status_code=500,
