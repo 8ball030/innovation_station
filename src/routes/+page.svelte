@@ -1,9 +1,11 @@
 <script lang="ts">
+ import { onMount } from "svelte";
+
  import Studio from "$lib/components/Studio.svelte";
  import ComponentsList from "$lib/components/ComponentsList.svelte";
  import Landing from "$lib/components/Landing.svelte";
  import { view } from "$lib/stores";
- import { onMount } from "svelte";
+ import {getWeb3Details} from "$lib/utils";
 
  let view_value: string;
 
@@ -14,7 +16,9 @@
  let data: any = [];
 
  onMount(() => {
-  fetch("http://46.101.6.36:8001/protocol")
+  const {chainId} = getWeb3Details();
+  console.log(chainId)
+  fetch(`http://46.101.6.36:8001/protocol?chain_id=${chainId}`)
    .then((response) => response.json())
    .then((res) => {
     console.log(res)
