@@ -29,5 +29,5 @@ models:
     args:
       frontend:
         enabled: true
-        ipfs_hash: ${IPFS_HASH:str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
+        ipfs_hash: ${IPFS_HASH:str:bafybeic7mkotgalbblew3g43nof554n2oeskbif6iiukbhntidy2ovz6ve}
         directory: www
