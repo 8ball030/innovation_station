@@ -28,7 +28,7 @@ from aea.skills.base import Handler
 from packages.eightballer.protocols.http.message import HttpMessage
 from packages.eightballer.skills.innovation_station_api.strategy import Strategy
 from packages.eightballer.skills.innovation_station_api.dialogues import HttpDialogue
-from packages.eightballer.skills.innovation_station_api.data import COMPONENT_TO_DATA
+from packages.eightballer.skills.innovation_station_api.data import COMPONENT_TO_DATA, CHAINS
 from packages.eightballer.skills.innovation_station_api.llm_workflows.protocol import generate as generate_protocol
 
 from aea.configurations.constants import (
@@ -128,43 +128,57 @@ class BaseHandler(Handler):
 
 class HttpHandler(BaseHandler):
 
-    def add_data(self, route, prompt, dialogue):
+    def add_data(self, route, prompt, dialogue, chain_id):
         """
         Add new data to the data from the component.
         """
-        data = COMPONENT_TO_DATA.get(route)
+        chain_data = CHAINS.get(chain_id)
+        if chain_data is None:
+            return b"Not found!"
+        
+        data = chain_data.get(route)
         if data is None:
             return b"Not found!"
         workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
         if workflow is None:
             return b"Not found!"
+        self.context.logger.info("Adding data to component...")
+        data[len(data)] = prompt
+
         if "prompt" in prompt:
             self.submit_workflow(workflow, 
                 prompt, 
-                callback=lambda result: data.update(result)
+                callback=lambda result: data.update(result),
+                data=data,
+                chain_id=chain_id
             )
-        data[len(data)] = prompt
         return json.dumps(data).encode("utf-8")
 
-    def get_data(self, route, id):
+    def get_data(self, route, id, chain_id):
         """
         Retieve the data from the component.
         """
-        data = COMPONENT_TO_DATA.get(route)
+        chain_data = CHAINS.get(int(chain_id))
+        if chain_data is None:
+            self.context.logger.info("Chain id not found: {}".format(chain_id))
+            breakpoint()
+            return b"Chain id  Not found!"
+        
+        data = chain_data.get(route)
         if data is None:
-            return b"Not found!"
+            return b"Route data for chain Not found!"
         if id is None:
             return json.dumps(data).encode("utf-8")
         else:
             return json.dumps(data.get(int(id))).encode("utf-8")
 
-    def submit_workflow(self, workflow, prompt, callback):
+    def submit_workflow(self, workflow, prompt, callback, data=None, chain_id=None):
         """
         Submit a new workflow the llm.
         This an async operation.
         """
         self.context.logger.info("Submitting workflow to llm...")
-        task = (workflow, prompt, callback)
+        task = (workflow, prompt, callback, data, chain_id)
         self.strategy.pending_tasks.append(task)
         self.context.logger.info("Workflow submitted to llm.")
 
@@ -172,7 +186,7 @@ class HttpHandler(BaseHandler):
         "Set up the handler."
         self.strategy = cast(Strategy, self.context.strategy)
 
-    def handle_post(self, route, dialogue=None, id=None, prompt=None ):
+    def handle_post(self, route, dialogue=None, id=None, prompt=None , chain_id=None):
         "handle get protocol"
         self.context.logger.info("Handling post for route: {}".format(route))
 
@@ -184,8 +198,8 @@ class HttpHandler(BaseHandler):
         
         else:
             status_code = 201
-            self.add_data(route, prompt, dialogue)
-            body = self.get_data(route, id)
+            self.add_data(route, prompt, dialogue, chain_id)
+            body = self.get_data(route, id, str(chain_id))
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
@@ -198,7 +212,7 @@ class HttpHandler(BaseHandler):
         )
         return msg
 
-    def handle_get(self, route, id=None, dialogue=None):
+    def handle_get(self, route, id=None, dialogue=None, chain_id=None):
         "handle get protocol"
         workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
         self.context.logger.info("Received get for route: {}".format(route))
@@ -210,7 +224,7 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 200
             status_text="OK"
-            body = self.get_data(route, id)
+            body = self.get_data(route, id, str(chain_id))
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
             target_message=dialogue.last_incoming_message,
@@ -233,13 +247,15 @@ class HttpHandler(BaseHandler):
             return self.context.outbox.put_message(static_response)
 
         url = message.url
+        chain_id = str(url.split('?')[1].split('=')[1])
+        url = url.split('?')[0]
         parts = url.split('/')
         parts = [part for part in parts if part != '']
         dialogue = self.context.http_dialogues.update(message)
         if len(parts) == 3 and message.method.lower() == "post":
             body = json.loads(message.body.decode("utf-8"))
             route = parts[-1]
-            msg = self.handle_post(route=route, dialogue=dialogue, prompt=body)
+            msg = self.handle_post(route=route, dialogue=dialogue, prompt=body, chain_id=chain_id)
         elif message.method.lower() == "get":
             if len(parts) == 3:
                 route = parts[-1]
@@ -247,9 +263,10 @@ class HttpHandler(BaseHandler):
             else:
                 route = parts[-2]
                 id = parts[-1]
-            msg = self.handle_get(route, dialogue=dialogue, id=id)
+            msg = self.handle_get(route, dialogue=dialogue, id=id, chain_id=chain_id)
         else:
             msg = self.handle_unexpected_message(message)
+        self.context.logger.info("Sending response: {}".format(msg))
         return self.context.outbox.put_message(msg)
 
     def handle_unexpected_message(self, message, dialogue):

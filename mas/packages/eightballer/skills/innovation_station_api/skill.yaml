@@ -7,8 +7,8 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeignso5r673wgfgmdjwnhcba3viyhxlx3aam6y67e374gq4kj7n23i
-  behaviours.py: bafybeig7qarb5z566qwxa26ewxqfkviuzog4ozomfn22s3i6gefox74zom
-  data.py: bafybeiblmgprcek5fgt4x6ba7gwkbdlq73crz2utt6y7d2h4fdjwtvpseq
+  behaviours.py: bafybeiakjlk2bodr3rloo32s6olwsu4qzua5y53zrmpg4mludbp5vlnqim
+  data.py: bafybeidezp6lk2xazalnascmc66g6fxajhe2l4lj6s2gnvkvyz4kgquxky
   dialogues.py: bafybeihpitrmlmwukpdtpj7c7ieyr67i2res54ig3xuk4qyrspj6ahmfr4
   examples/ccxt_protocol.txt: bafybeierslod5hokqlmv6owgp5cfy6q36vhajfcgykhnjnab6fb5f25xdy
   examples/ccxt_protocol.yaml: bafybeierslod5hokqlmv6owgp5cfy6q36vhajfcgykhnjnab6fb5f25xdy
@@ -17,7 +17,7 @@ fingerprint:
   examples/order_protocol.yaml: bafybeib5hnptnxk3ahuanz6sjyydftxgzn7hahbinvlfv5qluakhiglnvu
   examples/spot_asset_protocol.yaml: bafybeih3mcnc3bt55kqqr5653cvnx72mcnekn7ay6wtdailitifknse424
   examples/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
-  handlers.py: bafybeiavvp4lv3clsz3ymqtxguwxruwwr7a4uh4urmhaf24yrguj46wub4
+  handlers.py: bafybeicmzonwyf43vfqon2wiciwj6bq62bnoxm7t4gym53t3tasycyui7m
   llm_workflows/protocol.py: bafybeih6zouokdea4yckm5s2pue7x3l3zrbjw66a5x3rgzplv64fiy5toa
   strategy.py: bafybeic442jhlewdie454b5muv5t6p6pbu44j6es4gtus4jtsxqtomaohe
 fingerprint_ignore_patterns: []

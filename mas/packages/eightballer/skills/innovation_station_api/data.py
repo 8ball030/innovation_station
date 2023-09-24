@@ -103,6 +103,7 @@ AGENTS = {
     }
 }
 
+
 COMPONENT_TO_DATA = {
     "authors": AUTHORS,
     PROTOCOL: PROTOCOLS,
@@ -111,4 +112,9 @@ COMPONENT_TO_DATA = {
     SKILL: SKILLS,
     AGENT: AGENTS,
     SERVICE: SERVICES,
+}
+
+CHAINS = {
+    1: COMPONENT_TO_DATA.copy(),
+    2: COMPONENT_TO_DATA.copy()
 }
