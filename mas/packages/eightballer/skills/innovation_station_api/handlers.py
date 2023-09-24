@@ -150,7 +150,7 @@ class HttpHandler(BaseHandler):
         CHAINS[chain_id][route] = data
 
         def update_data(data, chain_id):
-            CHAINS[chain_id][route] = data
+            CHAINS[chain_id][route]= data
 
         if "prompt" in prompt:
             self.submit_workflow(workflow, 

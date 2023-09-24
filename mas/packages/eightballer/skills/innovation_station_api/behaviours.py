@@ -39,8 +39,8 @@ class PendingTasksBehaviour(TickerBehaviour):
         self.context.logger.info("Starting task...")
         output = workflow(prompt)
         if callback:
-            output = data.update(output)
-            callback(output, chain_id)
+            data.update(output)
+            callback(data, chain_id)
         self.context.logger.info("Task is done.")
         self.context.logger.info(f"Task result: {output}")
 

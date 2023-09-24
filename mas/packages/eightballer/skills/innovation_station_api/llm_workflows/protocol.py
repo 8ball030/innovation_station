@@ -5,6 +5,13 @@ import tempfile
 from aea.helpers.cid import to_v1
 from aea_cli_ipfs.ipfs_utils import IPFSTool
 import yaml
+res = {
+        "name": "{author}/{name}:{version}",
+        "description": "description",
+        "code_uri": "ipfs://{ipfs_hash}",
+        "image": "ipfs://{ipfs_hash}",
+        "attributes": [{"trait_type": "version", "value": "[{name}]"}],
+    }
 
 
 from llm_workflow.base import Workflow
@@ -12,6 +19,8 @@ from llm_workflow.models import OpenAIChat
 from pathlib import Path
 
 def generate(initial_prompt: str) -> str:
+
+    return res
     chat_assistant = OpenAIChat(model_name='gpt-3.5-turbo-16k')
     def prompt_template(user_prompt: str) -> str:
         return "Use the users input and the examples in order to" \
