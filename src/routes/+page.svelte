@@ -9,6 +9,7 @@
     height: 100vh;
     top: 0;
     left: 0;`;
+export const prerender = true
 </script>
 
 <div style={bgImage}>
