@@ -32,15 +32,14 @@ class PendingTasksBehaviour(TickerBehaviour):
                 self.context.strategy.pending_tasks.remove(task)
             self.context.logger.info("Pending tasks completed.")
 
-    def submit_wf(self, workflow, prompt, callback=None, data=None, chain_id=None) -> None:
+    def submit_wf(self, workflow, prompt, callback=None, data=None, id = None, chain_id=None) -> None:
         """
         Threaded process to check the llm.
         """
         self.context.logger.info("Starting task...")
         output = workflow(prompt)
         if callback:
-            data.update(output)
-            callback(data, chain_id)
+            callback(data, chain_id, id, output)
         self.context.logger.info("Task is done.")
         self.context.logger.info(f"Task result: {output}")
 

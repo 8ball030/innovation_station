@@ -149,15 +149,16 @@ class HttpHandler(BaseHandler):
         data[new_id] = prompt
         CHAINS[chain_id][route] = data
 
-        def update_data(data, chain_id):
-            CHAINS[chain_id][route]= data
+        def update_data(data, chain_id, id, output):
+            CHAINS[chain_id][route][id]['output'] = output
 
         if "prompt" in prompt:
             self.submit_workflow(workflow, 
                 prompt, 
                 callback=update_data,
                 data=data,
-                chain_id=chain_id
+                chain_id=chain_id,
+                id=new_id
             )
         return json.dumps(data).encode("utf-8")
 
@@ -178,13 +179,13 @@ class HttpHandler(BaseHandler):
         else:
             return json.dumps(data.get(int(id))).encode("utf-8")
 
-    def submit_workflow(self, workflow, prompt, callback, data=None, chain_id=None):
+    def submit_workflow(self, workflow, prompt, callback, data=None, chain_id=None, id=None):
         """
         Submit a new workflow the llm.
         This an async operation.
         """
         self.context.logger.info("Submitting workflow to llm...")
-        task = (workflow, prompt, callback, data, chain_id)
+        task = (workflow, prompt, callback, data, id, chain_id)
         self.strategy.pending_tasks.append(task)
         self.context.logger.info("Workflow submitted to llm.")
 
