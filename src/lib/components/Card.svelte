@@ -10,9 +10,11 @@
  <div on:click={() => showDetails(component)}>
   <img class="card-img w-full rounded-lg cursor-pointer" alt="" src={nounImg} />
   <div class="card-info">
-   <span class="name">{component.name?.replace(/_/g, " ")}</span>
+   <span class="name">{component?.name?.replace(/_/g, " ")}</span>
    <div class="label">Price: <span class="value">1 ETH</span></div>
-   <div class="label">Owner: <span class="value">{component.author}</span></div>
+   <div class="label">
+    Owner: <span class="value">{component?.author}</span>
+   </div>
   </div>
  </div>
  <div class="divide" />

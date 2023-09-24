@@ -1,9 +1,5 @@
 {
-	"/": [],
-	"/market": [
-		"src/routes/market/+page.ts"
-	],
-	"/studio": [
-		"src/routes/studio/+page.ts"
+	"/": [
+		"src/routes/+page.server.ts"
 	]
 }

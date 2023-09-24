@@ -1,18 +1,18 @@
 <script lang="ts">
  import Card from "$lib/components/Card.svelte";
  import Details from "$lib/components/Details.svelte";
- import { page } from "$app/stores";
+ export let data: any = [];
 
  let bgImage = `
-    background-image: url("/bgPage.png");
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-  `;
+     background-image: url("/bgPage.png");
+     background-size: cover;
+     background-position: center;
+     position: fixed;
+     width: 100vw;
+     height: 100vh;
+     top: 0;
+     left: 0;
+   `;
  let nftList = [];
  let componentTypes = [
   "Protocols",
@@ -33,7 +33,7 @@
   selectedCp = selected;
  }
 
- let componantsList = Object.values($page.data);
+ let componantsList = data;
  let list = [
   ...componantsList,
   ...componantsList,
