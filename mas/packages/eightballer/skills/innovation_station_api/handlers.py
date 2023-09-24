@@ -154,6 +154,7 @@ class HttpHandler(BaseHandler):
                 data=data,
                 chain_id=chain_id
             )
+        CHAINS[chain_id][route] = data
         return json.dumps(data).encode("utf-8")
 
     def get_data(self, route, id, chain_id):
@@ -190,6 +191,7 @@ class HttpHandler(BaseHandler):
 
     def handle_post(self, route, dialogue=None, id=None, prompt=None , chain_id=None):
         "handle get protocol"
+        chain_id = str(chain_id)
         self.context.logger.info("Handling post for route: {}".format(route))
 
         workflow = COMPONENT_TO_WORKFLOW_MAPPING.get(route)
@@ -201,8 +203,9 @@ class HttpHandler(BaseHandler):
         else:
             status_code = 201
             self.add_data(route, prompt, dialogue, chain_id)
-            id = len(CHAINS.get(str((chain_id)).get(route))) - 1
-            body = self.get_data(route, id=id, chain_id=str(chain_id))
+            new_id = len(CHAINS[int(chain_id)][route]) - 1
+            body = self.get_data(route, id=new_id, chain_id=str(chain_id))
+            body['id'] = new_id
 
         msg = dialogue.reply(
             performative=HttpMessage.Performative.RESPONSE,
