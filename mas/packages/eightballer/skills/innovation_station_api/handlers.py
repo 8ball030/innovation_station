@@ -55,6 +55,15 @@ class BaseHandler(Handler):
 
     SUPPORTED_PROTOCOL = HttpMessage.protocol_id
 
+    def get_headers(self, msg):
+        """
+
+        """
+        cors_headers = "Access-Control-Allow-Origin: *\n"
+        cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
+        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
+        return cors_headers + msg.headers
+
     def handle(self, message: HttpMessage) -> None:
         """
         Implement the reaction to an envelope.
@@ -199,14 +208,6 @@ class HttpHandler(BaseHandler):
         else:
             msg = self.handle_unexpected_message(message)
         return self.context.outbox.put_message(msg)
-    def get_headers(self, msg):
-        """
-
-        """
-        cors_headers = "Access-Control-Allow-Origin: *\n"
-        cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
-        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
-        return cors_headers + msg.headers
 
     def handle_unexpected_message(self, message, dialogue):
         "handler for unexpected messages"
