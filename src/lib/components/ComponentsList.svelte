@@ -1,6 +1,7 @@
 <script lang="ts">
  import Card from "$lib/components/Card.svelte";
  import Details from "$lib/components/Details.svelte";
+ import { componentTypes } from "$lib/config";
  export let data: any = [];
 
  let bgImage = `
@@ -14,14 +15,6 @@
      left: 0;
    `;
  let nftList = [];
- let componentTypes = [
-  "Protocols",
-  "Skills",
-  "Connections",
-  "Contratcs",
-  "Agents",
-  "ervices",
- ];
 
  let selectedType = componentTypes[0];
 

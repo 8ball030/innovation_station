@@ -2,11 +2,25 @@
  import "../app.postcss";
  import { AppShell, AppBar } from "@skeletonlabs/skeleton";
  import LinkButton from "$lib/components/LinkButton.svelte";
- import { page } from "$app/stores";
+ import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
+ import { storePopup } from '@skeletonlabs/skeleton';
 
- // WebConnect
+  // WebConnect
  import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi";
  import { mainnet, gnosis } from "@wagmi/core/chains";
+ import { view } from "$lib/stores";
+ import { initializeStores } from "@skeletonlabs/skeleton";
+ import { Drawer, getDrawerStore } from "@skeletonlabs/skeleton";
+ import Info from "$lib/components/Info.svelte";
+
+ storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+
+ initializeStores();
+ let view_value: string;
+
+ view.subscribe((value) => {
+  view_value = value;
+ });
 
  const projectId = "1b0aad06235a3007b00055160c73fe1d";
  const chains = [mainnet, gnosis];
@@ -16,17 +30,26 @@
   appName: "Web3Modal",
  });
  const modal = createWeb3Modal({ wagmiConfig, projectId, chains });
+
+ function setView() {
+  view.set("home");
+ }
+ const drawerStore = getDrawerStore();
+ $: positionClasses = $drawerStore.open ? "translate-x-[50%]" : "";
 </script>
 
+<Drawer>
+ <Info />
+</Drawer>
 <!-- App Shell -->
-<AppShell>
+<AppShell class="transition-transform {positionClasses}">
  <svelte:fragment slot="header">
   <!-- App Bar -->
   <AppBar background="bg-transparent">
    <svelte:fragment slot="lead">
-    {#if $page.url.pathname !== "/"}
+    {#if view_value !== "home"}
      <strong class="logo">
-      <a href="/">INNOVATION STATION</a>
+      <div on:click={setView}>INNOVATION STATION</div>
      </strong>
     {/if}
    </svelte:fragment>
