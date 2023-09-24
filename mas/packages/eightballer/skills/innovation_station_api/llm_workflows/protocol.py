@@ -109,12 +109,11 @@ def generate(initial_prompt: str) -> str:
                 author = doc.get("author")
             if doc.get("version") is not None:
                 version = doc.get("version")
-    except as exc:
+    except:
         author = "eightballer"
         name = f"protocol"
         version = f"0.1.0"
         description = f"This is a protocol spec. For the attestation station generated from {initial_prompt}"
-        print(exc)
     
     # we make a temp directory, write the protocol to it and return the path to the file.
     with tempfile.TemporaryDirectory() as tmpdirname:
