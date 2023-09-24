@@ -9,18 +9,18 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeibx4ko4f5xbgozqlgfnxwc3rksm5b7khtikf46izrlndjrojv2lw4
   __init__.py: bafybeiateb3vma46yihntj5gbai3eqcy3fkx55lkrwye6tbr4cuo5xktdm
-  connection.py: bafybeiaigakxyvj7hg5a6gegwchazqkdcahmnamqcubhlo4yjkch55yuvy
+  connection.py: bafybeifm6zjgcdk354mcc57br3kkm5s2nfja32ukv3ocgbcpsrvi4kiz2q
 fingerprint_ignore_patterns: []
 connections: []
 protocols:
-- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+- eightballer/http:0.1.0:bafybeidvkgr7coyezng2xqru23otzb47s57zyybgaug46sznsc4za6ltju
 class_name: HTTPClientConnection
 config:
   host: 127.0.0.1
   port: 8000
 excluded_protocols: []
 restricted_to_protocols:
-- valory/http:1.0.0
+- eightballer/http:0.1.0
 dependencies:
   aiohttp:
     version: <=3.8.1,>=3.7.4
