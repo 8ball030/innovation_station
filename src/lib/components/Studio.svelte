@@ -3,6 +3,7 @@
  import Share from "$lib/components/Share.svelte";
  import { getDrawerStore } from "@skeletonlabs/skeleton";
  import { popup } from "@skeletonlabs/skeleton";
+ import { getWeb3Details } from "$lib/utils";
 
  import type { PopupSettings } from "@skeletonlabs/skeleton";
 
@@ -57,14 +58,43 @@
  let isMinted = false;
  let search = "";
  let selectedProtocol = "none selected";
+ let prompt = "";
+ $: filteredData = data.filter((d: any) => d.description.includes(search));
 
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
  }
- $: filteredData = data.filter((d: any) => d.description.includes(search));
+
  console.log("filteredData");
  console.log(filteredData);
+
+ async function postPrompt() {
+  const { chainId } = getWeb3Details();
+
+  const response = await fetch(
+   `http://46.101.6.36:8001/protocol?chain_id=${chainId}`,
+   {
+    method: "POST",
+    mode: "cors",
+    headers: {
+     "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+     prompt,
+    }),
+   }
+  );
+  return response.json();
+ }
+
+ function handleBuild() {
+  postPrompt().then((res) => {
+   console.log("res");
+   console.log(res);
+   isMinted = true;
+  });
+ }
 </script>
 
 <div style={bgImage}>
@@ -125,12 +155,12 @@
     {:else}
      <Step>
       <input
-       bind:value={search}
+       bind:value={prompt}
        class="textarea mb-4"
        title="Prompt"
-       placeholder=" .. "
+       placeholder="Enter your prompt.. "
       />
-      <button class="btn">Build</button>
+      <button on:click={handleBuild} class="btn">Build</button>
      </Step>
     {/if}
    </Stepper>
