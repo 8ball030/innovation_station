@@ -1,12 +1,17 @@
 """
 Tool to allow the user to create a protocol spec. using the OpenAI chat model.
 """
+import tempfile
+from aea.helpers.cid import to_v1
+from aea_cli_ipfs.ipfs_utils import IPFSTool
+import yaml
+
 
 from llm_workflow.base import Workflow
 from llm_workflow.models import OpenAIChat
 from pathlib import Path
 
-async def generate(initial_prompt: str) -> str:
+def generate(initial_prompt: str) -> str:
     chat_assistant = OpenAIChat(model_name='gpt-4')
     def prompt_template(user_prompt: str) -> str:
         return "Use the users input and the examples in order to" \
@@ -84,4 +89,37 @@ async def generate(initial_prompt: str) -> str:
         chat_assistant,             # returns the chat response based on the improved prompt
     ])
     response = workflow(initial_prompt)
-    return response
+    try:
+        data = yaml.load_all(response)
+        for doc in data:
+            if doc.get("name") is not None:
+                name = doc.get("name")
+            if doc.get("description") is not None:
+                description = doc.get("description")
+            if doc.get("author") is not None:
+                author = doc.get("author")
+            if doc.get("version") is not None:
+                version = doc.get("version")
+    except yaml.YAMLError as exc:
+        author = "eightballer"
+        name = f"protocol"
+        version = f"0.1.0"
+        description = f"This is a protocol spec. For the attestation station generated from {initial_prompt}"
+        print(exc)
+    
+    # we make a temp directory, write the protocol to it and return the path to the file.
+    with tempfile.TemporaryDirectory() as tmpdirname:
+        with open(f'{tmpdirname}/protocol.yaml', 'w') as f:
+            f.write(response)
+        response = IPFSTool().client.add(
+            f"{tmpdirname}/protocol.yaml", pin=True, recursive=True, wrap_with_directory=False
+        )
+    ipfs_hash = to_v1(response["Hash"])
+    
+    return {
+        "name": f"{author}/{name}:{version}",
+        "description": description,
+        "code_uri": f"ipfs://{ipfs_hash}",
+        "image": f"ipfs://{ipfs_hash}",
+        "attributes": [{"trait_type": "version", "value": f"[{name}]"}],
+    }

@@ -22,22 +22,28 @@ class PendingTasksBehaviour(TickerBehaviour):
 
     def act(self) -> None:
         """
-        We await the results of the pending tasks.
+        We await the results of the pending tasks. 
         """
         if self.context.strategy.pending_tasks:
             self.context.logger.info("Awaiting results of pending tasks...")
-            self.context.logger.info("Pending tasks completed.")
             for task in self.context.strategy.pending_tasks:
-                if task.done():
-                    self.context.logger.info("Task is done.")
-                    self.context.logger.info("Updating data...")
-                    result = task.result()
-                    callback = task.callback 
-                    if callback:
-                        output = {"output": result}
-                        callback(output)
-                    self.context.logger.info(f"Task result: {result}")
-                    self.context.strategy.pending_tasks.remove(task)
+                thread = Thread(target=self.submit_wf, args=task)
+                thread.start()
+                self.context.strategy.pending_tasks.remove(task)
+            self.context.logger.info("Pending tasks completed.")
+
+    def submit_wf(self, workflow, prompt, callback=None) -> None:
+        """
+        Threaded process to check the llm.
+        """
+        self.context.logger.info("Starting task...")
+        output = workflow(prompt)
+        if callback:
+            output = {"output": output}
+            callback(output)
+        self.context.logger.info("Task is done.")
+        self.context.logger.info(f"Task result: {output}")
+
 
     def teardown(self) -> None:
         """Teardown the behaviour."""
