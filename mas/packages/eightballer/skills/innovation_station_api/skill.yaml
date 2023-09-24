@@ -19,7 +19,7 @@ fingerprint:
   examples/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
   handlers.py: bafybeiavvp4lv3clsz3ymqtxguwxruwwr7a4uh4urmhaf24yrguj46wub4
   llm_workflows/protocol.py: bafybeih6zouokdea4yckm5s2pue7x3l3zrbjw66a5x3rgzplv64fiy5toa
-  strategy.py: bafybeibcxm7mkhlzh6iqbq67xnb5jn6fblzcmqugogxbqishz5wwta55ia
+  strategy.py: bafybeic442jhlewdie454b5muv5t6p6pbu44j6es4gtus4jtsxqtomaohe
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
