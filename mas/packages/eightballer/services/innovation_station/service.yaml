@@ -7,7 +7,7 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station:0.1.0:bafybeiahn5x5ngr6lqit7qonafirlhja3sykit2ezyjd443e6ntkbenrj4
+agent: eightballer/innovation_station:0.1.0:bafybeic6j2u4iicugg4mmkjnrmbg36ar6jvxgvog6ri2odtaflehgqp2h4
 number_of_agents: 1
 deployment:
   agent:

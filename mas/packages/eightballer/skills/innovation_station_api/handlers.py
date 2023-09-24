@@ -112,7 +112,7 @@ class BaseHandler(Handler):
             performative=HttpMessage.Performative.RESPONSE,
             target_message=message,
             status_code=status_code,
-            headers=message.headers + self.get_headers(message),
+            headers=headers + self.get_headers(message),
             version=message.version,
             status_text="OK",
             body=content,
