@@ -7,14 +7,13 @@
 
 <div class="details-container">
  <div class="details-header">
-  {selectedCp.name?.replace(/_/g, " ")}<img src={dotsIcon} alt="dotsIcon" />
+  {selectedCp?.name?.replace(/_/g, " ")}<img src={dotsIcon} alt="dotsIcon" />
  </div>
  <div class="details-content">
   <div class="details-info mb-10">
-   <div class="mb-4">{selectedCp.description}</div>
-   <!-- Hash {selectedCp} -->
-   <div>Owned by: {selectedCp.author}</div>
-   <div>Version: {selectedCp.version}</div>
+   <div class="mb-4">{selectedCp?.description}</div>
+   <div>Owned by: {selectedCp?.author}</div>
+   <div>Version: {selectedCp?.version}</div>
   </div>
   <CodeBlock language="ts" code={`const skeleton: string = 'awesome';`} />
  </div>
@@ -44,6 +43,7 @@
   display: flex;
   color: #34ffd0;
   text-transform: capitalize;
+  font-weight: 600;
  }
 
  .details-header img {
