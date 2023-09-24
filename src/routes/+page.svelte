@@ -11,16 +11,15 @@
   view_value = value;
  });
 
- let data: any;
+ let data: any = [];
 
  onMount(() => {
   fetch("http://46.101.6.36:8001/agent")
    .then((response) => response.json())
    .then((res) => {
-    data = res;
+    data = Object.values(res);
    });
  });
- console.log(data);
 </script>
 
 {#if view_value === "studio"}
