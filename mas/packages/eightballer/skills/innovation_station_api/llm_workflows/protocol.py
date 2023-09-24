@@ -109,7 +109,7 @@ def generate(initial_prompt: str) -> str:
                 author = doc.get("author")
             if doc.get("version") is not None:
                 version = doc.get("version")
-    except:
+    except as exc:
         author = "eightballer"
         name = f"protocol"
         version = f"0.1.0"
