@@ -7,15 +7,17 @@ aea_version: '>=1.35.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/http_client:0.1.0:bafybeidzz2cn27jpouim44ngql626d42qimv46mpud6onf2y3md7aur5zq
-- eightballer/http_server:0.1.0:bafybeic5m2px4wanaqjc6jc3ileqmc76k2loitjrsmlffqvafx7bznwrba
+- eightballer/http_client:0.1.0:bafybeibmr45wmjqaq44d3vmels6yjlmzlm7sbe5uwdqxoxagu4lgmxst3a
+- eightballer/http_server:0.1.0:bafybeiceecm7wnth4ihho5pifl7ekdamgifllflyaipu6kuu5rj73wfamm
+- valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga
 contracts: []
 protocols:
 - eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
+- valory/abci:0.1.0:bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4
 skills:
-- eightballer/innovation_station_api:0.1.0:bafybeiaowtdhlip4vgvxwym57bwtsae53j2leg4jolbrxdoc4gctl6vch4
-- zarathustra/subgraph_query:0.1.0:bafybeib4jxlh2x2puz6rqupi54mb25brhhlmos6uj4sm7l6spuiiazpabu
+- eightballer/innovation_station_api:0.1.0:bafybeihheo4xjfaqhu4blr4s4opdri2jnxruevd3y4ibjbi4lhoxyxaage
+- zarathustra/subgraph_query:0.1.0:bafybeiati3xxzra3owmof24pzh3c3rjkdp6wcw6qoyqccbluistfrfrz5i
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -29,6 +31,14 @@ dependencies:
   open-aea-ledger-cosmos: {}
   open-aea-ledger-ethereum: {}
 default_connection: null
+---
+public_id: valory/abci:0.1.0
+type: connection
+config:
+  target_skill_id: zarathustra/subgraph_query:0.1.0
+  host: ${str:localhost}
+  port: ${int:26658}
+  use_tendermint: ${bool:false}
 ---
 public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpyeahsoqorctys7uq6b3djq
 type: connection
