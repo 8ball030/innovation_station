@@ -22,13 +22,11 @@ fingerprint:
   tests/test_payloads.py: bafybeihsw5fgcjsdyzyw6y3aii23cixamx27ngzf2s5l6i72q6pze55lk4
   tests/test_rounds.py: bafybeibql7l7sgtnt2ogvpywzxc4ch6cka647zisexbg6us4sxtnpqdwli
 fingerprint_ignore_patterns: []
-connections:
-- valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga
+connections: []
 contracts: []
-protocols:
-- valory/abci:0.1.0:bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4
+protocols: []
 skills:
-- valory/abstract_round_abci:0.1.0:bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia
+- valory/abstract_round_abci:0.1.0:bafybeige5xfsbjkuyi5sx6kdxjfgprl64sn5j5iba2kv4smhg453cf4m6u
 behaviours:
   main:
     args: {}
