@@ -43,5 +43,5 @@ models:
     args:
       frontend:
         enabled: ${FRONTEND_ENABLED:bool:true}
-        ipfs_hash: ${IPFS_HASH:str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
+        ipfs_hash: ${str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
         directory: www
