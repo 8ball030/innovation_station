@@ -26,6 +26,6 @@
  <Studio {data} />
 {:else if view_value === "market"}
  <ComponentsList {data} />
-{:else if view_value === "home"}
+{:else}
  <Landing />
 {/if}

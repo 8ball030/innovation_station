@@ -14,8 +14,8 @@
    <div class="mb-4">{selectedCp?.description}</div>
    <div>Owned by: {selectedCp?.author}</div>
    <div>Version: {selectedCp?.version}</div>
+   <div>Type: {selectedCp?.type}</div>
   </div>
-  <CodeBlock language="ts" code={`const skeleton: string = 'awesome';`} />
  </div>
 </div>
 
