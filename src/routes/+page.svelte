@@ -5,23 +5,22 @@
  import ComponentsList from "$lib/components/ComponentsList.svelte";
  import Landing from "$lib/components/Landing.svelte";
  import { view } from "$lib/stores";
- import {getWeb3Details} from "$lib/utils";
+ import { getWeb3Details } from "$lib/utils";
 
  let view_value: string;
+ let data: any = [];
 
  view.subscribe((value) => {
   view_value = value;
  });
 
- let data: any = [];
-
  onMount(() => {
-  const {chainId} = getWeb3Details();
-  console.log(chainId)
+  const { chainId } = getWeb3Details();
+  console.log(chainId);
   fetch(`http://46.101.6.36:8001/protocol?chain_id=${chainId}`)
    .then((response) => response.json())
    .then((res) => {
-    console.log(res)
+    console.log(res);
     data = Object.values(res);
    });
  });
