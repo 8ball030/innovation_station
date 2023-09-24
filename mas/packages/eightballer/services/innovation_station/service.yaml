@@ -7,7 +7,7 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station:0.1.0:bafybeibumkyiug6ixrvlqgp6tz4drlaj6tabiet6qxtrctvhazxrwsylei
+agent: eightballer/innovation_station:0.1.0:bafybeibzt6jzv4dor6cmyt6u6zan2vyzajb47tvizutspbel555xlmeluq
 number_of_agents: 1
 deployment:
   agent:
@@ -22,12 +22,12 @@ config:
   port: 26658
   host: 0.0.0.0
 ---
-public_id: eightballer/innovation_station_api:0.1.0:bafybeifrtrzzdemrrlya45f3atvn45rrbdoezur45rpvglhcaxdv33goyy
+public_id: eightballer/innovation_station_api:0.1.0:bafybeic7mkotgalbblew3g43nof554n2oeskbif6iiukbhntidy2ovz6ve
 type: skill
 models:
   strategy:
     args:
       frontend:
         enabled: true
-        ipfs_hash: ${IPFS_HASH:str:bafybeic7mkotgalbblew3g43nof554n2oeskbif6iiukbhntidy2ovz6ve}
+        ipfs_hash: ${IPFS_HASH:str:}
         directory: www

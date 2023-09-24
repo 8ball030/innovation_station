@@ -7,13 +7,14 @@ description: A protocol for SQL CRUD functionality.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
+  README.md: bafybeigmynlq3d27c3vrgvrmh7k46iq5sx5upkd2tyluusuejdhrxdinf4
   __init__.py: bafybeifi2pflvqxodnj3pqu3ix2b6j3bclrwnzcnct4at7sfaahfs72foi
-  custom_types.py: bafybeib4xwwzzu6q7dwgpyc5j27k6tvom5yzw5dkdprzuuva7q3uahd22a
+  custom_types.py: bafybeicqp767kvj2cgtoiuaz7vhmzdlp4a7rguzmmz6b7seounzksqlv5e
   dialogues.py: bafybeig3roref6r7ocarjso5i5s4tp5s2qus34jv6edyneubaq4peu2voq
-  message.py: bafybeib6qrj3bqtrlyeztyeyfn425lhsqeewcspraqywsuxkakalluo57y
+  message.py: bafybeidkwvyu5b72kqi7f7rhtktwlhl3dtrdsb4pih7ao27gu6h25syldy
   serialization.py: bafybeid26iy4m6xi7evofhicuevfy5r6sxk4uwnw2jwpyirliexs2vh4h4
-  sql_crud.proto: bafybeie5frmwrenpjj3ldcpnfe23fehflgksi2u6rdmlzeened4l5mipdi
-  sql_crud_pb2.py: bafybeiev5bbzszunvuamgd2qssioe6ok5gw5wvu77qg2egiuot27yh7v74
+  sql_crud.proto: bafybeiflwtiygqumzci26e7lreilz3v6vg32jiguz6evl2gjslxz6gjonu
+  sql_crud_pb2.py: bafybeidievrkhwhnjjvsmlz7qczvrz3fxly7j4lbz4cttw426mwhkirerq
   tests/test_sql_crud_dialogues.py: bafybeiawjaj4p7mo6evc7qyzpqt6ytljumsiyt52rivzu2gqwcmira4ta4
   tests/test_sql_crud_messages.py: bafybeigq4ce4qwr4qj5mopbuadjyo2bvi526l565mmlc2g6t3rew3kkp5i
 fingerprint_ignore_patterns: []
