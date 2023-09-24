@@ -27,8 +27,16 @@ from aea.skills.base import Model
 from aea_cli_ipfs.ipfs_utils import DownloadError, IPFSTool
 
 DEFAULT_FRONTEND_DIR = "./www"
-DEFAULT_LOG_FILE = "log.txt"
+DEFAULT_LOG_FILE = "log.txt        
+        
 
+        
+        elif all(["OPENAI_API_KEY" not in os.environ,
+        "SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY" not in os.environ]):
+            raise ValueError("OPENAI_API_KEY environment variable not set.")
+        
+        if os.environ.get("OPENAI_API_KEY") is None:
+            raise ValueError("OPENAI_API_KEY environment variable not set.")
 
 class Strategy(Model):
     """This class scaffolds a model."""
