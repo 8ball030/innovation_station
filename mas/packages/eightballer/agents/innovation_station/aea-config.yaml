@@ -47,8 +47,8 @@ public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpye
 type: connection
 config:
   target_skill_id: eightballer/innovation_station_api:0.1.0
-  port: 26658
   host: 0.0.0.0
+  port: 8000
 ---
 public_id: eightballer/innovation_station_api:0.1.0:bafybeifrtrzzdemrrlya45f3atvn45rrbdoezur45rpvglhcaxdv33goyy
 type: skill
