@@ -20,7 +20,7 @@ from pathlib import Path
 
 def generate(initial_prompt: str) -> str:
 
-    return res
+    # return res
     chat_assistant = OpenAIChat(model_name='gpt-3.5-turbo-16k')
     def prompt_template(user_prompt: str) -> str:
         return "Use the users input and the examples in order to" \
