@@ -25,11 +25,9 @@ export function handleMint(
  const hash = writeContract(contract.abi, contract.address, "create", [
   "0",
   account?.address,
-  codeHash,
+  meta,
   [],
  ]);
 
- console.log("mint hash");
- console.log(hash);
  return hash;
 }

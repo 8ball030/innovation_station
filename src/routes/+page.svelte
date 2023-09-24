@@ -7,6 +7,10 @@
  import { view } from "$lib/stores";
  import { getWeb3Details } from "$lib/utils";
 
+ // configs
+ const API_BASE = "http://46.101.6.36:8001";
+
+ // state
  let view_value: string;
  let data: any = [];
 
@@ -16,8 +20,8 @@
 
  onMount(() => {
   const { chainId } = getWeb3Details();
-  console.log(chainId);
-  fetch(`http://46.101.6.36:8001/protocol?chain_id=${chainId}`)
+
+  fetch(`${API_BASE}/protocol?chain_id=${chainId}`)
    .then((response) => response.json())
    .then((res) => {
     console.log(res);

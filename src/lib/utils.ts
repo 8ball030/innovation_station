@@ -44,9 +44,6 @@ export const getWeb3Details = () => {
  const network = getNetwork();
  const chainId = network.chain?.id || 100;
  const account = getAccount();
- console.log("account");
- console.log(account);
- console.log(chainId);
  const address = ADDRESSES[chainId];
 
  return { address, account, chainId };
