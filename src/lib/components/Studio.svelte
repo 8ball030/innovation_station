@@ -2,9 +2,10 @@
  import { Stepper, Step } from "@skeletonlabs/skeleton";
  import Share from "$lib/components/Share.svelte";
  import { getDrawerStore } from "@skeletonlabs/skeleton";
- import { popup } from '@skeletonlabs/skeleton';
+ import { popup } from "@skeletonlabs/skeleton";
+ import { getWeb3Details } from "$lib/utils";
 
- import type { PopupSettings } from '@skeletonlabs/skeleton';
+ import type { PopupSettings } from "@skeletonlabs/skeleton";
 
  // props
  export let data: ComponentI[] = [];
@@ -47,24 +48,53 @@
   width: "w-[380px] md:w-[550px]",
  };
 
-  const popupHover: PopupSettings = {
-   event: 'hover',
-   target: 'popupHover',
-   placement: 'top'
+ const popupHover: PopupSettings = {
+  event: "hover",
+  target: "popupHover",
+  placement: "top",
  };
 
-  // state variables
-  let isMinted = false;
-  let search = '';
-
+ // state variables
+ let isMinted = false;
+ let search = "";
+ let selectedProtocol = "none selected";
+ let prompt = "";
+ $: filteredData = data.filter((d: any) => d.description.includes(search));
 
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
  }
- $:filteredData = data.filter((d: any) => d.description.includes(search));
- console.log("filteredData")
- console.log(filteredData)
+
+ console.log("filteredData");
+ console.log(filteredData);
+
+ async function postPrompt() {
+  const { chainId } = getWeb3Details();
+
+  const response = await fetch(
+   `http://46.101.6.36:8001/protocol?chain_id=${chainId}`,
+   {
+    method: "POST",
+    mode: "cors",
+    headers: {
+     "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+     prompt,
+    }),
+   }
+  );
+  return response.json();
+ }
+
+ function handleBuild() {
+  postPrompt().then((res) => {
+   console.log("res");
+   console.log(res);
+   isMinted = true;
+  });
+ }
 </script>
 
 <div style={bgImage}>
@@ -77,44 +107,62 @@
      >
      What type of components would you like to generate today?
      <div class="mt-6">
-      <span
-        class="chip mr-3 variant-filled"
-       >
-        <span>+</span>
-        <span class="capitalize">Protocols</span>
+      <span class="chip mr-3 variant-filled">
+       <span>+</span>
+       <span class="capitalize">Protocols</span>
       </span>
       {#each Object.keys(componentTypes) as f}
-       <span
-        use:popup={popupHover}
-        class="chip mr-3 variant-soft"
-       >
+       <span use:popup={popupHover} class="chip mr-3 variant-soft">
         <span class="capitalize">{f}</span>
        </span>
        <div class="card p-1 variant-filled-secondary" data-popup="popupHover">
         <p>Comming Soon</p>
         <div class="arrow variant-filled-secondary" />
-      </div>
+       </div>
       {/each}
      </div>
     </Step>
     <Step>
-     <svelte:fragment slot="header">Lets search existing protocols </svelte:fragment>
+     <svelte:fragment slot="header"
+      >Lets search existing protocols
+     </svelte:fragment>
      Enter the description of the protocol you want to use
-     <textarea bind:value={search} class="textarea mb-4" rows="2"  title="Protocol" placeholder="create me a read update sql crud protocol .. " />
+     <textarea
+      bind:value={search}
+      class="textarea mb-4"
+      rows="2"
+      title="Protocol"
+      placeholder="create me a read update sql crud protocol .. "
+     />
      Matching protocols
-     <select class="select">
+     <select class="select" bind:value={selectedProtocol}>
       {#each Object.values(filteredData) as protocol}
-        <option value="1">{protocol?.description}</option>
+       <option value={protocol?.name}>{protocol?.description}</option>
       {/each}
      </select>
      {#if filteredData.length}
       <div>We found {filteredData.length} matching protocols for you :D</div>
-      <div>Let's <button>Mint</button> one!?</div>
-      {:else}
+      <div>Select one to <button>Mint</button></div>
+     {:else}
       <div>No matching protocols found :(</div>
-      <div>Let's <button>Build</button> it!?</div>
-      {/if}
+      <div class="help-btn">Click Next to <button>Build</button> it!</div>
+     {/if}
     </Step>
+    {#if filteredData.length}
+     <Step>
+      <button class="btn">Mint</button>
+     </Step>
+    {:else}
+     <Step>
+      <input
+       bind:value={prompt}
+       class="textarea mb-4"
+       title="Prompt"
+       placeholder="Enter your prompt.. "
+      />
+      <button on:click={handleBuild} class="btn">Build</button>
+     </Step>
+    {/if}
    </Stepper>
    <button class="mt-10 help-btn" on:click={openDrawer}>Help Me !</button>
    {#if isMinted}

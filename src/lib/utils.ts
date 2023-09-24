@@ -12,7 +12,8 @@ export const getWeb3Details = () => {
  const network = getNetwork();
  const chainId = network.chain?.id || 100;
  const account = getAccount();
- return { account, chainId: network.chain?.id };
+
+ return { account, chainId };
 };
 
 /**
@@ -23,5 +24,6 @@ const getContract = (abi: any, contractAddress: `0x${string}`) => {
   address: contractAddress,
   abi,
  });
+
  return contract;
 };
