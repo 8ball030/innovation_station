@@ -152,11 +152,10 @@ class HttpHandler(BaseHandler):
         def update_data(data, chain_id):
             CHAINS[chain_id][route] = data
 
-
         if "prompt" in prompt:
             self.submit_workflow(workflow, 
                 prompt, 
-                callback=lambda data, result: data.update(result),
+                callback=update_data,
                 data=data,
                 chain_id=chain_id
             )
