@@ -38,6 +38,7 @@
  .details-header {
   padding: 10px;
   height: 40px;
+  font-size: 25px;
   border-bottom: 1px solid #d0bcff;
   justify-content: space-between;
   display: flex;
