@@ -1,0 +1,1 @@
+function g(n){return(n==null?void 0:n.length)!==void 0?n:Array.from(n)}new TextEncoder;const f="http://46.101.6.36:8001",t=new Map;async function h(n,u,o){new URLSearchParams(o);const s=`${f}/${u}`;if(t.has(s))return t.get(s);const e=await n(s);let c=[];return e.ok?(c=await e.json(),t.set(s,c)):(console.log("error"),console.log(e.status)),c}export{g as e,h as g};
