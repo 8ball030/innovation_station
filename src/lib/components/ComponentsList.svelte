@@ -33,25 +33,29 @@
   ...componantsList,
   ...componantsList,
   ...componantsList,
-  ...componantsList,
-  ...componantsList,
-  ...componantsList,
  ];
  let selectedCp = componantsList[0];
 </script>
 
 <div style={bgImage}>
  <div class="h-full mx-auto mt-10 pt-10 mx-10">
-  <div class="mb-4 mx-10">
+  <div class="mb-4 mx-10 flex justify-between">
    <select
     bind:value={selectedType}
     class="block py-2.5 px-0 w-56 text-sm text-green-500 bg-transparent border-0 border-b-2 border-gray-500 appearance-none dark:text-gray-100 dark:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
    >
     {#each componentTypes as value}<option {value}>{value}</option>{/each}
    </select>
+   <a
+    class="ml-10"
+    href="https://registry.olas.network/services"
+    target="_blank"
+   >
+    View all Services on Olas
+   </a>
   </div>
   <div class="flex gap-10 mx-10">
-   <div>
+   <div class="over">
     <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
      {#each list as component}
       <Card {component} {handleBuy} {showDetails} />
@@ -62,3 +66,10 @@
   </div>
  </div>
 </div>
+
+<style>
+ .over {
+  overflow-y: scroll;
+  height: 80vh;
+ }
+</style>

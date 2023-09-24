@@ -5,11 +5,19 @@
  import { popup } from "@skeletonlabs/skeleton";
  import { getWeb3Details, getMintContract, writeContract } from "$lib/utils";
  import { postPrompt } from "$lib/actions/postPropmpt";
+ import { fetchNoun } from "$lib/actions/fetchNoun";
+ import { getByPromptId } from "$lib/actions/getByPromptId";
+ import { handleMint } from "$lib/actions/mintComponent";
+ import { view } from "$lib/stores";
+ import nounImg from "$lib/images/noun4.png";
  import type { PopupSettings } from "@skeletonlabs/skeleton";
+ import { onMount } from "svelte";
 
  // props
  export let data: ComponentI[] = [];
 
+ const mockHash =
+  "ipfs://bafybeianfguceeckwhelenmythqmbtqswll6vcaz5wwsdr7hin7ov3rvje";
  // types
  interface ComponentI {
   author: string;
@@ -58,46 +66,62 @@
  let isMinted = false;
  let isMinting = false;
  let search = "";
- let selectedProtocol = "none selected";
  let prompt = "";
+ let name = "";
  let isMint = false;
+ let codeHash = "";
+ let mintHash: any = "";
+ let noun: any = null;
  $: filteredData = data.filter((d: any) => d?.description?.includes(search));
+ let selectedProtocol = filteredData?.[0];
 
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
  }
 
- function handleMint() {
-  const { account } = getWeb3Details();
-  const contract = getMintContract();
-  console.log(account);
-  const hash = writeContract(contract.abi, contract.address, "create", [
-   "0",
-   account?.address,
-   "0x2c7e51bea6c66e5c648508c007bb969c129c08805ad699475de6857992082551",
-   [],
-  ]);
-
-  console.log(hash);
+ function setMarket() {
+  view.set("market");
  }
 
  function handleBuild() {
-  handleMint();
   if (prompt === "") {
    alert("Please enter a prompt");
    return;
   }
-  postPrompt().then((res) => {
-   console.log("res");
-   console.log(res);
-   isMinting = true;
-   handleMint();
-  });
+
+  setTimeout(() => {
+   codeHash = mockHash;
+  }, 2000);
+
+  try {
+   postPrompt(prompt).then((res) => {
+    if (res.body) {
+     getByPromptId(res.body.id).then((res) => {
+      console.log(res);
+      codeHash = res.body.output?.code_uri || mockHash;
+      console.log(codeHash);
+     });
+    }
+   });
+  } catch (error) {
+   console.log("ERROR");
+  }
  }
  function setMint() {
-  isMint = true;
+  mintHash = handleMint(
+   name,
+   "bafybeiduim4rtv5pwa56uqg2hm7co2bmhffufimfsc6zs34sdhxeix3jey",
+   prompt,
+   "bafybeiduim4rtv5pwa56uqg2hm7co2bmhffufimfsc6zs34sdhxeix3jey"
+  );
  }
+
+ onMount(() => {
+  fetchNoun().then((res) => {
+   noun = res.body;
+  });
+ });
 </script>
 
 <div style={bgImage}>
@@ -109,7 +133,7 @@
       >Hello! Lets build some components</svelte:fragment
      >
      What type of components would you like to generate today?
-     <div class="mt-6">
+     <div class="mt-6 mb-20">
       <span class="chip mr-3 variant-filled">
        <span>+</span>
        <span class="capitalize">Protocols</span>
@@ -145,26 +169,51 @@
      </select>
      {#if filteredData?.length}
       <div>We found {filteredData?.length} matching protocols for you :D</div>
-      <div>Select one to <button on:click={setMint}>Mint</button></div>
-      <div>Or lets <button>Build</button> a new one</div>
+      <div>
+       Check them out on <button class="font-bold" on:click={setMarket}
+        >Market</button
+       >
+      </div>
+      <div class="help-btn">
+       Or lets <button class="font-bold">Build</button> a new one
+      </div>
      {:else}
       <div>No matching protocols found :(</div>
-      <div class="help-btn">Click Next to <button>Build</button> it!</div>
+      <div class="help-btn">
+       Click Next to <button>Build</button> it!
+      </div>
      {/if}
     </Step>
     {#if filteredData.length && isMint}
      <Step>
+      {#if mintHash}
+       Minted! {mintHash}
+      {/if}
       <button class="btn">Mint</button>
      </Step>
     {:else}
      <Step>
+      <div class="noun">
+       <img src={nounImg} alt="noun" />
+      </div>
+      You Noun Component PFP!
+      <input
+       bind:value={name}
+       class="input mb-3"
+       title="Name"
+       placeholder="Component name.. "
+      />
       <input
        bind:value={prompt}
-       class="textarea mb-4"
+       class="input mb-4"
        title="Prompt"
        placeholder="Enter your prompt.. "
       />
-      <button on:click={handleBuild} class="btn">Build</button>
+      {#if !codeHash}
+       <button on:click={handleBuild} class="btn button-build">Build</button>
+      {:else}
+       <button on:click={setMint} class="btn button-build">Mint</button>
+      {/if}
      </Step>
     {/if}
    </Stepper>
@@ -185,5 +234,17 @@
  }
  .help-btn:hover {
   color: rgb(37, 249, 171);
+ }
+ .button-build {
+  width: 60px;
+  background: #22966b;
+  color: white;
+  padding: 2px;
+  font-weight: 700;
+  margin: 5px;
+  border-radius: 5px;
+ }
+ .noun {
+  width: 20%;
  }
 </style>
