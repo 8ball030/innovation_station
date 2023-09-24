@@ -12,7 +12,7 @@ from llm_workflow.models import OpenAIChat
 from pathlib import Path
 
 def generate(initial_prompt: str) -> str:
-    chat_assistant = OpenAIChat(model_name='gpt-4')
+    chat_assistant = OpenAIChat(model_name='gpt-3.5-turbo-16k-0613')
     def prompt_template(user_prompt: str) -> str:
         return "Use the users input and the examples in order to" \
             "create a proposal for a protocol that can be used to" \
