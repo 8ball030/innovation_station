@@ -10,8 +10,7 @@
  view.subscribe((value) => {
   view_value = value;
  });
- console.log("$page.data");
- console.log($page.data);
+
  const data = Object.values($page.data);
 </script>
 
