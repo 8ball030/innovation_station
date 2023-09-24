@@ -1,9 +1,14 @@
 {
-	"/": [],
+	"/": [
+		"src/routes/+layout.js",
+		"src/routes/+layout.js"
+	],
 	"/market": [
-		"src/routes/market/+page.ts"
+		"src/routes/market/+page.ts",
+		"src/routes/+layout.js"
 	],
 	"/studio": [
-		"src/routes/studio/+page.ts"
+		"src/routes/studio/+page.ts",
+		"src/routes/+layout.js"
 	]
 }
