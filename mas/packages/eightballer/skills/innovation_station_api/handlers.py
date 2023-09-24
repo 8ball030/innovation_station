@@ -198,6 +198,10 @@ class HttpHandler(BaseHandler):
             msg = self.handle_get(route, dialogue=dialogue, id=id)
         else:
             msg = self.handle_unexpected_message(message)
+        cors_headers = "Access-Control-Allow-Origin: *\n"
+        cors_headers += "Access-Control-Allow-Methods: POST\n"
+        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
+        msg.headers = cors_headers + msg.headers
         return self.context.outbox.put_message(msg)
 
     def handle_unexpected_message(self, message, dialogue):

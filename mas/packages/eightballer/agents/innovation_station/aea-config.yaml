@@ -14,7 +14,7 @@ protocols:
 - eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
 skills:
-- eightballer/innovation_station_api:0.1.0:bafybeiefk27bxvo5xivs3bz73kkusyarfnizpgdzbm46z2qsaqz4aphf4u
+- eightballer/innovation_station_api:0.1.0:bafybeid73awlxdayhsmwepnelpiyc4gf7qkw3oyb32fxzhiecmspllwlhi
 default_ledger: ethereum
 required_ledgers:
 - ethereum
