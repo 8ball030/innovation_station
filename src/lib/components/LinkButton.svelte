@@ -6,8 +6,6 @@
 
  function updateView() {
   view.set(link);
-  console.log("set the link");
-  console.log(link);
  }
 </script>
 
