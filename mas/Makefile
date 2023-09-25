@@ -73,3 +73,7 @@ run-mas:
 run-single:
 	rm -rf agent && bash scripts/run_single_agent.sh eightballer/innovation_station
 
+
+make-meta:
+	adev metadata generate . protocol/eightballer/http/0.1.0 0
+	adev -v metadata validate  mints/0.json

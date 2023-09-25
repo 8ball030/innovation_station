@@ -12,7 +12,7 @@ fingerprint:
   connection.py: bafybeiha4u4eihrm5nxkfi3j7g3tkx4tojstaup3qwjok2b7ezz4pfk2s4
   tests/__init__.py: bafybeiewlnh2eycgprywqi54fy766qorufe4qpjip4son4zvebwtut3p2m
   tests/test_http_server.py: bafybeie6rg4gvkkfnyzpujzoasdnakuqjzxlt2hk6oyix3dc4xpmlhcvd4
-  tests/test_http_server_and_client.py: bafybeiemxftlwymyiegcyekwajau2y72vz7eqr3i3nnotew3ukyh4yvds4
+  tests/test_http_server_and_client.py: bafybeiesel44nmceybqjg6tkmjlwh7d3stlifpewkxjx3tznrlhusadjwi
 fingerprint_ignore_patterns: []
 connections:
 - eightballer/http_client:0.1.0:bafybeigc3xrrlyizadeh67fdxph3czfqkfqc6jltonghzd2rkfc5gvtpau

@@ -54,6 +54,7 @@ autoflake = "^2.2.0"
 python-socketio = "5.9.0"
 llm-workflow = "^0.0.2"
 openai = "^0.28.0"
+faker = "^19.6.2"
 
 [tool.poetry.dev-dependencies]
 

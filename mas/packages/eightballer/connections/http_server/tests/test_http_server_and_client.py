@@ -22,9 +22,13 @@
 import asyncio
 import email
 import logging
+import os
+import socket
 import urllib
+from pathlib import Path
 from typing import Dict, Optional, cast
 from unittest.mock import MagicMock
+from urllib.parse import urlparse
 
 import pytest
 from aea.common import Address
@@ -32,7 +36,6 @@ from aea.configurations.base import ConnectionConfig
 from aea.identity.base import Identity
 from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
-from tests.conftest import get_host, get_unused_tcp_port
 
 from packages.eightballer.connections.http_client.connection import HTTPClientConnection
 from packages.eightballer.connections.http_server.connection import HTTPServerConnection, headers_to_string
@@ -42,6 +45,34 @@ from packages.eightballer.protocols.http.message import HttpMessage
 logger = logging.getLogger(__name__)
 
 SKILL_ID_STR = "some_author/some_skill:0.1.0"
+
+
+ROOT_DIR = Path(os.getcwd())
+LOCAL_HOST = urlparse("http://127.0.0.1")
+
+
+def get_host():
+    """Get the host."""
+    host_s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        host_s.connect(("10.255.255.255", 1))
+        ip_address = host_s.getsockname()[0]
+    except Exception:  # pylint: disable=W0703
+        ip_address = LOCAL_HOST.hostname
+    finally:
+        host_s.close()
+    return ip_address
+
+
+def get_unused_tcp_port():
+    """Get an unused TCP port."""
+    sockets = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sockets.bind((LOCAL_HOST.hostname, 0))
+    sockets.listen(1)
+    port = sockets.getsockname()[1]
+    sockets.close()
+    return port
 
 
 class TestClientServer:
