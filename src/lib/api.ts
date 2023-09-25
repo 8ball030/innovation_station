@@ -1,7 +1,7 @@
 import { browser } from "$app/environment";
 import { error } from "@sveltejs/kit";
 
-export const prerender = true
+export const prerender = true;
 
 export const base = "http://46.101.6.36:8001";
 

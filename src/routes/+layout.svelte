@@ -1,17 +1,28 @@
 <script lang="ts">
  import "../app.postcss";
- import { AppShell, AppBar } from "@skeletonlabs/skeleton";
- import LinkButton from "$lib/components/LinkButton.svelte";
- import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
- import { storePopup } from '@skeletonlabs/skeleton';
+ import {
+  computePosition,
+  autoUpdate,
+  offset,
+  shift,
+  flip,
+  arrow,
+ } from "@floating-ui/dom";
 
-  // WebConnect
+ // WalletConnect
  import { createWeb3Modal, defaultWagmiConfig } from "@web3modal/wagmi";
  import { mainnet, gnosis } from "@wagmi/core/chains";
- import { view } from "$lib/stores";
- import { initializeStores } from "@skeletonlabs/skeleton";
- import { Drawer, getDrawerStore } from "@skeletonlabs/skeleton";
+ import {
+  storePopup,
+  initializeStores,
+  Drawer,
+  getDrawerStore,
+  AppShell,
+  AppBar,
+ } from "@skeletonlabs/skeleton";
  import Info from "$lib/components/Info.svelte";
+ import LinkButton from "$lib/components/LinkButton.svelte";
+ import { view } from "$lib/stores";
 
  storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
@@ -49,7 +60,7 @@
    <svelte:fragment slot="lead">
     {#if view_value !== "home"}
      <strong class="logo">
-      <div on:click={setView}>INNOVATION STATION</div>
+      <div on:keypress on:click={setView}>INNOVATION STATION</div>
      </strong>
     {/if}
    </svelte:fragment>
