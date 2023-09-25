@@ -9,11 +9,11 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeibx4ko4f5xbgozqlgfnxwc3rksm5b7khtikf46izrlndjrojv2lw4
   __init__.py: bafybeiateb3vma46yihntj5gbai3eqcy3fkx55lkrwye6tbr4cuo5xktdm
-  connection.py: bafybeifm6zjgcdk354mcc57br3kkm5s2nfja32ukv3ocgbcpsrvi4kiz2q
+  connection.py: bafybeiffy646g6nmlspjoykolwsocts677yaek6xcxhuix3frju2siuvny
 fingerprint_ignore_patterns: []
 connections: []
 protocols:
-- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+- eightballer/http:0.1.0:bafybeigiz522jbepy54p7k53qxqiqmpuwsdabbopuls3zbhmcbfdj3ugem
 class_name: HTTPClientConnection
 config:
   host: 127.0.0.1

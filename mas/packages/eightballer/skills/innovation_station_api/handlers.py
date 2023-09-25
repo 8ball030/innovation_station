@@ -119,6 +119,7 @@ class BaseHandler(Handler):
 
 class HttpHandler(BaseHandler):
     """Class to handle http requests."""
+
     strategy: Strategy
 
     def add_data(self, route, prompt, dialogue, chain_id):

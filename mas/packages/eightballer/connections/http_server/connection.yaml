@@ -9,15 +9,15 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeihkuhhsdfw5qqtz2jwpfppub6yvsehzmvmaqjlxnal4v76x47mcrq
   __init__.py: bafybeif5pkr5oarwd7yagdgn46miolmdmvgdyxv4kadgws2bf3iwshom24
-  connection.py: bafybeifzmfp7zbart7oieis3rskbxhrndrkldbupqqbe3bkpd5qqeg3ubm
+  connection.py: bafybeiha4u4eihrm5nxkfi3j7g3tkx4tojstaup3qwjok2b7ezz4pfk2s4
   tests/__init__.py: bafybeiewlnh2eycgprywqi54fy766qorufe4qpjip4son4zvebwtut3p2m
-  tests/test_http_server.py: bafybeidc65ejig3jyvycr3x7anwdwbbxrc2fwqbs2shktzispnxwdyt25u
-  tests/test_http_server_and_client.py: bafybeihkdzcvng7q4mqq5ba2p4yafq3nk4qk6ljrrkg6upabtmqfd2sgti
+  tests/test_http_server.py: bafybeie6rg4gvkkfnyzpujzoasdnakuqjzxlt2hk6oyix3dc4xpmlhcvd4
+  tests/test_http_server_and_client.py: bafybeiemxftlwymyiegcyekwajau2y72vz7eqr3i3nnotew3ukyh4yvds4
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/http_client:0.1.0:bafybeidwmz7aerzippvz7zfm2nj7klxwbt3bl33qbraezy2fzbhsqnt5l4
+- eightballer/http_client:0.1.0:bafybeigc3xrrlyizadeh67fdxph3czfqkfqc6jltonghzd2rkfc5gvtpau
 protocols:
-- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+- eightballer/http:0.1.0:bafybeigiz522jbepy54p7k53qxqiqmpuwsdabbopuls3zbhmcbfdj3ugem
 class_name: HTTPServerConnection
 config:
   api_spec_path: null

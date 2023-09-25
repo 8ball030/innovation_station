@@ -7,14 +7,14 @@ aea_version: '>=1.35.0, <2.0.0'
 fingerprint: {}
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/http_client:0.1.0:bafybeidwmz7aerzippvz7zfm2nj7klxwbt3bl33qbraezy2fzbhsqnt5l4
-- eightballer/http_server:0.1.0:bafybeibmc5miautst65tgunubdfazq5mn6t4nnurzdazgomx7va5whalju
+- eightballer/http_client:0.1.0:bafybeigc3xrrlyizadeh67fdxph3czfqkfqc6jltonghzd2rkfc5gvtpau
+- eightballer/http_server:0.1.0:bafybeicgb34smmtmb2v33gojm65xoymndydzngjngknfirnvvklp362bqa
 contracts: []
 protocols:
-- eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
+- eightballer/http:0.1.0:bafybeigiz522jbepy54p7k53qxqiqmpuwsdabbopuls3zbhmcbfdj3ugem
 - open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
 skills:
-- eightballer/innovation_station_api:0.1.0:bafybeih4n2gbjiohh6e7s5v7pisfs4yxjgpeyobnx5uilkgln5vqlwvhxm
+- eightballer/innovation_station_api:0.1.0:bafybeic7v2l6dcjnna74w7enzxhq7hsnubvc2fsxuubys3ysfwnq3irhme
 default_ledger: ethereum
 required_ledgers:
 - ethereum
