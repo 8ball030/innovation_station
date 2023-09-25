@@ -2,7 +2,7 @@ name: innovation_station
 author: eightballer
 version: 0.1.0
 description: An agent service to allow for the creation of new components. Built with
-  love at ETHNYC 2023 by Eightballer, Asiya, and Zarathustra.
+  love at ETHNYC 2023 by 8Baller, Asha, and Zarathustra.
 aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}

@@ -1,0 +1,20 @@
+alphabet_in:
+- DONE
+- FAILED
+default_start_state: PrepareSubgraphQueryRound
+final_states:
+- FinalizedSubgraphQueryRound
+- FailedSubgraphQueryRound
+label: SubgraphQueryAbciApp
+start_states:
+- PrepareSubgraphQueryRound
+states:
+- PrepareSubgraphQueryRound
+- CollectedSubgraphResponseRound
+- FailedSubgraphQueryRound
+- FinalizedSubgraphQueryRound
+transition_func:
+  (PrepareSubgraphQueryRound, DONE): CollectedSubgraphResponseRound
+  (PrepareSubgraphQueryRound, FAILED): FailedSubgraphQueryRound
+  (CollectedSubgraphResponseRound, DONE): FinalizedSubgraphQueryRound
+  (CollectedSubgraphResponseRound, FAILED): FailedSubgraphQueryRound
