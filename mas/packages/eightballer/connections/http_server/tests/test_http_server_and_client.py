@@ -18,7 +18,7 @@
 #
 # ------------------------------------------------------------------------------
 """Tests for the HTTP Client and Server connections together."""
-# pylint: disable=W0201
+# pylint: disable=W0201,W0613,R0902,E0611,R0902
 import asyncio
 import email
 import logging
@@ -32,15 +32,12 @@ from aea.configurations.base import ConnectionConfig
 from aea.identity.base import Identity
 from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
+from tests.conftest import get_host, get_unused_tcp_port
 
 from packages.eightballer.connections.http_client.connection import HTTPClientConnection
-from packages.eightballer.connections.http_server.connection import (
-    HTTPServerConnection,
-    headers_to_string,
-)
+from packages.eightballer.connections.http_server.connection import HTTPServerConnection, headers_to_string
 from packages.eightballer.protocols.http.dialogues import HttpDialogue, HttpDialogues
 from packages.eightballer.protocols.http.message import HttpMessage
-from tests.conftest import get_host, get_unused_tcp_port
 
 logger = logging.getLogger(__name__)
 
@@ -93,9 +90,7 @@ class TestClientServer:
             del receiver_address, message
             return HttpDialogue.Role.SERVER
 
-        self._skill_dialogues = HttpDialogues(
-            SKILL_ID_STR, role_from_first_message=role_from_first_message
-        )
+        self._skill_dialogues = HttpDialogues(SKILL_ID_STR, role_from_first_message=role_from_first_message)
 
     def setup_client(self):
         """Set up client connection."""
@@ -164,9 +159,7 @@ class TestClientServer:
         )
         return request_envelope
 
-    def _make_response(
-        self, request_envelope: Envelope, status_code: int = 200, status_text: str = ""
-    ) -> Envelope:
+    def _make_response(self, request_envelope: Envelope, status_code: int = 200, status_text: str = "") -> Envelope:
         """Make response envelope."""
         incoming_message = cast(HttpMessage, request_envelope.message)
         dialogue = self._skill_dialogues.update(incoming_message)
@@ -198,39 +191,26 @@ class TestClientServer:
         initial_response = self._make_response(request)
         await self.server.send(initial_response)
         response = await asyncio.wait_for(self.client.receive(), timeout=5)
-        assert (
-            cast(HttpMessage, initial_request.message).body
-            == cast(HttpMessage, response.message).body
-        )
-        assert (
-            initial_request.message.dialogue_reference[0]
-            == response.message.dialogue_reference[0]
-        )
+        assert cast(HttpMessage, initial_request.message).body == cast(HttpMessage, response.message).body
+        assert initial_request.message.dialogue_reference[0] == response.message.dialogue_reference[0]
 
     @pytest.mark.asyncio
     async def test_get_with_query(self):
         """Test client and server with url query."""
         query = {"key": "value"}
-        path = "/test?{}".format(urllib.parse.urlencode(query))
+        path = f"/test?{urllib.parse.urlencode(query)}"
         initial_request = self._make_request(path, "GET")
         await self.client.send(initial_request)
         request = await asyncio.wait_for(self.server.receive(), timeout=5)
         # this is "inside" the server agent
 
-        parsed_query = dict(
-            urllib.parse.parse_qsl(
-                urllib.parse.splitquery(cast(HttpMessage, request.message).url)[1]
-            )
-        )
+        parsed_query = dict(urllib.parse.parse_qsl(urllib.parse.splitquery(cast(HttpMessage, request.message).url)[1]))
         assert parsed_query == query
         initial_response = self._make_response(request)
         await self.server.send(initial_response)
         response = await asyncio.wait_for(self.client.receive(), timeout=5)
 
-        assert (
-            initial_request.message.dialogue_reference[0]
-            == response.message.dialogue_reference[0]
-        )
+        assert initial_request.message.dialogue_reference[0] == response.message.dialogue_reference[0]
 
     @pytest.mark.asyncio
     async def test_headers(self):
@@ -241,27 +221,16 @@ class TestClientServer:
         await self.client.send(initial_request)
 
         request = await asyncio.wait_for(self.server.receive(), timeout=5)
-        parsed_headers = dict(
-            email.message_from_string(
-                cast(HttpMessage, request.message).headers
-            ).items()
-        )
+        parsed_headers = dict(email.message_from_string(cast(HttpMessage, request.message).headers).items())
         assert parsed_headers.items() >= headers.items()
 
         initial_response = self._make_response(request)
         await self.server.send(initial_response)
 
         response = await asyncio.wait_for(self.client.receive(), timeout=5)
-        parsed_headers = dict(
-            email.message_from_string(
-                cast(HttpMessage, response.message).headers
-            ).items()
-        )
+        parsed_headers = dict(email.message_from_string(cast(HttpMessage, response.message).headers).items())
         assert parsed_headers.items() >= headers.items()
-        assert (
-            initial_request.message.dialogue_reference[0]
-            == response.message.dialogue_reference[0]
-        )
+        assert initial_request.message.dialogue_reference[0] == response.message.dialogue_reference[0]
 
     def teardown(self):
         """Tear down testcase."""

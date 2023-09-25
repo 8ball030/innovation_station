@@ -8,14 +8,14 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeigmynlq3d27c3vrgvrmh7k46iq5sx5upkd2tyluusuejdhrxdinf4
-  __init__.py: bafybeifi2pflvqxodnj3pqu3ix2b6j3bclrwnzcnct4at7sfaahfs72foi
-  custom_types.py: bafybeicqp767kvj2cgtoiuaz7vhmzdlp4a7rguzmmz6b7seounzksqlv5e
+  __init__.py: bafybeigyb4y3iuz3c3mlop4chozdzkmriywr72fmwhm3yrdxqufsvy23fm
+  custom_types.py: bafybeiew73cwfjldmo5ylo6bovgaamxpo4stdfym3vkj6zp7cr3g46ipvm
   dialogues.py: bafybeig3roref6r7ocarjso5i5s4tp5s2qus34jv6edyneubaq4peu2voq
-  message.py: bafybeidkwvyu5b72kqi7f7rhtktwlhl3dtrdsb4pih7ao27gu6h25syldy
-  serialization.py: bafybeid26iy4m6xi7evofhicuevfy5r6sxk4uwnw2jwpyirliexs2vh4h4
+  message.py: bafybeidalbbxmvttpxykagevalwhp33ha34xjuslqg6mpifhpl3gnnfloq
+  serialization.py: bafybeibeiw5sdtvu6gk5ipmddlyio7o4kbgs2x3afw52wex6giigx6xdqy
   sql_crud.proto: bafybeiflwtiygqumzci26e7lreilz3v6vg32jiguz6evl2gjslxz6gjonu
   sql_crud_pb2.py: bafybeidievrkhwhnjjvsmlz7qczvrz3fxly7j4lbz4cttw426mwhkirerq
-  tests/test_sql_crud_dialogues.py: bafybeiawjaj4p7mo6evc7qyzpqt6ytljumsiyt52rivzu2gqwcmira4ta4
+  tests/test_sql_crud_dialogues.py: bafybeidtd63c3zr5b2becitkwhqf6gym4qgf7lbvunxwx4ci6qzyuqr34a
   tests/test_sql_crud_messages.py: bafybeigq4ce4qwr4qj5mopbuadjyo2bvi526l565mmlc2g6t3rew3kkp5i
 fingerprint_ignore_patterns: []
 dependencies:

@@ -18,14 +18,18 @@
 #
 # ------------------------------------------------------------------------------
 """This module contains the tests of the HTTP Server connection module."""
-# pylint: disable=W0201
+# pylint: disable=W0201,R0902
 import asyncio
 import logging
 import os
+import re
+import socket
 import ssl
+from pathlib import Path
 from traceback import print_exc
 from typing import Tuple, cast
 from unittest.mock import MagicMock, Mock, patch
+from urllib.parse import urlparse
 
 import aiohttp
 import pytest
@@ -36,20 +40,52 @@ from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aiohttp.client_reqrep import ClientResponse
 
-from packages.eightballer.connections.http_server.connection import (
-    APISpec,
-    HTTPServerConnection,
-    Response,
-)
+from packages.eightballer.connections.http_server.connection import APISpec, HTTPServerConnection, Response
 from packages.eightballer.protocols.http.dialogues import HttpDialogue
-from packages.eightballer.protocols.http.dialogues import (
-    HttpDialogues as BaseHttpDialogues,
-)
+from packages.eightballer.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
 from packages.eightballer.protocols.http.message import HttpMessage
-from tests.common.mocks import RegexComparator
-from tests.conftest import ROOT_DIR, get_host, get_unused_tcp_port
 
 logger = logging.getLogger(__name__)
+
+ROOT_DIR = Path(os.getcwd())
+LOCAL_HOST = urlparse("http://127.0.0.1")
+
+
+def get_unused_tcp_port():
+    """Get an unused TCP port."""
+    sockets = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sockets.bind((LOCAL_HOST.hostname, 0))
+    sockets.listen(1)
+    port = sockets.getsockname()[1]
+    sockets.close()
+    return port
+
+
+class RegexComparator(str):
+    """
+    Helper class to assert calls of mocked method with string arguments.
+    It will use regex matching as equality comparator.
+    """
+
+    def __eq__(self, other):
+        """Check equality."""
+        regex = re.compile(str(self), re.MULTILINE | re.DOTALL)
+        string = str(other)
+        return bool(regex.search(string))
+
+
+def get_host():
+    """Get the host."""
+    host_s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    try:
+        # doesn't even have to be reachable
+        host_s.connect(("10.255.255.255", 1))
+        ip_address = host_s.getsockname()[0]
+    except Exception:  # pylint: disable=W0703
+        ip_address = LOCAL_HOST.hostname
+    finally:
+        host_s.close()
+    return ip_address
 
 
 class HttpDialogues(BaseHttpDialogues):
@@ -110,9 +146,7 @@ class TestHTTPServer:
         self.agent_address = self.identity.address
         self.host = get_host()
         self.port = get_unused_tcp_port()
-        self.api_spec_path = os.path.join(
-            ROOT_DIR, "tests", "data", "petstore_sim.yaml"
-        )
+        self.api_spec_path = os.path.join(ROOT_DIR, "tests", "data", "petstore_sim.yaml")
         self.connection_id = HTTPServerConnection.connection_id
         self.protocol_id = HttpMessage.protocol_id
         self.target_skill_id = "some_author/some_skill:0.1.0"
@@ -142,9 +176,7 @@ class TestHTTPServer:
         await self.http_connection.channel.disconnect()
         assert self.http_connection.channel.is_stopped
 
-    def _get_message_and_dialogue(
-        self, envelope: Envelope
-    ) -> Tuple[HttpMessage, HttpDialogue]:
+    def _get_message_and_dialogue(self, envelope: Envelope) -> Tuple[HttpMessage, HttpDialogue]:
         message = cast(HttpMessage, envelope.message)
         dialogue = cast(HttpDialogue, self._dialogues.update(message))
         assert dialogue is not None
@@ -182,11 +214,7 @@ class TestHTTPServer:
             timeout=20,
         )
 
-        assert (
-            response.status == 200
-            and response.reason == "Success"
-            and await response.text() == "Response body"
-        )
+        assert response.status == 200 and response.reason == "Success" and await response.text() == "Response body"
 
     @pytest.mark.asyncio
     async def test_header_content_type(self):
@@ -217,11 +245,7 @@ class TestHTTPServer:
             request_task,
             timeout=20,
         )
-        assert (
-            response.status == 200
-            and response.reason == "Success"
-            and await response.text() == "Response body"
-        )
+        assert response.status == 200 and response.reason == "Success" and await response.text() == "Response body"
         assert response.headers["Content-Type"] == content_type
 
     @pytest.mark.asyncio
@@ -255,17 +279,11 @@ class TestHTTPServer:
         )
         with patch.object(self.http_connection.logger, "warning") as mock_logger:
             await self.http_connection.send(response_envelope)
-            mock_logger.assert_any_call(
-                f"Could not create dialogue for message={incorrect_message}"
-            )
+            mock_logger.assert_any_call(f"Could not create dialogue for message={incorrect_message}")
 
         response = await asyncio.wait_for(request_task, timeout=10)
 
-        assert (
-            response.status == 408
-            and response.reason == "Request Timeout"
-            and await response.text() == ""
-        )
+        assert response.status == 408 and response.reason == "Request Timeout" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_late_message_get_timeout_error(self):
@@ -294,18 +312,12 @@ class TestHTTPServer:
         with patch.object(self.http_connection.logger, "warning") as mock_logger:
             await self.http_connection.send(response_envelope)
             mock_logger.assert_any_call(
-                RegexComparator(
-                    "Dropping message=.* for incomplete_dialogue_label=.* which has timed out."
-                )
+                RegexComparator("Dropping message=.* for incomplete_dialogue_label=.* which has timed out.")
             )
 
         response = await asyncio.wait_for(request_task, timeout=10)
 
-        assert (
-            response.status == 408
-            and response.reason == "Request Timeout"
-            and await response.text() == ""
-        )
+        assert response.status == 408 and response.reason == "Request Timeout" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_post_201(self):
@@ -340,52 +352,32 @@ class TestHTTPServer:
             request_task,
             timeout=20,
         )
-        assert (
-            response.status == 201
-            and response.reason == "Created"
-            and await response.text() == "Response body"
-        )
+        assert response.status == 201 and response.reason == "Created" and await response.text() == "Response body"
 
     @pytest.mark.asyncio
     async def test_get_404(self):
         """Test send post request w/ 404 response."""
         response = await self.request("get", "/url-non-exists")
 
-        assert (
-            response.status == 404
-            and response.reason == "Request Not Found"
-            and await response.text() == ""
-        )
+        assert response.status == 404 and response.reason == "Request Not Found" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_post_404(self):
         """Test send post request w/ 404 response."""
         response = await self.request("get", "/url-non-exists", data="some data")
 
-        assert (
-            response.status == 404
-            and response.reason == "Request Not Found"
-            and await response.text() == ""
-        )
+        assert response.status == 404 and response.reason == "Request Not Found" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_get_408(self):
         """Test send post request w/ 404 response."""
         await self.http_connection.connect()
         self.http_connection.channel.timeout_window = 0.1
-        with patch.object(
-            self.http_connection.channel.logger, "warning"
-        ) as mock_logger:
+        with patch.object(self.http_connection.channel.logger, "warning") as mock_logger:
             response = await self.request("get", "/pets")
-            mock_logger.assert_any_call(
-                RegexComparator("Request timed out! Request=.*")
-            )
+            mock_logger.assert_any_call(RegexComparator("Request timed out! Request=.*"))
 
-        assert (
-            response.status == 408
-            and response.reason == "Request Timeout"
-            and await response.text() == ""
-        )
+        assert response.status == 408 and response.reason == "Request Timeout" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_post_408(self):
@@ -393,11 +385,7 @@ class TestHTTPServer:
         self.http_connection.channel.timeout_window = 0.1
         response = await self.request("post", "/pets", data="somedata")
 
-        assert (
-            response.status == 408
-            and response.reason == "Request Timeout"
-            and await response.text() == ""
-        )
+        assert response.status == 408 and response.reason == "Request Timeout" and await response.text() == ""
 
     @pytest.mark.asyncio
     async def test_send_connection_drop(self):
@@ -513,9 +501,7 @@ class TestHTTPSServer:
             url = f"https://{self.host}:{self.port}{path}"
             sslcontext = ssl.create_default_context(cafile=self.ssl_cert)
             async with aiohttp.ClientSession() as session:
-                async with session.request(
-                    method, url, **kwargs, ssl=sslcontext
-                ) as resp:
+                async with session.request(method, url, **kwargs, ssl=sslcontext) as resp:
                     await resp.read()
                     return resp
         except Exception:
@@ -528,9 +514,7 @@ class TestHTTPSServer:
         self.agent_address = self.identity.address
         self.host = "localhost"
         self.port = get_unused_tcp_port()
-        self.api_spec_path = os.path.join(
-            ROOT_DIR, "tests", "data", "petstore_sim.yaml"
-        )
+        self.api_spec_path = os.path.join(ROOT_DIR, "tests", "data", "petstore_sim.yaml")
         self.connection_id = HTTPServerConnection.connection_id
         self.protocol_id = HttpMessage.protocol_id
         self.target_skill_id = "some_author/some_skill:0.1.0"
@@ -589,15 +573,9 @@ class TestHTTPSServer:
             timeout=20,
         )
 
-        assert (
-            response.status == 200
-            and response.reason == "Success"
-            and await response.text() == "Response body"
-        )
+        assert response.status == 200 and response.reason == "Success" and await response.text() == "Response body"
 
-    def _get_message_and_dialogue(
-        self, envelope: Envelope
-    ) -> Tuple[HttpMessage, HttpDialogue]:
+    def _get_message_and_dialogue(self, envelope: Envelope) -> Tuple[HttpMessage, HttpDialogue]:
         message = cast(HttpMessage, envelope.message)
         dialogue = cast(HttpDialogue, self._dialogues.update(message))
         assert dialogue is not None

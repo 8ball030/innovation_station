@@ -19,12 +19,8 @@ DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
 
 
 _HTTPMESSAGE = DESCRIPTOR.message_types_by_name["HttpMessage"]
-_HTTPMESSAGE_REQUEST_PERFORMATIVE = _HTTPMESSAGE.nested_types_by_name[
-    "Request_Performative"
-]
-_HTTPMESSAGE_RESPONSE_PERFORMATIVE = _HTTPMESSAGE.nested_types_by_name[
-    "Response_Performative"
-]
+_HTTPMESSAGE_REQUEST_PERFORMATIVE = _HTTPMESSAGE.nested_types_by_name["Request_Performative"]
+_HTTPMESSAGE_RESPONSE_PERFORMATIVE = _HTTPMESSAGE.nested_types_by_name["Response_Performative"]
 HttpMessage = _reflection.GeneratedProtocolMessageType(
     "HttpMessage",
     (_message.Message,),

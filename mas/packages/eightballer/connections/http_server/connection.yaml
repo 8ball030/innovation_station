@@ -15,7 +15,7 @@ fingerprint:
   tests/test_http_server_and_client.py: bafybeihkdzcvng7q4mqq5ba2p4yafq3nk4qk6ljrrkg6upabtmqfd2sgti
 fingerprint_ignore_patterns: []
 connections:
-- eightballer/http_client:0.1.0:bafybeidzz2cn27jpouim44ngql626d42qimv46mpud6onf2y3md7aur5zq
+- eightballer/http_client:0.1.0:bafybeidwmz7aerzippvz7zfm2nj7klxwbt3bl33qbraezy2fzbhsqnt5l4
 protocols:
 - eightballer/http:0.1.0:bafybeia2yjjpa57ihbfru54lvq3rru5vtaomyor3fn4zz4ziiaum5yywje
 class_name: HTTPServerConnection

@@ -186,15 +186,11 @@ class HttpMessage(Message):
             )
             enforce(
                 type(self.message_id) is int,
-                "Invalid type for 'message_id'. Expected 'int'. Found '{}'.".format(
-                    type(self.message_id)
-                ),
+                "Invalid type for 'message_id'. Expected 'int'. Found '{}'.".format(type(self.message_id)),
             )
             enforce(
                 type(self.target) is int,
-                "Invalid type for 'target'. Expected 'int'. Found '{}'.".format(
-                    type(self.target)
-                ),
+                "Invalid type for 'target'. Expected 'int'. Found '{}'.".format(type(self.target)),
             )
 
             # Light Protocol Rule 2
@@ -213,41 +209,29 @@ class HttpMessage(Message):
                 expected_nb_of_contents = 5
                 enforce(
                     isinstance(self.method, str),
-                    "Invalid type for content 'method'. Expected 'str'. Found '{}'.".format(
-                        type(self.method)
-                    ),
+                    "Invalid type for content 'method'. Expected 'str'. Found '{}'.".format(type(self.method)),
                 )
                 enforce(
                     isinstance(self.url, str),
-                    "Invalid type for content 'url'. Expected 'str'. Found '{}'.".format(
-                        type(self.url)
-                    ),
+                    "Invalid type for content 'url'. Expected 'str'. Found '{}'.".format(type(self.url)),
                 )
                 enforce(
                     isinstance(self.version, str),
-                    "Invalid type for content 'version'. Expected 'str'. Found '{}'.".format(
-                        type(self.version)
-                    ),
+                    "Invalid type for content 'version'. Expected 'str'. Found '{}'.".format(type(self.version)),
                 )
                 enforce(
                     isinstance(self.headers, str),
-                    "Invalid type for content 'headers'. Expected 'str'. Found '{}'.".format(
-                        type(self.headers)
-                    ),
+                    "Invalid type for content 'headers'. Expected 'str'. Found '{}'.".format(type(self.headers)),
                 )
                 enforce(
                     isinstance(self.body, bytes),
-                    "Invalid type for content 'body'. Expected 'bytes'. Found '{}'.".format(
-                        type(self.body)
-                    ),
+                    "Invalid type for content 'body'. Expected 'bytes'. Found '{}'.".format(type(self.body)),
                 )
             elif self.performative == HttpMessage.Performative.RESPONSE:
                 expected_nb_of_contents = 5
                 enforce(
                     isinstance(self.version, str),
-                    "Invalid type for content 'version'. Expected 'str'. Found '{}'.".format(
-                        type(self.version)
-                    ),
+                    "Invalid type for content 'version'. Expected 'str'. Found '{}'.".format(type(self.version)),
                 )
                 enforce(
                     type(self.status_code) is int,
@@ -263,15 +247,11 @@ class HttpMessage(Message):
                 )
                 enforce(
                     isinstance(self.headers, str),
-                    "Invalid type for content 'headers'. Expected 'str'. Found '{}'.".format(
-                        type(self.headers)
-                    ),
+                    "Invalid type for content 'headers'. Expected 'str'. Found '{}'.".format(type(self.headers)),
                 )
                 enforce(
                     isinstance(self.body, bytes),
-                    "Invalid type for content 'body'. Expected 'bytes'. Found '{}'.".format(
-                        type(self.body)
-                    ),
+                    "Invalid type for content 'body'. Expected 'bytes'. Found '{}'.".format(type(self.body)),
                 )
 
             # Check correct content count
@@ -286,9 +266,7 @@ class HttpMessage(Message):
             if self.message_id == 1:
                 enforce(
                     self.target == 0,
-                    "Invalid 'target'. Expected 0 (because 'message_id' is 1). Found {}.".format(
-                        self.target
-                    ),
+                    "Invalid 'target'. Expected 0 (because 'message_id' is 1). Found {}.".format(self.target),
                 )
         except (AEAEnforceError, ValueError, KeyError) as e:
             _default_logger.error(str(e))

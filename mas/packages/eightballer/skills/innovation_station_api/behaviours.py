@@ -3,12 +3,9 @@ The following is a simple ticker behaviour which awaits for the rsults
 from the pending tasks.
 If then updates the data the handlers data component.
 """
-from typing import cast
-from asyncio import Task
-from aea.skills.behaviours import TickerBehaviour
-
-from packages.eightballer.skills.innovation_station_api.strategy import Strategy
 from threading import Thread
+
+from aea.skills.behaviours import TickerBehaviour
 
 
 class PendingTasksBehaviour(TickerBehaviour):
@@ -22,7 +19,7 @@ class PendingTasksBehaviour(TickerBehaviour):
 
     def act(self) -> None:
         """
-        We await the results of the pending tasks. 
+        We await the results of the pending tasks.
         """
         if self.context.strategy.pending_tasks:
             self.context.logger.info("Awaiting results of pending tasks...")
@@ -32,17 +29,16 @@ class PendingTasksBehaviour(TickerBehaviour):
                 self.context.strategy.pending_tasks.remove(task)
             self.context.logger.info("Pending tasks completed.")
 
-    def submit_wf(self, workflow, prompt, callback=None, data=None, id = None, chain_id=None) -> None:
+    def submit_wf(self, workflow, prompt, callback=None, data=None, req_id=None, chain_id=None) -> None:
         """
         Threaded process to check the llm.
         """
         self.context.logger.info("Starting task...")
         output = workflow(prompt)
         if callback:
-            callback(data, chain_id, id, output)
+            callback(data, chain_id, req_id, output)
         self.context.logger.info("Task is done.")
         self.context.logger.info(f"Task result: {output}")
-
 
     def teardown(self) -> None:
         """Teardown the behaviour."""

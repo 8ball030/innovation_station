@@ -20,7 +20,6 @@
 """This module contains class representations corresponding to every custom type in the protocol specification."""
 
 from enum import Enum
-from typing import Any
 
 
 class ErrorCode(Enum):
