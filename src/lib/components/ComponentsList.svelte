@@ -2,6 +2,7 @@
  import Card from "$lib/components/Card.svelte";
  import Details from "$lib/components/Details.svelte";
  import { componentTypes } from "$lib/config";
+
  export let data: any = [];
 
  let bgImage = `
@@ -14,7 +15,6 @@
      top: 0;
      left: 0;
    `;
- let nftList = [];
 
  let selectedType = componentTypes[0];
 
@@ -62,7 +62,11 @@
      {/each}
     </section>
    </div>
-   <Details {selectedCp} />
+   {#if data?.length}
+    <Details {selectedCp} />
+   {:else}
+    No data
+   {/if}
   </div>
  </div>
 </div>

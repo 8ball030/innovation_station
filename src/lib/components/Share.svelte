@@ -3,7 +3,6 @@
 </script>
 
 <div class="pt-20">
- Your component just go minted!
  <div class="share pt-5">
   <div class="logo">
    <img class="pr-4" src={lensLogo} alt="lensLogo" />
