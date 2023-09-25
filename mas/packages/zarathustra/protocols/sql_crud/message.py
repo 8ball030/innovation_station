@@ -27,14 +27,9 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.zarathustra.protocols.sql_crud.custom_types import (
-    ErrorCode as CustomErrorCode,
-)
+from packages.zarathustra.protocols.sql_crud.custom_types import ErrorCode as CustomErrorCode
 
-
-_default_logger = logging.getLogger(
-    "aea.packages.zarathustra.protocols.sql_crud.message"
-)
+_default_logger = logging.getLogger("aea.packages.zarathustra.protocols.sql_crud.message")
 
 DEFAULT_BODY_SIZE = 4
 
@@ -191,15 +186,11 @@ class SqlCrudMessage(Message):
             )
             enforce(
                 type(self.message_id) is int,
-                "Invalid type for 'message_id'. Expected 'int'. Found '{}'.".format(
-                    type(self.message_id)
-                ),
+                "Invalid type for 'message_id'. Expected 'int'. Found '{}'.".format(type(self.message_id)),
             )
             enforce(
                 type(self.target) is int,
-                "Invalid type for 'target'. Expected 'int'. Found '{}'.".format(
-                    type(self.target)
-                ),
+                "Invalid type for 'target'. Expected 'int'. Found '{}'.".format(type(self.target)),
             )
 
             # Light Protocol Rule 2
@@ -218,15 +209,11 @@ class SqlCrudMessage(Message):
                 expected_nb_of_contents = 2
                 enforce(
                     isinstance(self.table_name, str),
-                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(
-                        type(self.table_name)
-                    ),
+                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(type(self.table_name)),
                 )
                 enforce(
                     isinstance(self.data, dict),
-                    "Invalid type for content 'data'. Expected 'dict'. Found '{}'.".format(
-                        type(self.data)
-                    ),
+                    "Invalid type for content 'data'. Expected 'dict'. Found '{}'.".format(type(self.data)),
                 )
                 for key_of_data, value_of_data in self.data.items():
                     enforce(
@@ -245,41 +232,31 @@ class SqlCrudMessage(Message):
                 expected_nb_of_contents = 1
                 enforce(
                     isinstance(self.table_name, str),
-                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(
-                        type(self.table_name)
-                    ),
+                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(type(self.table_name)),
                 )
                 if self.is_set("condition"):
                     expected_nb_of_contents += 1
                     condition = cast(str, self.condition)
                     enforce(
                         isinstance(condition, str),
-                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(
-                            type(condition)
-                        ),
+                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(type(condition)),
                     )
             elif self.performative == SqlCrudMessage.Performative.UPDATE:
                 expected_nb_of_contents = 2
                 enforce(
                     isinstance(self.table_name, str),
-                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(
-                        type(self.table_name)
-                    ),
+                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(type(self.table_name)),
                 )
                 if self.is_set("condition"):
                     expected_nb_of_contents += 1
                     condition = cast(str, self.condition)
                     enforce(
                         isinstance(condition, str),
-                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(
-                            type(condition)
-                        ),
+                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(type(condition)),
                     )
                 enforce(
                     isinstance(self.data, dict),
-                    "Invalid type for content 'data'. Expected 'dict'. Found '{}'.".format(
-                        type(self.data)
-                    ),
+                    "Invalid type for content 'data'. Expected 'dict'. Found '{}'.".format(type(self.data)),
                 )
                 for key_of_data, value_of_data in self.data.items():
                     enforce(
@@ -298,26 +275,20 @@ class SqlCrudMessage(Message):
                 expected_nb_of_contents = 1
                 enforce(
                     isinstance(self.table_name, str),
-                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(
-                        type(self.table_name)
-                    ),
+                    "Invalid type for content 'table_name'. Expected 'str'. Found '{}'.".format(type(self.table_name)),
                 )
                 if self.is_set("condition"):
                     expected_nb_of_contents += 1
                     condition = cast(str, self.condition)
                     enforce(
                         isinstance(condition, str),
-                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(
-                            type(condition)
-                        ),
+                        "Invalid type for content 'condition'. Expected 'str'. Found '{}'.".format(type(condition)),
                     )
             elif self.performative == SqlCrudMessage.Performative.RESULT:
                 expected_nb_of_contents = 1
                 enforce(
                     isinstance(self.result, dict),
-                    "Invalid type for content 'result'. Expected 'dict'. Found '{}'.".format(
-                        type(self.result)
-                    ),
+                    "Invalid type for content 'result'. Expected 'dict'. Found '{}'.".format(type(self.result)),
                 )
                 for key_of_result, value_of_result in self.result.items():
                     enforce(
@@ -342,9 +313,7 @@ class SqlCrudMessage(Message):
                 )
                 enforce(
                     isinstance(self.error_msg, str),
-                    "Invalid type for content 'error_msg'. Expected 'str'. Found '{}'.".format(
-                        type(self.error_msg)
-                    ),
+                    "Invalid type for content 'error_msg'. Expected 'str'. Found '{}'.".format(type(self.error_msg)),
                 )
             elif self.performative == SqlCrudMessage.Performative.END:
                 expected_nb_of_contents = 0
@@ -361,9 +330,7 @@ class SqlCrudMessage(Message):
             if self.message_id == 1:
                 enforce(
                     self.target == 0,
-                    "Invalid 'target'. Expected 0 (because 'message_id' is 1). Found {}.".format(
-                        self.target
-                    ),
+                    "Invalid 'target'. Expected 0 (because 'message_id' is 1). Found {}.".format(self.target),
                 )
         except (AEAEnforceError, ValueError, KeyError) as e:
             _default_logger.error(str(e))

@@ -22,10 +22,7 @@
 # pylint: disable=too-many-statements,too-many-locals,no-member,too-few-public-methods,redefined-builtin
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
-from packages.zarathustra.protocols.sql_crud.dialogues import (
-    SqlCrudDialogue,
-    SqlCrudDialogues,
-)
+from packages.zarathustra.protocols.sql_crud.dialogues import SqlCrudDialogue, SqlCrudDialogues
 from packages.zarathustra.protocols.sql_crud.message import SqlCrudMessage
 
 

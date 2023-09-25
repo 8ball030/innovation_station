@@ -26,5 +26,4 @@ It was created with protocol buffer compiler version `libprotoc 24.2` and aea pr
 from packages.zarathustra.protocols.sql_crud.message import SqlCrudMessage
 from packages.zarathustra.protocols.sql_crud.serialization import SqlCrudSerializer
 
-
 SqlCrudMessage.serializer = SqlCrudSerializer

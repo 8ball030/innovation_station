@@ -19,8 +19,8 @@
 
 """This package contains a scaffold of a model."""
 import os
-from pathlib import Path
 from glob import glob
+from pathlib import Path
 
 from aea.cli.utils.config import get_ipfs_node_multiaddr
 from aea.skills.base import Model
@@ -28,7 +28,6 @@ from aea_cli_ipfs.ipfs_utils import DownloadError, IPFSTool
 
 DEFAULT_FRONTEND_DIR = "./www"
 DEFAULT_LOG_FILE = "log.txt"
-        
 
 
 class Strategy(Model):
@@ -50,11 +49,11 @@ class Strategy(Model):
         if os.environ.get("OPENAI_API_KEY") is None:
             if "SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY" not in os.environ:
                 raise ValueError("OPENAI_API_KEY environment variable not set.")
-            os.environ["OPENAI_API_KEY"] = os.environ.get("SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY")
+            os.environ["OPENAI_API_KEY"] = os.environ.get(
+                "SKILL_INNOVATION_STATION_API_MODELS_STRATEGY_ARGS_FRONTEND_OPENAI_API_KEY"
+            )
 
-        self.frontend_directory = Path(
-            frontend_config.get("directory", self.frontend_directory)
-        )
+        self.frontend_directory = Path(frontend_config.get("directory", self.frontend_directory))
 
         super().__init__(**kwargs)
         self.pending_tasks = []
@@ -75,8 +74,8 @@ class Strategy(Model):
         ipfs_tool = IPFSTool(get_ipfs_node_multiaddr())
         try:
             ipfs_tool.download(self.ipfs_hash, self.frontend_directory)
-        except DownloadError as e:
-            self.context.logger.error(str(e))
+        except DownloadError as error:
+            self.context.logger.error(str(error))
             self.context.logger.error("Failed to download frontend from IPFS.")
             return
 
@@ -84,9 +83,7 @@ class Strategy(Model):
         self.context.logger.info("Generating routes...")
         self.routes = self.generate_routes()
         self.context.logger.info("Routes generated.")
-        self.context.logger.info(
-            "Please visit http://localhost:26658 to view the frontend."
-        )
+        self.context.logger.info("Please visit http://localhost:26658 to view the frontend.")
 
     def generate_routes(self) -> dict:
         """

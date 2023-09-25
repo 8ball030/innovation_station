@@ -9,11 +9,11 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeiducsq22rztouctqnz3bfcztm7dzqgek4vz43gutgbjorz4rjnm64
   __init__.py: bafybeih45qdsvrilkktau6k3ojqrpjhkj7ittz2lwuj32gw3jwstvklx5e
-  dialogues.py: bafybeihjg4sa5g7fn7aqblip62zd7q6tjs4uvjvmubd7y2pjwtqll3oeze
+  dialogues.py: bafybeih33fgiiyawsbchh7jui7ctyefs4dmfg5grehwzit5y5nf35hx534
   http.proto: bafybeih4dbyct3d3g4umebk2egoz47oetggob7mqxcawg27hknplpkg4we
-  http_pb2.py: bafybeihaipytnveupz2ggjczfykgtnfb56dj4a3c6w3x4ttbxjdwu45jn4
-  message.py: bafybeib3s3tzczof6swuljqd73vnwgo5auledt5wccxa5olhfabdeskcsu
-  serialization.py: bafybeicxmeo2mwjrtlyaebbtyjjd7oh6litcxgspdbzuqa6rmduk5hdqme
+  http_pb2.py: bafybeifyq2jiiu3wnd6qnwvdsrf4kxv5x754ccavctvpudtdok4z7dyhrm
+  message.py: bafybeidf4nlsoablovocrcstbm4gpsrhij6lcznfixt7a7ux4jgfxlygq4
+  serialization.py: bafybeictisejl34h44dxkepndzbv4v4wjfk2rpifr5utf24b7w6khunoym
 fingerprint_ignore_patterns: []
 dependencies:
   protobuf: {}

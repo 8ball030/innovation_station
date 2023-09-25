@@ -37,16 +37,10 @@ from packages.eightballer.protocols.http.message import HttpMessage
 class HttpDialogue(Dialogue):
     """The http dialogue class maintains state of a dialogue and manages it."""
 
-    INITIAL_PERFORMATIVES: FrozenSet[Message.Performative] = frozenset(
-        {HttpMessage.Performative.REQUEST}
-    )
-    TERMINAL_PERFORMATIVES: FrozenSet[Message.Performative] = frozenset(
-        {HttpMessage.Performative.RESPONSE}
-    )
+    INITIAL_PERFORMATIVES: FrozenSet[Message.Performative] = frozenset({HttpMessage.Performative.REQUEST})
+    TERMINAL_PERFORMATIVES: FrozenSet[Message.Performative] = frozenset({HttpMessage.Performative.RESPONSE})
     VALID_REPLIES: Dict[Message.Performative, FrozenSet[Message.Performative]] = {
-        HttpMessage.Performative.REQUEST: frozenset(
-            {HttpMessage.Performative.RESPONSE}
-        ),
+        HttpMessage.Performative.REQUEST: frozenset({HttpMessage.Performative.RESPONSE}),
         HttpMessage.Performative.RESPONSE: frozenset(),
     }
 
