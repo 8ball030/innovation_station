@@ -2,7 +2,8 @@ name: innovation_station_chained_app
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: Chains together the innovation station subgraph retrieval and the default
+  autonomy apps.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
