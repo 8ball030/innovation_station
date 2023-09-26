@@ -80,3 +80,7 @@ make-meta:
 	adev metadata generate . connection/eightballer/http_server/0.1.0 02 && adev -v metadata validate  mints/02.json
 	adev metadata generate . skill/eightballer/innovation_station_api/0.1.0 03 && adev -v metadata validate  mints/03.json
 	adev metadata generate . skill/eightballer/innovation_abci/0.1.0 04 && adev -v metadata validate  mints/04.json
+	adev metadata generate . skill/eightballer/innovation_station_chained_app/0.1.0 05 && adev -v metadata validate  mints/05.json
+	adev metadata generate . agent/eightballer/innovation_station_app/0.1.0 06 && adev -v metadata validate  mints/06.json
+	adev metadata generate . service/eightballer/innovation_station/0.1.0 07 && adev -v metadata validate  mints/07.json
+

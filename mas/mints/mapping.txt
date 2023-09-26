@@ -43,4 +43,4 @@ token_id-"component_id"
 138-skill/eightballer/innovation_abci/0.1.0
 139-skill/eightballer/innovation_station_chained_app:0.1.0
 19-agent/eightballer/innovation_station_app/0.1.0
-?-service/eightballer/innovation_station/0.1.0
+15-service/eightballer/innovation_station/0.1.0
