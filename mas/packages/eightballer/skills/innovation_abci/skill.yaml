@@ -12,7 +12,7 @@ fingerprint:
   handlers.py: bafybeibcozgwxigwt6ttzhkqg4hzqxpblrdgdjgerztytblxayehbznb34
   models.py: bafybeic3y26o3j2ndakgih76jmh7cmsvypdoudwc242sm3xwxigyupine4
   payloads.py: bafybeihnqzkyadg7j5govqpzteem53k5sf7szlxiarujp7qmgufmd56uja
-  rounds.py: bafybeibqrcrb66tuqrzj4nr3yvx46cluphapvoddehk2k6qagm3ybzu5aa
+  rounds.py: bafybeieykyppy3ywwzvri56cepqmlhlphwyxdwl4ajskiv4uytntp4tfu4
   tests/__init__.py: bafybeic3534aro4pdtsdcuxywzlgkccczx2elhnwisiq3r6okvnrdu4aia
   tests/test_behaviours.py: bafybeifdjkq3mlidvxp3ip36x2n2dvcrxdsfaoxzaqfr3nyjyay3v6ulkm
   tests/test_dialogues.py: bafybeifaskhprofi56nmacs7vz7k56gb4mmnpl6o6k5m4w56qptzdw4ley
@@ -126,6 +126,7 @@ models:
       tendermint_url: http://localhost:26657
       tx_timeout: 10.0
       validate_timeout: 1205
+      use_termination: true
     class_name: Params
   requests:
     args: {}
@@ -140,4 +141,4 @@ models:
     args: {}
     class_name: TendermintDialogues
 dependencies: {}
-is_abstract: false
+is_abstract: true

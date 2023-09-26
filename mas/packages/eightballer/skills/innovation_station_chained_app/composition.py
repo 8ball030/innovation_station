@@ -2,10 +2,13 @@
 Chaine abci composing the skills of the innovation station.
 
 """
-from packages.valory.skills.abstract_round_abci.abci_app_chain import (
-    AbciAppTransitionMapping,
-    chain,
+from packages.eightballer.skills.innovation_abci.rounds import (
+    FailedSubgraphQueryRound,
+    FinalizedSubgraphQueryRound,
+    PrepareSubgraphQueryRound,
+    SubgraphQueryAbciApp,
 )
+from packages.valory.skills.abstract_round_abci.abci_app_chain import AbciAppTransitionMapping, chain
 from packages.valory.skills.registration_abci.rounds import (
     AgentRegistrationAbciApp,
     FinishedRegistrationRound,
@@ -16,12 +19,6 @@ from packages.valory.skills.reset_pause_abci.rounds import (
     FinishedResetAndPauseRound,
     ResetAndPauseRound,
     ResetPauseAbciApp,
-)
-from packages.eightballer.skills.innovation_abci.rounds import (
-    PrepareSubgraphQueryRound,
-    FinalizedSubgraphQueryRound,
-    FailedSubgraphQueryRound,
-    SubgraphQueryAbciApp,
 )
 
 abci_app_transition_mapping: AbciAppTransitionMapping = {

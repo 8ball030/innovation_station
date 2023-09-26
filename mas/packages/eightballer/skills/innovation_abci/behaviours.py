@@ -22,23 +22,17 @@
 from abc import ABC
 from typing import Generator, Set, Type, cast
 
-from packages.valory.skills.abstract_round_abci.base import AbstractRound
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
-
 from packages.eightballer.skills.innovation_abci.models import Params
 from packages.eightballer.skills.innovation_abci.rounds import (
-    SynchronizedData,
-    SubgraphQueryAbciApp,
-    CollectedSubgraphResponseRound,
-    PrepareSubgraphQueryRound,
-)
-from packages.eightballer.skills.innovation_abci.rounds import (
     CollectedSubgraphResponsePayload,
+    CollectedSubgraphResponseRound,
     PrepareSubgraphQueryPayload,
+    PrepareSubgraphQueryRound,
+    SubgraphQueryAbciApp,
+    SynchronizedData,
 )
+from packages.valory.skills.abstract_round_abci.base import AbstractRound
+from packages.valory.skills.abstract_round_abci.behaviours import AbstractRoundBehaviour, BaseBehaviour
 
 
 class SubgraphQueryBaseBehaviour(BaseBehaviour, ABC):
@@ -66,12 +60,11 @@ class CollectedSubgraphResponseBehaviour(SubgraphQueryBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = CollectedSubgraphResponsePayload(sender=sender, content=...)
+            payload = CollectedSubgraphResponsePayload(sender=sender, content="Datasdasd")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
             yield from self.wait_until_round_end()
-
         self.set_done()
 
 
@@ -86,12 +79,11 @@ class PrepareSubgraphQueryBehaviour(SubgraphQueryBaseBehaviour):
 
         with self.context.benchmark_tool.measure(self.behaviour_id).local():
             sender = self.context.agent_address
-            payload = PrepareSubgraphQueryPayload(sender=sender, content=...)
+            payload = PrepareSubgraphQueryPayload(sender=sender, content="data")
 
         with self.context.benchmark_tool.measure(self.behaviour_id).consensus():
             yield from self.send_a2a_transaction(payload)
             yield from self.wait_until_round_end()
-
         self.set_done()
 
 
@@ -100,7 +92,4 @@ class SubgraphQueryRoundBehaviour(AbstractRoundBehaviour):
 
     initial_behaviour_cls = PrepareSubgraphQueryBehaviour
     abci_app_cls = SubgraphQueryAbciApp  # type: ignore
-    behaviours: Set[Type[BaseBehaviour]] = [
-        CollectedSubgraphResponseBehaviour,
-        PrepareSubgraphQueryBehaviour
-    ]
+    behaviours: Set[Type[BaseBehaviour]] = [CollectedSubgraphResponseBehaviour, PrepareSubgraphQueryBehaviour]

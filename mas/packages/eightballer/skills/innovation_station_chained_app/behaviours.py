@@ -22,23 +22,14 @@
 
 from typing import Set, Type
 
-from packages.eightballer.skills.innovation_abci.behaviours import (
-    SubgraphQueryRoundBehaviour,
-)
-from packages.eightballer.skills.innovation_station_chained_app.composition import (
-    ChainedInnovationAbciApp,
-)
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
+from packages.eightballer.skills.innovation_abci.behaviours import SubgraphQueryRoundBehaviour
+from packages.eightballer.skills.innovation_station_chained_app.composition import ChainedInnovationAbciApp
+from packages.valory.skills.abstract_round_abci.behaviours import AbstractRoundBehaviour, BaseBehaviour
 from packages.valory.skills.registration_abci.behaviours import (
     AgentRegistrationRoundBehaviour,
     RegistrationStartupBehaviour,
 )
-from packages.valory.skills.reset_pause_abci.behaviours import (
-    ResetPauseABCIConsensusBehaviour,
-)
+from packages.valory.skills.reset_pause_abci.behaviours import ResetPauseABCIConsensusBehaviour
 
 
 class SubgraphDataAbciAppConsensusBehaviour(AbstractRoundBehaviour):

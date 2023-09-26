@@ -20,29 +20,28 @@
 """This package contains the rounds of SubgraphQueryAbciApp."""
 
 from enum import Enum
-from typing import Dict, List, Optional, Set, Tuple
-
-from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppTransitionFunction,
-    AbstractRound,
-    AppState,
-    BaseSynchronizedData,
-    DegenerateRound,
-    EventToTimeout,
-)
+from typing import Dict, Optional, Set, Tuple
 
 from packages.eightballer.skills.innovation_abci.payloads import (
     CollectedSubgraphResponsePayload,
     PrepareSubgraphQueryPayload,
+)
+from packages.valory.skills.abstract_round_abci.base import (
+    AbciApp,
+    AbciAppTransitionFunction,
+    AppState,
+    BaseSynchronizedData,
+    CollectSameUntilThresholdRound,
+    DegenerateRound,
+    EventToTimeout,
 )
 
 
 class Event(Enum):
     """SubgraphQueryAbciApp Events"""
 
-    FAILED = "failed"
     DONE = "done"
+    FAILED = "failed"
 
 
 class SynchronizedData(BaseSynchronizedData):
@@ -53,56 +52,34 @@ class SynchronizedData(BaseSynchronizedData):
     """
 
 
-class CollectedSubgraphResponseRound(AbstractRound):
+class CollectedSubgraphResponseRound(CollectSameUntilThresholdRound):
     """CollectedSubgraphResponseRound"""
 
     payload_class = CollectedSubgraphResponsePayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "query_response"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
-
-    def check_payload(self, payload: CollectedSubgraphResponsePayload) -> None:
-        """Check payload."""
-        raise NotImplementedError
-
-    def process_payload(self, payload: CollectedSubgraphResponsePayload) -> None:
-        """Process payload."""
-        raise NotImplementedError
+        if not self.threshold_reached:
+            return None
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
 
-class PrepareSubgraphQueryRound(AbstractRound):
+class PrepareSubgraphQueryRound(CollectSameUntilThresholdRound):
     """PrepareSubgraphQueryRound"""
 
     payload_class = PrepareSubgraphQueryPayload
-    payload_attribute = ""  # TODO: update
+    payload_attribute = "query_payload"
     synchronized_data_class = SynchronizedData
-
-    # TODO: replace AbstractRound with one of CollectDifferentUntilAllRound,
-    # CollectSameUntilAllRound, CollectSameUntilThresholdRound,
-    # CollectDifferentUntilThresholdRound, OnlyKeeperSendsRound, VotingRound,
-    # from packages/valory/skills/abstract_round_abci/base.py
-    # or implement the methods
 
     def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Enum]]:
         """Process the end of the block."""
-        raise NotImplementedError
-
-    def check_payload(self, payload: PrepareSubgraphQueryPayload) -> None:
-        """Check payload."""
-        raise NotImplementedError
-
-    def process_payload(self, payload: PrepareSubgraphQueryPayload) -> None:
-        """Process payload."""
-        raise NotImplementedError
+        if not self.threshold_reached:
+            return None
+        synchronized_data = self.synchronized_data
+        return synchronized_data, Event.DONE
 
 
 class FailedSubgraphQueryRound(DegenerateRound):
@@ -119,24 +96,21 @@ class SubgraphQueryAbciApp(AbciApp[Event]):
     initial_round_cls: AppState = PrepareSubgraphQueryRound
     initial_states: Set[AppState] = {PrepareSubgraphQueryRound}
     transition_function: AbciAppTransitionFunction = {
-        PrepareSubgraphQueryRound: {
-            Event.DONE: CollectedSubgraphResponseRound,
-            Event.FAILED: FailedSubgraphQueryRound
-        },
+        PrepareSubgraphQueryRound: {Event.DONE: CollectedSubgraphResponseRound, Event.FAILED: FailedSubgraphQueryRound},
         CollectedSubgraphResponseRound: {
             Event.DONE: FinalizedSubgraphQueryRound,
-            Event.FAILED: FailedSubgraphQueryRound
+            Event.FAILED: FailedSubgraphQueryRound,
         },
+        FinalizedSubgraphQueryRound: {},
         FailedSubgraphQueryRound: {},
-        FinalizedSubgraphQueryRound: {}
     }
-    final_states: Set[AppState] = {FailedSubgraphQueryRound, FinalizedSubgraphQueryRound}
+    final_states: Set[AppState] = {FinalizedSubgraphQueryRound, FailedSubgraphQueryRound}
     event_to_timeout: EventToTimeout = {}
-    cross_period_persisted_keys: Set[str] = []
+    cross_period_persisted_keys: Set[str] = set({})
     db_pre_conditions: Dict[AppState, Set[str]] = {
-        PrepareSubgraphQueryRound: [],
+        PrepareSubgraphQueryRound: set({}),
     }
     db_post_conditions: Dict[AppState, Set[str]] = {
-        FailedSubgraphQueryRound: [],
-    	FinalizedSubgraphQueryRound: [],
+        FinalizedSubgraphQueryRound: set({}),
+        FailedSubgraphQueryRound: set({}),
     }

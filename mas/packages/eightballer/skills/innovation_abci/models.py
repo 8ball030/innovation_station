@@ -19,15 +19,11 @@
 
 """This module contains the shared state for the abci skill of SubgraphQueryAbciApp."""
 
-from packages.valory.skills.abstract_round_abci.models import BaseParams
-from packages.valory.skills.abstract_round_abci.models import (
-    BenchmarkTool as BaseBenchmarkTool,
-)
-from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
-from packages.valory.skills.abstract_round_abci.models import (
-    SharedState as BaseSharedState,
-)
 from packages.eightballer.skills.innovation_abci.rounds import SubgraphQueryAbciApp
+from packages.valory.skills.abstract_round_abci.models import BaseParams
+from packages.valory.skills.abstract_round_abci.models import BenchmarkTool as BaseBenchmarkTool
+from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
+from packages.valory.skills.abstract_round_abci.models import SharedState as BaseSharedState
 
 
 class SharedState(BaseSharedState):

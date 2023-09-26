@@ -19,38 +19,22 @@
 
 """This package contains round behaviours of SubgraphQueryAbciApp."""
 
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, Hashable, Optional, Type
-from dataclasses import dataclass, field
 
 import pytest
 
-from packages.valory.skills.abstract_round_abci.base import AbciAppDB
-from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-    make_degenerate_behaviour,
-)
 from packages.eightballer.skills.innovation_abci.behaviours import (
-    SubgraphQueryBaseBehaviour,
-    SubgraphQueryRoundBehaviour,
     CollectedSubgraphResponseBehaviour,
     PrepareSubgraphQueryBehaviour,
+    SubgraphQueryBaseBehaviour,
+    SubgraphQueryRoundBehaviour,
 )
-from packages.eightballer.skills.innovation_abci.rounds import (
-    SynchronizedData,
-    DegenerateRound,
-    Event,
-    SubgraphQueryAbciApp,
-    CollectedSubgraphResponseRound,
-    FailedSubgraphQueryRound,
-    FinalizedSubgraphQueryRound,
-    PrepareSubgraphQueryRound,
-)
-
-from packages.valory.skills.abstract_round_abci.test_tools.base import (
-    FSMBehaviourBaseCase,
-)
+from packages.eightballer.skills.innovation_abci.rounds import Event, SynchronizedData
+from packages.valory.skills.abstract_round_abci.base import AbciAppDB
+from packages.valory.skills.abstract_round_abci.behaviours import BaseBehaviour
+from packages.valory.skills.abstract_round_abci.test_tools.base import FSMBehaviourBaseCase
 
 
 @dataclass
@@ -135,4 +119,3 @@ class TestPrepareSubgraphQueryBehaviour(BaseSubgraphQueryTest):
         # TODO: mock the necessary calls
         # self.mock_ ...
         self.complete(test_case.event)
-

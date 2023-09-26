@@ -19,17 +19,12 @@
 
 """This package contains a scaffold of a model."""
 
-from packages.eightballer.skills.innovation_abci.models import (
-    Params as BaseParams,
-)
+from packages.eightballer.skills.innovation_abci.models import Params as BaseParams
 from packages.eightballer.skills.innovation_station_chained_app.composition import ChainedInnovationAbciApp
-from packages.valory.skills.abstract_round_abci.models import (
-    BenchmarkTool as BaseBenchmarkTool,
-)
+from packages.valory.skills.abstract_round_abci.models import BenchmarkTool as BaseBenchmarkTool
 from packages.valory.skills.abstract_round_abci.models import Requests as BaseRequests
-from packages.valory.skills.abstract_round_abci.models import (
-    SharedState as BaseSharedState,
-)
+from packages.valory.skills.abstract_round_abci.models import SharedState as BaseSharedState
+
 
 class SharedState(BaseSharedState):
     """Keep the current shared state of the skill."""

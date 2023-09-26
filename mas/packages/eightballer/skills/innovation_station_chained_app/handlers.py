@@ -20,24 +20,12 @@
 """This package contains a scaffold of a handler."""
 
 from packages.valory.skills.abstract_round_abci.handlers import ABCIRoundHandler
-from packages.valory.skills.abstract_round_abci.handlers import (
-    ContractApiHandler as BaseContractApiHandler,
-)
-from packages.valory.skills.abstract_round_abci.handlers import (
-    HttpHandler as BaseHttpHandler,
-)
-from packages.valory.skills.abstract_round_abci.handlers import (
-    IpfsHandler as BaseIpfsHandler,
-)
-from packages.valory.skills.abstract_round_abci.handlers import (
-    LedgerApiHandler as BaseLedgerApiHandler,
-)
-from packages.valory.skills.abstract_round_abci.handlers import (
-    SigningHandler as BaseSigningHandler,
-)
-from packages.valory.skills.abstract_round_abci.handlers import (
-    TendermintHandler as BaseTendermintHandler,
-)
+from packages.valory.skills.abstract_round_abci.handlers import ContractApiHandler as BaseContractApiHandler
+from packages.valory.skills.abstract_round_abci.handlers import HttpHandler as BaseHttpHandler
+from packages.valory.skills.abstract_round_abci.handlers import IpfsHandler as BaseIpfsHandler
+from packages.valory.skills.abstract_round_abci.handlers import LedgerApiHandler as BaseLedgerApiHandler
+from packages.valory.skills.abstract_round_abci.handlers import SigningHandler as BaseSigningHandler
+from packages.valory.skills.abstract_round_abci.handlers import TendermintHandler as BaseTendermintHandler
 
 ABCIPriceEstimationHandler = ABCIRoundHandler
 HttpHandler = BaseHttpHandler
