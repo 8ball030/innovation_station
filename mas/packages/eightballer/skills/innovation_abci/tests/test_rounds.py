@@ -25,13 +25,12 @@ from typing import Any, Callable, Dict, Hashable, List, Mapping, Type
 import pytest
 
 from packages.eightballer.skills.innovation_abci.rounds import (
-    AbstractRound,
     CollectedSubgraphResponseRound,
     Event,
     PrepareSubgraphQueryRound,
     SynchronizedData,
 )
-from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
+from packages.valory.skills.abstract_round_abci.base import AbstractRound, BaseTxPayload
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import BaseRoundTestClass
 
 
@@ -69,7 +68,7 @@ class BaseSubgraphQueryRoundTest(BaseRoundTestClass):
         )
 
         self._complete_run(
-            self._test_round(  # type: ignore
+            self._test_round(  # pylint: disable=E1101
                 test_round=test_round,
                 round_payloads=test_case.payloads,
                 synchronized_data_update_fn=lambda sync_data, _: sync_data.update(**test_case.final_data),

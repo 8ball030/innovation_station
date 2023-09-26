@@ -6,12 +6,12 @@ description: An agent service to allow for the creation of new components. Built
   have been accomplished. First agent service to act as a CDN for a frontend. Implements
   additional http protocols, allowing for the handling of multiple http protocols
   within the same agent. This allows the seperation of the cdn, which is pulled from
-  hash on agent startup.
+  from ipfs by hash on agent startup.
 aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station_app:0.1.0:bafybeigpuzd52jqgty6m5db3lx7g7j5chdmah6yh44cqrpywwpgcv44fm4
+agent: eightballer/innovation_station_app:0.1.0:bafybeigvcsk5ofpgm2murjiitw6aneyonuzmat4o7tk7aw36qyeqj5lhby
 number_of_agents: 1
 deployment:
   agent:
