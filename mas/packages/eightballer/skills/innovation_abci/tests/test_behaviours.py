@@ -88,34 +88,26 @@ class BaseSubgraphQueryTest(FSMBehaviourBaseCase):
 class TestCollectedSubgraphResponseBehaviour(BaseSubgraphQueryTest):
     """Tests CollectedSubgraphResponseBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = CollectedSubgraphResponseBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
-        # self.mock_ ...
         self.complete(test_case.event)
 
 
 class TestPrepareSubgraphQueryBehaviour(BaseSubgraphQueryTest):
     """Tests PrepareSubgraphQueryBehaviour"""
 
-    # TODO: set next_behaviour_class
     behaviour_class: Type[BaseBehaviour] = PrepareSubgraphQueryBehaviour
     next_behaviour_class: Type[BaseBehaviour] = ...
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: BehaviourTestCase) -> None:
         """Run tests."""
 
         self.fast_forward(test_case.initial_data)
-        # TODO: mock the necessary calls
-        # self.mock_ ...
         self.complete(test_case.event)

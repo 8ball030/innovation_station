@@ -36,7 +36,6 @@ class PayloadTestCase:
     content: Hashable
 
 
-# TODO: provide test cases
 @pytest.mark.parametrize("test_case", [])
 def test_payloads(test_case: PayloadTestCase) -> None:
     """Tests for SubgraphQueryAbciApp payloads"""

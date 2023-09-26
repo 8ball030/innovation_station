@@ -27,9 +27,9 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
 - valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
 skills:
-- eightballer/innovation_abci:0.1.0:bafybeib32p6ebb53d3h25g6cftui7m33aay3jb5uwsrmnnndhanjkyr5ha
+- eightballer/innovation_abci:0.1.0:bafybeiewawa3hx5nausp6iel5ba3swa7vcn63lakdpdjqdcf7jvvmtwor4
 - eightballer/innovation_station_api:0.1.0:bafybeih2kwhb6mrl2o5xr3fo2x5bqkuxt52khgzw7aee6kyyzzaavzia24
-- eightballer/innovation_station_chained_app:0.1.0:bafybeid5f3ggicrffmex4ktwxbpmheocpvij7mnymipaa4dupvj44utr3i
+- eightballer/innovation_station_chained_app:0.1.0:bafybeibinhjshstw5vxktyxs27hn5rnenx4aus6agzdgsdrdnj5g5ywfce
 - valory/abstract_abci:0.1.0:bafybeiff2dqnkeorf343fmb3547fhiznvdw4ewbwl4rqluek2cv6ibl5hi
 - valory/abstract_round_abci:0.1.0:bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia
 - valory/registration_abci:0.1.0:bafybeifsleevuuvycaorb4quiywbp52tdmuz6awdswuql5l4jhqlby65xm

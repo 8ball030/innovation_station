@@ -69,7 +69,7 @@ class BaseSubgraphQueryRoundTest(BaseRoundTestClass):
         )
 
         self._complete_run(
-            self._test_round(
+            self._test_round(  # type: ignore
                 test_round=test_round,
                 round_payloads=test_case.payloads,
                 synchronized_data_update_fn=lambda sync_data, _: sync_data.update(**test_case.final_data),
@@ -85,7 +85,6 @@ class TestCollectedSubgraphResponseRound(BaseSubgraphQueryRoundTest):
 
     round_class = CollectedSubgraphResponseRound
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: RoundTestCase) -> None:
         """Run tests."""
@@ -98,7 +97,6 @@ class TestPrepareSubgraphQueryRound(BaseSubgraphQueryRoundTest):
 
     round_class = PrepareSubgraphQueryRound
 
-    # TODO: provide test cases
     @pytest.mark.parametrize("test_case", [])
     def test_run(self, test_case: RoundTestCase) -> None:
         """Run tests."""

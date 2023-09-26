@@ -54,7 +54,6 @@ class CollectedSubgraphResponseBehaviour(SubgraphQueryBaseBehaviour):
 
     matching_round: Type[AbstractRound] = CollectedSubgraphResponseRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
@@ -73,7 +72,6 @@ class PrepareSubgraphQueryBehaviour(SubgraphQueryBaseBehaviour):
 
     matching_round: Type[AbstractRound] = PrepareSubgraphQueryRound
 
-    # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
         """Do the act, supporting asynchronous execution."""
 
