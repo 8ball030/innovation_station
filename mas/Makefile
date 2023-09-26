@@ -75,5 +75,8 @@ run-single:
 
 
 make-meta:
-	adev metadata generate . protocol/eightballer/http/0.1.0 0
-	adev -v metadata validate  mints/0.json
+	adev metadata generate . protocol/eightballer/http/0.1.0 0 && adev -v metadata validate  mints/0.json
+	adev metadata generate . connection/eightballer/http_client/0.1.0 01 && adev -v metadata validate  mints/01.json
+	adev metadata generate . connection/eightballer/http_server/0.1.0 02 && adev -v metadata validate  mints/02.json
+	adev metadata generate . skill/eightballer/innovation_station_api/0.1.0 03 && adev -v metadata validate  mints/03.json
+	adev metadata generate . skill/eightballer/innovation_abci/0.1.0 04 && adev -v metadata validate  mints/04.json
