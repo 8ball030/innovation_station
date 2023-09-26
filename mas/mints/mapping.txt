@@ -39,7 +39,8 @@ token_id-"component_id"
 134-protocol/eightballer/http/0.1.0
 135-connection/eightballer/http_client/0.1.0
 136-connection/eightballer/http_server/0.1.0
--skill/eightballer/innovation_station_api/0.1.0
+137-skill/eightballer/innovation_station_api/0.1.0
+?-skill/eightballer/innovation_abci/0.1.0
 ?-agent/eightballer/innovation_station/0.1.0
 ?-connection/eightballer/http_client/0.1.0
 ?-service/eightballer/innovation_station/0.1.0
