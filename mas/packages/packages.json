@@ -1,14 +1,33 @@
 {
     "dev": {
-        "protocol/eightballer/http/0.1.0": "bafybeigiz522jbepy54p7k53qxqiqmpuwsdabbopuls3zbhmcbfdj3ugem",
-        "connection/eightballer/http_client/0.1.0": "bafybeigc3xrrlyizadeh67fdxph3czfqkfqc6jltonghzd2rkfc5gvtpau",
-        "connection/eightballer/http_server/0.1.0": "bafybeif3sjj2evpqe74v3car427gmy2ttvozlac2t4ovbl3mhkopae2ipa",
-        "skill/eightballer/innovation_station_api/0.1.0": "bafybeic7v2l6dcjnna74w7enzxhq7hsnubvc2fsxuubys3ysfwnq3irhme",
-        "agent/eightballer/innovation_station/0.1.0": "bafybeihz5zdjifq5qrub4v45icxpmqmuge7d7dson7ceud7ymfqqvzhulq",
-        "service/eightballer/innovation_station/0.1.0": "bafybeiec2v5zurm5ds64x4pszpa22bwxctckxokksaxlzrhtxp2ftcyw2y"
+        "protocol/eightballer/http/0.1.0": "bafybeihmhy6ax5uyjt7yxppn4viqswibcs5lsjhl3kvrsesorqe2u44jcm",
+        "connection/eightballer/http_client/0.1.0": "bafybeif5a4v2iifbungunult2lc2b4bvwuld5hebojyjod2e4esckbez7y",
+        "connection/eightballer/http_server/0.1.0": "bafybeies7jer6ezp2gxx7f7aw4t64rcgepqprqr3cqukc726wci3xspdom",
+        "skill/eightballer/innovation_station_api/0.1.0": "bafybeih2kwhb6mrl2o5xr3fo2x5bqkuxt52khgzw7aee6kyyzzaavzia24",
+        "skill/eightballer/innovation_abci/0.1.0": "bafybeibiiwsenrme7h6un7743pzzpe6ctmyxqw6rkfbdenh65qwvxa27rq",
+        "skill/eightballer/innovation_station_chained_app/0.1.0": "bafybeih5wq2smb554lzl4mgyepm57t2xyuarhcq6xh4rpqbau65fjpexqi",
+        "agent/eightballer/innovation_station_app/0.1.0": "bafybeigvcsk5ofpgm2murjiitw6aneyonuzmat4o7tk7aw36qyeqj5lhby",
+        "service/eightballer/innovation_station/0.1.0": "bafybeifnqxb76vocyoqelaiqhulj5haxey7hvtscjnlzkfvyevidmkespu"
     },
     "third_party": {
         "protocol/zarathustra/sql_crud/0.1.0": "bafybeiey56caaj43gdq2w5dvfgdl4hwjlbcbgdplg7e5t5amo22vtfe2au",
-        "protocol/open_aea/signing/1.0.0": "bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4"
+        "protocol/open_aea/signing/1.0.0": "bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4",
+        "protocol/valory/http/1.0.0": "bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty",
+        "protocol/valory/abci/0.1.0": "bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4",
+        "connection/valory/abci/0.1.0": "bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga",
+        "protocol/valory/ledger_api/1.0.0": "bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi",
+        "protocol/valory/acn/1.1.0": "bafybeignmc5uh3vgpuckljcj2tgg7hdqyytkm6m5b6v6mxtazdcvubibva",
+        "connection/valory/p2p_libp2p_client/0.1.0": "bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva",
+        "skill/valory/abstract_abci/0.1.0": "bafybeiff2dqnkeorf343fmb3547fhiznvdw4ewbwl4rqluek2cv6ibl5hi",
+        "protocol/valory/ipfs/0.1.0": "bafybeic72ncgqbzoz2guj4p4yjqulid7mv6yroeh65hxznloamoveeg7hq",
+        "connection/valory/ipfs/0.1.0": "bafybeiatjutuiav7oxl4hszy3oypdwuetr6crjpminush54c5k4nbeciv4",
+        "protocol/valory/contract_api/1.0.0": "bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy",
+        "contract/valory/service_registry/0.1.0": "bafybeibdy55edqs3djptv77ljkmbf6m3zizhutmvwgj3hpsagvmzhr4jbm",
+        "connection/valory/http_client/0.23.0": "bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi",
+        "connection/valory/ledger/0.19.0": "bafybeicgfupeudtmvehbwziqfxiz6ztsxr5rxzvalzvsdsspzz73o5fzfi",
+        "protocol/valory/tendermint/0.1.0": "bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54",
+        "skill/valory/abstract_round_abci/0.1.0": "bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia",
+        "skill/valory/reset_pause_abci/0.1.0": "bafybeidrz3lzsgyu4qb3zufnvh6zo4owg7hq5mkdk46o5sa637dodb2vkq",
+        "skill/valory/registration_abci/0.1.0": "bafybeifsleevuuvycaorb4quiywbp52tdmuz6awdswuql5l4jhqlby65xm"
     }
 }

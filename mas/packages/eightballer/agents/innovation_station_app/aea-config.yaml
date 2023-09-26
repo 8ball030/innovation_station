@@ -1,0 +1,86 @@
+agent_name: innovation_station_app
+author: eightballer
+version: 0.1.0
+license: Apache-2.0
+description: Agent implementing the innovation station app.
+aea_version: '>=1.35.0, <2.0.0'
+fingerprint: {}
+fingerprint_ignore_patterns: []
+connections:
+- eightballer/http_client:0.1.0:bafybeif5a4v2iifbungunult2lc2b4bvwuld5hebojyjod2e4esckbez7y
+- eightballer/http_server:0.1.0:bafybeies7jer6ezp2gxx7f7aw4t64rcgepqprqr3cqukc726wci3xspdom
+- valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga
+- valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
+- valory/ipfs:0.1.0:bafybeiatjutuiav7oxl4hszy3oypdwuetr6crjpminush54c5k4nbeciv4
+- valory/ledger:0.19.0:bafybeicgfupeudtmvehbwziqfxiz6ztsxr5rxzvalzvsdsspzz73o5fzfi
+- valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
+contracts:
+- valory/service_registry:0.1.0:bafybeibdy55edqs3djptv77ljkmbf6m3zizhutmvwgj3hpsagvmzhr4jbm
+protocols:
+- eightballer/http:0.1.0:bafybeihmhy6ax5uyjt7yxppn4viqswibcs5lsjhl3kvrsesorqe2u44jcm
+- open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
+- valory/abci:0.1.0:bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4
+- valory/acn:1.1.0:bafybeignmc5uh3vgpuckljcj2tgg7hdqyytkm6m5b6v6mxtazdcvubibva
+- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
+- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
+- valory/ipfs:0.1.0:bafybeic72ncgqbzoz2guj4p4yjqulid7mv6yroeh65hxznloamoveeg7hq
+- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
+- valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
+skills:
+- eightballer/innovation_abci:0.1.0:bafybeibiiwsenrme7h6un7743pzzpe6ctmyxqw6rkfbdenh65qwvxa27rq
+- eightballer/innovation_station_api:0.1.0:bafybeih2kwhb6mrl2o5xr3fo2x5bqkuxt52khgzw7aee6kyyzzaavzia24
+- eightballer/innovation_station_chained_app:0.1.0:bafybeih5wq2smb554lzl4mgyepm57t2xyuarhcq6xh4rpqbau65fjpexqi
+- valory/abstract_abci:0.1.0:bafybeiff2dqnkeorf343fmb3547fhiznvdw4ewbwl4rqluek2cv6ibl5hi
+- valory/abstract_round_abci:0.1.0:bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia
+- valory/registration_abci:0.1.0:bafybeifsleevuuvycaorb4quiywbp52tdmuz6awdswuql5l4jhqlby65xm
+- valory/reset_pause_abci:0.1.0:bafybeidrz3lzsgyu4qb3zufnvh6zo4owg7hq5mkdk46o5sa637dodb2vkq
+default_ledger: ethereum
+required_ledgers:
+- ethereum
+default_routing: {}
+connection_private_key_paths: {}
+private_key_paths: {}
+logging_config:
+  disable_existing_loggers: false
+  version: 1
+dependencies:
+  open-aea-ledger-ethereum: {}
+default_connection: null
+---
+public_id: valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga
+type: connection
+config:
+  host: ${str:localhost}
+  port: ${int:26658}
+  target_skill_id: eightballer/innovation_station_chained_app:0.1.0
+  use_tendermint: true
+---
+public_id: eightballer/innovation_station_chained_app:0.1.0:bafybeigskx4hyktjzm6iiro7ublfpp6e6ypibznaquo3l4b5meuwdpjvma
+type: skill
+models:
+  params:
+    args:
+      use_termination: false
+      setup:
+        consensus_threshold: 1
+        safe_contract_address: '0x0000000000000000000000000000000000000000'
+        all_participants:
+        - ${MAS_ADDRESS:str}
+---
+public_id: eightballer/http_server:0.1.0
+type: connection
+config:
+  target_skill_id: eightballer/innovation_station_api:0.1.0
+  port: 8080
+  host: 0.0.0.0
+---
+public_id: eightballer/innovation_station_api:0.1.0:bafybeifrtrzzdemrrlya45f3atvn45rrbdoezur45rpvglhcaxdv33goyy
+type: skill
+models:
+  strategy:
+    args:
+      frontend:
+        enabled: ${FRONTEND_ENABLED:bool:true}
+        ipfs_hash: ${str:bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu}
+        directory: www
+        openai_api_key: ${str:}
