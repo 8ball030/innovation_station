@@ -34,41 +34,28 @@ from aea.configurations.data_types import PublicId
 from aea.protocols.base import Message
 
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import (
-    CheckTxType,
-    CheckTxTypeEnum,
-    ConsensusParams,
-    Evidences,
-    Header,
-    LastCommitInfo,
-    Timestamp,
-    ValidatorUpdates,
-)
+from packages.valory.protocols.abci.custom_types import (CheckTxType,
+                                                         CheckTxTypeEnum,
+                                                         ConsensusParams,
+                                                         Evidences, Header,
+                                                         LastCommitInfo,
+                                                         Timestamp,
+                                                         ValidatorUpdates)
 from packages.valory.protocols.http import HttpMessage
 from packages.valory.protocols.tendermint import TendermintMessage
 from packages.valory.skills.abstract_round_abci import handlers
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    AddBlockError,
-    ERROR_CODE,
-    OK_CODE,
-    SignatureNotValidError,
-)
+    ERROR_CODE, OK_CODE, ABCIAppInternalError, AddBlockError,
+    SignatureNotValidError)
 from packages.valory.skills.abstract_round_abci.dialogues import (
-    AbciDialogue,
-    AbciDialogues,
-    TendermintDialogue,
-    TendermintDialogues,
-)
+    AbciDialogue, AbciDialogues, TendermintDialogue, TendermintDialogues)
 from packages.valory.skills.abstract_round_abci.handlers import (
-    ABCIRoundHandler,
-    AbstractResponseHandler,
-    TendermintHandler,
-    Transaction,
-    exception_to_info_msg,
-)
-from packages.valory.skills.abstract_round_abci.models import TendermintRecoveryParams
-from packages.valory.skills.abstract_round_abci.test_tools.rounds import DummyRound
+    ABCIRoundHandler, AbstractResponseHandler, TendermintHandler, Transaction,
+    exception_to_info_msg)
+from packages.valory.skills.abstract_round_abci.models import \
+    TendermintRecoveryParams
+from packages.valory.skills.abstract_round_abci.test_tools.rounds import \
+    DummyRound
 
 
 def test_exception_to_info_msg() -> None:

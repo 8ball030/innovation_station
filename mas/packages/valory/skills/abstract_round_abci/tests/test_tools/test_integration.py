@@ -25,27 +25,23 @@ import pytest
 
 from packages.open_aea.protocols.signing import SigningMessage
 from packages.open_aea.protocols.signing.custom_types import SignedMessage
-from packages.valory.connections.ledger.connection import (
-    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID,
-)
-from packages.valory.connections.ledger.tests.conftest import make_ledger_api_connection
+from packages.valory.connections.ledger.connection import \
+    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID
+from packages.valory.connections.ledger.tests.conftest import \
+    make_ledger_api_connection
 from packages.valory.protocols.ledger_api import LedgerApiMessage
 from packages.valory.protocols.ledger_api.dialogues import LedgerApiDialogue
 from packages.valory.skills.abstract_round_abci.base import AbciAppDB
 from packages.valory.skills.abstract_round_abci.behaviours import BaseBehaviour
 from packages.valory.skills.abstract_round_abci.models import Requests
-from packages.valory.skills.abstract_round_abci.test_tools.integration import (
-    IntegrationBaseCase,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.behaviours import (
-    DummyStartingBehaviour,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import (
-    SynchronizedData,
-)
-from packages.valory.skills.abstract_round_abci.tests.test_tools.base import (
-    FSMBehaviourTestToolSetup,
-)
+from packages.valory.skills.abstract_round_abci.test_tools.integration import \
+    IntegrationBaseCase
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.behaviours import \
+    DummyStartingBehaviour
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import \
+    SynchronizedData
+from packages.valory.skills.abstract_round_abci.tests.test_tools.base import \
+    FSMBehaviourTestToolSetup
 
 
 def simulate_ledger_get_balance_request(test_instance: IntegrationBaseCase) -> None:

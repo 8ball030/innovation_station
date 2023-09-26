@@ -28,27 +28,16 @@ from typing import FrozenSet, List, Optional, Tuple, Union, cast
 import pytest
 
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    TransactionNotValidError,
-)
+    ABCIAppInternalError, BaseSynchronizedData, BaseTxPayload,
+    TransactionNotValidError)
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
-    BaseOnlyKeeperSendsRoundTest,
+    MAX_PARTICIPANTS, BaseOnlyKeeperSendsRoundTest,
     DummyCollectDifferentUntilAllRound,
-    DummyCollectDifferentUntilThresholdRound,
-    DummyCollectNonEmptyUntilThresholdRound,
-    DummyCollectSameUntilAllRound,
-    DummyCollectSameUntilThresholdRound,
-    DummyCollectionRound,
-    DummyEvent,
-    DummyOnlyKeeperSendsRound,
-    DummyTxPayload,
-    DummyVotingRound,
-    MAX_PARTICIPANTS,
-    _BaseRoundTestClass,
-    get_dummy_tx_payloads,
-)
+    DummyCollectDifferentUntilThresholdRound, DummyCollectionRound,
+    DummyCollectNonEmptyUntilThresholdRound, DummyCollectSameUntilAllRound,
+    DummyCollectSameUntilThresholdRound, DummyEvent, DummyOnlyKeeperSendsRound,
+    DummyTxPayload, DummyVotingRound, _BaseRoundTestClass,
+    get_dummy_tx_payloads)
 
 
 class TestCollectionRound(_BaseRoundTestClass):

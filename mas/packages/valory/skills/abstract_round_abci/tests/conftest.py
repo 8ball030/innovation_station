@@ -29,8 +29,8 @@ import pytest
 from hypothesis import settings
 
 from packages.valory.skills.abstract_round_abci.io_.store import StoredJSONType
-from packages.valory.skills.abstract_round_abci.models import MIN_RESET_PAUSE_DURATION
-
+from packages.valory.skills.abstract_round_abci.models import \
+    MIN_RESET_PAUSE_DURATION
 
 # pylint: skip-file
 

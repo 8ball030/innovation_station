@@ -28,39 +28,36 @@ from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import DialogueLabel as BaseDialogueLabel
 from aea.skills.base import Model
 
-from packages.open_aea.protocols.signing.dialogues import (
-    SigningDialogue as BaseSigningDialogue,
-)
-from packages.open_aea.protocols.signing.dialogues import (
-    SigningDialogues as BaseSigningDialogues,
-)
-from packages.valory.protocols.abci.dialogues import AbciDialogue as BaseAbciDialogue
-from packages.valory.protocols.abci.dialogues import AbciDialogues as BaseAbciDialogues
+from packages.open_aea.protocols.signing.dialogues import \
+    SigningDialogue as BaseSigningDialogue
+from packages.open_aea.protocols.signing.dialogues import \
+    SigningDialogues as BaseSigningDialogues
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogue as BaseAbciDialogue
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogues as BaseAbciDialogues
 from packages.valory.protocols.contract_api import ContractApiMessage
-from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogue as BaseContractApiDialogue,
-)
-from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogues as BaseContractApiDialogues,
-)
-from packages.valory.protocols.http.dialogues import HttpDialogue as BaseHttpDialogue
-from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
-from packages.valory.protocols.ipfs.dialogues import IpfsDialogue as BaseIpfsDialogue
-from packages.valory.protocols.ipfs.dialogues import IpfsDialogues as BaseIpfsDialogues
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogue as BaseContractApiDialogue
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogues as BaseContractApiDialogues
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogue as BaseHttpDialogue
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogues as BaseHttpDialogues
+from packages.valory.protocols.ipfs.dialogues import \
+    IpfsDialogue as BaseIpfsDialogue
+from packages.valory.protocols.ipfs.dialogues import \
+    IpfsDialogues as BaseIpfsDialogues
 from packages.valory.protocols.ledger_api import LedgerApiMessage
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogue as BaseLedgerApiDialogue,
-)
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogues as BaseLedgerApiDialogues,
-)
-from packages.valory.protocols.tendermint.dialogues import (
-    TendermintDialogue as BaseTendermintDialogue,
-)
-from packages.valory.protocols.tendermint.dialogues import (
-    TendermintDialogues as BaseTendermintDialogues,
-)
-
+from packages.valory.protocols.ledger_api.dialogues import \
+    LedgerApiDialogue as BaseLedgerApiDialogue
+from packages.valory.protocols.ledger_api.dialogues import \
+    LedgerApiDialogues as BaseLedgerApiDialogues
+from packages.valory.protocols.tendermint.dialogues import \
+    TendermintDialogue as BaseTendermintDialogue
+from packages.valory.protocols.tendermint.dialogues import \
+    TendermintDialogues as BaseTendermintDialogues
 
 AbciDialogue = BaseAbciDialogue
 

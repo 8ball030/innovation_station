@@ -25,13 +25,12 @@ from typing import Any, Dict, Type, cast
 from aea.helpers.base import cd
 from aea.test_tools.utils import copy_class
 
-from packages.valory.skills.abstract_round_abci.base import BaseTxPayload, _MetaPayload
-from packages.valory.skills.abstract_round_abci.test_tools.base import (
-    FSMBehaviourBaseCase,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import (
-    PATH_TO_SKILL,
-)
+from packages.valory.skills.abstract_round_abci.base import (BaseTxPayload,
+                                                             _MetaPayload)
+from packages.valory.skills.abstract_round_abci.test_tools.base import \
+    FSMBehaviourBaseCase
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import \
+    PATH_TO_SKILL
 
 
 class FSMBehaviourTestToolSetup:

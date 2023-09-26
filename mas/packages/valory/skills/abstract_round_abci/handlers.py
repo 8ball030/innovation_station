@@ -32,35 +32,25 @@ from aea.skills.base import Handler
 
 from packages.open_aea.protocols.signing import SigningMessage
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import Events, ValidatorUpdates
+from packages.valory.protocols.abci.custom_types import (Events,
+                                                         ValidatorUpdates)
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.protocols.http import HttpMessage
 from packages.valory.protocols.ipfs import IpfsMessage
 from packages.valory.protocols.ledger_api import LedgerApiMessage
 from packages.valory.protocols.tendermint.dialogues import (
-    TendermintDialogue,
-    TendermintDialogues,
-)
+    TendermintDialogue, TendermintDialogues)
 from packages.valory.protocols.tendermint.message import TendermintMessage
 from packages.valory.skills.abstract_abci.handlers import ABCIHandler
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    AddBlockError,
-    ERROR_CODE,
-    LateArrivingTransaction,
-    OK_CODE,
-    SignatureNotValidError,
-    Transaction,
-    TransactionNotValidError,
-    TransactionTypeNotRecognizedError,
-)
-from packages.valory.skills.abstract_round_abci.behaviours import AbstractRoundBehaviour
+    ERROR_CODE, OK_CODE, ABCIAppInternalError, AddBlockError,
+    LateArrivingTransaction, SignatureNotValidError, Transaction,
+    TransactionNotValidError, TransactionTypeNotRecognizedError)
+from packages.valory.skills.abstract_round_abci.behaviours import \
+    AbstractRoundBehaviour
 from packages.valory.skills.abstract_round_abci.dialogues import AbciDialogue
 from packages.valory.skills.abstract_round_abci.models import (
-    Requests,
-    SharedState,
-    TendermintRecoveryParams,
-)
+    Requests, SharedState, TendermintRecoveryParams)
 
 
 def exception_to_info_msg(exception: Exception) -> str:

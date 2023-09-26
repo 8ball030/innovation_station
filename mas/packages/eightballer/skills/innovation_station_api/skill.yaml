@@ -2,7 +2,9 @@ name: innovation_station_api
 author: eightballer
 version: 0.1.0
 type: skill
-description: The scaffold skill is a scaffold for your own skill implementation.
+description: A skill that provides an API for the Innovation Station. It pulls a frontend
+  by hash from ipfs and then creates an api. When jobs are posted to the api, it will
+  create a task and send it to the LLM workflow to create a new component.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:

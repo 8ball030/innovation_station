@@ -27,27 +27,14 @@ import types
 import typing
 from hashlib import sha256
 from math import ceil
-from typing import (
-    Any,
-    Dict,
-    FrozenSet,
-    Iterator,
-    List,
-    Optional,
-    Set,
-    Tuple,
-    Type,
-    TypeVar,
-    Union,
-    cast,
-)
+from typing import (Any, Dict, FrozenSet, Iterator, List, Optional, Set, Tuple,
+                    Type, TypeVar, Union, cast)
 from unittest.mock import MagicMock
 
 import typing_extensions
 from eth_typing.bls import BLSPubkey, BLSSignature
 from py_ecc.bls import G2Basic as bls
-from typing_extensions import Literal, TypeGuard, TypedDict
-
+from typing_extensions import Literal, TypedDict, TypeGuard
 
 MAX_UINT64 = 2**64 - 1
 DEFAULT_TENDERMINT_P2P_PORT = 26656
@@ -167,8 +154,10 @@ def parse_tendermint_p2p_url(url: str) -> Tuple[str, int]:
 
 try:
     # Python >=3.8 should have these functions already
-    from typing import get_args as _get_args  # pylint: disable=ungrouped-imports
-    from typing import get_origin as _get_origin  # pylint: disable=ungrouped-imports
+    from typing import \
+        get_args as _get_args  # pylint: disable=ungrouped-imports
+    from typing import \
+        get_origin as _get_origin  # pylint: disable=ungrouped-imports
 except ImportError:  # pragma: nocover
     # Python 3.7
     def _get_origin(tp):  # type: ignore

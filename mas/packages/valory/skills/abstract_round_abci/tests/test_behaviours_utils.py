@@ -27,25 +27,14 @@ from abc import ABC
 from datetime import datetime
 from enum import Enum
 from pathlib import Path
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    Generator,
-    List,
-    Optional,
-    Tuple,
-    Type,
-    Union,
-    cast,
-)
+from typing import (Any, Callable, Dict, Generator, List, Optional, Tuple,
+                    Type, Union, cast)
 from unittest import mock
 from unittest.mock import MagicMock
 
 import pytest
 import pytz  # pylint: disable=import-error
 from _pytest.logging import LogCaptureFixture
-
 # pylint: skip-file
 from aea.common import JSONLike
 from aea.protocols.base import Message
@@ -56,55 +45,33 @@ from hypothesis import strategies as st
 
 from packages.open_aea.protocols.signing import SigningMessage
 from packages.valory.connections.http_client.connection import HttpDialogues
+from packages.valory.connections.ipfs.connection import \
+    PUBLIC_ID as IPFS_CONNECTION_ID
 from packages.valory.connections.ipfs.connection import IpfsDialogues
-from packages.valory.connections.ipfs.connection import PUBLIC_ID as IPFS_CONNECTION_ID
 from packages.valory.protocols.http import HttpMessage
 from packages.valory.protocols.ipfs import IpfsMessage
 from packages.valory.protocols.ipfs.dialogues import IpfsDialogue
 from packages.valory.protocols.ledger_api.custom_types import (
-    SignedTransaction,
-    SignedTransactions,
-    TransactionDigest,
-    TransactionDigests,
-)
+    SignedTransaction, SignedTransactions, TransactionDigest,
+    TransactionDigests)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 from packages.valory.protocols.tendermint import TendermintMessage
 from packages.valory.skills.abstract_round_abci import behaviour_utils
 from packages.valory.skills.abstract_round_abci.base import (
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    DegenerateRound,
-    LEDGER_API_ADDRESS,
-    OK_CODE,
-    Transaction,
-)
+    LEDGER_API_ADDRESS, OK_CODE, AbstractRound, BaseSynchronizedData,
+    BaseTxPayload, DegenerateRound, Transaction)
 from packages.valory.skills.abstract_round_abci.behaviour_utils import (
-    AsyncBehaviour,
-    BaseBehaviour,
-    BaseBehaviourInternalError,
-    DegenerateBehaviour,
-    GENESIS_TIME_FMT,
-    INITIAL_HEIGHT,
-    IPFSBehaviour,
-    NON_200_RETURN_CODE_DURING_RESET_THRESHOLD,
-    RPCResponseStatus,
-    SendException,
-    TimeoutException,
-    TmManager,
-    _MetaBaseBehaviour,
-    make_degenerate_behaviour,
-)
+    GENESIS_TIME_FMT, INITIAL_HEIGHT,
+    NON_200_RETURN_CODE_DURING_RESET_THRESHOLD, AsyncBehaviour, BaseBehaviour,
+    BaseBehaviourInternalError, DegenerateBehaviour, IPFSBehaviour,
+    RPCResponseStatus, SendException, TimeoutException, TmManager,
+    _MetaBaseBehaviour, make_degenerate_behaviour)
 from packages.valory.skills.abstract_round_abci.io_.ipfs import (
-    IPFSInteract,
-    IPFSInteractionError,
-)
+    IPFSInteract, IPFSInteractionError)
 from packages.valory.skills.abstract_round_abci.models import (
-    SharedState,
-    TendermintRecoveryParams,
-)
-from packages.valory.skills.abstract_round_abci.tests.conftest import profile_name
-
+    SharedState, TendermintRecoveryParams)
+from packages.valory.skills.abstract_round_abci.tests.conftest import \
+    profile_name
 
 _DEFAULT_REQUEST_TIMEOUT = 10.0
 _DEFAULT_REQUEST_RETRY_DELAY = 1.0

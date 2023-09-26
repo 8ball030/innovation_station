@@ -27,12 +27,9 @@ from typing import Optional, cast
 import pytest
 
 from packages.valory.skills.abstract_round_abci.io_.load import (
-    CustomLoaderType,
-    JSONLoader,
-    Loader,
-    SupportedLoaderType,
-)
-from packages.valory.skills.abstract_round_abci.io_.store import SupportedFiletype
+    CustomLoaderType, JSONLoader, Loader, SupportedLoaderType)
+from packages.valory.skills.abstract_round_abci.io_.store import \
+    SupportedFiletype
 
 
 class TestLoader:

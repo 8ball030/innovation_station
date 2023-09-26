@@ -30,18 +30,10 @@ from _pytest.logging import LogCaptureFixture
 from aea.exceptions import AEAEnforceError
 
 from packages.valory.skills.abstract_round_abci.abci_app_chain import (
-    AbciAppTransitionMapping,
-    chain,
-)
+    AbciAppTransitionMapping, chain)
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppDB,
-    AbstractRound,
-    AppState,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    DegenerateRound,
-)
+    AbciApp, AbciAppDB, AbstractRound, AppState, BaseSynchronizedData,
+    BaseTxPayload, DegenerateRound)
 
 
 def make_round_class(name: str, bases: Tuple = (AbstractRound,)) -> Type[AbstractRound]:

@@ -31,18 +31,8 @@ from copy import copy, deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 from time import sleep
-from typing import (
-    Any,
-    Dict,
-    FrozenSet,
-    Generator,
-    List,
-    Optional,
-    Set,
-    Tuple,
-    Type,
-    cast,
-)
+from typing import (Any, Dict, FrozenSet, Generator, List, Optional, Set,
+                    Tuple, Type, cast)
 from unittest import mock
 from unittest.mock import MagicMock
 
@@ -51,60 +41,25 @@ from _pytest.logging import LogCaptureFixture
 from aea.exceptions import AEAEnforceError
 from aea_ledger_ethereum import EthereumCrypto
 from hypothesis import given, settings
-from hypothesis.strategies import (
-    booleans,
-    datetimes,
-    dictionaries,
-    floats,
-    integers,
-    none,
-    one_of,
-    text,
-)
+from hypothesis.strategies import (booleans, datetimes, dictionaries, floats,
+                                   integers, none, one_of, text)
 
 import packages.valory.skills.abstract_round_abci.base as abci_base
 from packages.valory.connections.abci.connection import MAX_READ_IN_BYTES
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppException,
-    ABCIAppInternalError,
-    AbciApp,
-    AbciAppDB,
-    AbciAppTransitionFunction,
-    AbstractRound,
-    AbstractRoundInternalError,
-    AddBlockError,
-    AppState,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    Block,
-    BlockBuilder,
-    Blockchain,
-    CollectionRound,
-    EventType,
-    LateArrivingTransaction,
-    RoundSequence,
-    SignatureNotValidError,
-    Timeouts,
-    Transaction,
-    TransactionTypeNotRecognizedError,
-    _MetaAbciApp,
-    _MetaAbstractRound,
-    _MetaPayload,
-    get_name,
-)
+    AbciApp, AbciAppDB, ABCIAppException, ABCIAppInternalError,
+    AbciAppTransitionFunction, AbstractRound, AbstractRoundInternalError,
+    AddBlockError, AppState, BaseSynchronizedData, BaseTxPayload, Block,
+    BlockBuilder, Blockchain, CollectionRound, EventType,
+    LateArrivingTransaction, RoundSequence, SignatureNotValidError, Timeouts,
+    Transaction, TransactionTypeNotRecognizedError, _MetaAbciApp,
+    _MetaAbstractRound, _MetaPayload, get_name)
 from packages.valory.skills.abstract_round_abci.test_tools.abci_app import (
-    AbciAppTest,
-    ConcreteBackgroundRound,
-    ConcreteEvents,
-    ConcreteRoundA,
-    ConcreteRoundB,
-    ConcreteRoundC,
-    ConcreteTerminationRoundA,
-    ConcreteTerminationRoundB,
-    ConcreteTerminationRoundC,
-)
-from packages.valory.skills.abstract_round_abci.tests.conftest import profile_name
-
+    AbciAppTest, ConcreteBackgroundRound, ConcreteEvents, ConcreteRoundA,
+    ConcreteRoundB, ConcreteRoundC, ConcreteTerminationRoundA,
+    ConcreteTerminationRoundB, ConcreteTerminationRoundC)
+from packages.valory.skills.abstract_round_abci.tests.conftest import \
+    profile_name
 
 # pylint: skip-file
 

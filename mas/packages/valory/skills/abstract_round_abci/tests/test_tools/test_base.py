@@ -25,31 +25,24 @@ from typing import Any, Dict, cast
 import pytest
 from aea.mail.base import Envelope
 
-from packages.valory.connections.ledger.connection import (
-    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID,
-)
+from packages.valory.connections.ledger.connection import \
+    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID
 from packages.valory.protocols.contract_api.message import ContractApiMessage
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 from packages.valory.skills.abstract_round_abci.base import AbciAppDB
 from packages.valory.skills.abstract_round_abci.behaviours import BaseBehaviour
 from packages.valory.skills.abstract_round_abci.test_tools.base import (
-    DummyContext,
-    FSMBehaviourBaseCase,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import PUBLIC_ID
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.behaviours import (
-    DummyRoundBehaviour,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.models import (
-    SharedState,
-)
+    DummyContext, FSMBehaviourBaseCase)
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import \
+    PUBLIC_ID
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.behaviours import \
+    DummyRoundBehaviour
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.models import \
+    SharedState
 from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import (
-    Event,
-    SynchronizedData,
-)
-from packages.valory.skills.abstract_round_abci.tests.test_tools.base import (
-    FSMBehaviourTestToolSetup,
-)
+    Event, SynchronizedData)
+from packages.valory.skills.abstract_round_abci.tests.test_tools.base import \
+    FSMBehaviourTestToolSetup
 
 
 class TestFSMBehaviourBaseCaseSetup(FSMBehaviourTestToolSetup):

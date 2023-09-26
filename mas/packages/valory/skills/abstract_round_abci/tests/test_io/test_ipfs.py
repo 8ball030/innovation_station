@@ -27,16 +27,10 @@ from unittest import mock
 import pytest
 
 from packages.valory.skills.abstract_round_abci.io_.ipfs import (
-    IPFSInteract,
-    IPFSInteractionError,
-)
+    IPFSInteract, IPFSInteractionError)
 from packages.valory.skills.abstract_round_abci.io_.load import AbstractLoader
 from packages.valory.skills.abstract_round_abci.io_.store import (
-    AbstractStorer,
-    StoredJSONType,
-    SupportedFiletype,
-)
-
+    AbstractStorer, StoredJSONType, SupportedFiletype)
 
 use_ipfs_daemon = pytest.mark.usefixtures("ipfs_daemon")
 

@@ -28,20 +28,12 @@ import pytest
 from hypothesis import assume, given, settings
 from hypothesis import strategies as st
 
-from packages.valory.skills.abstract_round_abci.tests.conftest import profile_name
+from packages.valory.skills.abstract_round_abci.tests.conftest import \
+    profile_name
 from packages.valory.skills.abstract_round_abci.utils import (
-    DEFAULT_TENDERMINT_P2P_PORT,
-    MAX_UINT64,
-    VerifyDrand,
-    consensus_threshold,
-    filter_negative,
-    get_data_from_nested_dict,
-    get_value_with_type,
-    is_json_serializable,
-    is_primitive_or_none,
-    parse_tendermint_p2p_url,
-)
-
+    DEFAULT_TENDERMINT_P2P_PORT, MAX_UINT64, VerifyDrand, consensus_threshold,
+    filter_negative, get_data_from_nested_dict, get_value_with_type,
+    is_json_serializable, is_primitive_or_none, parse_tendermint_p2p_url)
 
 settings.load_profile(profile_name)
 

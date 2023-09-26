@@ -20,22 +20,15 @@
 """This module contains the behaviours for the 'abstract_round_abci' skill."""
 from abc import ABC, ABCMeta
 from collections import defaultdict
-from typing import AbstractSet, Any, Dict, Generic, List, Optional, Tuple, Type, cast
+from typing import (AbstractSet, Any, Dict, Generic, List, Optional, Tuple,
+                    Type, cast)
 
 from aea.skills.base import Behaviour
 
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    AbciApp,
-    AbstractRound,
-    EventType,
-)
+    AbciApp, ABCIAppInternalError, AbstractRound, EventType)
 from packages.valory.skills.abstract_round_abci.behaviour_utils import (
-    BaseBehaviour,
-    TmManager,
-    make_degenerate_behaviour,
-)
-
+    BaseBehaviour, TmManager, make_degenerate_behaviour)
 
 BehaviourType = Type[BaseBehaviour]
 Action = Optional[str]

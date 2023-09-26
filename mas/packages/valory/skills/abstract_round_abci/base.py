@@ -35,36 +35,18 @@ from copy import copy, deepcopy
 from dataclasses import asdict, astuple, dataclass, field
 from enum import Enum
 from inspect import isclass
-from typing import (
-    Any,
-    Dict,
-    FrozenSet,
-    Generic,
-    List,
-    Mapping,
-    Optional,
-    Sequence,
-    Set,
-    Tuple,
-    Type,
-    TypeVar,
-    Union,
-    cast,
-)
+from typing import (Any, Dict, FrozenSet, Generic, List, Mapping, Optional,
+                    Sequence, Set, Tuple, Type, TypeVar, Union, cast)
 
 from aea.crypto.ledger_apis import LedgerApis
 from aea.exceptions import enforce
 
 from packages.valory.connections.abci.connection import MAX_READ_IN_BYTES
-from packages.valory.connections.ledger.connection import (
-    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID,
-)
+from packages.valory.connections.ledger.connection import \
+    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID
 from packages.valory.protocols.abci.custom_types import Header
 from packages.valory.skills.abstract_round_abci.utils import (
-    consensus_threshold,
-    is_json_serializable,
-)
-
+    consensus_threshold, is_json_serializable)
 
 _logger = logging.getLogger("aea.packages.valory.skills.abstract_round_abci.base")
 
@@ -2459,15 +2441,15 @@ class AbciApp(
 
         :param timestamp: the latest block's timestamp.
         """
-        self.logger.info("arrived block with timestamp: %s", timestamp)
-        self.logger.info("current AbciApp time: %s", self._last_timestamp)
+        self.logger.debug("arrived block with timestamp: %s", timestamp)
+        self.logger.debug("current AbciApp time: %s", self._last_timestamp)
         self._timeouts.pop_earliest_cancelled_timeouts()
 
         if self._timeouts.size == 0:
             # if no pending timeouts, then it is safe to
             # move forward the last known timestamp to the
             # latest block's timestamp.
-            self.logger.info("no pending timeout, move time forward")
+            self.logger.debug("no pending timeout, move time forward")
             self._last_timestamp = timestamp
             return
 
@@ -2490,7 +2472,7 @@ class AbciApp(
             # of the next rounds. (for now we set it to timestamp to explore
             # the impact)
             self._last_timestamp = timestamp
-            self.logger.info(
+            self.logger.debug(
                 "current AbciApp time after expired deadline: %s", self.last_timestamp
             )
 
@@ -2803,7 +2785,7 @@ class RoundSequence:  # pylint: disable=too-many-instance-attributes
         self._block_builder.header = header
         self.abci_app.update_time(header.timestamp)
         self.set_block_stall_deadline()
-        _logger.info(
+        _logger.debug(
             "Created a new local deadline for the next `begin_block` request from the Tendermint node: "
             f"{self._block_stall_deadline}"
         )

@@ -32,14 +32,11 @@ from aea.skills.base import SkillContext
 from packages.valory.protocols.contract_api.custom_types import State
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciAppDB,
-    BaseSynchronizedData,
-)
-from packages.valory.skills.abstract_round_abci.behaviour_utils import BaseBehaviour
-from packages.valory.skills.abstract_round_abci.test_tools.base import (
-    FSMBehaviourBaseCase,
-)
-
+    AbciAppDB, BaseSynchronizedData)
+from packages.valory.skills.abstract_round_abci.behaviour_utils import \
+    BaseBehaviour
+from packages.valory.skills.abstract_round_abci.test_tools.base import \
+    FSMBehaviourBaseCase
 
 PACKAGE_DIR = Path(__file__).parent.parent
 DRAND_VALUE = {

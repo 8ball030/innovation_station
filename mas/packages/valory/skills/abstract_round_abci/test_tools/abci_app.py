@@ -26,11 +26,7 @@ from typing import Dict, Tuple, Type, Union
 from unittest.mock import MagicMock
 
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-)
+    AbciApp, AbstractRound, BaseSynchronizedData, BaseTxPayload)
 
 
 class _ConcreteRound(AbstractRound, ABC):
