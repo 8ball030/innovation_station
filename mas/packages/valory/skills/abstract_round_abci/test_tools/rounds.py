@@ -23,38 +23,19 @@ import re
 from copy import deepcopy
 from dataclasses import dataclass
 from enum import Enum
-from typing import (
-    Any,
-    Callable,
-    FrozenSet,
-    Generator,
-    List,
-    Mapping,
-    Optional,
-    Tuple,
-    Type,
-)
+from typing import (Any, Callable, FrozenSet, Generator, List, Mapping,
+                    Optional, Tuple, Type)
 from unittest import mock
 
 import pytest
 
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    AbciAppDB,
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    CollectDifferentUntilAllRound,
-    CollectDifferentUntilThresholdRound,
-    CollectNonEmptyUntilThresholdRound,
-    CollectSameUntilAllRound,
-    CollectSameUntilThresholdRound,
-    CollectionRound,
-    OnlyKeeperSendsRound,
-    TransactionNotValidError,
-    VotingRound,
-)
-
+    AbciAppDB, ABCIAppInternalError, AbstractRound, BaseSynchronizedData,
+    BaseTxPayload, CollectDifferentUntilAllRound,
+    CollectDifferentUntilThresholdRound, CollectionRound,
+    CollectNonEmptyUntilThresholdRound, CollectSameUntilAllRound,
+    CollectSameUntilThresholdRound, OnlyKeeperSendsRound,
+    TransactionNotValidError, VotingRound)
 
 MAX_PARTICIPANTS: int = 4
 

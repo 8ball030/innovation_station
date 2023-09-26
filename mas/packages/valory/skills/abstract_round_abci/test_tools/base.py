@@ -32,34 +32,20 @@ from aea.helpers.transaction.base import SignedMessage
 from aea.test_tools.test_skill import BaseSkillTestCase
 
 from packages.open_aea.protocols.signing import SigningMessage
-from packages.valory.connections.http_client.connection import (
-    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
-)
-from packages.valory.connections.ledger.connection import (
-    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID,
-)
+from packages.valory.connections.http_client.connection import \
+    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID
+from packages.valory.connections.ledger.connection import \
+    PUBLIC_ID as LEDGER_CONNECTION_PUBLIC_ID
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.protocols.http import HttpMessage
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 from packages.valory.skills.abstract_round_abci.base import (
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    OK_CODE,
-    _MetaPayload,
-)
+    OK_CODE, AbstractRound, BaseSynchronizedData, BaseTxPayload, _MetaPayload)
 from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
+    AbstractRoundBehaviour, BaseBehaviour)
 from packages.valory.skills.abstract_round_abci.handlers import (
-    ContractApiHandler,
-    HttpHandler,
-    LedgerApiHandler,
-    SigningHandler,
-    TendermintHandler,
-)
-
+    ContractApiHandler, HttpHandler, LedgerApiHandler, SigningHandler,
+    TendermintHandler)
 
 # pylint: disable=protected-access,too-few-public-methods,consider-using-with
 

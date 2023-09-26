@@ -25,30 +25,17 @@ from typing import Deque, Generator, Set, Type, cast
 
 from packages.valory.skills.abstract_round_abci.base import AbstractRound
 from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    BaseBehaviour,
-)
+    AbstractRoundBehaviour, BaseBehaviour)
 from packages.valory.skills.abstract_round_abci.common import (
-    RandomnessBehaviour,
-    SelectKeeperBehaviour,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.models import (
-    Params,
-)
+    RandomnessBehaviour, SelectKeeperBehaviour)
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.models import \
+    Params
 from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.payloads import (
-    DummyFinalPayload,
-    DummyKeeperSelectionPayload,
-    DummyRandomnessPayload,
-    DummyStartingPayload,
-)
+    DummyFinalPayload, DummyKeeperSelectionPayload, DummyRandomnessPayload,
+    DummyStartingPayload)
 from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import (
-    DummyAbciApp,
-    DummyFinalRound,
-    DummyKeeperSelectionRound,
-    DummyRandomnessRound,
-    DummyStartingRound,
-    SynchronizedData,
-)
+    DummyAbciApp, DummyFinalRound, DummyKeeperSelectionRound,
+    DummyRandomnessRound, DummyStartingRound, SynchronizedData)
 
 
 class DummyBaseBehaviour(BaseBehaviour, ABC):

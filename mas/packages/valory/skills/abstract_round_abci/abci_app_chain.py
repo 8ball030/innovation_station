@@ -25,13 +25,7 @@ from typing import Any, Dict, FrozenSet, List, Optional, Set, Tuple, Type
 from aea.exceptions import enforce
 
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppTransitionFunction,
-    AppState,
-    EventToTimeout,
-    EventType,
-)
-
+    AbciApp, AbciAppTransitionFunction, AppState, EventToTimeout, EventType)
 
 _default_logger = logging.getLogger(
     "aea.packages.valory.skills.abstract_round_abci.abci_app_chain"

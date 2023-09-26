@@ -24,15 +24,9 @@ import os
 from typing import Any, Dict, Optional, Type
 
 from packages.valory.skills.abstract_round_abci.io_.load import (
-    CustomLoaderType,
-    Loader,
-    SupportedFiletype,
-    SupportedObjectType,
-)
+    CustomLoaderType, Loader, SupportedFiletype, SupportedObjectType)
 from packages.valory.skills.abstract_round_abci.io_.store import (
-    CustomStorerType,
-    Storer,
-)
+    CustomStorerType, Storer)
 
 
 class IPFSInteractionError(Exception):

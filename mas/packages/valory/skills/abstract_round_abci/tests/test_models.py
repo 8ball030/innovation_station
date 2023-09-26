@@ -39,37 +39,19 @@ from aea.exceptions import AEAEnforceError
 from typing_extensions import Literal, TypedDict
 
 from packages.valory.skills.abstract_round_abci.base import (
-    AbstractRound,
-    BaseSynchronizedData,
-    ROUND_COUNT_DEFAULT,
-)
+    ROUND_COUNT_DEFAULT, AbstractRound, BaseSynchronizedData)
 from packages.valory.skills.abstract_round_abci.models import (
-    ApiSpecs,
-    BaseParams,
-    BenchmarkTool,
-    DEFAULT_BACKOFF_FACTOR,
-    GenesisBlock,
-    GenesisConfig,
-    GenesisConsensusParams,
-    GenesisEvidence,
-    GenesisValidator,
-    MIN_RESET_PAUSE_DURATION,
-    NUMBER_OF_RETRIES,
-    Requests,
-)
+    DEFAULT_BACKOFF_FACTOR, MIN_RESET_PAUSE_DURATION, NUMBER_OF_RETRIES,
+    ApiSpecs, BaseParams, BenchmarkTool, GenesisBlock, GenesisConfig,
+    GenesisConsensusParams, GenesisEvidence, GenesisValidator, Requests)
+from packages.valory.skills.abstract_round_abci.models import \
+    SharedState as BaseSharedState
 from packages.valory.skills.abstract_round_abci.models import (
-    SharedState as BaseSharedState,
-)
-from packages.valory.skills.abstract_round_abci.models import (
-    TendermintRecoveryParams,
-    _MetaSharedState,
-    check_type,
-)
-from packages.valory.skills.abstract_round_abci.test_tools.abci_app import AbciAppTest
-from packages.valory.skills.abstract_round_abci.tests.conftest import (
-    irrelevant_genesis_config,
-)
-
+    TendermintRecoveryParams, _MetaSharedState, check_type)
+from packages.valory.skills.abstract_round_abci.test_tools.abci_app import \
+    AbciAppTest
+from packages.valory.skills.abstract_round_abci.tests.conftest import \
+    irrelevant_genesis_config
 
 BASE_DUMMY_SPECS_CONFIG = dict(
     name="dummy",

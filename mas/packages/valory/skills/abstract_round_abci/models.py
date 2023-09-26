@@ -27,18 +27,8 @@ from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from time import time
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    List,
-    Optional,
-    OrderedDict,
-    Tuple,
-    Type,
-    cast,
-    get_type_hints,
-)
+from typing import (Any, Callable, Dict, List, Optional, OrderedDict, Tuple,
+                    Type, cast, get_type_hints)
 
 from aea.configurations.data_types import PublicId
 from aea.exceptions import enforce
@@ -46,22 +36,11 @@ from aea.skills.base import Model, SkillContext
 
 from packages.valory.protocols.http.message import HttpMessage
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppDB,
-    BaseSynchronizedData,
-    ROUND_COUNT_DEFAULT,
-    RoundSequence,
-    VALUE_NOT_PROVIDED,
-    get_name,
-)
+    ROUND_COUNT_DEFAULT, VALUE_NOT_PROVIDED, AbciApp, AbciAppDB,
+    BaseSynchronizedData, RoundSequence, get_name)
 from packages.valory.skills.abstract_round_abci.utils import (
-    check,
-    check_type,
-    consensus_threshold,
-    get_data_from_nested_dict,
-    get_value_with_type,
-)
-
+    check, check_type, consensus_threshold, get_data_from_nested_dict,
+    get_value_with_type)
 
 MIN_RESET_PAUSE_DURATION = 10
 NUMBER_OF_RETRIES: int = 5

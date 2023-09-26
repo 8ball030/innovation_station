@@ -36,10 +36,11 @@ token_id-"component_id"
 131-skill/eightballer/contract_subscription:0.1.0
 
 #
-?-skill/eightballer/innovation_station_api/0.1.0
-?-agent/eightballer/innovation_station/0.1.0
-?-connection/eightballer/http_client/0.1.0
-?-service/eightballer/innovation_station/0.1.0
-?-protocol/zarathustra/sql_crud/0.1.0
-?-protocol/eightballer/http/0.1.0
-?-connection/eightballer/http_server/0.1.0
+134-protocol/eightballer/http/0.1.0
+135-connection/eightballer/http_client/0.1.0
+136-connection/eightballer/http_server/0.1.0
+137-skill/eightballer/innovation_station_api/0.1.0
+138-skill/eightballer/innovation_abci/0.1.0
+139-skill/eightballer/innovation_station_chained_app:0.1.0
+19-agent/eightballer/innovation_station_app/0.1.0
+15-service/eightballer/innovation_station/0.1.0

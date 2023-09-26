@@ -31,26 +31,14 @@ import pytest
 
 from packages.valory.skills.abstract_round_abci import PUBLIC_ID
 from packages.valory.skills.abstract_round_abci.base import (
-    ABCIAppInternalError,
-    AbciApp,
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    DegenerateRound,
-    EventType,
-    RoundSequence,
-)
+    AbciApp, ABCIAppInternalError, AbstractRound, BaseSynchronizedData,
+    BaseTxPayload, DegenerateRound, EventType, RoundSequence)
 from packages.valory.skills.abstract_round_abci.behaviour_utils import (
-    BaseBehaviour,
-    DegenerateBehaviour,
-    TmManager,
-)
+    BaseBehaviour, DegenerateBehaviour, TmManager)
 from packages.valory.skills.abstract_round_abci.behaviours import (
-    AbstractRoundBehaviour,
-    _MetaRoundBehaviour,
-)
-from packages.valory.skills.abstract_round_abci.models import TendermintRecoveryParams
-
+    AbstractRoundBehaviour, _MetaRoundBehaviour)
+from packages.valory.skills.abstract_round_abci.models import \
+    TendermintRecoveryParams
 
 BEHAVIOUR_A_ID = "behaviour_a"
 BEHAVIOUR_B_ID = "behaviour_b"

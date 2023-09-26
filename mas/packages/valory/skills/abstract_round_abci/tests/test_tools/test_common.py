@@ -24,23 +24,16 @@ from typing import Type, Union, cast
 import pytest
 
 from packages.valory.skills.abstract_round_abci.test_tools.common import (
-    BaseRandomnessBehaviourTest,
-    BaseSelectKeeperBehaviourTest,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import (
-    PATH_TO_SKILL,
-)
+    BaseRandomnessBehaviourTest, BaseSelectKeeperBehaviourTest)
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci import \
+    PATH_TO_SKILL
 from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.behaviours import (
-    DummyFinalBehaviour,
-    DummyKeeperSelectionBehaviour,
-    DummyRandomnessBehaviour,
-)
-from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import (
-    Event,
-)
-from packages.valory.skills.abstract_round_abci.tests.test_tools.base import (
-    FSMBehaviourTestToolSetup,
-)
+    DummyFinalBehaviour, DummyKeeperSelectionBehaviour,
+    DummyRandomnessBehaviour)
+from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.rounds import \
+    Event
+from packages.valory.skills.abstract_round_abci.tests.test_tools.base import \
+    FSMBehaviourTestToolSetup
 
 
 class BaseCommonBaseCaseTestSetup(FSMBehaviourTestToolSetup):

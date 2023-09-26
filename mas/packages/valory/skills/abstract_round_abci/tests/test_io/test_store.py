@@ -28,12 +28,8 @@ from typing import Optional, cast
 import pytest
 
 from packages.valory.skills.abstract_round_abci.io_.store import (
-    CustomStorerType,
-    JSONStorer,
-    Storer,
-    SupportedFiletype,
-    SupportedStorerType,
-)
+    CustomStorerType, JSONStorer, Storer, SupportedFiletype,
+    SupportedStorerType)
 
 
 class TestStorer:

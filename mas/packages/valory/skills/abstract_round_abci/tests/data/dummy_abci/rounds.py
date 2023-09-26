@@ -24,22 +24,12 @@ from enum import Enum
 from typing import FrozenSet, Optional, Set, Tuple, cast
 
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciApp,
-    AbciAppTransitionFunction,
-    AbstractRound,
-    AppState,
-    BaseSynchronizedData,
-    CollectSameUntilAllRound,
-    CollectSameUntilThresholdRound,
-    EventToTimeout,
-    OnlyKeeperSendsRound,
-)
+    AbciApp, AbciAppTransitionFunction, AbstractRound, AppState,
+    BaseSynchronizedData, CollectSameUntilAllRound,
+    CollectSameUntilThresholdRound, EventToTimeout, OnlyKeeperSendsRound)
 from packages.valory.skills.abstract_round_abci.tests.data.dummy_abci.payloads import (
-    DummyFinalPayload,
-    DummyKeeperSelectionPayload,
-    DummyRandomnessPayload,
-    DummyStartingPayload,
-)
+    DummyFinalPayload, DummyKeeperSelectionPayload, DummyRandomnessPayload,
+    DummyStartingPayload)
 
 
 class Event(Enum):

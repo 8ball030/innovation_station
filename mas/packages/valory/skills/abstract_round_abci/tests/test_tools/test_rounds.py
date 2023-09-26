@@ -30,33 +30,21 @@ from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from packages.valory.skills.abstract_round_abci.base import (
-    AbciAppDB,
-    BaseSynchronizedData,
-)
+    AbciAppDB, BaseSynchronizedData)
 from packages.valory.skills.abstract_round_abci.test_tools.rounds import (
-    BaseCollectDifferentUntilAllRoundTest,
+    MAX_PARTICIPANTS, BaseCollectDifferentUntilAllRoundTest,
     BaseCollectDifferentUntilThresholdRoundTest,
-    BaseCollectSameUntilAllRoundTest,
-    BaseCollectSameUntilThresholdRoundTest,
-    BaseOnlyKeeperSendsRoundTest,
-    BaseRoundTestClass,
-    BaseVotingRoundTest,
+    BaseCollectSameUntilAllRoundTest, BaseCollectSameUntilThresholdRoundTest,
+    BaseOnlyKeeperSendsRoundTest, BaseRoundTestClass, BaseVotingRoundTest,
     DummyCollectDifferentUntilAllRound,
-    DummyCollectDifferentUntilThresholdRound,
-    DummyCollectSameUntilAllRound,
-    DummyCollectSameUntilThresholdRound,
-    DummyEvent,
-    DummyOnlyKeeperSendsRound,
-    DummySynchronizedData,
-    DummyTxPayload,
-    DummyVotingRound,
-    MAX_PARTICIPANTS,
-    get_dummy_tx_payloads,
-    get_participants,
-)
-from packages.valory.skills.abstract_round_abci.tests.conftest import profile_name
-from packages.valory.skills.abstract_round_abci.tests.test_common import last_iteration
-
+    DummyCollectDifferentUntilThresholdRound, DummyCollectSameUntilAllRound,
+    DummyCollectSameUntilThresholdRound, DummyEvent, DummyOnlyKeeperSendsRound,
+    DummySynchronizedData, DummyTxPayload, DummyVotingRound,
+    get_dummy_tx_payloads, get_participants)
+from packages.valory.skills.abstract_round_abci.tests.conftest import \
+    profile_name
+from packages.valory.skills.abstract_round_abci.tests.test_common import \
+    last_iteration
 
 settings.load_profile(profile_name)
 

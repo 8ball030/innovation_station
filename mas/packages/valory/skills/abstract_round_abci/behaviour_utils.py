@@ -29,18 +29,8 @@ import sys
 from abc import ABC, ABCMeta, abstractmethod
 from enum import Enum
 from functools import partial
-from typing import (
-    Any,
-    Callable,
-    Dict,
-    Generator,
-    List,
-    Optional,
-    Tuple,
-    Type,
-    Union,
-    cast,
-)
+from typing import (Any, Callable, Dict, Generator, List, Optional, Tuple,
+                    Type, Union, cast)
 
 import pytz
 from aea.exceptions import enforce
@@ -51,64 +41,37 @@ from aea.skills.behaviours import SimpleBehaviour
 
 from packages.open_aea.protocols.signing import SigningMessage
 from packages.open_aea.protocols.signing.custom_types import (
-    RawMessage,
-    RawTransaction,
-    SignedTransaction,
-    Terms,
-)
-from packages.valory.connections.http_client.connection import (
-    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID,
-)
-from packages.valory.connections.ipfs.connection import PUBLIC_ID as IPFS_CONNECTION_ID
-from packages.valory.connections.p2p_libp2p_client.connection import (
-    PUBLIC_ID as P2P_LIBP2P_CLIENT_PUBLIC_ID,
-)
-from packages.valory.contracts.service_registry.contract import (  # noqa: F401  # pylint: disable=unused-import
-    ServiceRegistryContract,
-)
+    RawMessage, RawTransaction, SignedTransaction, Terms)
+from packages.valory.connections.http_client.connection import \
+    PUBLIC_ID as HTTP_CLIENT_PUBLIC_ID
+from packages.valory.connections.ipfs.connection import \
+    PUBLIC_ID as IPFS_CONNECTION_ID
+from packages.valory.connections.p2p_libp2p_client.connection import \
+    PUBLIC_ID as P2P_LIBP2P_CLIENT_PUBLIC_ID
+from packages.valory.contracts.service_registry.contract import \
+    ServiceRegistryContract  # noqa: F401  # pylint: disable=unused-import
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.protocols.http import HttpMessage
 from packages.valory.protocols.ipfs import IpfsMessage
-from packages.valory.protocols.ipfs.dialogues import IpfsDialogue, IpfsDialogues
+from packages.valory.protocols.ipfs.dialogues import (IpfsDialogue,
+                                                      IpfsDialogues)
 from packages.valory.protocols.ledger_api import LedgerApiMessage
 from packages.valory.protocols.tendermint import TendermintMessage
 from packages.valory.skills.abstract_round_abci.base import (
-    AbstractRound,
-    BaseSynchronizedData,
-    BaseTxPayload,
-    LEDGER_API_ADDRESS,
-    OK_CODE,
-    RoundSequence,
-    Transaction,
-)
+    LEDGER_API_ADDRESS, OK_CODE, AbstractRound, BaseSynchronizedData,
+    BaseTxPayload, RoundSequence, Transaction)
 from packages.valory.skills.abstract_round_abci.dialogues import (
-    ContractApiDialogue,
-    ContractApiDialogues,
-    HttpDialogue,
-    HttpDialogues,
-    LedgerApiDialogue,
-    LedgerApiDialogues,
-    SigningDialogues,
-    TendermintDialogues,
-)
+    ContractApiDialogue, ContractApiDialogues, HttpDialogue, HttpDialogues,
+    LedgerApiDialogue, LedgerApiDialogues, SigningDialogues,
+    TendermintDialogues)
 from packages.valory.skills.abstract_round_abci.io_.ipfs import (
-    IPFSInteract,
-    IPFSInteractionError,
-)
-from packages.valory.skills.abstract_round_abci.io_.load import CustomLoaderType, Loader
+    IPFSInteract, IPFSInteractionError)
+from packages.valory.skills.abstract_round_abci.io_.load import (
+    CustomLoaderType, Loader)
 from packages.valory.skills.abstract_round_abci.io_.store import (
-    CustomStorerType,
-    Storer,
-    SupportedFiletype,
-    SupportedObjectType,
-)
+    CustomStorerType, Storer, SupportedFiletype, SupportedObjectType)
 from packages.valory.skills.abstract_round_abci.models import (
-    BaseParams,
-    Requests,
-    SharedState,
-    TendermintRecoveryParams,
-)
-
+    BaseParams, Requests, SharedState, TendermintRecoveryParams)
 
 # TODO: port registration code from registration_abci to here
 

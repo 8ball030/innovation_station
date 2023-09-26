@@ -29,23 +29,14 @@ import pytest
 from aea.protocols.dialogue.base import Dialogues
 from aea.skills.base import Model
 
-from packages.valory.connections.ipfs.connection import PUBLIC_ID as IPFS_CONNECTION_ID
+from packages.valory.connections.ipfs.connection import \
+    PUBLIC_ID as IPFS_CONNECTION_ID
 from packages.valory.protocols.ipfs import IpfsMessage
 from packages.valory.skills.abstract_round_abci.dialogues import (
-    AbciDialogue,
-    AbciDialogues,
-    ContractApiDialogue,
-    ContractApiDialogues,
-    HttpDialogue,
-    HttpDialogues,
-    IpfsDialogues,
-    LedgerApiDialogue,
-    LedgerApiDialogues,
-    SigningDialogue,
-    SigningDialogues,
-    TendermintDialogue,
-    TendermintDialogues,
-)
+    AbciDialogue, AbciDialogues, ContractApiDialogue, ContractApiDialogues,
+    HttpDialogue, HttpDialogues, IpfsDialogues, LedgerApiDialogue,
+    LedgerApiDialogues, SigningDialogue, SigningDialogues, TendermintDialogue,
+    TendermintDialogues)
 
 
 @pytest.mark.parametrize(

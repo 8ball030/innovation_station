@@ -24,13 +24,8 @@ from abc import ABC, abstractmethod
 from typing import Any, Callable, Dict, Optional
 
 from packages.valory.skills.abstract_round_abci.io_.store import (
-    CustomObjectType,
-    NativelySupportedSingleObjectType,
-    SupportedFiletype,
-    SupportedObjectType,
-    SupportedSingleObjectType,
-)
-
+    CustomObjectType, NativelySupportedSingleObjectType, SupportedFiletype,
+    SupportedObjectType, SupportedSingleObjectType)
 
 CustomLoaderType = Optional[Callable[[str], CustomObjectType]]
 SupportedLoaderType = Callable[[str], SupportedSingleObjectType]
