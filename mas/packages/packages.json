@@ -1,14 +1,13 @@
 {
     "dev": {
-        "protocol/eightballer/http/0.1.0": "bafybeigiz522jbepy54p7k53qxqiqmpuwsdabbopuls3zbhmcbfdj3ugem",
-        "connection/eightballer/http_client/0.1.0": "bafybeigc3xrrlyizadeh67fdxph3czfqkfqc6jltonghzd2rkfc5gvtpau",
-        "connection/eightballer/http_server/0.1.0": "bafybeif3sjj2evpqe74v3car427gmy2ttvozlac2t4ovbl3mhkopae2ipa",
-        "skill/eightballer/innovation_station_api/0.1.0": "bafybeic7v2l6dcjnna74w7enzxhq7hsnubvc2fsxuubys3ysfwnq3irhme",
-        "agent/eightballer/innovation_station/0.1.0": "bafybeihz5zdjifq5qrub4v45icxpmqmuge7d7dson7ceud7ymfqqvzhulq",
-        "service/eightballer/innovation_station/0.1.0": "bafybeifyelqntyhv2nafqmystb7nvpj74rhd7vi5np3zkujgsvvwgbbhoa",
-        "skill/eightballer/innovation_abci/0.1.0": "bafybeifthirphpyfdg6vt23puelkju3raoelwq7oj6h77oqtwya7fbkfia",
-        "skill/eightballer/innovation_station_chained_app/0.1.0": "bafybeifjwhs36wnylt5fv4qmmqacc7tmkcexe4gz6ui4jcvpggz4ega5v4",
-        "agent/eightballer/innovation_station_abci/0.1.0": "bafybeicdwpfsotriqsrzm6be5wyw45h2vojdgd6rfkg4eif76cybxfcgp4"
+        "protocol/eightballer/http/0.1.0": "bafybeihmhy6ax5uyjt7yxppn4viqswibcs5lsjhl3kvrsesorqe2u44jcm",
+        "connection/eightballer/http_client/0.1.0": "bafybeif5a4v2iifbungunult2lc2b4bvwuld5hebojyjod2e4esckbez7y",
+        "connection/eightballer/http_server/0.1.0": "bafybeies7jer6ezp2gxx7f7aw4t64rcgepqprqr3cqukc726wci3xspdom",
+        "skill/eightballer/innovation_station_api/0.1.0": "bafybeih2kwhb6mrl2o5xr3fo2x5bqkuxt52khgzw7aee6kyyzzaavzia24",
+        "skill/eightballer/innovation_abci/0.1.0": "bafybeib32p6ebb53d3h25g6cftui7m33aay3jb5uwsrmnnndhanjkyr5ha",
+        "skill/eightballer/innovation_station_chained_app/0.1.0": "bafybeid5f3ggicrffmex4ktwxbpmheocpvij7mnymipaa4dupvj44utr3i",
+        "agent/eightballer/innovation_station_app/0.1.0": "bafybeidrzxyhwipkujahfm6fqh2xzrhxzjcfrs7srij7gayldrd324exqa",
+        "service/eightballer/innovation_station/0.1.0": "bafybeifjfdhk324tthokhhltpnm33244ults34bo2r5y55q23lkzlh77ni"
     },
     "third_party": {
         "protocol/zarathustra/sql_crud/0.1.0": "bafybeiey56caaj43gdq2w5dvfgdl4hwjlbcbgdplg7e5t5amo22vtfe2au",

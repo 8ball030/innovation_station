@@ -6,18 +6,18 @@ description: The scaffold skill is a scaffold for your own skill implementation.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
-  __init__.py: bafybeiagohxocbf2fo74kkjxo7w6yxzypz6u52rxun4jnyhzy7jtfax5oy
-  behaviours.py: bafybeih5itlfy533j62777c4nodokikl2b3scuk4gu23yk7ocyor6nb6l4
-  composition.py: bafybeigfnxauymdguruekfygz7adyccaftblhbg2wiffhdfnd45irj4lr4
-  dialogues.py: bafybeidglyfyb63cqpffqgp2ekn7f2ajospfhyga6oewtsfggctc3oomnm
-  handlers.py: bafybeicxslyoiuycg6pzfi5x4wehkvf2m374xncd7k2u47xrokc4ghqlay
-  my_model.py: bafybeieeousk7mixtuv4hxmclzabkbdymp2hdellxgrb6e23hslejavooi
+  __init__.py: bafybeign352fgd6ox3ptes2eguzffk7logl2vhih2f7jxvxrsokup2tona
+  behaviours.py: bafybeidk2a332mv43o5j6zgj4fht35mtyoxa72xdjjkzz3vvqcmamujiyi
+  composition.py: bafybeicpypo5qnruveko56mjtnpg2ymsfstp4expxvrdo3fiujpcl2jtba
+  dialogues.py: bafybeiho4utvor5jbdleh3bpxgrhahdg3tkimpgx2lwmoqalwg64cstyvq
+  handlers.py: bafybeigd64a2jtuxxyddnicinsdohltmhf26jdbp75iwm7xzv43h3ws334
+  my_model.py: bafybeidy6mehlqeo6sehvdgjfoaphwzlesgb6gotwh5cpoouymtrlbinvm
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
 protocols: []
 skills:
-- eightballer/innovation_abci:0.1.0:bafybeifthirphpyfdg6vt23puelkju3raoelwq7oj6h77oqtwya7fbkfia
+- eightballer/innovation_abci:0.1.0:bafybeib32p6ebb53d3h25g6cftui7m33aay3jb5uwsrmnnndhanjkyr5ha
 - valory/abstract_round_abci:0.1.0:bafybeihlcferdpjhcorbrgp3zplikxkuxmlx3x7mc4g5sjxxm2mgzryfia
 - valory/registration_abci:0.1.0:bafybeifsleevuuvycaorb4quiywbp52tdmuz6awdswuql5l4jhqlby65xm
 - valory/reset_pause_abci:0.1.0:bafybeidrz3lzsgyu4qb3zufnvh6zo4owg7hq5mkdk46o5sa637dodb2vkq

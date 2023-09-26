@@ -2,12 +2,16 @@ name: innovation_station
 author: eightballer
 version: 0.1.0
 description: An agent service to allow for the creation of new components. Built with
-  love at ETHNYC 2023 by 8Baller, Asha, and Zarathustra.
+  love at ETHNYC 2023 by 8Baller, Asha, and Zarathustra. A number of novel firsts
+  have been accomplished. First agent service to act as a CDN for a frontend. Implements
+  additional http protocols, allowing for the handling of multiple http protocols
+  within the same agent. This allows the seperation of the cdn, which is pulled from
+  hash on agent startup.
 aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station:0.1.0:bafybeihz5zdjifq5qrub4v45icxpmqmuge7d7dson7ceud7ymfqqvzhulq
+agent: eightballer/innovation_station_app:0.1.0:bafybeidrzxyhwipkujahfm6fqh2xzrhxzjcfrs7srij7gayldrd324exqa
 number_of_agents: 1
 deployment:
   agent:
