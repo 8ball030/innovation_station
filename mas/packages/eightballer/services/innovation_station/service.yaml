@@ -17,7 +17,7 @@ deployment:
   agent:
     ports:
       0:
-        8080: 8080
+        8001: 8080
 ---
 public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpyeahsoqorctys7uq6b3djq
 type: connection
@@ -33,6 +33,6 @@ models:
     args:
       frontend:
         enabled: true
-        ipfs_hash: ${IPFS_HASH:str:bafybeihuak4dbhsioz3ulptg42p5wv5ywy563aqkqitqoil3h3anlatzim}
+        ipfs_hash: ${IPFS_HASH:str:bafybeiacrc4khp5672vknsmz7nfzr5jrcfggmnlkcjxa67zh7laquvymum}
         directory: www
         openai_api_key: ${OPENAI_API_KEY:str:}
