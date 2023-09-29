@@ -30,25 +30,21 @@ from aea.test_tools.test_skill import BaseSkillTestCase
 
 from packages.valory.connections.abci.connection import PUBLIC_ID
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import (
-    CheckTxType,
-    CheckTxTypeEnum,
-    Evidences,
-    Header,
-    LastCommitInfo,
-    PublicKey,
-    Result,
-    ResultType,
-    SnapShots,
-    Snapshot,
-    Timestamp,
-    ValidatorUpdate,
-    ValidatorUpdates,
-)
-from packages.valory.protocols.abci.dialogues import AbciDialogues as BaseAbciDialogues
-from packages.valory.skills.abstract_abci.dialogues import AbciDialogue, AbciDialogues
-from packages.valory.skills.abstract_abci.handlers import ABCIHandler, ERROR_CODE
-
+from packages.valory.protocols.abci.custom_types import (CheckTxType,
+                                                         CheckTxTypeEnum,
+                                                         Evidences, Header,
+                                                         LastCommitInfo,
+                                                         PublicKey, Result,
+                                                         ResultType, Snapshot,
+                                                         SnapShots, Timestamp,
+                                                         ValidatorUpdate,
+                                                         ValidatorUpdates)
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogues as BaseAbciDialogues
+from packages.valory.skills.abstract_abci.dialogues import (AbciDialogue,
+                                                            AbciDialogues)
+from packages.valory.skills.abstract_abci.handlers import (ERROR_CODE,
+                                                           ABCIHandler)
 
 PACKAGE_DIR = Path(__file__).parent.parent
 
