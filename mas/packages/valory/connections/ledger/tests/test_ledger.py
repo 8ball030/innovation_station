@@ -28,8 +28,6 @@ from typing import Any, Callable, Dict, FrozenSet, Tuple, Type, cast
 from unittest import mock
 
 import pytest
-from aea_ledger_ethereum import EthereumCrypto
-
 from aea.common import Address
 from aea.configurations.base import ConnectionConfig
 from aea.connections.base import ConnectionStates
@@ -40,19 +38,19 @@ from aea.mail.base import Envelope
 from aea.multiplexer import Multiplexer
 from aea.protocols.base import Message
 from aea.protocols.dialogue.base import Dialogue, DialogueLabel, Dialogues
+from aea_ledger_ethereum import EthereumCrypto
 
 from packages.valory.connections.ledger.base import RequestDispatcher
-from packages.valory.connections.ledger.connection import LedgerConnection, PUBLIC_ID
-from packages.valory.connections.ledger.ledger_dispatcher import (
-    LedgerApiRequestDispatcher,
-)
-from packages.valory.connections.ledger.tests.conftest import make_ledger_api_connection
-
+from packages.valory.connections.ledger.connection import (PUBLIC_ID,
+                                                           LedgerConnection)
+from packages.valory.connections.ledger.ledger_dispatcher import \
+    LedgerApiRequestDispatcher
+from packages.valory.connections.ledger.tests.conftest import \
+    make_ledger_api_connection
 # pylint: skip-file
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.protocols.ledger_api import LedgerApiMessage
 from packages.valory.protocols.ledger_api.custom_types import Kwargs
-
 
 SOME_SKILL_ID = "some/skill:0.1.0"
 NON_BLOCKING_TIME = 1

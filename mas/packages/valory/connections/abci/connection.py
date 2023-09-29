@@ -40,51 +40,23 @@ from aea.protocols.dialogue.base import DialogueLabel
 from google.protobuf.message import DecodeError
 
 from packages.valory.connections.abci.dialogues import AbciDialogues
-from packages.valory.connections.abci.tendermint.abci import (  # type: ignore
-    types_pb2_grpc,
-)
+from packages.valory.connections.abci.tendermint.abci import \
+    types_pb2_grpc  # type: ignore
 from packages.valory.connections.abci.tendermint.abci.types_pb2 import (  # type: ignore
-    Request,
-    RequestApplySnapshotChunk,
-    RequestBeginBlock,
-    RequestCheckTx,
-    RequestCommit,
-    RequestDeliverTx,
-    RequestEcho,
-    RequestEndBlock,
-    RequestFlush,
-    RequestInfo,
-    RequestInitChain,
-    RequestListSnapshots,
-    RequestLoadSnapshotChunk,
-    RequestOfferSnapshot,
-    RequestQuery,
-    RequestSetOption,
-    Response,
-    ResponseApplySnapshotChunk,
-    ResponseBeginBlock,
-    ResponseCheckTx,
-    ResponseCommit,
-    ResponseDeliverTx,
-    ResponseEcho,
-    ResponseEndBlock,
-    ResponseFlush,
-    ResponseInfo,
-    ResponseInitChain,
-    ResponseListSnapshots,
-    ResponseLoadSnapshotChunk,
-    ResponseOfferSnapshot,
-    ResponseQuery,
-    ResponseSetOption,
-)
-from packages.valory.connections.abci.tendermint_decoder import (
-    _TendermintProtocolDecoder,
-)
-from packages.valory.connections.abci.tendermint_encoder import (
-    _TendermintProtocolEncoder,
-)
+    Request, RequestApplySnapshotChunk, RequestBeginBlock, RequestCheckTx,
+    RequestCommit, RequestDeliverTx, RequestEcho, RequestEndBlock,
+    RequestFlush, RequestInfo, RequestInitChain, RequestListSnapshots,
+    RequestLoadSnapshotChunk, RequestOfferSnapshot, RequestQuery,
+    RequestSetOption, Response, ResponseApplySnapshotChunk, ResponseBeginBlock,
+    ResponseCheckTx, ResponseCommit, ResponseDeliverTx, ResponseEcho,
+    ResponseEndBlock, ResponseFlush, ResponseInfo, ResponseInitChain,
+    ResponseListSnapshots, ResponseLoadSnapshotChunk, ResponseOfferSnapshot,
+    ResponseQuery, ResponseSetOption)
+from packages.valory.connections.abci.tendermint_decoder import \
+    _TendermintProtocolDecoder
+from packages.valory.connections.abci.tendermint_encoder import \
+    _TendermintProtocolEncoder
 from packages.valory.protocols.abci import AbciMessage
-
 
 PUBLIC_ID = PublicId.from_str("valory/abci:0.1.0")
 
@@ -98,7 +70,7 @@ DEFAULT_RPC_PORT = 26657
 DEFAULT_LISTEN_ADDRESS = "0.0.0.0"  # nosec
 DEFAULT_P2P_LISTEN_ADDRESS = f"{_TCP}{DEFAULT_LISTEN_ADDRESS}:{DEFAULT_P2P_PORT}"
 DEFAULT_RPC_LISTEN_ADDRESS = f"{_TCP}{LOCALHOST}:{DEFAULT_RPC_PORT}"
-MAX_READ_IN_BYTES = 2**20  # Max we'll consume on a read stream (1 MiB)
+MAX_READ_IN_BYTES = 2**25  # Max we'll consume on a read stream (1 MiB)
 MAX_VARINT_BYTES = 10  # Max size of varint we support
 DEFAULT_TENDERMINT_LOG_FILE = "tendermint.log"
 

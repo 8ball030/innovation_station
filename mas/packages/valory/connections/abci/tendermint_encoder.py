@@ -21,48 +21,28 @@
 from typing import Callable, Optional, Union, cast
 
 from packages.valory.connections.abci.tendermint.abci.types_pb2 import (  # type: ignore
-    ConsensusParams,
-    Event,
-    EventAttribute,
-    Request,
-    Response,
-    ResponseApplySnapshotChunk,
-    ResponseBeginBlock,
-    ResponseCheckTx,
-    ResponseCommit,
-    ResponseDeliverTx,
-    ResponseEcho,
-    ResponseEndBlock,
-    ResponseException,
-    ResponseFlush,
-    ResponseInfo,
-    ResponseInitChain,
-    ResponseListSnapshots,
-    ResponseLoadSnapshotChunk,
-    ResponseOfferSnapshot,
-    ResponseQuery,
-    ResponseSetOption,
-    Snapshot,
-    ValidatorUpdate,
-)
+    ConsensusParams, Event, EventAttribute, Request, Response,
+    ResponseApplySnapshotChunk, ResponseBeginBlock, ResponseCheckTx,
+    ResponseCommit, ResponseDeliverTx, ResponseEcho, ResponseEndBlock,
+    ResponseException, ResponseFlush, ResponseInfo, ResponseInitChain,
+    ResponseListSnapshots, ResponseLoadSnapshotChunk, ResponseOfferSnapshot,
+    ResponseQuery, ResponseSetOption, Snapshot, ValidatorUpdate)
 from packages.valory.connections.abci.tendermint.crypto.proof_pb2 import (  # type: ignore
-    ProofOp,
-    ProofOps,
-)
+    ProofOp, ProofOps)
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import (
-    ConsensusParams as CustomConsensusParams,
-)
+from packages.valory.protocols.abci.custom_types import \
+    ConsensusParams as CustomConsensusParams
 from packages.valory.protocols.abci.custom_types import Event as CustomEvent
-from packages.valory.protocols.abci.custom_types import (
-    EventAttribute as CustomEventAttribute,
-)
-from packages.valory.protocols.abci.custom_types import ProofOp as CustomProofOp
-from packages.valory.protocols.abci.custom_types import ProofOps as CustomProofOps
-from packages.valory.protocols.abci.custom_types import Snapshot as CustomSnapshot
-from packages.valory.protocols.abci.custom_types import (
-    ValidatorUpdate as CustomValidatorUpdate,
-)
+from packages.valory.protocols.abci.custom_types import \
+    EventAttribute as CustomEventAttribute
+from packages.valory.protocols.abci.custom_types import \
+    ProofOp as CustomProofOp
+from packages.valory.protocols.abci.custom_types import \
+    ProofOps as CustomProofOps
+from packages.valory.protocols.abci.custom_types import \
+    Snapshot as CustomSnapshot
+from packages.valory.protocols.abci.custom_types import \
+    ValidatorUpdate as CustomValidatorUpdate
 
 
 class _TendermintProtocolEncoder:

@@ -24,15 +24,13 @@ from unittest import mock
 
 import pytest
 from aea_ledger_ethereum import EthereumCrypto
-from aea_test_autonomy.base_test_classes.contracts import BaseRegistriesContractsTest
+from aea_test_autonomy.base_test_classes.contracts import \
+    BaseRegistriesContractsTest
 from aea_test_autonomy.docker.base import skip_docker_tests
 
 from packages.valory.contracts.service_registry.contract import (
     DEPLOYED_BYTECODE_MD5_HASH_BY_CHAIN_ID,
-    EXPECTED_CONTRACT_ADDRESS_BY_CHAIN_ID,
-    ServiceRegistryContract,
-)
-
+    EXPECTED_CONTRACT_ADDRESS_BY_CHAIN_ID, ServiceRegistryContract)
 
 PACKAGE_DIR = Path(__file__).parent.parent
 

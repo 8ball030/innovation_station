@@ -49,49 +49,33 @@ from aea_test_autonomy.configurations import ANY_ADDRESS, HTTP_LOCALHOST
 from aea_test_autonomy.docker.base import skip_docker_tests
 from aea_test_autonomy.docker.tendermint import TendermintDockerImage
 from aea_test_autonomy.fixture_helpers import (  # noqa: F401
-    DEFAULT_TENDERMINT_PORT,
-    abci_host,
-    abci_port,
-    tendermint_port,
-)
-from aea_test_autonomy.helpers.async_utils import (
-    AnotherThreadTask,
-    BaseThreadedAsyncLoop,
-    wait_for_condition,
-)
+    DEFAULT_TENDERMINT_PORT, abci_host, abci_port, tendermint_port)
+from aea_test_autonomy.helpers.async_utils import (AnotherThreadTask,
+                                                   BaseThreadedAsyncLoop,
+                                                   wait_for_condition)
 from docker.models.containers import Container
 from hypothesis import database, given, settings
 from hypothesis.strategies import integers
 
 from packages.valory.connections.abci import check_dependencies as dep_utils
 from packages.valory.connections.abci.connection import (
-    ABCIServerConnection,
-    DEFAULT_ABCI_PORT,
-    DEFAULT_LISTEN_ADDRESS,
-    DecodeVarintError,
-    EncodeVarintError,
-    ShortBufferLengthError,
-    TooLargeVarint,
-    VarintMessageReader,
-    _TendermintABCISerializer,
-)
+    DEFAULT_ABCI_PORT, DEFAULT_LISTEN_ADDRESS, ABCIServerConnection,
+    DecodeVarintError, EncodeVarintError, ShortBufferLengthError,
+    TooLargeVarint, VarintMessageReader, _TendermintABCISerializer)
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import (
-    BlockParams,
-    ConsensusParams,
-    Duration,
-    Event,
-    EventAttribute,
-    Events,
-    EvidenceParams,
-    ProofOps,
-    ValidatorParams,
-    ValidatorUpdates,
-    VersionParams,
-)
+from packages.valory.protocols.abci.custom_types import (BlockParams,
+                                                         ConsensusParams,
+                                                         Duration, Event,
+                                                         EventAttribute,
+                                                         Events,
+                                                         EvidenceParams,
+                                                         ProofOps,
+                                                         ValidatorParams,
+                                                         ValidatorUpdates,
+                                                         VersionParams)
 from packages.valory.protocols.abci.dialogues import AbciDialogue
-from packages.valory.protocols.abci.dialogues import AbciDialogues as BaseAbciDialogues
-
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogues as BaseAbciDialogues
 
 PACKAGE_DIR = Path(__file__).parent.parent
 

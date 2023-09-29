@@ -25,12 +25,14 @@ from aea.common import JSONLike
 from aea.exceptions import enforce
 from aea.helpers.serializers import DictProtobufStructSerializer
 from aea.helpers.transaction.base import RawTransaction as BaseRawTransaction
-from aea.helpers.transaction.base import SignedTransaction as BaseSignedTransaction
+from aea.helpers.transaction.base import \
+    SignedTransaction as BaseSignedTransaction
 from aea.helpers.transaction.base import State as BaseState
 from aea.helpers.transaction.base import Terms as BaseTerms
-from aea.helpers.transaction.base import TransactionDigest as BaseTransactionDigest
-from aea.helpers.transaction.base import TransactionReceipt as BaseTransactionReceipt
-
+from aea.helpers.transaction.base import \
+    TransactionDigest as BaseTransactionDigest
+from aea.helpers.transaction.base import \
+    TransactionReceipt as BaseTransactionReceipt
 
 RawTransaction = BaseRawTransaction
 SignedTransaction = BaseSignedTransaction

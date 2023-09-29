@@ -7,18 +7,16 @@ from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
 
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
+from google.protobuf import \
+    duration_pb2 as google_dot_protobuf_dot_duration__pb2
 
-from packages.valory.connections.abci.gogoproto import (
-    gogo_pb2 as gogoproto_dot_gogo__pb2,
-)
-
+from packages.valory.connections.abci.gogoproto import \
+    gogo_pb2 as gogoproto_dot_gogo__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="tendermint/types/params.proto",

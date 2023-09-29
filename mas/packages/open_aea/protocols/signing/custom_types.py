@@ -25,7 +25,8 @@ from typing import Any
 from aea.helpers.transaction.base import RawMessage as BaseRawMessage
 from aea.helpers.transaction.base import RawTransaction as BaseRawTransaction
 from aea.helpers.transaction.base import SignedMessage as BaseSignedMessage
-from aea.helpers.transaction.base import SignedTransaction as BaseSignedTransaction
+from aea.helpers.transaction.base import \
+    SignedTransaction as BaseSignedTransaction
 from aea.helpers.transaction.base import Terms as BaseTerms
 
 

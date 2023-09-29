@@ -22,20 +22,13 @@
 # pylint: skip-file
 
 from packages.valory.connections.abci.connection import PUBLIC_ID
-from packages.valory.connections.abci.dialogues import AbciDialogue, AbciDialogues
+from packages.valory.connections.abci.dialogues import (AbciDialogue,
+                                                        AbciDialogues)
 from packages.valory.connections.abci.tendermint.abci.types_pb2 import (  # type: ignore
-    Request,
-    RequestApplySnapshotChunk,
-    RequestEcho,
-    RequestListSnapshots,
-    RequestLoadSnapshotChunk,
-    RequestOfferSnapshot,
-    RequestSetOption,
-    Snapshot,
-)
-from packages.valory.connections.abci.tendermint_decoder import (
-    _TendermintProtocolDecoder,
-)
+    Request, RequestApplySnapshotChunk, RequestEcho, RequestListSnapshots,
+    RequestLoadSnapshotChunk, RequestOfferSnapshot, RequestSetOption, Snapshot)
+from packages.valory.connections.abci.tendermint_decoder import \
+    _TendermintProtocolDecoder
 from packages.valory.protocols.abci import AbciMessage
 
 

@@ -18,10 +18,10 @@ connections: []
 contracts: []
 protocols: []
 skills:
-- eightballer/innovation_abci:0.1.0:bafybeighlimsrhj6avrzw5c2xaf4u3ljt5miwvmd4afiyfcjtl7jq3djsy
-- valory/abstract_round_abci:0.1.0:bafybeic24rpwmgsor2xc2yzxcd4p3gwjbzspzimgqehnkweluwruea6icu
-- valory/registration_abci:0.1.0:bafybeicjc5jcz3ejigadts6zofypgel4gyf7k76hc3r3qmc6otoqdni75y
-- valory/reset_pause_abci:0.1.0:bafybeidtyenx7og7lbozuzd5yffcw5ur4kcia4hslwfkwluwuoryzeyvsu
+- eightballer/innovation_abci:0.1.0:bafybeifiuzjsct4gn5jvpai6q2ifvrkuc6mygo3acjo27emyswaa3gdd7e
+- valory/abstract_round_abci:0.1.0:bafybeih2eokievudt4a7x7dwd6uyan7cgwr3y2t4dtvzy4xsubbbumf34m
+- valory/registration_abci:0.1.0:bafybeig3jo3fhcxz7xgwpxnmf74ann2bwlqyaq2466wrkg5mbc33wmpk6y
+- valory/reset_pause_abci:0.1.0:bafybeicuma62mkfb36ygsycufhjqt6jqffi7zhhuxdlgdvmq6kcjl2ebm4
 behaviours:
   main:
     args: {}

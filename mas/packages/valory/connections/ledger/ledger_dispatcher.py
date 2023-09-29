@@ -24,22 +24,19 @@ from typing import Any, cast
 
 from aea.connections.base import ConnectionStates
 from aea.crypto.base import LedgerApi
-from aea.helpers.transaction.base import RawTransaction, State, TransactionDigest
+from aea.helpers.transaction.base import (RawTransaction, State,
+                                          TransactionDigest)
 from aea.protocols.base import Address, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import Dialogues as BaseDialogues
 
 from packages.valory.connections.ledger.base import RequestDispatcher
 from packages.valory.protocols.ledger_api.custom_types import (
-    TransactionDigests,
-    TransactionReceipt,
-)
+    TransactionDigests, TransactionReceipt)
 from packages.valory.protocols.ledger_api.dialogues import LedgerApiDialogue
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogues as BaseLedgerApiDialogues,
-)
+from packages.valory.protocols.ledger_api.dialogues import \
+    LedgerApiDialogues as BaseLedgerApiDialogues
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
-
 
 _default_logger = logging.getLogger(
     "aea.packages.valory.connections.ledger.ledger_dispatcher"
@@ -375,13 +372,14 @@ class LedgerApiRequestDispatcher(RequestDispatcher):
                 ValueError("No transaction_digest returned"), api, message, dialogue
             )
 
-        ledger_id = self.get_ledger_id(message)
         return cast(
             LedgerApiMessage,
             dialogue.reply(
                 performative=LedgerApiMessage.Performative.TRANSACTION_DIGESTS,
                 target_message=message,
-                transaction_digests=TransactionDigests(ledger_id, transaction_digests),
+                transaction_digests=TransactionDigests(
+                    message.signed_transaction.ledger_id, transaction_digests
+                ),
             ),
         )
 

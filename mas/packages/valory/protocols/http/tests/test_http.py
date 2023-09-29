@@ -24,7 +24,6 @@ from typing import Callable, Type
 from unittest import mock
 
 import pytest
-
 from aea.common import Address
 from aea.exceptions import AEAEnforceError
 from aea.mail.base import Envelope
@@ -33,11 +32,10 @@ from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import DialogueLabel
 
 from packages.valory.protocols.http import HttpMessage, message
-from packages.valory.protocols.http.dialogues import HttpDialogue, HttpDialogues
-from packages.valory.protocols.http.message import (
-    _default_logger as http_message_logger,
-)
-
+from packages.valory.protocols.http.dialogues import (HttpDialogue,
+                                                      HttpDialogues)
+from packages.valory.protocols.http.message import \
+    _default_logger as http_message_logger
 
 LEDGER_ID = "ethereum"
 

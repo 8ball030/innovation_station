@@ -7,21 +7,21 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeihkgodu7o7v6pfazm7u6orlspsfrae3cyz36yc46x67phfmw3l57e
-  __init__.py: bafybeierqitcqk7oy6m3qp7jgs67lcg55mzt3arltkwimuii2ynfejccwi
-  base.py: bafybeicpyhus3h2t5urzldnjns2sfwae64uinethqnlunudclbdg4xftnq
-  connection.py: bafybeicydkymhz2feqmihtkiwdfg7pp4pww2elqv4tijuhjcplyvawdk74
-  contract_dispatcher.py: bafybeigqgqe6zef335t2ygp4celx7445etwjsr42yroc2qmrynwfslgjhq
-  ledger_dispatcher.py: bafybeidk2ucd2oc6bdmevdlmia5i5d66t446otzhq5loepvz5altpl6xdu
-  tests/__init__.py: bafybeieyhttiwruutk6574yzj7dk2afamgdum5vktyv54gsax7dlkuqtc4
-  tests/conftest.py: bafybeid7vo7e2m76ey5beeadtbxywxx5ukefd5slwbc362rwmhht6i45ou
-  tests/test_contract_dispatcher.py: bafybeidpwcnitn5gzgmbtaur3mevme72rsdaax27nu4bs3aqxwixyn4cvy
-  tests/test_ledger.py: bafybeib5q7ypsuumitcsai3mpnjsrzxijtuj7ut5xcsbvpwnllkfozhsk4
-  tests/test_ledger_api.py: bafybeifwdpbds7ujd2uzxcapprdgdp5fn2gpbycsgbbefbsabrucnvrfiq
+  __init__.py: bafybeia3purd7y4b7tkdt2fcaxkdazos32criq5hx6fhufaislrdefe674
+  base.py: bafybeiasi3v73ggevfboz32trrpxxo5yzgprv22rr24x7dpdk75epagmfa
+  connection.py: bafybeigjottpsahqqy6ulauw4dafmvpph3rxfebavl5thfkceenpjv3bly
+  contract_dispatcher.py: bafybeigtecm5rzveioof5wtmtgpbth4kghjx7zkute5oexatlno5gyrvsi
+  ledger_dispatcher.py: bafybeihl6y27ea7ao5t7436byfyv5bpq6vcjbucmocpklsg6p6bhrzvjpi
+  tests/__init__.py: bafybeifku7ttsmbj4gfx6dkgjvwypx7v5ysfqlzof6vh4p7gujakjtuwhe
+  tests/conftest.py: bafybeiaa3t7qmnlq2jr2kaek2fi5uhnujkps4t4jcjvaaka6hxxy327sle
+  tests/test_contract_dispatcher.py: bafybeihrh7ddakslbzqd26wa3vd5psle572cbkxkcnwhtw4xbaudmpvm2i
+  tests/test_ledger.py: bafybeihj5is4zqunkt372pfxtiznnb74pechawn5kznhzozptyllkzegiu
+  tests/test_ledger_api.py: bafybeicfcpcfnz55ocucrxkooe2vkslh57k3eue5j5lououaksezxyby64
 fingerprint_ignore_patterns: []
 connections: []
 protocols:
-- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
-- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
+- valory/contract_api:1.0.0:bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm
+- valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 class_name: LedgerConnection
 config:
   ledger_apis:

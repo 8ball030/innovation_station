@@ -27,10 +27,8 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.valory.protocols.tendermint.custom_types import (
-    ErrorCode as CustomErrorCode,
-)
-
+from packages.valory.protocols.tendermint.custom_types import \
+    ErrorCode as CustomErrorCode
 
 _default_logger = logging.getLogger("aea.packages.valory.protocols.tendermint.message")
 

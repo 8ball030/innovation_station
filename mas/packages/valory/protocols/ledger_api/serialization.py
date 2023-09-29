@@ -28,16 +28,8 @@ from aea.protocols.base import Message, Serializer
 
 from packages.valory.protocols.ledger_api import ledger_api_pb2
 from packages.valory.protocols.ledger_api.custom_types import (
-    Kwargs,
-    RawTransaction,
-    SignedTransaction,
-    SignedTransactions,
-    State,
-    Terms,
-    TransactionDigest,
-    TransactionDigests,
-    TransactionReceipt,
-)
+    Kwargs, RawTransaction, SignedTransaction, SignedTransactions, State,
+    Terms, TransactionDigest, TransactionDigests, TransactionReceipt)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
 

@@ -8,17 +8,17 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeigaihpzixjv56vbuch6yqk5shzevt3rlpvchgqudmztid5mgchlqy
-  __init__.py: bafybeieo5jvwe7um4xw7ecxzxdi5o6rf3ld2yhupypuvrgryfqsdcurwse
+  __init__.py: bafybeighh4sqlqfj2lfgyc6jvmqzzax6rt7q67tjv33hrttzc4xznq677q
   contract_api.proto: bafybeiafpnyivdogs7omw2bxxxkmnbqcl3n32oqbzug65p7jimbeubgljy
-  contract_api_pb2.py: bafybeibienodnmdizkccinyi6ckbzbxsfnawnf7ejug2dd33c2bjvspyja
-  custom_types.py: bafybeiawof5bblaefwui5wgsou2ohvrxi2zrkdthehiet57qguplzsgrhu
+  contract_api_pb2.py: bafybeif5jiseqjvy3dyk7yuwnmesv46upfbt2iul4d6yubh23lmr7whl2q
+  custom_types.py: bafybeicusht2f25djs2j4xmr3f3jxaw7dlxsj6w3lrdwdfhzp5amjwtnwi
   dialogues.py: bafybeidsba6cyymlwva3cmghworge5gy7rawdhnivugzfzkvwy6unbjqea
-  message.py: bafybeigl7tyd2xmemv367qp55b63ck4z7giqg7g3tar6ulne3s55kdat4i
-  serialization.py: bafybeibawi6a4kp2ty2wcahexfkamrn6qwxhdbo7nkiatwbqm4wb2w3ae4
+  message.py: bafybeihvlfeoy5xzox4whi3qk3mjbag2c7ijex7tvnjcz7lzbrlw7jv7qe
+  serialization.py: bafybeihanfxx6mkowfrthwpyzh3klkwyuefsntx7ltvyzo276srbcfgkzy
   tests/__init__.py: bafybeicc5zmsziu4r5dwjnhckfbgnwbgydn7ekeyqsestutq2tusajqzmu
-  tests/test_contract_api.py: bafybeigszksq7bxi3skvw3zvpatkltgbnvnfatofjn63xnd5xds33iyni4
-  tests/test_contract_api_dialogues.py: bafybeifalicqk4g44sl5dpeuvls5dqtyfdgc6nwyuf5cl4fofis7fr3mnq
-  tests/test_contract_api_messages.py: bafybeigjdnyyxpzfje4ok7sxi6a3gstbgaryzjm2izoxmn4x5twsec35fa
+  tests/test_contract_api.py: bafybeifpipps55yyodgfqcttlshb2c6emyqbtlexjj3h352265dw7g2x6u
+  tests/test_contract_api_dialogues.py: bafybeiak5yrucdrkfmyndtom23aklevw6zai4zz6l7yn7hvikkfywc5eq4
+  tests/test_contract_api_messages.py: bafybeicgrme5h3jjjcrrzyhq4mppau4ggpkiqnmmmuw372bi6beb5luwou
 fingerprint_ignore_patterns: []
 dependencies:
   protobuf: {}

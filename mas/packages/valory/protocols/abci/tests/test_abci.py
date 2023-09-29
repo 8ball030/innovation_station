@@ -32,43 +32,33 @@ from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import DialogueLabel
 
 from packages.valory.protocols.abci import AbciMessage, message
-from packages.valory.protocols.abci.custom_types import (
-    BlockID,
-    BlockParams,
-    CheckTxType,
-    CheckTxTypeEnum,
-    ConsensusParams,
-    ConsensusVersion,
-    Duration,
-    Event,
-    EventAttribute,
-    Events,
-    Evidence,
-    EvidenceParams,
-    EvidenceType,
-    Evidences,
-    Header,
-    LastCommitInfo,
-    PartSetHeader,
-    ProofOp,
-    ProofOps,
-    PublicKey,
-    Result,
-    ResultType,
-    SnapShots,
-    Snapshot,
-    Timestamp,
-    Validator,
-    ValidatorParams,
-    ValidatorUpdate,
-    ValidatorUpdates,
-    VersionParams,
-    VoteInfo,
-)
-from packages.valory.protocols.abci.dialogues import AbciDialogue, AbciDialogues
-from packages.valory.protocols.abci.message import (
-    _default_logger as abci_message_logger,
-)
+from packages.valory.protocols.abci.custom_types import (BlockID, BlockParams,
+                                                         CheckTxType,
+                                                         CheckTxTypeEnum,
+                                                         ConsensusParams,
+                                                         ConsensusVersion,
+                                                         Duration, Event,
+                                                         EventAttribute,
+                                                         Events, Evidence,
+                                                         EvidenceParams,
+                                                         Evidences,
+                                                         EvidenceType, Header,
+                                                         LastCommitInfo,
+                                                         PartSetHeader,
+                                                         ProofOp, ProofOps,
+                                                         PublicKey, Result,
+                                                         ResultType, Snapshot,
+                                                         SnapShots, Timestamp,
+                                                         Validator,
+                                                         ValidatorParams,
+                                                         ValidatorUpdate,
+                                                         ValidatorUpdates,
+                                                         VersionParams,
+                                                         VoteInfo)
+from packages.valory.protocols.abci.dialogues import (AbciDialogue,
+                                                      AbciDialogues)
+from packages.valory.protocols.abci.message import \
+    _default_logger as abci_message_logger
 
 
 class BaseTestMessageConstruction:

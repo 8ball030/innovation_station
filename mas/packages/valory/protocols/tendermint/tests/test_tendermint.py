@@ -32,13 +32,9 @@ from aea.protocols.dialogue.base import DialogueLabel
 
 from packages.valory.protocols.tendermint.custom_types import ErrorCode
 from packages.valory.protocols.tendermint.dialogues import (
-    TendermintDialogue,
-    TendermintDialogues,
-)
-from packages.valory.protocols.tendermint.message import (
-    TendermintMessage,
-    _default_logger,
-)
+    TendermintDialogue, TendermintDialogues)
+from packages.valory.protocols.tendermint.message import (TendermintMessage,
+                                                          _default_logger)
 
 
 @pytest.mark.parametrize(

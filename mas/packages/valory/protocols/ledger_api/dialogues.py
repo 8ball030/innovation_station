@@ -43,7 +43,6 @@ class LedgerApiDialogue(Dialogue):
             LedgerApiMessage.Performative.GET_STATE,
             LedgerApiMessage.Performative.GET_RAW_TRANSACTION,
             LedgerApiMessage.Performative.SEND_SIGNED_TRANSACTION,
-            LedgerApiMessage.Performative.SEND_SIGNED_TRANSACTIONS,
             LedgerApiMessage.Performative.GET_TRANSACTION_RECEIPT,
         }
     )

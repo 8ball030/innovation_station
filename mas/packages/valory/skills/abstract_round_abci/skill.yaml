@@ -60,23 +60,23 @@ fingerprint:
   utils.py: bafybeiaauxrxqolk45nahrqqea4k7f6csh3jzez6tzn2oyksfror5ll4yq
 fingerprint_ignore_patterns: []
 connections:
-- valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga
-- valory/http_client:0.23.0:bafybeidykl4elwbcjkqn32wt5h4h7tlpeqovrcq3c5bcplt6nhpznhgczi
-- valory/ipfs:0.1.0:bafybeiatjutuiav7oxl4hszy3oypdwuetr6crjpminush54c5k4nbeciv4
-- valory/ledger:0.19.0:bafybeicgfupeudtmvehbwziqfxiz6ztsxr5rxzvalzvsdsspzz73o5fzfi
-- valory/p2p_libp2p_client:0.1.0:bafybeidwcobzb7ut3efegoedad7jfckvt2n6prcmd4g7xnkm6hp6aafrva
+- valory/abci:0.1.0:bafybeiaoc6rfvirsdlsi4nwa3kycz2gdcqyahdwpfvy6sf7hfv23hhklfy
+- valory/http_client:0.23.0:bafybeiaqrxod7thwar3rpeajcru7y6hhyeshsinwolnen52w6gzhu43lmu
+- valory/ipfs:0.1.0:bafybeieymwm2o7qp3aybimpsw75qwrqsdqeq764sqlhggookgitncituwa
+- valory/ledger:0.19.0:bafybeiaztbj35abn7et2nfprhqknbuembxvldy46cv3xwnciqg7aelzaim
+- valory/p2p_libp2p_client:0.1.0:bafybeidfm65eece533hfvg2xyn4icpmvz4lmvbemstrlo3iuffb7e72ycq
 contracts:
-- valory/service_registry:0.1.0:bafybeibdy55edqs3djptv77ljkmbf6m3zizhutmvwgj3hpsagvmzhr4jbm
+- valory/service_registry:0.1.0:bafybeie7cd7jtclhycsqovtaoiu6lqyusr4d7eplin6o6onjsqwd63mrvu
 protocols:
-- open_aea/signing:1.0.0:bafybeibqlfmikg5hk4phzak6gqzhpkt6akckx7xppbp53mvwt6r73h7tk4
-- valory/abci:0.1.0:bafybeig3dj5jhsowlvg3t73kgobf6xn4nka7rkttakdb2gwsg5bp7rt7q4
-- valory/contract_api:1.0.0:bafybeidv6wxpjyb2sdyibnmmum45et4zcla6tl63bnol6ztyoqvpl4spmy
-- valory/http:1.0.0:bafybeifyoio7nlh5zzyn5yz7krkou56l22to3cwg7gw5v5o3vxwklibhty
-- valory/ipfs:0.1.0:bafybeic72ncgqbzoz2guj4p4yjqulid7mv6yroeh65hxznloamoveeg7hq
-- valory/ledger_api:1.0.0:bafybeibo4bdtcrxi2suyzldwoetjar6pqfzm6vt5xal22ravkkcvdmtksi
-- valory/tendermint:0.1.0:bafybeicusvezoqlmyt6iqomcbwaz3xkhk2qf3d56q5zprmj3xdxfy64k54
+- open_aea/signing:1.0.0:bafybeig7ijceilgb22q7yg65jok7n5bmo3uogezpz4tltmil2xh7ib6e5q
+- valory/abci:0.1.0:bafybeifsttranjnxstpoyswpm2dzfyzimpatdfbu5pdpu7ibmda5x24ipe
+- valory/contract_api:1.0.0:bafybeib3abpck4a6a63vyymd2pdiwijdsqk43hrrxz734v5ghxje46pxgm
+- valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
+- valory/ipfs:0.1.0:bafybeidjn5fa2tjah3jif4tt67rccvtflkmkj5gnjq2jssdkxdzwrzzasy
+- valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
+- valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- valory/abstract_abci:0.1.0:bafybeibqopekc45wcg3e4uzkmnbkrenpub7cpa7i7vaactvpqxbdja3otu
+- valory/abstract_abci:0.1.0:bafybeiexad4gxpw4g3443lb5aufw477lgcpgtx44lklyo5hay2vhwz5g3e
 behaviours:
   main:
     args: {}

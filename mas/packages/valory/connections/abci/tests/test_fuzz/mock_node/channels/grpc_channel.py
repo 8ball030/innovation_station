@@ -29,7 +29,6 @@ import packages.valory.connections.abci.tendermint.abci.types_pb2_grpc as tender
 
 from .base import BaseChannel
 
-
 _default_logger = logging.getLogger(__name__)
 
 logging.basicConfig()

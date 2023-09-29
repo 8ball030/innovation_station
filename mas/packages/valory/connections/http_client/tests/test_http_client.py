@@ -28,7 +28,6 @@ from unittest.mock import MagicMock, Mock, patch
 
 import aiohttp
 import pytest
-
 from aea.common import Address
 from aea.configurations.base import ConnectionConfig
 from aea.identity.base import Identity
@@ -38,11 +37,12 @@ from aea.test_tools.constants import UNKNOWN_PROTOCOL_PUBLIC_ID
 from aea.test_tools.mocks import AnyStringWith
 from aea.test_tools.network import get_host, get_unused_tcp_port
 
-from packages.valory.connections.http_client.connection import HTTPClientConnection
+from packages.valory.connections.http_client.connection import \
+    HTTPClientConnection
 from packages.valory.protocols.http.dialogues import HttpDialogue
-from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
-
 
 logger = logging.getLogger(__name__)
 

@@ -27,20 +27,15 @@ from aea.mail.base_pb2 import Message as ProtobufMessage
 from aea.protocols.base import Message, Serializer
 
 from packages.valory.protocols.abci import abci_pb2
-from packages.valory.protocols.abci.custom_types import (
-    CheckTxType,
-    ConsensusParams,
-    Events,
-    Evidences,
-    Header,
-    LastCommitInfo,
-    ProofOps,
-    Result,
-    SnapShots,
-    Snapshot,
-    Timestamp,
-    ValidatorUpdates,
-)
+from packages.valory.protocols.abci.custom_types import (CheckTxType,
+                                                         ConsensusParams,
+                                                         Events, Evidences,
+                                                         Header,
+                                                         LastCommitInfo,
+                                                         ProofOps, Result,
+                                                         Snapshot, SnapShots,
+                                                         Timestamp,
+                                                         ValidatorUpdates)
 from packages.valory.protocols.abci.message import AbciMessage
 
 

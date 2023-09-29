@@ -30,23 +30,22 @@ from typing import Any, Optional, Set, Tuple, Union, cast
 
 import aiohttp
 import certifi  # pylint: disable=wrong-import-order
-from aiohttp.client_reqrep import ClientResponse  # pylint: disable=wrong-import-order
-from multidict import (  # pylint: disable=wrong-import-order
-    CIMultiDict,
-    CIMultiDictProxy,
-)
-
 from aea.common import Address
 from aea.configurations.base import PublicId
 from aea.connections.base import Connection, ConnectionStates
 from aea.exceptions import enforce
 from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
+from aiohttp.client_reqrep import \
+    ClientResponse  # pylint: disable=wrong-import-order
+from multidict import CIMultiDict  # pylint: disable=wrong-import-order
+from multidict import CIMultiDictProxy
 
-from packages.valory.protocols.http.dialogues import HttpDialogue as BaseHttpDialogue
-from packages.valory.protocols.http.dialogues import HttpDialogues as BaseHttpDialogues
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogue as BaseHttpDialogue
+from packages.valory.protocols.http.dialogues import \
+    HttpDialogues as BaseHttpDialogues
 from packages.valory.protocols.http.message import HttpMessage
-
 
 SUCCESS = 200
 NOT_FOUND = 404

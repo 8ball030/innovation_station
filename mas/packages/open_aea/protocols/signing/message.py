@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#   Copyright 2023 open_aea
+#   Copyright 2022 open_aea
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -27,23 +27,18 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.open_aea.protocols.signing.custom_types import (
-    ErrorCode as CustomErrorCode,
-)
-from packages.open_aea.protocols.signing.custom_types import (
-    RawMessage as CustomRawMessage,
-)
-from packages.open_aea.protocols.signing.custom_types import (
-    RawTransaction as CustomRawTransaction,
-)
-from packages.open_aea.protocols.signing.custom_types import (
-    SignedMessage as CustomSignedMessage,
-)
-from packages.open_aea.protocols.signing.custom_types import (
-    SignedTransaction as CustomSignedTransaction,
-)
-from packages.open_aea.protocols.signing.custom_types import Terms as CustomTerms
-
+from packages.open_aea.protocols.signing.custom_types import \
+    ErrorCode as CustomErrorCode
+from packages.open_aea.protocols.signing.custom_types import \
+    RawMessage as CustomRawMessage
+from packages.open_aea.protocols.signing.custom_types import \
+    RawTransaction as CustomRawTransaction
+from packages.open_aea.protocols.signing.custom_types import \
+    SignedMessage as CustomSignedMessage
+from packages.open_aea.protocols.signing.custom_types import \
+    SignedTransaction as CustomSignedTransaction
+from packages.open_aea.protocols.signing.custom_types import \
+    Terms as CustomTerms
 
 _default_logger = logging.getLogger("aea.packages.open_aea.protocols.signing.message")
 

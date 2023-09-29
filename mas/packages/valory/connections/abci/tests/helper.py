@@ -31,29 +31,20 @@ from typing import Any, Dict, List, Tuple, Type, Union
 
 import yaml
 from aea.protocols.generator.common import (
-    SPECIFICATION_COMPOSITIONAL_TYPES,
-    _camel_case_to_snake_case,
-    _get_sub_types_of_compositional_types,
-    _to_camel_case,
-)
+    SPECIFICATION_COMPOSITIONAL_TYPES, _camel_case_to_snake_case,
+    _get_sub_types_of_compositional_types, _to_camel_case)
 from google.protobuf.descriptor import FieldDescriptor
 
 from packages.valory.connections.abci.connection import PUBLIC_ID
-from packages.valory.connections.abci.connection import (
-    _TendermintProtocolDecoder as Decoder,
-)
-from packages.valory.connections.abci.connection import (
-    _TendermintProtocolEncoder as Encoder,
-)
+from packages.valory.connections.abci.connection import \
+    _TendermintProtocolDecoder as Decoder
+from packages.valory.connections.abci.connection import \
+    _TendermintProtocolEncoder as Encoder
 from packages.valory.connections.abci.dialogues import AbciDialogues
 from packages.valory.connections.abci.tendermint.abci.types_pb2 import (  # type: ignore
-    DESCRIPTOR,
-    Request,
-    Response,
-)
+    DESCRIPTOR, Request, Response)
 from packages.valory.protocols import abci as valory_abci_protocol
 from packages.valory.protocols.abci import AbciMessage, custom_types
-
 
 Node = Dict[str, Any]
 

@@ -7,19 +7,15 @@ from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
 
-
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from packages.valory.connections.abci.gogoproto import (
-    gogo_pb2 as gogoproto_dot_gogo__pb2,
-)
-from packages.valory.connections.abci.tendermint.crypto import (
-    keys_pb2 as tendermint_dot_crypto_dot_keys__pb2,
-)
-
+from packages.valory.connections.abci.gogoproto import \
+    gogo_pb2 as gogoproto_dot_gogo__pb2
+from packages.valory.connections.abci.tendermint.crypto import \
+    keys_pb2 as tendermint_dot_crypto_dot_keys__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
     name="tendermint/types/validator.proto",

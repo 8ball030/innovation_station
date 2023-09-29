@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#   Copyright 2023 open_aea
+#   Copyright 2022 open_aea
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -28,13 +28,8 @@ from aea.protocols.base import Message, Serializer
 
 from packages.open_aea.protocols.signing import signing_pb2
 from packages.open_aea.protocols.signing.custom_types import (
-    ErrorCode,
-    RawMessage,
-    RawTransaction,
-    SignedMessage,
-    SignedTransaction,
-    Terms,
-)
+    ErrorCode, RawMessage, RawTransaction, SignedMessage, SignedTransaction,
+    Terms)
 from packages.open_aea.protocols.signing.message import SigningMessage
 
 

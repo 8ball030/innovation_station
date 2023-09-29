@@ -22,7 +22,8 @@
 # pylint: disable=too-many-statements,too-many-locals,no-member,too-few-public-methods,redefined-builtin
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
-from packages.valory.protocols.ipfs.dialogues import IpfsDialogue, IpfsDialogues
+from packages.valory.protocols.ipfs.dialogues import (IpfsDialogue,
+                                                      IpfsDialogues)
 from packages.valory.protocols.ipfs.message import IpfsMessage
 
 

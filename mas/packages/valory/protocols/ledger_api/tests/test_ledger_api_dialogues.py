@@ -22,10 +22,8 @@
 # pylint: disable=too-many-statements,too-many-locals,no-member,too-few-public-methods,redefined-builtin
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogue,
-    LedgerApiDialogues,
-)
+from packages.valory.protocols.ledger_api.dialogues import (LedgerApiDialogue,
+                                                            LedgerApiDialogues)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
 
 

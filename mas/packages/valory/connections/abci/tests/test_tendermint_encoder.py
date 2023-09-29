@@ -21,15 +21,15 @@
 
 # pylint: skip-file
 
-from packages.valory.connections.abci.tendermint.abci.types_pb2 import (  # type: ignore
-    ResponseListSnapshots,
-)
-from packages.valory.connections.abci.tendermint_encoder import (
-    _TendermintProtocolEncoder,
-)
+from packages.valory.connections.abci.tendermint.abci.types_pb2 import \
+    ResponseListSnapshots  # type: ignore
+from packages.valory.connections.abci.tendermint_encoder import \
+    _TendermintProtocolEncoder
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import Result, ResultType, SnapShots
-from packages.valory.protocols.abci.custom_types import Snapshot as CustomSnapshot
+from packages.valory.protocols.abci.custom_types import Result, ResultType
+from packages.valory.protocols.abci.custom_types import \
+    Snapshot as CustomSnapshot
+from packages.valory.protocols.abci.custom_types import SnapShots
 
 
 class TestTendermintProtocolEncoder:

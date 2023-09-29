@@ -29,15 +29,12 @@ from aea.mail.base import Envelope
 from aea.protocols.base import Message
 
 from packages.valory.connections.ledger.base import RequestDispatcher
-from packages.valory.connections.ledger.contract_dispatcher import (
-    ContractApiRequestDispatcher,
-)
-from packages.valory.connections.ledger.ledger_dispatcher import (
-    LedgerApiRequestDispatcher,
-)
+from packages.valory.connections.ledger.contract_dispatcher import \
+    ContractApiRequestDispatcher
+from packages.valory.connections.ledger.ledger_dispatcher import \
+    LedgerApiRequestDispatcher
 from packages.valory.protocols.contract_api import ContractApiMessage
 from packages.valory.protocols.ledger_api import LedgerApiMessage
-
 
 PUBLIC_ID = PublicId.from_str("valory/ledger:0.19.0")
 

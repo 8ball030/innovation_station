@@ -31,11 +31,6 @@ from asyncio.streams import StreamWriter
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from asn1crypto import x509  # type: ignore
-from ecdsa.curves import SECP256k1  # type: ignore
-from ecdsa.keys import BadSignatureError, VerifyingKey  # type: ignore
-from ecdsa.util import sigdecode_der  # type: ignore
-
 from aea.configurations.base import PublicId
 from aea.configurations.constants import DEFAULT_LEDGER
 from aea.connections.base import Connection, ConnectionStates
@@ -43,19 +38,23 @@ from aea.crypto.registries import make_crypto
 from aea.exceptions import enforce
 from aea.helpers.acn.agent_record import AgentRecord
 from aea.helpers.acn.uri import Uri
-from aea.helpers.pipe import IPCChannelClient, TCPSocketChannelClient, TCPSocketProtocol
+from aea.helpers.pipe import (IPCChannelClient, TCPSocketChannelClient,
+                              TCPSocketProtocol)
 from aea.mail.base import Envelope
+from asn1crypto import x509  # type: ignore
+from ecdsa.curves import SECP256k1  # type: ignore
+from ecdsa.keys import BadSignatureError, VerifyingKey  # type: ignore
+from ecdsa.util import sigdecode_der  # type: ignore
 
 from packages.valory.protocols.acn import acn_pb2
 from packages.valory.protocols.acn.message import AcnMessage
 
-
 try:
-    from asyncio.streams import (  # type: ignore # pylint: disable=ungrouped-imports
-        IncompleteReadError,
-    )
+    from asyncio.streams import \
+        IncompleteReadError  # type: ignore # pylint: disable=ungrouped-imports
 except ImportError:  # pragma: nocover
-    from asyncio import IncompleteReadError  # pylint: disable=ungrouped-imports
+    from asyncio import \
+        IncompleteReadError  # pylint: disable=ungrouped-imports
 
 
 _default_logger = logging.getLogger("aea.packages.valory.connections.p2p_libp2p_client")

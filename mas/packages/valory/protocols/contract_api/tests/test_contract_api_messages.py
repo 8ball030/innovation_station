@@ -25,11 +25,7 @@ from typing import List
 from aea.test_tools.test_protocol import BaseProtocolMessagesTestCase
 
 from packages.valory.protocols.contract_api.custom_types import (
-    Kwargs,
-    RawMessage,
-    RawTransaction,
-    State,
-)
+    Kwargs, RawMessage, RawTransaction, State)
 from packages.valory.protocols.contract_api.message import ContractApiMessage
 
 

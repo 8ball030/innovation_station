@@ -24,14 +24,15 @@ from unittest import mock
 from unittest.mock import patch
 
 import pytest
-
 from aea.common import Address
 from aea.protocols.base import Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 from aea.protocols.dialogue.base import DialogueLabel
 
-from packages.valory.protocols.acn.dialogues import AcnDialogue as BaseAcnDialogue
-from packages.valory.protocols.acn.dialogues import AcnDialogues as BaseAcnDialogues
+from packages.valory.protocols.acn.dialogues import \
+    AcnDialogue as BaseAcnDialogue
+from packages.valory.protocols.acn.dialogues import \
+    AcnDialogues as BaseAcnDialogues
 from packages.valory.protocols.acn.message import AcnMessage
 
 

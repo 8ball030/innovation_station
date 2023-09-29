@@ -25,16 +25,9 @@ from typing import List
 from aea.test_tools.test_protocol import BaseProtocolMessagesTestCase
 
 from packages.valory.protocols.ledger_api.custom_types import (
-    Kwargs,
-    RawTransaction,
-    SignedTransaction,
-    State,
-    Terms,
-    TransactionDigest,
-    TransactionReceipt,
-)
+    Kwargs, RawTransaction, SignedTransaction, State, Terms, TransactionDigest,
+    TransactionReceipt)
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
-
 
 LEDGER_ID = "ethereum"
 

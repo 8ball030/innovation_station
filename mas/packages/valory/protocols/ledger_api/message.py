@@ -27,28 +27,24 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.valory.protocols.ledger_api.custom_types import Kwargs as CustomKwargs
-from packages.valory.protocols.ledger_api.custom_types import (
-    RawTransaction as CustomRawTransaction,
-)
-from packages.valory.protocols.ledger_api.custom_types import (
-    SignedTransaction as CustomSignedTransaction,
-)
-from packages.valory.protocols.ledger_api.custom_types import (
-    SignedTransactions as CustomSignedTransactions,
-)
-from packages.valory.protocols.ledger_api.custom_types import State as CustomState
-from packages.valory.protocols.ledger_api.custom_types import Terms as CustomTerms
-from packages.valory.protocols.ledger_api.custom_types import (
-    TransactionDigest as CustomTransactionDigest,
-)
-from packages.valory.protocols.ledger_api.custom_types import (
-    TransactionDigests as CustomTransactionDigests,
-)
-from packages.valory.protocols.ledger_api.custom_types import (
-    TransactionReceipt as CustomTransactionReceipt,
-)
-
+from packages.valory.protocols.ledger_api.custom_types import \
+    Kwargs as CustomKwargs
+from packages.valory.protocols.ledger_api.custom_types import \
+    RawTransaction as CustomRawTransaction
+from packages.valory.protocols.ledger_api.custom_types import \
+    SignedTransaction as CustomSignedTransaction
+from packages.valory.protocols.ledger_api.custom_types import \
+    SignedTransactions as CustomSignedTransactions
+from packages.valory.protocols.ledger_api.custom_types import \
+    State as CustomState
+from packages.valory.protocols.ledger_api.custom_types import \
+    Terms as CustomTerms
+from packages.valory.protocols.ledger_api.custom_types import \
+    TransactionDigest as CustomTransactionDigest
+from packages.valory.protocols.ledger_api.custom_types import \
+    TransactionDigests as CustomTransactionDigests
+from packages.valory.protocols.ledger_api.custom_types import \
+    TransactionReceipt as CustomTransactionReceipt
 
 _default_logger = logging.getLogger("aea.packages.valory.protocols.ledger_api.message")
 

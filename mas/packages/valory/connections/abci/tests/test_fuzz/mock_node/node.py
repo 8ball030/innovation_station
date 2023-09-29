@@ -30,21 +30,17 @@ import packages.valory.connections.abci.tendermint.abci.types_pb2 as abci_types 
 import packages.valory.connections.abci.tendermint.crypto.keys_pb2 as keys_types  # type: ignore
 import packages.valory.connections.abci.tendermint.types.types_pb2 as tendermint_types  # type: ignore
 import packages.valory.connections.abci.tendermint.version.types_pb2 as version_type  # type: ignore
-from packages.valory.protocols.abci.custom_types import (
-    BlockParams,
-    ConsensusParams,
-    Duration,
-    EvidenceParams,
-    PublicKey,
-    Snapshot,
-    Timestamp,
-    ValidatorParams,
-    ValidatorUpdate,
-    VersionParams,
-)
+from packages.valory.protocols.abci.custom_types import (BlockParams,
+                                                         ConsensusParams,
+                                                         Duration,
+                                                         EvidenceParams,
+                                                         PublicKey, Snapshot,
+                                                         Timestamp,
+                                                         ValidatorParams,
+                                                         ValidatorUpdate,
+                                                         VersionParams)
 
 from .channels.base import BaseChannel
-
 
 _default_logger = logging.getLogger(__name__)
 

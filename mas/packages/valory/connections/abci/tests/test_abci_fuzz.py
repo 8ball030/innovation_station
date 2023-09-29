@@ -28,20 +28,9 @@ from hypothesis import strategies as st
 from hypothesis.strategies._internal.lazy import SearchStrategy
 
 from packages.valory.connections.abci.tests.helper import (
-    AbciMessage,
-    PYTHON_PRIMITIVES,
-    Request,
-    camel_to_snake,
-    create_aea_abci_type_tree,
-    decode,
-    encode,
-    get_protocol_readme_spec,
-    get_tender_type_tree,
-    get_tendermint_content,
-    is_enum,
-    replace_keys,
-)
-
+    PYTHON_PRIMITIVES, AbciMessage, Request, camel_to_snake,
+    create_aea_abci_type_tree, decode, encode, get_protocol_readme_spec,
+    get_tender_type_tree, get_tendermint_content, is_enum, replace_keys)
 
 KEY_MAPPING = dict(  # AEA to Tendermint, one-to-one
     request_set_option={"key": "option_key", "value": "option_value"},
