@@ -44,7 +44,7 @@ format: clean
 	poetry run adev -n 0 fmt
 
 lint:
-	poetry run adev -v -n 0 lint
+	poetry run adev -v -n 0 lint -co
 
 fmt: 
 	poetry run adev -n 0 fmt

@@ -1,0 +1,44 @@
+### Site metadata ###
+
+site_name: Innovation Station Docs
+site_description: Docs for the innovation station.
+site_url: https://michaelcurrin.github.io/mkdocs-quickstart/
+
+repo_url: https://github.com/MichaelCurrin/mkdocs-quickstart
+edit_uri: edit/master/docs/docs
+
+### Build settings ###
+
+
+nav:
+  - Home: index.md
+  - Worklog:
+    - blog/index.md
+
+theme:
+  name: material
+  font:
+    code: Roboto Mono
+    text: Source Sans Pro
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - search.suggest
+    - search.highlight
+    - search.share
+  palette:
+    scheme: slate
+
+
+plugins:
+  - search
+  - blog:
+      archive: false
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format

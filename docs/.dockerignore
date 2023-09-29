@@ -1,12 +1,5 @@
-build
-.svelte-kit
-**//node_modules
-**/node_modules
-**/site
-node_modules
-/**/.env
-.env
 **/__pycache__/**
+.cache
 keys.json
 .coverage
 .pytest_cache

@@ -1,10 +1,11 @@
 """
 Tool to allow the user to create a protocol spec. using the OpenAI chat model.
 """
-# pylint: disable=R0914
 import tempfile
 from pathlib import Path
 
+# pylint: disable=R0914
+import click
 import yaml
 from aea.helpers.cid import to_v1
 from aea_cli_ipfs.ipfs_utils import IPFSTool
@@ -71,7 +72,7 @@ def generate(initial_prompt: str) -> str:
 
     def provide_one_shot_examples(past_input) -> str:
         """Provide one-shot examples to the model to improve its performance."""
-        directory: Path = Path('vendor/eightballer/skills/innovation_station_api/examples')
+        directory: Path = Path(__file__).parent.parent / "examples"
 
         first_line = (
             "Here are a number of examples that can be used to as templates"
@@ -83,6 +84,8 @@ def generate(initial_prompt: str) -> str:
         for file in directory.glob('*.yaml'):
             with open(file, 'r', encoding="utf8") as file_path:
                 examples.append(file_path.read())
+        if len(examples) == 0:
+            raise ValueError("No examples found.")
         return first_line + seperator.join(examples) + seperator + past_input
 
     def output_enhancer(user_input: str) -> str:
@@ -112,7 +115,7 @@ def generate(initial_prompt: str) -> str:
     )
     response = workflow(initial_prompt)
     try:
-        data = yaml.load_all(response)
+        data = yaml.safe_load_all(response)
         for doc in data:
             if doc.get("name") is not None:
                 name = doc.get("name")
@@ -144,3 +147,14 @@ def generate(initial_prompt: str) -> str:
         "image": f"ipfs://{ipfs_hash}",
         "attributes": [{"trait_type": "version", "value": f"[{name}]"}],
     }
+
+
+@click.command()
+@click.option("--prompt", prompt="Enter a prompt", help="The prompt to use to generate the protocol spec.")
+def main(prompt):
+    """The main function."""
+    click.echo(generate(prompt))
+
+
+if __name__ == "__main__":
+    main()  # pylint: disable=no-value-for-parameter
