@@ -8,15 +8,15 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeihkatpicz56ofrvu5fgks7ecrsfzw5toz23o23yvoymhk6l6hl7dy
-  __init__.py: bafybeidaq624basvfjybdce43zso2bocn4tnuwgoqnwh5zmstngzv2whoi
+  __init__.py: bafybeiffwynmrhqfml6fb4gx5enq7x6nxghof33pm2rjkftp453m7w5pmi
   dialogues.py: bafybeiditoi6wtv3ssf5s2fkxg7spfdr44d3qsujaxsyh7tce2hgytu7au
   http.proto: bafybeigq6ykgxdqi4m65x3rcj4ehdm3usaisejzl2oisn6kzkjits3fzkq
   http_pb2.py: bafybeih2pq5ptjzz7g7wio3o223jffamh5ph5qsonztvjbygdsr3fgmwci
-  message.py: bafybeigcg4v2bbwxtlvtinauu2koq7rlpqcc6tkiy3rrhptyhqdc2ebbrm
+  message.py: bafybeicymapwlgnu7efzirvv66spwh7oo4sew3dx4pmo6l53sv7eilx2iy
   serialization.py: bafybeier7lecnbyjxvywpxqq4ak3ia5qwfutbf2wxaxfyzhwf5ewewossm
   tests/__init__.py: bafybeifitr3wqclw3kammd2fw5zww6gvzbvu6s72di2p7544qfisuslhpq
-  tests/test_http.py: bafybeibbz5zcqmqsvtwp2rucj2ubbbazmqt3shpjnkt5bdhnlclqy4fseq
-  tests/test_http_dialogues.py: bafybeic22z3aatytdx3cxrtzt3hqwwhxlnaal6sn7grm3cn5k7ycq5v46y
+  tests/test_http.py: bafybeignvvjcsq7ukuujcid6huvie6grvnrb4ghmjma763uh7oovfvm6ei
+  tests/test_http_dialogues.py: bafybeianlwh375a474kv7wgl7xva3k3zl4cfvbnl7ot2yvgs3rgrph54cy
   tests/test_http_messages.py: bafybeihp6qmanjxpcfwuq6fngxcjvcogyzrxguax4lcollkbujq542mlv4
 fingerprint_ignore_patterns: []
 dependencies:

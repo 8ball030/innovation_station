@@ -27,15 +27,6 @@ from unittest.mock import MagicMock
 
 import pytest
 import pytest_asyncio
-from aea_ledger_ethereum import EthereumCrypto
-from aea_ledger_ethereum.test_tools.constants import (
-    ETHEREUM_TESTNET_CONFIG as _DEFAULT_ETHEREUM_TESTNET_CONFIG,
-)
-from aea_ledger_ethereum.test_tools.fixture_helpers import (
-    DEFAULT_GANACHE_ADDR,
-    DEFAULT_GANACHE_PORT,
-)
-
 from aea.configurations.base import ComponentType, ContractConfig
 from aea.configurations.constants import DEFAULT_LEDGER
 from aea.configurations.loader import load_component_configuration
@@ -45,7 +36,11 @@ from aea.crypto.ledger_apis import DEFAULT_LEDGER_CONFIGS, LedgerApi
 from aea.crypto.registries import ledger_apis_registry, make_crypto
 from aea.crypto.wallet import CryptoStore
 from aea.identity.base import Identity
-
+from aea_ledger_ethereum import EthereumCrypto
+from aea_ledger_ethereum.test_tools.constants import \
+    ETHEREUM_TESTNET_CONFIG as _DEFAULT_ETHEREUM_TESTNET_CONFIG
+from aea_ledger_ethereum.test_tools.fixture_helpers import (
+    DEFAULT_GANACHE_ADDR, DEFAULT_GANACHE_PORT)
 
 PACKAGE_DIR = Path(__file__).parent.parent
 

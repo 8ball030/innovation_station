@@ -22,7 +22,8 @@
 # pylint: disable=too-many-statements,too-many-locals,no-member,too-few-public-methods,redefined-builtin
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
-from packages.valory.protocols.abci.dialogues import AbciDialogue, AbciDialogues
+from packages.valory.protocols.abci.dialogues import (AbciDialogue,
+                                                      AbciDialogues)
 from packages.valory.protocols.abci.message import AbciMessage
 
 

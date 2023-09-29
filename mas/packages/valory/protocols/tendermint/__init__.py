@@ -24,7 +24,7 @@ It was created with protocol buffer compiler version `libprotoc 3.19.4` and aea 
 """
 
 from packages.valory.protocols.tendermint.message import TendermintMessage
-from packages.valory.protocols.tendermint.serialization import TendermintSerializer
-
+from packages.valory.protocols.tendermint.serialization import \
+    TendermintSerializer
 
 TendermintMessage.serializer = TendermintSerializer

@@ -27,25 +27,27 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.valory.protocols.abci.custom_types import CheckTxType as CustomCheckTxType
-from packages.valory.protocols.abci.custom_types import (
-    ConsensusParams as CustomConsensusParams,
-)
+from packages.valory.protocols.abci.custom_types import \
+    CheckTxType as CustomCheckTxType
+from packages.valory.protocols.abci.custom_types import \
+    ConsensusParams as CustomConsensusParams
 from packages.valory.protocols.abci.custom_types import Events as CustomEvents
-from packages.valory.protocols.abci.custom_types import Evidences as CustomEvidences
+from packages.valory.protocols.abci.custom_types import \
+    Evidences as CustomEvidences
 from packages.valory.protocols.abci.custom_types import Header as CustomHeader
-from packages.valory.protocols.abci.custom_types import (
-    LastCommitInfo as CustomLastCommitInfo,
-)
-from packages.valory.protocols.abci.custom_types import ProofOps as CustomProofOps
+from packages.valory.protocols.abci.custom_types import \
+    LastCommitInfo as CustomLastCommitInfo
+from packages.valory.protocols.abci.custom_types import \
+    ProofOps as CustomProofOps
 from packages.valory.protocols.abci.custom_types import Result as CustomResult
-from packages.valory.protocols.abci.custom_types import SnapShots as CustomSnapShots
-from packages.valory.protocols.abci.custom_types import Snapshot as CustomSnapshot
-from packages.valory.protocols.abci.custom_types import Timestamp as CustomTimestamp
-from packages.valory.protocols.abci.custom_types import (
-    ValidatorUpdates as CustomValidatorUpdates,
-)
-
+from packages.valory.protocols.abci.custom_types import \
+    Snapshot as CustomSnapshot
+from packages.valory.protocols.abci.custom_types import \
+    SnapShots as CustomSnapShots
+from packages.valory.protocols.abci.custom_types import \
+    Timestamp as CustomTimestamp
+from packages.valory.protocols.abci.custom_types import \
+    ValidatorUpdates as CustomValidatorUpdates
 
 _default_logger = logging.getLogger("aea.packages.valory.protocols.abci.message")
 

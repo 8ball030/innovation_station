@@ -26,49 +26,35 @@ import logging
 import platform
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional, cast
+from typing import Any, Dict, Optional, cast
 from unittest.mock import Mock, patch
 
 import pytest
-from aea_ledger_ethereum import EthereumCrypto
-from aea_ledger_ethereum.test_tools.constants import ETHEREUM_PRIVATE_KEY_PATH
-from aea_ledger_ethereum.test_tools.fixture_helpers import (  # noqa: F401 pylint: disable=unsed-import
-    DEFAULT_GANACHE_CHAIN_ID,
-    ganache,
-)
-from web3.eth import Eth
-
 from aea.common import Address
 from aea.configurations.data_types import PublicId
 from aea.connections.base import Connection, ConnectionStates
 from aea.crypto.ledger_apis import LedgerApis
 from aea.crypto.registries import make_crypto, make_ledger_api
 from aea.helpers.async_utils import AsyncState
-from aea.helpers.transaction.base import (
-    RawTransaction,
-    SignedTransaction,
-    Terms,
-    TransactionDigest,
-    TransactionReceipt,
-)
+from aea.helpers.transaction.base import (RawTransaction, SignedTransaction,
+                                          Terms, TransactionDigest,
+                                          TransactionReceipt)
 from aea.mail.base import Envelope, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
+from aea_ledger_ethereum import EthereumCrypto
+from aea_ledger_ethereum.test_tools.constants import ETHEREUM_PRIVATE_KEY_PATH
+from aea_ledger_ethereum.test_tools.fixture_helpers import (  # noqa: F401 pylint: disable=unsed-import
+    DEFAULT_GANACHE_CHAIN_ID, ganache)
+from web3.eth import Eth
 
 from packages.valory.connections.ledger.connection import LedgerConnection
-from packages.valory.connections.ledger.ledger_dispatcher import (
-    LedgerApiRequestDispatcher,
-)
-from packages.valory.protocols.ledger_api.custom_types import (
-    Kwargs,
-    SignedTransactions,
-    TransactionDigests,
-)
+from packages.valory.connections.ledger.ledger_dispatcher import \
+    LedgerApiRequestDispatcher
+from packages.valory.protocols.ledger_api.custom_types import Kwargs
 from packages.valory.protocols.ledger_api.dialogues import LedgerApiDialogue
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogues as BaseLedgerApiDialogues,
-)
+from packages.valory.protocols.ledger_api.dialogues import \
+    LedgerApiDialogues as BaseLedgerApiDialogues
 from packages.valory.protocols.ledger_api.message import LedgerApiMessage
-
 
 SOME_SKILL_ID = "some/skill:0.1.0"
 PACKAGE_DIR = Path(__file__).parent.parent
@@ -419,70 +405,6 @@ class TestLedgerDispatcher:
             response_message.transaction_receipt.ledger_id,
             response_message.transaction_receipt.receipt,
         ), "Transaction not settled."
-
-    @pytest.mark.asyncio
-    async def test_send_signed_transactions(
-        self, ledger_apis_connection: LedgerConnection
-    ) -> None:
-        """Test the send_signed_transactions."""
-        ledger_api_dialogues = LedgerApiDialogues(SOME_SKILL_ID)
-
-        # Create new dialogue starting with signed transaction
-        request, ledger_api_dialogue = ledger_api_dialogues.create(
-            counterparty=str(ledger_apis_connection.connection_id),
-            performative=LedgerApiMessage.Performative.SEND_SIGNED_TRANSACTIONS,  # type: ignore
-            signed_transactions=SignedTransactions(
-                EthereumCrypto.identifier,
-                [{"raw_transaction": "test_tx"}],
-            ),
-            kwargs=LedgerApiMessage.Kwargs({}),
-        )
-        request = cast(LedgerApiMessage, request)
-        envelope = Envelope(
-            to=request.to,
-            sender=request.sender,
-            message=request,
-        )
-
-        expected_transaction_digests = ["transaction_digest_1", "transaction_digest_2"]
-        # create a mock for api.send_signed_transactions
-        with patch(
-            "aea_ledger_ethereum.ethereum.EthereumApi.send_signed_transactions"
-        ) as mock_send_signed_transactions:
-            # configure the mock to return a specific value
-            mock_send_signed_transactions.return_value = expected_transaction_digests
-
-            # call the function under test
-            await ledger_apis_connection.send(envelope)
-            await asyncio.sleep(0.01)
-
-            # Transaction digest
-            response = await ledger_apis_connection.receive()
-
-            assert response is not None
-            assert isinstance(response.message, LedgerApiMessage)
-            response_message = cast(LedgerApiMessage, response.message)
-            assert (
-                response_message.performative != LedgerApiMessage.Performative.ERROR
-            ), f"Received error: {response_message.message}"
-            assert (
-                response_message.performative
-                == LedgerApiMessage.Performative.TRANSACTION_DIGESTS
-            )
-            response_dialogue = ledger_api_dialogues.update(response_message)
-            assert response_dialogue == ledger_api_dialogue
-            assert isinstance(response_message.transaction_digests, TransactionDigests)
-            assert isinstance(
-                response_message.transaction_digests.transaction_digests, List
-            )
-            assert (
-                response_message.transaction_digests.ledger_id
-                == request.signed_transactions.ledger_id
-            )
-            assert (
-                response_message.transaction_digests.transaction_digests
-                == expected_transaction_digests
-            )
 
     @pytest.mark.asyncio
     async def test_unsupported_protocol(

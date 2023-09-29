@@ -28,11 +28,7 @@ from aea.protocols.base import Message, Serializer
 
 from packages.valory.protocols.contract_api import contract_api_pb2
 from packages.valory.protocols.contract_api.custom_types import (
-    Kwargs,
-    RawMessage,
-    RawTransaction,
-    State,
-)
+    Kwargs, RawMessage, RawTransaction, State)
 from packages.valory.protocols.contract_api.message import ContractApiMessage
 
 

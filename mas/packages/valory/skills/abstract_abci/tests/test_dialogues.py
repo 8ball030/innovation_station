@@ -25,7 +25,8 @@ from unittest.mock import MagicMock
 import pytest
 from aea.protocols.dialogue.base import Dialogues
 
-from packages.valory.skills.abstract_abci.dialogues import AbciDialogue, AbciDialogues
+from packages.valory.skills.abstract_abci.dialogues import (AbciDialogue,
+                                                            AbciDialogues)
 
 
 @pytest.mark.parametrize(

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#   Copyright 2021-2022 Valory AG
+#   Copyright 2021-2023 Valory AG
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -23,8 +23,6 @@ from unittest import mock
 from unittest.mock import ANY, MagicMock, Mock, patch
 
 import pytest
-from aea_ledger_ethereum import EthereumCrypto
-
 from aea.common import Address
 from aea.crypto.ledger_apis import ETHEREUM_DEFAULT_ADDRESS
 from aea.crypto.registries import ledger_apis_registry
@@ -33,18 +31,16 @@ from aea.helpers.async_utils import AsyncState
 from aea.multiplexer import MultiplexerStatus
 from aea.protocols.base import Message
 from aea.protocols.dialogue.base import Dialogue
+from aea_ledger_ethereum import EthereumCrypto
 
-from packages.valory.connections.ledger.contract_dispatcher import (
-    ContractApiRequestDispatcher,
-)
-
+from packages.valory.connections.ledger.contract_dispatcher import \
+    ContractApiRequestDispatcher
 # pylint: skip-file
 from packages.valory.protocols.contract_api import ContractApiMessage
-from packages.valory.protocols.contract_api.dialogues import ContractApiDialogue
-from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogues as BaseContractApiDialogues,
-)
-
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogue
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogues as BaseContractApiDialogues
 
 SOME_SKILL_ID = "some/skill:0.1.0"
 NON_BLOCKING_TIME = 1
@@ -243,6 +239,7 @@ def test_build_response_fails_on_bad_data_type() -> None:
 @pytest.mark.asyncio
 async def test_run_async() -> None:
     """Test run async error handled."""
+
     # for pydocstyle
     def _raise():  # type: ignore
         raise Exception("Expected")

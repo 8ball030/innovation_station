@@ -22,7 +22,8 @@
 # pylint: disable=too-many-statements,too-many-locals,no-member,too-few-public-methods,redefined-builtin
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
-from packages.valory.protocols.http.dialogues import HttpDialogue, HttpDialogues
+from packages.valory.protocols.http.dialogues import (HttpDialogue,
+                                                      HttpDialogues)
 from packages.valory.protocols.http.message import HttpMessage
 
 

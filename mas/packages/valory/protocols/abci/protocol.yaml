@@ -8,18 +8,18 @@ license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeia5y34dgznojhabsw7js2auxzmwxoubs2yacvscvoqkmt323d3npq
-  __init__.py: bafybeidyj3jxy544bgbo45v4tox4rz5msrqmwgnn26hbtoqoiwvvgwzf54
+  __init__.py: bafybeie6unsxdgsl6capntm432lp4vphcghrmkembfis43m5if237wnshq
   abci.proto: bafybeid2kv4fy6xx453apqxashnqfjymhbrvtxj3uq2vdtqr45lvlfjzm4
-  abci_pb2.py: bafybeihged4uxj35ilybe3jaephddceqrk4taztfq4ytyf7wgs4ve2u66e
+  abci_pb2.py: bafybeicjb3fe6b532gw5u6u4xvrfqp35e2ee5jxin35jhpn4rhadn5pv7y
   custom_types.py: bafybeihpkluue4c7cunrcaxze3pqexhmwxkybrv4c3bzmkkakze7n6v44a
   dialogues.py: bafybeiatyk6bgdw36clk5q6pqzoow7owjppwgmjyn7ofamg5urcwdu7mqy
-  message.py: bafybeib3iyxwrkq3f3qpfhm6bsfhsjdkrnjfvyoeqg35s46h2uafvrlvxq
-  serialization.py: bafybeifralovb766v2sl5gmxaqr7xz7srbrzsixrr4nzseptkwgddph5e4
+  message.py: bafybeibthkamoalqh4czr45upp2pt4lxoylqbnv36xsquimbiegumdriia
+  serialization.py: bafybeihiivcqhafqkwh47hs6ohai5snzxwhq6jn4xliix4zp3sdzwzmn2a
   tests/__init__.py: bafybeie4cd5xo7o4teyfjclaju3zoguuahjvkpsbshda3x23jcph53fdpi
   tests/conftest.py: bafybeidomydt6bdji22rndrdb5w773vvdja55o5m5n4pbfslx7ey5euot4
-  tests/test_abci.py: bafybeig4gex7e62uxca7riaetmr2pu5xekxg3d7xjvck72zjd3uxny4v64
-  tests/test_abci_dialogues.py: bafybeiby6ahpj6dnvjagnyyew3hgncstay37tt3xqu5x2c2yx3nldwvzzi
-  tests/test_abci_messages.py: bafybeidbec7g3gvyr4jon57m6pfcobslj3nvnnynzeib3mgvm46d3ywdgi
+  tests/test_abci.py: bafybeibxqnxkx6be6nt3zzsobc2b7m7vwtl2v2mf4bx3nd5mxoeyjx6zii
+  tests/test_abci_dialogues.py: bafybeieihmjmxupiatjoxbwabsxpvw3uhv56qhhki5nbyeum24wjedwiz4
+  tests/test_abci_messages.py: bafybeidxntmtwfuj2f5u6cr3p2hhfl5ke55uxey2zx6b2jehisyduiyy6i
 fingerprint_ignore_patterns: []
 dependencies:
   protobuf: {}

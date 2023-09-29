@@ -11,13 +11,13 @@ aea_version: '>=1.0.0, <2.0.0'
 license: Apache-2.0
 fingerprint: {}
 fingerprint_ignore_patterns: []
-agent: eightballer/innovation_station_app:0.1.0:bafybeigprkpnfewqomrsrjzvycuk2xbwdyglhm6tipj2nm4t3fp3rczcdu
+agent: eightballer/innovation_station_app:0.1.0:bafybeihk4tblz6lj2257yzf65e2fw2u526a2cnx3ykbc2yyhvu4lwwn3u4
 number_of_agents: 1
 deployment:
   agent:
     ports:
       0:
-        8001: 26658
+        8080: 8080
 ---
 public_id: eightballer/http_server:0.1.0:bafybeicabdn272rslxezvzifkmny36c3s2hpyeahsoqorctys7uq6b3djq
 type: connection
@@ -33,6 +33,6 @@ models:
     args:
       frontend:
         enabled: true
-        ipfs_hash: ${IPFS_HASH:str:}
+        ipfs_hash: ${IPFS_HASH:str:bafybeihuak4dbhsioz3ulptg42p5wv5ywy563aqkqitqoil3h3anlatzim}
         directory: www
         openai_api_key: ${OPENAI_API_KEY:str:}

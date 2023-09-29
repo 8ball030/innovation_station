@@ -24,9 +24,7 @@ from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
 from packages.valory.protocols.contract_api.custom_types import Kwargs
 from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogue,
-    ContractApiDialogues,
-)
+    ContractApiDialogue, ContractApiDialogues)
 from packages.valory.protocols.contract_api.message import ContractApiMessage
 
 

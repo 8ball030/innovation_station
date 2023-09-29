@@ -34,18 +34,12 @@ from aea.mail.base import Envelope
 from aea_cli_ipfs.exceptions import DownloadError
 from aea_cli_ipfs.ipfs_utils import IPFSTool
 from aea_test_autonomy.fixture_helpers import (  # noqa: F401; pylint: disable=unused-import
-    LOCAL_IPFS,
-    ipfs_daemon,
-    use_ipfs_daemon,
-)
+    LOCAL_IPFS, ipfs_daemon, use_ipfs_daemon)
 
-from packages.valory.connections.ipfs.connection import (
-    IpfsConnection,
-    IpfsDialogues,
-    PUBLIC_ID,
-)
+from packages.valory.connections.ipfs.connection import (PUBLIC_ID,
+                                                         IpfsConnection,
+                                                         IpfsDialogues)
 from packages.valory.protocols.ipfs import IpfsMessage
-
 
 ANY_SKILL = "skill/any:0.1.0"
 

@@ -23,9 +23,7 @@
 from aea.test_tools.test_protocol import BaseProtocolDialoguesTestCase
 
 from packages.valory.protocols.tendermint.dialogues import (
-    TendermintDialogue,
-    TendermintDialogues,
-)
+    TendermintDialogue, TendermintDialogues)
 from packages.valory.protocols.tendermint.message import TendermintMessage
 
 

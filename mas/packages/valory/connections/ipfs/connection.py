@@ -38,8 +38,8 @@ from ipfshttpclient.exceptions import ErrorResponse
 
 from packages.valory.protocols.ipfs import IpfsMessage
 from packages.valory.protocols.ipfs.dialogues import IpfsDialogue
-from packages.valory.protocols.ipfs.dialogues import IpfsDialogues as BaseIpfsDialogues
-
+from packages.valory.protocols.ipfs.dialogues import \
+    IpfsDialogues as BaseIpfsDialogues
 
 PUBLIC_ID = PublicId.from_str("valory/ipfs:0.1.0")
 

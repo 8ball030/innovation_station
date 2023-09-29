@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#   Copyright 2021-2022 Valory AG
+#   Copyright 2021-2023 Valory AG
 #   Copyright 2018-2021 Fetch.AI Limited
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,11 +37,10 @@ from aea.protocols.dialogue.base import Dialogues as BaseDialogues
 
 from packages.valory.connections.ledger.base import RequestDispatcher
 from packages.valory.protocols.contract_api import ContractApiMessage
-from packages.valory.protocols.contract_api.dialogues import ContractApiDialogue
-from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogues as BaseContractApiDialogues,
-)
-
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogue
+from packages.valory.protocols.contract_api.dialogues import \
+    ContractApiDialogues as BaseContractApiDialogues
 
 _default_logger = logging.getLogger(
     "aea.packages.valory.connections.ledger.contract_dispatcher"
@@ -161,7 +160,9 @@ class ContractApiRequestDispatcher(RequestDispatcher):
                 f"Whilst processing the contract api request:\n{message}\nthe following exception occured:\n{str(exception)}"
             )
             response = self.get_error_message(exception, ledger_api, message, dialogue)
-        except Exception as exception:  # pylint: disable=broad-except  # pragma: nocover
+        except (
+            Exception
+        ) as exception:  # pylint: disable=broad-except  # pragma: nocover
             self.logger.debug(
                 f"Whilst processing the contract api request:\n{message}\nthe following error occured:\n{parse_exception(exception)}"
             )

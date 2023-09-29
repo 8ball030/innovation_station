@@ -24,7 +24,6 @@ from typing import Callable, Type
 from unittest import mock
 
 import pytest
-
 from aea.common import Address
 from aea.exceptions import AEAEnforceError
 from aea.mail.base import Envelope
@@ -35,13 +34,9 @@ from aea.protocols.dialogue.base import DialogueLabel
 from packages.valory.protocols.contract_api import ContractApiMessage, message
 from packages.valory.protocols.contract_api.custom_types import Kwargs
 from packages.valory.protocols.contract_api.dialogues import (
-    ContractApiDialogue,
-    ContractApiDialogues,
-)
-from packages.valory.protocols.contract_api.message import (
-    _default_logger as contract_api_message_logger,
-)
-
+    ContractApiDialogue, ContractApiDialogues)
+from packages.valory.protocols.contract_api.message import \
+    _default_logger as contract_api_message_logger
 
 LEDGER_ID = "ethereum"
 CONTRACT_ID = "contract_id_stub"

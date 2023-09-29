@@ -28,7 +28,6 @@ from aea.configurations.base import PublicId
 from aea.contracts.base import Contract
 from aea_ledger_ethereum import EthereumApi, LedgerApi
 
-
 EXPECTED_CONTRACT_ADDRESS_BY_CHAIN_ID = {
     1: "0x48b6af7B12C71f09e2fC8aF4855De4Ff54e775cA",
     5: "0x1cEe30D08943EB58EFF84DD1AB44a6ee6FEff63a",

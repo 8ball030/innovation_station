@@ -25,16 +25,12 @@ from aea.skills.base import Handler
 
 from packages.valory.connections.abci.connection import PUBLIC_ID
 from packages.valory.protocols.abci import AbciMessage
-from packages.valory.protocols.abci.custom_types import (
-    Events,
-    ProofOps,
-    Result,
-    ResultType,
-    SnapShots,
-    ValidatorUpdates,
-)
-from packages.valory.protocols.abci.dialogues import AbciDialogue, AbciDialogues
-
+from packages.valory.protocols.abci.custom_types import (Events, ProofOps,
+                                                         Result, ResultType,
+                                                         SnapShots,
+                                                         ValidatorUpdates)
+from packages.valory.protocols.abci.dialogues import (AbciDialogue,
+                                                      AbciDialogues)
 
 ERROR_CODE = 1
 

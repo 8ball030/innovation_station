@@ -28,26 +28,14 @@ from typing import Any, Dict, Set
 
 import requests
 from aea.protocols.generator.common import (
-    SPECIFICATION_COMPOSITIONAL_TYPES,
-    _get_sub_types_of_compositional_types,
-)
+    SPECIFICATION_COMPOSITIONAL_TYPES, _get_sub_types_of_compositional_types)
 
 from packages.valory.connections import abci as tendermint_abci
 from packages.valory.connections.abci.tests.helper import (
-    camel_to_snake,
-    compare_trees,
-    create_aea_abci_type_tree,
-    decode,
-    encode,
-    get_protocol_readme_spec,
-    get_tender_type_tree,
-    get_tendermint_content,
-    init_aea_abci_messages,
-    init_tendermint_messages,
-    init_type_tree_primitives,
-    replace_keys,
-)
-
+    camel_to_snake, compare_trees, create_aea_abci_type_tree, decode, encode,
+    get_protocol_readme_spec, get_tender_type_tree, get_tendermint_content,
+    init_aea_abci_messages, init_tendermint_messages,
+    init_type_tree_primitives, replace_keys)
 
 Node = Dict[str, Any]
 

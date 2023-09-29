@@ -23,9 +23,10 @@ from typing import Any
 from aea.protocols.base import Address, Message
 from aea.protocols.dialogue.base import Dialogue as BaseDialogue
 
-from packages.valory.protocols.abci.dialogues import AbciDialogue as BaseAbciDialogue
-from packages.valory.protocols.abci.dialogues import AbciDialogues as BaseAbciDialogues
-
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogue as BaseAbciDialogue
+from packages.valory.protocols.abci.dialogues import \
+    AbciDialogues as BaseAbciDialogues
 
 AbciDialogue = BaseAbciDialogue
 

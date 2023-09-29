@@ -27,9 +27,10 @@ from aea.configurations.base import PublicId
 from aea.exceptions import AEAEnforceError, enforce
 from aea.protocols.base import Message
 
-from packages.valory.protocols.acn.custom_types import AgentRecord as CustomAgentRecord
-from packages.valory.protocols.acn.custom_types import StatusBody as CustomStatusBody
-
+from packages.valory.protocols.acn.custom_types import \
+    AgentRecord as CustomAgentRecord
+from packages.valory.protocols.acn.custom_types import \
+    StatusBody as CustomStatusBody
 
 _default_logger = logging.getLogger("aea.packages.valory.protocols.acn.message")
 

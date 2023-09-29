@@ -24,7 +24,6 @@ from typing import Callable, Type
 from unittest import mock
 
 import pytest
-
 from aea.common import Address
 from aea.exceptions import AEAEnforceError
 from aea.mail.base import Envelope
@@ -34,20 +33,11 @@ from aea.protocols.dialogue.base import DialogueLabel
 
 from packages.valory.protocols.ledger_api import LedgerApiMessage, message
 from packages.valory.protocols.ledger_api.custom_types import (
-    Kwargs,
-    SignedTransactions,
-    State,
-    Terms,
-    TransactionDigests,
-)
-from packages.valory.protocols.ledger_api.dialogues import (
-    LedgerApiDialogue,
-    LedgerApiDialogues,
-)
-from packages.valory.protocols.ledger_api.message import (
-    _default_logger as ledger_api_message_logger,
-)
-
+    Kwargs, SignedTransactions, State, Terms, TransactionDigests)
+from packages.valory.protocols.ledger_api.dialogues import (LedgerApiDialogue,
+                                                            LedgerApiDialogues)
+from packages.valory.protocols.ledger_api.message import \
+    _default_logger as ledger_api_message_logger
 
 LEDGER_ID = "ethereum"
 CONTRACT_ID = "contract_id_stub"
