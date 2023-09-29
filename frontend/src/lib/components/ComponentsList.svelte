@@ -1,9 +1,23 @@
 <script lang="ts">
+ import { getDrawerStore } from "@skeletonlabs/skeleton";
  import Card from "$lib/components/Card.svelte";
  import Details from "$lib/components/Details.svelte";
  import { componentTypes } from "$lib/config";
+ import Error from "$lib/components/Error.svelte";
 
  export let data: any = [];
+ export let fetchError: string = "";
+
+ // configs
+ const drawerStore = getDrawerStore();
+ const drawerSettings: any = {
+  id: "info-drawer",
+  bgDrawer: "text-white",
+  width: "w-[380px] md:w-[550px]",
+ };
+ function openDrawer() {
+  drawerStore.open(drawerSettings);
+ }
 
  let bgImage = `
      background-image: url("/bgPage.png");
@@ -65,7 +79,7 @@
    {#if data?.length}
     <Details {selectedCp} />
    {:else}
-    No data
+    <Error {openDrawer} />
    {/if}
   </div>
  </div>

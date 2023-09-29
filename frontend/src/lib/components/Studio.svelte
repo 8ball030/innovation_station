@@ -1,22 +1,18 @@
 <script lang="ts">
  import { onMount } from "svelte";
- import {
-  Stepper,
-  Step,
-  ProgressRadial,
-  getDrawerStore,
- } from "@skeletonlabs/skeleton";
+ import { Stepper, Step, getDrawerStore } from "@skeletonlabs/skeleton";
  import Share from "$lib/components/Share.svelte";
  import FirstStep from "$lib/components/FirstStep.svelte";
  import { postPrompt } from "$lib/actions/postPropmpt";
- import { fetchNoun } from "$lib/actions/fetchNoun";
  import { getByPromptId } from "$lib/actions/getByPromptId";
  import { handleMint } from "$lib/actions/mintComponent";
  import { view } from "$lib/stores";
  import nounImg from "$lib/images/noun4.png";
+ import Error from "./Error.svelte";
 
  // props
  export let data: ComponentI[] = [];
+ export let fetchError: any;
 
  // types
  interface ComponentI {
@@ -97,11 +93,7 @@
   );
  }
 
- onMount(() => {
-  fetchNoun().then((res) => {
-   noun = res.body;
-  });
- });
+ onMount(() => {});
 </script>
 
 <div style={bgImage}>
@@ -166,20 +158,16 @@
       placeholder="Enter your prompt.. "
      />
      {#if !codeHash}
-      <button on:click={handleBuild} class="btn button-build">
-       <ProgressRadial
-        stroke={100}
-        meter="stroke-primary-500"
-        track="stroke-primary-500/30"
-       /></button
-      >
+      <button on:click={handleBuild} class="btn button-build" />
      {:else}
       <button on:click={setMint} class="btn button-build">Mint</button>
      {/if}
     </Step>
    </Stepper>
-   <button class="mt-10 help-btn" on:click={openDrawer}>Help Me !</button>
-   {#if !codeHash}
+   {#if fetchError}
+    <Error {openDrawer} />
+   {/if}
+   {#if codeHash}
     <Share />
    {/if}
   </div>
@@ -193,9 +181,6 @@
  .help-btn {
   color: rgb(37, 175, 249);
  }
- .help-btn:hover {
-  color: rgb(37, 249, 171);
- }
  .button-build {
   width: 60px;
   background: #22966b;
@@ -204,6 +189,10 @@
   font-weight: 700;
   margin: 5px;
   border-radius: 5px;
+ }
+ .error {
+  font-size: 12px;
+  color: #e45d5d;
  }
  .noun {
   width: 20%;
