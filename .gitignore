@@ -24,3 +24,4 @@ ethereum_private_key.txt
 
 .env
 
+!mas/packages/valory/contracts/service_registry/build
