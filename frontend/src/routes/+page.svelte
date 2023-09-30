@@ -30,6 +30,8 @@
     return response.json();
    })
    .then((res) => {
+    console.log("res get data");
+    console.log(res);
     data = Object.values(res);
    })
    .catch((error) => {
