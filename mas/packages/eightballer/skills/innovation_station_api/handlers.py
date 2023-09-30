@@ -245,31 +245,37 @@ class HttpHandler(BaseHandler):
         if static_response.status_code != 404:
             return self.context.outbox.put_message(static_response)
 
-        url = message.url
         try:
-            chain_id = str(url.split('?')[1].split('=')[1])
-        except (IndexError, ValueError):
-            chain_id = 1
-        url = url.split('?')[0]
-        parts = url.split('/')
-        parts = [part for part in parts if part != '']
-        dialogue = self.context.http_dialogues.update(message)
-        if len(parts) == 3 and message.method.lower() == "post":
-            body = json.loads(message.body.decode("utf-8"))
-            route = parts[-1]
-            msg = self.handle_post(route=route, dialogue=dialogue, prompt=body, chain_id=chain_id)
-        elif message.method.lower() == "get":
-            if len(parts) == 3:
+
+            url = message.url
+            try:
+                chain_id = str(url.split('?')[1].split('=')[1])
+            except (IndexError, ValueError):
+                chain_id = 1
+            url = url.split('?')[0]
+            parts = url.split('/')
+            parts = [part for part in parts if part != '']
+            dialogue = self.context.http_dialogues.update(message)
+            if len(parts) == 3 and message.method.lower() == "post":
+                body = json.loads(message.body.decode("utf-8"))
                 route = parts[-1]
-                _id = None
+                msg = self.handle_post(route=route, dialogue=dialogue, prompt=body, chain_id=chain_id)
+            elif message.method.lower() == "get":
+                if len(parts) == 3:
+                    route = parts[-1]
+                    _id = None
+                else:
+                    route = parts[-2]
+                    _id = parts[-1]
+                msg = self.handle_get(route, dialogue=dialogue, component_id=_id, chain_id=chain_id)
             else:
-                route = parts[-2]
-                _id = parts[-1]
-            msg = self.handle_get(route, dialogue=dialogue, component_id=_id, chain_id=chain_id)
-        else:
-            msg = self.handle_unexpected_message(message, dialogue, b"Not found! ")
-        self.context.logger.info(f"Sending response: {msg}")
-        return self.context.outbox.put_message(msg)
+                msg = self.handle_unexpected_message(message, dialogue, b"Not found! ")
+            self.context.logger.info(f"Sending response: {msg}")
+            return self.context.outbox.put_message(msg)
+        except Exception as e:
+            self.context.logger.error(f"Exception: {e}")
+            msg = self.handle_unexpected_message(message, dialogue, b"Internal Server Error")
+            return self.context.outbox.put_message(msg)
 
     def handle_unexpected_message(self, message, dialogue, body):
         "handler for unexpected messages"
