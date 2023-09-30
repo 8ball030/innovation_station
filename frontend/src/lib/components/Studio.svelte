@@ -1,14 +1,20 @@
 <script lang="ts">
  import { onMount } from "svelte";
- import { Stepper, Step, getDrawerStore } from "@skeletonlabs/skeleton";
+ import {
+  Stepper,
+  Step,
+  getDrawerStore,
+  FileDropzone,
+  ProgressRadial,
+ } from "@skeletonlabs/skeleton";
  import Share from "$lib/components/Share.svelte";
  import FirstStep from "$lib/components/FirstStep.svelte";
  import { postPrompt } from "$lib/actions/postPropmpt";
  import { getByPromptId } from "$lib/actions/getByPromptId";
  import { handleMint } from "$lib/actions/mintComponent";
  import { view } from "$lib/stores";
- import nounImg from "$lib/images/noun4.png";
  import Error from "./Error.svelte";
+ import { getWeb3Details } from "$lib/utils";
 
  // props
  export let data: ComponentI[] = [];
@@ -46,11 +52,18 @@
  // state variables
  let isMinting = false;
  let search = "";
- let prompt = "";
- let name = "";
  let codeHash = "";
  let mintHash: any = "";
- let noun: any = null;
+ let showImage = false;
+ let isPosting = false;
+
+ // component inputs
+ let prompt = "";
+ let name = "";
+ let pfp: any;
+
+ console.log("pfp");
+ console.log(pfp);
 
  $: filteredData = data.filter((d: any) => d?.description?.includes(search));
  let selectedProtocol = filteredData?.[0];
@@ -64,24 +77,53 @@
   view.set("market");
  }
 
+ function onChangeHandler(e: any): void {
+  console.log("file data:", e);
+  const file = e.target?.files?.[0];
+
+  if (file) {
+   showImage = true;
+
+   const reader = new FileReader();
+   reader.addEventListener("load", function () {
+    pfp = reader.result;
+   });
+   reader.readAsDataURL(file);
+
+   return;
+  }
+  showImage = false;
+ }
+
  function handleBuild() {
   if (prompt === "") {
    alert("Please enter a prompt");
    return;
   }
 
-  try {
-   postPrompt(prompt).then((res) => {
-    if (res.body) {
-     getByPromptId(res.body.id).then((res) => {
-      console.log(res);
-      codeHash = res.body.output?.code_uri;
+  isPosting = true;
+  postPrompt(prompt)
+   .then((res) => {
+    const id = res.id;
+    console.log("id ", id);
+
+    getByPromptId(id)
+     .then((res) => {
+      console.log("hash ", res);
+      codeHash = res.code_hash;
+      isPosting = false;
+     })
+     .catch((error) => {
+      console.log(error);
+      isPosting = false;
+      return error;
      });
-    }
+   })
+   .catch((error) => {
+    console.log(error);
+    isPosting = false;
+    return error;
    });
-  } catch (error) {
-   console.log(error);
-  }
  }
 
  function setMint() {
@@ -141,10 +183,14 @@
 
     <!-- build step -->
     <Step>
-     <div class="noun">
-      <img src={nounImg} alt="noun" />
+     <div class="file">
+      {#if showImage}
+       <img src={pfp} alt="pfp" class="pfp" />
+      {:else}
+       <FileDropzone on:change={onChangeHandler} name="files" />
+       Upload your PFP
+      {/if}
      </div>
-     You Noun Component PFP!
      <input
       bind:value={name}
       class="input mb-3"
@@ -158,7 +204,23 @@
       placeholder="Enter your prompt.. "
      />
      {#if !codeHash}
-      <button on:click={handleBuild} class="btn button-build" />
+      <button
+       on:click={handleBuild}
+       disabled={isPosting}
+       class="btn button-build"
+      >
+       {#if isPosting}
+        <div class="progress">
+         <ProgressRadial
+          meter="stroke-success-500"
+          track="stroke-success-500/60"
+          stroke={120}
+         />
+        </div>
+       {:else}
+        Build
+       {/if}
+      </button>
      {:else}
       <button on:click={setMint} class="btn button-build">Mint</button>
      {/if}
@@ -194,7 +256,8 @@
   font-size: 12px;
   color: #e45d5d;
  }
- .noun {
-  width: 20%;
+ .progress {
+  width: 25px;
+  display: flex;
  }
 </style>

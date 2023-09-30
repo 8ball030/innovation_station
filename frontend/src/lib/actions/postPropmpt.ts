@@ -17,5 +17,7 @@ export async function postPrompt(prompt: string) {
   }
  );
 
- return response.json();
+ const json = await response.json();
+ console.log("json ", json);
+ return json;
 }
