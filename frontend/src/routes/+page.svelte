@@ -1,4 +1,5 @@
 <script lang="ts">
+ import * as api from "$lib/api";
  import { onMount } from "svelte";
 
  import Studio from "$lib/components/Studio.svelte";
@@ -20,24 +21,15 @@
  });
 
  onMount(() => {
-  const { chainId } = getWeb3Details();
+  async function load() {
+   const { chainId } = getWeb3Details();
+   const res = await api.get(fetch, `protocol?chain_id=${chainId}`);
+   console.log(res);
+   data = res.data;
+   fetchError = res.error;
+  }
 
-  fetch(`${API_BASE}/protocol?chain_id=${chainId}`)
-   .then((response) => {
-    if (!response.ok) {
-     return Promise.reject(response);
-    }
-    return response.json();
-   })
-   .then((res) => {
-    console.log("res get data");
-    console.log(res);
-    data = Object.values(res);
-   })
-   .catch((error) => {
-    fetchError = true;
-    return error;
-   });
+  load();
  });
 </script>
 

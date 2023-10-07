@@ -7,6 +7,9 @@
   FileDropzone,
   ProgressRadial,
  } from "@skeletonlabs/skeleton";
+ import BuildForm from "$lib/components/BuildForm.svelte";
+ import PromptForm from "$lib/components/PromptForm.svelte";
+
  import Share from "$lib/components/Share.svelte";
  import FirstStep from "$lib/components/FirstStep.svelte";
  import { postPrompt } from "$lib/actions/postPropmpt";
@@ -15,6 +18,7 @@
  import { view } from "$lib/stores";
  import Error from "./Error.svelte";
  import { getWeb3Details } from "$lib/utils";
+ import { page } from '$app/stores';
 
  // props
  export let data: ComponentI[] = [];
@@ -68,6 +72,9 @@
  $: filteredData = data.filter((d: any) => d?.description?.includes(search));
  let selectedProtocol = filteredData?.[0];
 
+ $: {
+  console.log($page.error);
+ }
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
@@ -183,48 +190,13 @@
 
     <!-- build step -->
     <Step>
-     <div class="file">
-      {#if showImage}
-       <img src={pfp} alt="pfp" class="pfp" />
-      {:else}
-       <FileDropzone on:change={onChangeHandler} name="files" />
-       Upload your PFP
-      {/if}
-     </div>
-     <input
-      bind:value={name}
-      class="input mb-3"
-      title="Name"
-      placeholder="Component name.. "
-     />
-     <input
-      bind:value={prompt}
-      class="input mb-4"
-      title="Prompt"
-      placeholder="Enter your prompt.. "
-     />
-     {#if !codeHash}
-      <button
-       on:click={handleBuild}
-       disabled={isPosting}
-       class="btn button-build"
-      >
-       {#if isPosting}
-        <div class="progress">
-         <ProgressRadial
-          meter="stroke-success-500"
-          track="stroke-success-500/60"
-          stroke={120}
-         />
-        </div>
-       {:else}
-        Build
-       {/if}
-      </button>
-     {:else}
-      <button on:click={setMint} class="btn button-build">Mint</button>
-     {/if}
+      <PromptForm />
     </Step>
+
+    <Step>
+      <BuildForm />
+    </Step>
+
    </Stepper>
    {#if fetchError}
     <Error {openDrawer} />

@@ -1,5 +1,6 @@
 import { browser } from "$app/environment";
 import { error } from "@sveltejs/kit";
+import { fail } from "@sveltejs/kit";
 
 export const prerender = true;
 
@@ -8,30 +9,25 @@ export const base = "http://46.101.6.36:8001";
 const cache = new Map();
 
 export async function get(
- fetch: typeof globalThis.fetch,
+ fetch: any,
  endpoint: string,
  params?: Record<string, string>
 ) {
  const q = new URLSearchParams(params);
  const url = `${base}/${endpoint}`;
 
- if (cache.has(url)) {
-  return cache.get(url);
- }
+ let response;
 
- const response = await fetch(url);
+ try {
+  response = await fetch(url);
+ } catch (e) {
+  return { error: true, data: [] };
+ } finally {
+  console.log("end");
+ }
 
  let data = [];
-
- if (!response.ok) {
-  console.log("error");
-  console.log(response.status);
- } else {
-  data = await response.json();
-  if (browser) {
-   cache.set(url, data);
-  }
- }
+ data = await response.json();
 
  return data;
 }
