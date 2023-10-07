@@ -1,24 +1,12 @@
 <script lang="ts">
- import { onMount } from "svelte";
- import {
-  Stepper,
-  Step,
-  getDrawerStore,
-  FileDropzone,
-  ProgressRadial,
- } from "@skeletonlabs/skeleton";
- import BuildForm from "$lib/components/BuildForm.svelte";
- import PromptForm from "$lib/components/PromptForm.svelte";
+ import { Stepper, Step, getDrawerStore } from "@skeletonlabs/skeleton";
 
- import Share from "$lib/components/Share.svelte";
+ import MintForm from "$lib/components/MintForm.svelte";
+ import PromptForm from "$lib/components/PromptForm.svelte";
  import FirstStep from "$lib/components/FirstStep.svelte";
- import { postPrompt } from "$lib/actions/postPropmpt";
- import { getByPromptId } from "$lib/actions/getByPromptId";
- import { handleMint } from "$lib/actions/mintComponent";
+ import Share from "$lib/components/Share.svelte";
+ import Error from "$lib/components/Error.svelte";
  import { view } from "$lib/stores";
- import Error from "./Error.svelte";
- import { getWeb3Details } from "$lib/utils";
- import { page } from '$app/stores';
 
  // props
  export let data: ComponentI[] = [];
@@ -54,27 +42,12 @@
  };
 
  // state variables
- let isMinting = false;
  let search = "";
  let codeHash = "";
- let mintHash: any = "";
- let showImage = false;
- let isPosting = false;
-
- // component inputs
- let prompt = "";
- let name = "";
- let pfp: any;
-
- console.log("pfp");
- console.log(pfp);
 
  $: filteredData = data.filter((d: any) => d?.description?.includes(search));
  let selectedProtocol = filteredData?.[0];
 
- $: {
-  console.log($page.error);
- }
  // buisness logic
  function openDrawer() {
   drawerStore.open(drawerSettings);
@@ -83,72 +56,12 @@
  function setMarket() {
   view.set("market");
  }
-
- function onChangeHandler(e: any): void {
-  console.log("file data:", e);
-  const file = e.target?.files?.[0];
-
-  if (file) {
-   showImage = true;
-
-   const reader = new FileReader();
-   reader.addEventListener("load", function () {
-    pfp = reader.result;
-   });
-   reader.readAsDataURL(file);
-
-   return;
-  }
-  showImage = false;
- }
-
- function handleBuild() {
-  if (prompt === "") {
-   alert("Please enter a prompt");
-   return;
-  }
-
-  isPosting = true;
-  postPrompt(prompt)
-   .then((res) => {
-    const id = res.id;
-    console.log("id ", id);
-
-    getByPromptId(id)
-     .then((res) => {
-      console.log("hash ", res);
-      codeHash = res.code_hash;
-      isPosting = false;
-     })
-     .catch((error) => {
-      console.log(error);
-      isPosting = false;
-      return error;
-     });
-   })
-   .catch((error) => {
-    console.log(error);
-    isPosting = false;
-    return error;
-   });
- }
-
- function setMint() {
-  mintHash = handleMint(
-   name,
-   codeHash,
-   prompt,
-   "bafybeiduim4rtv5pwa56uqg2hm7co2bmhffufimfsc6zs34sdhxeix3jey"
-  );
- }
-
- onMount(() => {});
 </script>
 
 <div style={bgImage}>
  <div class="container h-full mx-auto flex justify-center items-center">
   <div class="stepper">
-   <Stepper>
+   <Stepper gap="gap-4">
     <FirstStep />
     <Step>
      <svelte:fragment slot="header"
@@ -189,14 +102,13 @@
     </Step>
 
     <!-- build step -->
-    <Step>
-      <PromptForm />
+    <Step locked={true}>
+     <PromptForm />
     </Step>
 
     <Step>
-      <BuildForm />
+     <MintForm />
     </Step>
-
    </Stepper>
    {#if fetchError}
     <Error {openDrawer} />
@@ -215,21 +127,8 @@
  .help-btn {
   color: rgb(37, 175, 249);
  }
- .button-build {
-  width: 60px;
-  background: #22966b;
-  color: white;
-  padding: 2px;
-  font-weight: 700;
-  margin: 5px;
-  border-radius: 5px;
- }
  .error {
   font-size: 12px;
   color: #e45d5d;
- }
- .progress {
-  width: 25px;
-  display: flex;
  }
 </style>

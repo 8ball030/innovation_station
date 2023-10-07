@@ -3,7 +3,7 @@
  import ImageUploader from "./ImageUploader.svelte";
 </script>
 
-<FormWrap action="/build?/mint">
+<FormWrap action="/build?/mint" label="Mint">
  <ImageUploader />
  <input
   name="name"

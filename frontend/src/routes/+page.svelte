@@ -1,15 +1,11 @@
 <script lang="ts">
- import * as api from "$lib/api";
  import { onMount } from "svelte";
-
- import Studio from "$lib/components/Studio.svelte";
- import ComponentsList from "$lib/components/ComponentsList.svelte";
- import Landing from "$lib/components/Landing.svelte";
+ import Studio from "$lib/views/Studio.svelte";
+ import Market from "$lib/views/Market.svelte";
+ import Landing from "$lib/views/Landing.svelte";
+ import * as api from "$lib/api";
  import { view } from "$lib/stores";
  import { getWeb3Details } from "$lib/utils";
-
- // configs
- const API_BASE = "http://46.101.6.36:8001";
 
  // state
  let view_value: string;
@@ -19,6 +15,12 @@
  view.subscribe((value) => {
   view_value = value;
  });
+
+ const VIEW_CONFIG: any = {
+  studio: Studio,
+  market: Market,
+  home: Landing,
+ };
 
  onMount(() => {
   async function load() {
@@ -33,10 +35,4 @@
  });
 </script>
 
-{#if view_value === "studio"}
- <Studio {data} {fetchError} />
-{:else if view_value === "market"}
- <ComponentsList {data} {fetchError} />
-{:else}
- <Landing />
-{/if}
+<svelte:component this={VIEW_CONFIG[view_value]} />

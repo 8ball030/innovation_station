@@ -2,7 +2,7 @@
  import FormWrap from "./FormWrap.svelte";
 </script>
 
-<FormWrap action="/build?/prompt">
+<FormWrap action="/build?/prompt" label="Submit Prompt">
  <input
   name="prompt"
   class="input mb-4"

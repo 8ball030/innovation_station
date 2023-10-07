@@ -1,5 +1,6 @@
 <script lang="ts">
  import { getDrawerStore } from "@skeletonlabs/skeleton";
+
  import Card from "$lib/components/Card.svelte";
  import Details from "$lib/components/Details.svelte";
  import { componentTypes } from "$lib/config";
