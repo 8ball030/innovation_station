@@ -1,0 +1,23 @@
+alphabet_in:
+- FAILED
+- DONE
+default_start_state: FetchRyskMarketsRound
+final_states:
+- RetrievedRyskDataRound
+- FailedRyskDataRound
+label: RyskDataCollectionAbciApp
+start_states:
+- FetchRyskMarketsRound
+states:
+- FetchRyskBalancesRound
+- FetchRyskMarketsRound
+- FetchRyskPositionsRound
+- RetrievedRyskDataRound
+- FailedRyskDataRound
+transition_func:
+  (FetchRyskBalancesRound, DONE): FetchRyskPositionsRound
+  (FetchRyskBalancesRound, FAILED): FailedRyskDataRound
+  (FetchRyskMarketsRound, DONE): FetchRyskBalancesRound
+  (FetchRyskMarketsRound, FAILED): FailedRyskDataRound
+  (FetchRyskPositionsRound, DONE): RetrievedRyskDataRound
+  (FetchRyskPositionsRound, FAILED): FailedRyskDataRound

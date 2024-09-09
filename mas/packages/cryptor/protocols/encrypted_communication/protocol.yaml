@@ -1,0 +1,26 @@
+name: encrypted_communication
+author: cryptor
+version: 1.0.0
+protocol_specification_id: cryptor/encrypted_communication:1.0.0
+type: protocol
+description: A protocol for enabling secure and encrypted communications between two
+  parties.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeicfahmcrhvm5x2tx7qozdblrzyumb66k26m3m7wisiarq76swvroa
+  __init__.py: bafybeibqt6kv6gchlld2koupnat7nzrpveaefv7amayeg25sxunhcj2xfy
+  custom_types.py: bafybeia2o4wumvkxhsja57xu5lj4vbioasy2pm2uev26mcpd5r5umwmppi
+  dialogues.py: bafybeicviinzrxjhnixh5jdbwugg7epyu2jfm7ympvzpcyhqoe5bo7wmgm
+  encrypted_communication.proto: bafybeievb466beu4bby4i57dqdbnxvzpvp7ondiieuzfivigwtqbg7pckm
+  encrypted_communication_pb2.py: bafybeidbi6inbcfhigksg726wlnx5kwaeumlr3o7ffvqigg3hq5kzdjkge
+  message.py: bafybeideig3zslllnx5tn6lqeehlqnoj3ekmumjloieeq5b66uon2qg4ku
+  protocol_spec.yaml: bafybeiaqx4zdgerpff7v6az5npxhhkdfjwx5xzvdpggv2w3w5qnlcfpy6i
+  serialization.py: bafybeib6x7mcjwjvqlqb57ixba5ghkiwfn7srqj357w2pzd4tdrsi46sua
+  tests/__init__.py: bafybeibiyjhqaxulxta4paljgtktdvlndslm2ufeyqpm5afyszfehkkbyi
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_encrypted_communication_dialogues.py: bafybeiginpdvffpjyhiokktjq55fo3am6kg3kwzuccwd5tuvxms4k37j5i
+  tests/test_encrypted_communication_messages.py: bafybeiauji67kntbatjoxqyzizxwshdgp7hp7qsnhgcigprklj7utrqsrq
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

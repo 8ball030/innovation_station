@@ -1,0 +1,26 @@
+name: cross_chain_arbitrage
+author: your_name
+version: 0.1.0
+protocol_specification_id: your_name/cross_chain_arbitrage:0.1.0
+type: protocol
+description: A protocol for managing cross-chain arbitrage transactions between multiple
+  platforms.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeidsssk4bxsg66fqrnx7vfcue3uwtdhokuajow4rkmkad5pkr5o2qm
+  __init__.py: bafybeihrpwoy7cbejgu2ct6dbmpuppvxyf6g25n5bazbtsscowz7fvb7qy
+  cross_chain_arbitrage.proto: bafybeihntdgxncnizlbxsgkpyqfg3n654nzrn46vjkj3rgw56hpmsxleda
+  cross_chain_arbitrage_pb2.py: bafybeiefmoto7r4pmf4fplstget34s65tyd3fng45a4x3apc32sy7xdf3u
+  custom_types.py: bafybeiaqth2uou6ec64d4u4nykr7tly3rtc6y3kysacwxtd45hxqojwvcm
+  dialogues.py: bafybeifow6tki22r2j2kgugtkhd2ohv5trp4be3ffylvercgmxzakiw5dy
+  message.py: bafybeicxloiloxwfzgzhwnj5vqz3thj4c53nke2i3zcmj3wattsdu4p2hy
+  protocol_spec.yaml: bafybeib2lcwctuq7aaj27twnng74lk3k44tsprhqdx5iex3qym3l3fhfge
+  serialization.py: bafybeicj54crjzsh6fmacszqf5nvawtdi4lkzioebpxcfvht5vt4jeqsby
+  tests/__init__.py: bafybeifx566tk6dvmfqgthwjhbpsxvycqtmm2pvrgvi5tzoz6i7ecvhhg4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_cross_chain_arbitrage_dialogues.py: bafybeidyiecn6swjprf245spntncmoesdj24dqddkny4emtcup3vk3vwzu
+  tests/test_cross_chain_arbitrage_messages.py: bafybeidnxx5w4g7kb5sxfsjzamlrg25lxyvg5xp756cnmn44olhryjwls4
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

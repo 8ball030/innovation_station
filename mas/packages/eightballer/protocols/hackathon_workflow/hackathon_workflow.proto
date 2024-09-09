@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package aea.eightballer.hackathon_workflow.v0_2_0;
+
+message HackathonWorkflowMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_REGISTRATION_CLOSED = 0;
+      ERROR_CODE_ENUM_TEAM_ALREADY_REGISTERED = 1;
+      ERROR_CODE_ENUM_IDEA_REJECTED = 2;
+      ERROR_CODE_ENUM_SUBMISSION_FAILED = 3;
+      ERROR_CODE_ENUM_INVALID_TEAM_ID = 4;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Announce_Event_Performative{
+    string event_details = 1;
+    string registration_deadline = 2;
+  }
+
+  message Initiate_Idea_Generation_Performative{
+    string topic = 1;
+  }
+
+  message Form_Team_Performative{
+    string team_name = 1;
+    repeated string member_ids = 2;
+  }
+
+  message Submit_Idea_Performative{
+    string team_id = 1;
+    string idea_description = 2;
+  }
+
+  message Select_Idea_Performative{
+    string team_id = 1;
+    bool idea_approved = 2;
+    string feedback = 3;
+    bool feedback_is_set = 4;
+  }
+
+  message Project_Progress_Update_Performative{
+    string team_id = 1;
+    string update_details = 2;
+  }
+
+  message Submit_Final_Project_Performative{
+    string team_id = 1;
+    string project_link = 2;
+    string presentation_link = 3;
+    bool presentation_link_is_set = 4;
+  }
+
+  message Acknowledgement_Performative{
+    bool received = 1;
+    string message = 2;
+    bool message_is_set = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Acknowledgement_Performative acknowledgement = 5;
+    Announce_Event_Performative announce_event = 6;
+    Error_Performative error = 7;
+    Form_Team_Performative form_team = 8;
+    Initiate_Idea_Generation_Performative initiate_idea_generation = 9;
+    Project_Progress_Update_Performative project_progress_update = 10;
+    Select_Idea_Performative select_idea = 11;
+    Submit_Final_Project_Performative submit_final_project = 12;
+    Submit_Idea_Performative submit_idea = 13;
+  }
+}

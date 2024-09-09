@@ -1,0 +1,26 @@
+name: hackathon_competition
+author: eightballer
+version: 0.1.0
+protocol_specification_id: eightballer/hackathon_competition:0.1.0
+type: protocol
+description: A protocol for managing interactions during a hackathon competition between
+  participants and the organizing entity.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeihllq673iknyy5l7molm2u7bmcm527yto6uqdncqhaadu2mwydgza
+  __init__.py: bafybeibqkaoziy5pd4tkdftrl2w7klfjr3xev4v3qt7cww5navf7d6k5ma
+  custom_types.py: bafybeieoij5yx5tcjoe6bwwc7ksbbxlx47w4xtssvf4pky6pt7ye5k4yky
+  dialogues.py: bafybeia2qmlyfx5kauahnidecq3dxvzq6yqhoffpsurt5hp56qczsq3iie
+  hackathon_competition.proto: bafybeibhtpxjtzwxzej6y5i5pc4evzhv4n5wscu2xljveqjk34d2azlshe
+  hackathon_competition_pb2.py: bafybeicemhvdx3onrituy5zdnokexyfitxughdvbogviyo6xgal3njtsca
+  message.py: bafybeihw5byaig2aqrj5p65pd4csam5e4yxddxqvmfnqxw3tdmvf4etble
+  protocol_spec.yaml: bafybeigqn3kfvjxcaxwz2vkvmzraqjpncpyoxd3yx5d5cro47sh43pqpya
+  serialization.py: bafybeif5tx47nupnrcw5qtvwplpyk4edcfiq4ax4qcto3yd42ggij5jpie
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_competition_dialogues.py: bafybeihmyv5dciacqefppap5jjda5ujlxukf4z5pstnj5hqfiquhsuanty
+  tests/test_hackathon_competition_messages.py: bafybeidhk7ac76svumqqgqey7lgm74fntz7jk7gfwzpdztwe77wgnlcxki
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

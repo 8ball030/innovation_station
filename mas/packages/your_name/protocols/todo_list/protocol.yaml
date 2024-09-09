@@ -1,0 +1,25 @@
+name: todo_list
+author: your_name
+version: 0.1.0
+protocol_specification_id: your_name/todo_list:0.1.0
+type: protocol
+description: A protocol for managing a to-do list between a user and a system.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeib4ynuhglvkrlii2wxp4ht4temeoq25m23jski25lol5vs6lhr6nm
+  __init__.py: bafybeidx5wuavvzchdygw53525qysscjg6bthjxknddfq735fkvjd4qmly
+  custom_types.py: bafybeieontil5ileknktgtjqetfqdel7wjy4q6o2pomielayxwe3hmju5y
+  dialogues.py: bafybeihonzv7tfvznma5h2zzrckhddes34bnbf6cmigxnwkh5t7opa4nfm
+  message.py: bafybeicsvyxw3lr7rc5njem265u6wdz42kqlfidxuwkhb6hjji4oggn4om
+  protocol_spec.yaml: bafybeigfuzxiwnkp5nrolsaopqgvw3mzlfhg2dv5rvdjynvwqag7uhoeau
+  serialization.py: bafybeiguud6gkcgwpqhkw6ca6i2zvzgegjpcnkqffffubiqesfxa4ntyge
+  tests/__init__.py: bafybeifx566tk6dvmfqgthwjhbpsxvycqtmm2pvrgvi5tzoz6i7ecvhhg4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_todo_list_dialogues.py: bafybeighrez6ubk45czesoybyw5eqqvirgec7e57imt4oi3dil6lxgogwq
+  tests/test_todo_list_messages.py: bafybeifvybzv3wjbde7ol6axtfbe7ym53ornmfhoylsyfblvjrwp4lgyjy
+  todo_list.proto: bafybeibz5w5crwxf7uyhoarpcyhglmgzu3qvkjjpkn5kpmzzepmkfdcq3y
+  todo_list_pb2.py: bafybeids4nlpua43ksjpm2snqyqpzs3uc4nlkeb6c42i2ndjhoob2mkara
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

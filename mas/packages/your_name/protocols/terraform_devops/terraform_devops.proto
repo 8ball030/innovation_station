@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package aea.your_name.terraform_devops.v0_1_0;
+
+message TerraformDevopsMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INIT_ERROR = 0;
+      ERROR_CODE_ENUM_APPLY_ERROR = 1;
+      ERROR_CODE_ENUM_DESTROY_ERROR = 2;
+      ERROR_CODE_ENUM_VERIFY_ERROR = 3;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 4;
+      ERROR_CODE_ENUM_INVALID_CONFIGURATION = 5;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Status{
+    enum StatusEnum {
+      STATUS_ENUM_SUCCESS = 0;
+      STATUS_ENUM_FAILURE = 1;
+      STATUS_ENUM_IN_PROGRESS = 2;
+    }
+    StatusEnum status = 1;
+  }
+
+
+  // Performatives and contents
+  message Init_Performative{
+    string configuration_path = 1;
+  }
+
+  message Apply_Performative{
+    string configuration_path = 1;
+  }
+
+  message Destroy_Performative{
+    string configuration_path = 1;
+  }
+
+  message Verify_Performative{
+    string deployment_id = 1;
+  }
+
+  message Result_Performative{
+    Status status = 1;
+    string stdout = 2;
+    string stderr = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Apply_Performative apply = 5;
+    Destroy_Performative destroy = 6;
+    Error_Performative error = 7;
+    Init_Performative init = 8;
+    Result_Performative result = 9;
+    Verify_Performative verify = 10;
+  }
+}

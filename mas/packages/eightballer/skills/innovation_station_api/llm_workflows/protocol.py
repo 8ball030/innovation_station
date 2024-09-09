@@ -10,13 +10,20 @@ import yaml
 from aea.helpers.cid import to_v1
 from aea_cli_ipfs.ipfs_utils import IPFSTool
 from llm_workflow.base import Workflow
-from llm_workflow.models import OpenAIChat
+from llm_workflow.openai import OpenAIChat, OpenAIServerChat
 
+# model = OpenAIChat()
+# model = OpenAIServerChat(endpoint_url="http://localhost:7869/v1", api_key='ollama')
+# model.model_name = 'deepseek-coder-v2:latest'
+
+# res = model("create a protocol representing a user interface interaction between a user and an agent.")
 
 def generate(initial_prompt: str) -> str:
     """Generates a protocol spec. using the OpenAI chat model."""
 
-    chat_assistant = OpenAIChat(model_name='gpt-3.5-turbo-16k')
+    # chat_assistant = OpenAIServerChat(endpoint_url="http://localhost:7869/v1", api_key='ollama')
+    # chat_assistant.model_name = 'deepseek-coder-v2:latest'
+    chat_assistant = OpenAIChat(model_name='gpt-4o')
 
     def prompt_template(user_prompt: str) -> str:
         """A templating function to provide a prompt to the user."""
@@ -31,15 +38,15 @@ def generate(initial_prompt: str) -> str:
         return (
             "Take the user prompt improving it in order to ensure that "
             "as many possible situations are considered. Errors can occur at any point."
-            """Example input: create a protocol representing a user interface interaction between a user and an agent. 
+            """Example input: create a protocol representing a user interface interaction between a user and an agent.
             There should be a representation of a notification, requesting a user confirmation,
-            a command from the user, a user confirmation. 
-            Example output: 
+            a command from the user, a user confirmation.
+            Example output:
             Create a protocol representing a user interface interaction between a user and an agent.
             There should be representations of;
             - notifications from the agent.
             - the agent requesting a user confirmation.
-            - a command from the user to the agent. 
+            - a command from the user to the agent.
             - a user confirmation.
             initialisation:
             - notification
@@ -66,13 +73,21 @@ def generate(initial_prompt: str) -> str:
             - the valid reponse to buy_execution is sell_execution or arbitrage_result
             - the valid response to sell_execution is buy_execution or arbitrage_result
             *********************************************************************************************
+            note custom types can never be composite. The must always be the main type in a speech act
+            for example `pt:list[ct:LintIssue]` is NOT valid 
+            REMOVE AND IMPROVE THIS. 
+            We would need a custom type representing a list of the customs
+            i.e. ct:LintIssues[ct:LintIssue]
+            We need to have at MOST 2 roles.
             """
             + f":\n\n```{user_input}```"
         )
 
     def provide_one_shot_examples(past_input) -> str:
         """Provide one-shot examples to the model to improve its performance."""
-        directory: Path = Path(__file__).parent.parent / "examples"
+        directory: Path = Path(__file__).parent.parent / "examples" / 'protocols'
+
+        print(f"Checking {directory}")
 
         first_line = (
             "Here are a number of examples that can be used to as templates"
@@ -94,6 +109,10 @@ def generate(initial_prompt: str) -> str:
             "Take the provided spec. and ensure that the following constraints are met. "
             "Errors can occur at any of the replies. Return only the extracted yaml. "
             "Ensure that end is only used as the final speech act where appropriate."
+            "Ensure that the Author is always eightballer and the name of the protocol matches this regex '[a-z_][a-z0-9_]{0,127}'.",
+            "author is always lowercase",
+            "note custom types can never be composite. The must always be the main type in a speech act",
+            "for example `pt:list[ct:LintIssue]` is NOT valid REMOVE AND IMPROVE THIS. We would need a custom type representing a list of the customs",
             f":\n\n```{user_input}```"
         )
 
@@ -150,10 +169,18 @@ def generate(initial_prompt: str) -> str:
 
 
 @click.command()
-@click.option("--prompt", prompt="Enter a prompt", help="The prompt to use to generate the protocol spec.")
-def main(prompt):
+@click.option("--num", prompt="Enter the number of protocols to generate", help="The number of protocols to generate.", required=False, default=1)
+@click.option("--prompt_path", prompt="Enter the path to a prompt file", help="The path to a prompt file.", required=False, default=None)
+def main(num, prompt_path):
     """The main function."""
-    click.echo(generate(prompt))
+    if prompt_path:
+        with open(prompt_path, 'r', encoding="utf-8") as file_path:
+            print(f"Reading from {prompt_path}")
+            prompt = file_path.read()
+
+    for _ in range(int(num)):
+        res = generate(prompt)
+        print(res['code_uri'].replace("ipfs://", "https://gateway.autonolas.tech/ipfs/"))
 
 
 if __name__ == "__main__":

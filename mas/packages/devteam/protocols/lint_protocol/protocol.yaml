@@ -1,0 +1,27 @@
+name: lint_protocol
+author: devteam
+version: 1.0.0
+protocol_specification_id: devteam/lint_protocol:1.0.0
+type: protocol
+description: A protocol for representing the linting process in software development,
+  detailing the interaction for initiating a linting process, reporting issues, and
+  handling errors.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeif2dretlzq4uqcukvon4haoa4kagou4ammv3bcj5p2rq4c33zyhri
+  __init__.py: bafybeiftvkbc3b4gnvalofb5v53dexegrycavstoafabl7nap5qv6kpkem
+  custom_types.py: bafybeigx5uxhcbbeadr7yljqm3w6ge4zgo3ck7c5zf6tel2qbihmx3e6oa
+  dialogues.py: bafybeid4tw3dmxczsy5s4ed2vhwqjrqfobgrt4uzwxzqplzzcaipl3z5jq
+  lint_protocol.proto: bafybeicfg32j5ibmkc2l5jooj7dpxblbtfce2cf6onwyn5jsrglt57vhgi
+  lint_protocol_pb2.py: bafybeiefnappaxbnh6a7l54ittvmscozwlsguu7gdjjnwuwzqxjmit3lg4
+  message.py: bafybeicsoltb2qzsux5lxamtvwvmjg4zfnfquvl6cgyaaxi4jbwynkixsq
+  protocol_spec.yaml: bafybeidtdgjo55ieaysw7acokceoydmbsu6urwcko6dw3c6z4epuanwgwa
+  serialization.py: bafybeihtylqetpbhrilbdbzsctnrie52c6kh35dshfdrayfx3jetjamvsq
+  tests/__init__.py: bafybeigfleuyzvb63elvdegf4ce5zeeims6ommh3ajkcgurc3td3vnquw4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_lint_protocol_dialogues.py: bafybeie3adaasszo43pkudqmmnl7j42i5ms5y5zhxhbipir6zompkspac4
+  tests/test_lint_protocol_messages.py: bafybeichasqnlaqwelv3etsb4kbql7rkckqxkly7vmgmwntvt45phvwjgq
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package aea.developer.format_stage.v0_1_0;
+
+message FormatStageMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_FORMAT_ERROR = 0;
+      ERROR_CODE_ENUM_VALIDATION_ERROR = 1;
+      ERROR_CODE_ENUM_FILE_NOT_FOUND = 2;
+      ERROR_CODE_ENUM_PERMISSION_DENIED = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Format_Request_Performative{
+    string file_path = 1;
+    map<string, string> formatter_options = 2;
+  }
+
+  message Format_Result_Performative{
+    string file_path = 1;
+    bool formatted = 2;
+    int32 changes_made = 3;
+  }
+
+  message Validate_Code_Performative{
+    string file_path = 1;
+    repeated string validation_rules = 2;
+  }
+
+  message Validation_Result_Performative{
+    string file_path = 1;
+    bool valid = 2;
+    repeated string errors = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Format_Request_Performative format_request = 6;
+    Format_Result_Performative format_result = 7;
+    Validate_Code_Performative validate_code = 8;
+    Validation_Result_Performative validation_result = 9;
+  }
+}

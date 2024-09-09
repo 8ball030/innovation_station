@@ -1,0 +1,26 @@
+name: hackathon_engagement
+author: eightballer
+version: 1.0.0
+protocol_specification_id: eightballer/hackathon_engagement:1.0.0
+type: protocol
+description: A protocol that orchestrates interactions throughout the different stages
+  of participating in a hackathon, from idea generation to project submission.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeibw4aklfwld4bmxpqzgvl4dba6pt5o6g6wtoxpdamnn2qv2veuqoa
+  __init__.py: bafybeic7mfuuwjtdg4nenurml7kqbsf72s5275jk5iobngjvhcxwsrrqzm
+  custom_types.py: bafybeif6r7z3th2yfey7psc4yhrovgcrq6sjc7hmxndzbtcrm3ooc7ouue
+  dialogues.py: bafybeiey2jgtazbjgice2fmrwgnxid224e2nhdm5y7xe765mbrdrkxgsue
+  hackathon_engagement.proto: bafybeihndwkjf3s2puashgtufvtwpwoctkkbipfq3xcoovqyfomk3mm6tu
+  hackathon_engagement_pb2.py: bafybeiabfvgkrcyfqdixqfso7grnb2dth6g3p4dbvaqyqpo3k2oo7izjem
+  message.py: bafybeicyleowo4v4qg3wo5rfibf7hfhlgyrllkkmyoq3hy5yweyh4d3er4
+  protocol_spec.yaml: bafybeihnfjkmvotsy7hwtd54pu2itfzpnrvbf2of3ymgbnggwilj2a6gd4
+  serialization.py: bafybeidaj5c4edlen3whtu2pzk7bsvmlwletfq24f5pdngvmjuhavjpxs4
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_engagement_dialogues.py: bafybeic7fv7bj4ce277ih6efdi4wfr4xgrrx43ae6yz3gx6xgbkncb3ire
+  tests/test_hackathon_engagement_messages.py: bafybeihwl6jmtrnsw3huo54a5wnkibqhejhnaxubgdclv25x5vrfcdyokm
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

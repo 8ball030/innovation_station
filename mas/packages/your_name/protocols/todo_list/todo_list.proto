@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package aea.your_name.todo_list.v0_1_0;
+
+message TodoListMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_CREATE_TASK_ERROR = 0;
+      ERROR_CODE_ENUM_UPDATE_TASK_ERROR = 1;
+      ERROR_CODE_ENUM_COMPLETE_TASK_ERROR = 2;
+      ERROR_CODE_ENUM_DELETE_TASK_ERROR = 3;
+      ERROR_CODE_ENUM_TASK_NOT_FOUND = 4;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message TaskStatus{
+    enum TaskStatusEnum{
+      TASK_STATUS_ENUM_PENDING = 0;
+      TASK_STATUS_ENUM_IN_PROGRESS = 1;
+      TASK_STATUS_ENUM_COMPLETED = 2;
+    }
+    TaskStatusEnum task_status = 1;
+  }
+
+
+  // Performatives and contents
+  message Create_Task_Performative{
+    string task_description = 1;
+    int32 due_date = 2;
+    bool due_date_is_set = 3;
+  }
+
+  message Update_Task_Performative{
+    string task_id = 1;
+    string new_description = 2;
+    bool new_description_is_set = 3;
+    int32 new_due_date = 4;
+    bool new_due_date_is_set = 5;
+    TaskStatus new_status = 6;
+    bool new_status_is_set = 7;
+  }
+
+  message Complete_Task_Performative{
+    string task_id = 1;
+  }
+
+  message Delete_Task_Performative{
+    string task_id = 1;
+  }
+
+  message Task_Info_Performative{
+    string task_id = 1;
+    string task_description = 2;
+    int32 due_date = 3;
+    bool due_date_is_set = 4;
+    TaskStatus status = 5;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Complete_Task_Performative complete_task = 5;
+    Create_Task_Performative create_task = 6;
+    Delete_Task_Performative delete_task = 7;
+    Error_Performative error = 8;
+    Task_Info_Performative task_info = 9;
+    Update_Task_Performative update_task = 10;
+  }
+}

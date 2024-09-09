@@ -1,0 +1,26 @@
+name: hackathon_competition_workflow
+author: eightballer
+version: 0.2.0
+protocol_specification_id: eightballer/hackathon_competition_workflow:0.2.0
+type: protocol
+description: A simplified protocol to manage and track the progress of teams from
+  idea generation through to final presentation submissions in a hackathon competition.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeib6ap572pqfhfikxorbqzbajhc6gfwyhdxixuia763323sbxjisuy
+  __init__.py: bafybeieicj6qy4u2dg3s36luza64uvq3ayttswst4lyhdgo5otzxofinn4
+  custom_types.py: bafybeiaxwxpu6ttvhvmcaavdbkymtlculsn3lztq6t7djownaxq4d2zpeu
+  dialogues.py: bafybeid2jftuhw4bumnbetjneq5dy5ai6v43avdlqxephz6h6k4nxwzhee
+  hackathon_competition_workflow.proto: bafybeia2p5bwkvdyngyc4o7lq7qr7hu2lsfch6sj7wrvtp3fqpx5n6kqga
+  hackathon_competition_workflow_pb2.py: bafybeibkhtevto4vzmwgcukrwdh2sbeo2zqn4fju2g63vqzewxrp6pnkxu
+  message.py: bafybeig5gfvqh3bgpaagkpvxsnyuy4l2jiuive3dr6ibjgumub2vqjzvu4
+  protocol_spec.yaml: bafybeid3gmtyazntpo7esg5oznpzqved3mwamafes5w5mdtiopywpl5lci
+  serialization.py: bafybeia5474uyr36jvpl36ciqnitiqfdvi2fru4neurzac5pt4z4syc5ea
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_competition_workflow_dialogues.py: bafybeiek4ccvaz3keb7gszgmha6n5cpzds6xf23g6zsvfeeyrwa3eloxvq
+  tests/test_hackathon_competition_workflow_messages.py: bafybeibbka7gwl7v2x3cyodxypin53dmgdkcrnjpclaigfqkyopxo3rcom
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

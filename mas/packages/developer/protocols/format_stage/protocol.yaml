@@ -1,0 +1,26 @@
+name: format_stage
+author: developer
+version: 0.1.0
+protocol_specification_id: developer/format_stage:0.1.0
+type: protocol
+description: A protocol for managing the format stage in a development flow, including
+  code formatting, validation, and error feedback.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeigzlvudq7ptrowbtvjk3jfghf5edzyyywpphmm5i5frxzscd4pdwi
+  __init__.py: bafybeihddca22h4yyq3nkywgnjmjp7ml3nimss7rvyccthk7okdybromj4
+  custom_types.py: bafybeifyrqzdibobvceencchjtvhe563pyyxmpz6rryagwnbr5rddwcspe
+  dialogues.py: bafybeicjtiohk2y37rzjzr5v3ewpu4xxyixqggpfop2rre3usvrrfwlfmq
+  format_stage.proto: bafybeialqmww2ynrudj2ch3h3erahniwbrujtjl3loe4eawfkxezdvxfkm
+  format_stage_pb2.py: bafybeihwkvkx2bkdi4wxyzjry2k3ojigzza6cxl7g456ts6tlzlbtchzsq
+  message.py: bafybeicaoxi4xyko2pz6g4ytg2twla3sklmbwfjoyjmegtlrx3sgvlvkia
+  protocol_spec.yaml: bafybeidjopdgyxzm6bhhnsyhaqvdoiolqe75oa3qedmsas3epc6jx7ciui
+  serialization.py: bafybeibbab2stdz6unvwecypoq4b5ry6k4ci2wf2bsngx3ov43iryszpl4
+  tests/__init__.py: bafybeiammdfjpddmcshryphxwkqj22mzj37uixv3zzabpk2mckzzdftbky
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_format_stage_dialogues.py: bafybeig4du6sc65v4fpd4tqkgioxs2kwhrsn53zpivdy4zhyerqfcr3k44
+  tests/test_format_stage_messages.py: bafybeibwhcnf6yni4nkfkinpcrphyqt7gnnuiet4v7dr4tnxotqzpec44q
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

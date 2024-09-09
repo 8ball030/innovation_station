@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package aea.eightballer.lint_protocol.v0_1_0;
+
+message LintProtocolMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_LINT_EXECUTION_FAILURE = 0;
+      ERROR_CODE_ENUM_INVALID_SOURCE_PATH = 1;
+      ERROR_CODE_ENUM_LINT_TIMEOUT = 2;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Severity{
+    enum SeverityEnum {
+      SEVERITY_ENUM_INFO = 0;
+      SEVERITY_ENUM_WARNING = 1;
+      SEVERITY_ENUM_ERROR = 2;
+    }
+    SeverityEnum severity_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Initiate_Lint_Performative{
+    string source_code_path = 1;
+  }
+
+  message Lint_Issue_Performative{
+    string file = 1;
+    int32 line = 2;
+    int32 column = 3;
+    Severity severity = 4;
+    string message = 5;
+  }
+
+  message Lint_Completed_Performative{
+    bool success = 1;
+    int32 issues_count = 2;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Initiate_Lint_Performative initiate_lint = 6;
+    Lint_Completed_Performative lint_completed = 7;
+    Lint_Issue_Performative lint_issue = 8;
+  }
+}

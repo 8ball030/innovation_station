@@ -1,0 +1,26 @@
+name: hackathon_workflow
+author: eightballer
+version: 0.2.0
+protocol_specification_id: eightballer/hackathon_workflow:0.2.0
+type: protocol
+description: A protocol for managing hackathon competition phases, including team
+  formation, idea submission, and project development stages.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeidmgsge7w33gjwdsjiz6kdl3rj6kt7ppghme4nlv6v3augtb633ce
+  __init__.py: bafybeicqkis344tpue3bjwpqpaqbup6qynnmzghf7l26p42kjiq4264pfe
+  custom_types.py: bafybeiffifsn5y7i2zvfygtknjcpgbxskqqokjblcmlx2qx5sinf3d3wui
+  dialogues.py: bafybeigbkpbeopvcv77txbtddr5vpb6ofvahu7yz3ea527if5mraje7une
+  hackathon_workflow.proto: bafybeiar4k3a4a6hmi5yye7ar54zewqla3i2vh7ujf3swlak7hmxorwb7u
+  hackathon_workflow_pb2.py: bafybeifedpn6xjj5cmu2xi4r5keztsuath3dh63bb6qjoyq6zfetoxn63i
+  message.py: bafybeie27tbgbtapcta7om5eojpxnmitoo7uljiackdiswcn3jkgxjcnta
+  protocol_spec.yaml: bafybeicq5pejspyasdbiprv6mmuojt4bmuty53yaeecqz2mobc4ulhmmz4
+  serialization.py: bafybeieksti5nqup2efecabgpucaxfljpvkibs3iqt76dmf42jcl4lda7e
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_workflow_dialogues.py: bafybeig4jpohytlsssqtqgg32xmekn6hyrpbsckc4kddzksnlc7didrdb4
+  tests/test_hackathon_workflow_messages.py: bafybeibxuju4rk6cbesp25ueqwqzxkeytmufdgsei5e2s4gbpj47u3al6i
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

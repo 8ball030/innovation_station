@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package aea.eightballer.encrypted_communication.v0_1_0;
+
+message EncryptedCommunicationMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_CHALLENGE_FAILED = 0;
+      ERROR_CODE_ENUM_VERIFICATION_FAILED = 1;
+      ERROR_CODE_ENUM_UNSUPPORTED_KEY_SCHEME = 2;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Issue_Challenge_Performative{
+    string challenge = 1;
+  }
+
+  message Respond_Challenge_Performative{
+    string challenge_response = 1;
+    string requester_public_key = 2;
+  }
+
+  message Verify_Response_Performative{
+    bool verification_result = 1;
+  }
+
+  message Provide_Encryption_Key_Performative{
+    string encryption_key = 1;
+  }
+
+  message Verify_Message_Performative{
+    string message_signature = 1;
+    string message = 2;
+  }
+
+  message Verification_Result_Performative{
+    bool result = 1;
+  }
+
+  message Encryption_Ready_Performative{
+    bool status = 1;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Encryption_Ready_Performative encryption_ready = 5;
+    Error_Performative error = 6;
+    Issue_Challenge_Performative issue_challenge = 7;
+    Provide_Encryption_Key_Performative provide_encryption_key = 8;
+    Respond_Challenge_Performative respond_challenge = 9;
+    Verification_Result_Performative verification_result = 10;
+    Verify_Message_Performative verify_message = 11;
+    Verify_Response_Performative verify_response = 12;
+  }
+}
