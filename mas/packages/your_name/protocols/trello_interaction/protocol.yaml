@@ -1,0 +1,26 @@
+name: trello_interaction
+author: your_name
+version: 0.1.0
+protocol_specification_id: your_name/trello_interaction:0.1.0
+type: protocol
+description: A protocol for managing interactions with Trello entities like boards,
+  cards, members, etc.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeifbeu3jdi47xq75wflmysy7ghnb6dbu7u3ur6qdhzw2vd6xd27txa
+  __init__.py: bafybeidok22usyxpgixi7wv5fgrv6sxztgpsixurnpv6hjkxxovrlf5vlq
+  custom_types.py: bafybeigtouqincw37mq6ovlquz7eexxi3cpdwwpzr47y6chigq5iiy4xzi
+  dialogues.py: bafybeib3vadjqetjfpvnaoyqz3jmb6pvlp4bcwgomoymvdcro6byo5uhka
+  message.py: bafybeid4xqkw34lqwz3hzmlmotijfokzwwntew7nybjd6ii4uuiseecsmu
+  protocol_spec.yaml: bafybeidkfa6cc23kzb7f7xllxdpflxq44xtboecdrer33uxqxuhuegpfu4
+  serialization.py: bafybeiabwrp3r4cxaovdcemjqfwdvspvm6ki6v7k6cqwuhlp6fuemu5d24
+  tests/__init__.py: bafybeifx566tk6dvmfqgthwjhbpsxvycqtmm2pvrgvi5tzoz6i7ecvhhg4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_trello_interaction_dialogues.py: bafybeihcrz3lfrdp6cgczo6dkjcdfardieim6j6x4tg7kauf6cgxnscjii
+  tests/test_trello_interaction_messages.py: bafybeieuscph4pl55jk4atd7zfh3rjyzla5uurdromxvy2uf472b45vl5i
+  trello_interaction.proto: bafybeihwamtxgqq5o2rbj54k5eazbnxrhuhegsvzq6epuvxzuxi3w4oqlm
+  trello_interaction_pb2.py: bafybeib5bx4y4ankoecxifk5emchlielay6a3uvrm6h2eqvlnzkouihioi
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}
