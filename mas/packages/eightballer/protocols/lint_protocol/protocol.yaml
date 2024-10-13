@@ -1,0 +1,25 @@
+name: lint_protocol
+author: eightballer
+version: 0.1.0
+protocol_specification_id: eightballer/lint_protocol:0.1.0
+type: protocol
+description: A protocol for managing lint tasks in the development flow.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeihbhau43vej7qz4ifx4snpelicwgoo2wpzkk33cmgb2wb4pqlbzh4
+  __init__.py: bafybeif7fxfz73ceukc3f6q5ns22z2sttqlpwss65okmnszruoniwntapy
+  custom_types.py: bafybeida7e32pq4gzr4set72gekawoydahwgtbhdvnsoseldgeyi5jzwta
+  dialogues.py: bafybeigcg45qqzupezpewujrkqn6lah24ku7lvs5emz3fndugqjqy5dfjy
+  lint_protocol.proto: bafybeibhfycnnoxirjbgq345qlnvutic2fdkp6hvphqfn6uh4gbcp6etzu
+  lint_protocol_pb2.py: bafybeidmzxkag6g5lhaou4ipqys432decc55e26jx76cbtmk3h36kib53a
+  message.py: bafybeiewleay3dbioiyehemt435xzczhdwqezowjktieurlnycu4bnh3ui
+  protocol_spec.yaml: bafybeig2oblmlf46wt7a3hjvqrxmwkrgimsundxkucun5klllkrydmphry
+  serialization.py: bafybeib4gnq4bz2rolzavhokkugdvzddxubzdoo3nnbwysxmtk4qtm4i2i
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_lint_protocol_dialogues.py: bafybeiewl35ntefsq6npyr6isbabkz22lrbn4x4sg7kfq3jrzj6tbkkm2i
+  tests/test_lint_protocol_messages.py: bafybeifbgrmri2mz3i5xphqdlskbpxadopfjfb4huuqu43iyhvoardd64u
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

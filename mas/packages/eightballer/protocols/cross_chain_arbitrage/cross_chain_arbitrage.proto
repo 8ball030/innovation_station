@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package aea.eightballer.cross_chain_arbitrage.v0_1_0;
+
+message CrossChainArbitrageMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_NOT_FOUND = 0;
+      ERROR_CODE_ENUM_INVALID_OPERATION = 1;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 2;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message RejectionReason{
+    enum RejectionReasonEnum {
+      REJECTION_REASON_ENUM_INSUFFICIENT_VOLUME = 0;
+      REJECTION_REASON_ENUM_PRICE_MISMATCH = 1;
+      REJECTION_REASON_ENUM_MARKET_CLOSED = 2;
+      REJECTION_REASON_ENUM_TECHNICAL_ERROR = 3;
+    }
+    RejectionReasonEnum reason = 1;
+  }
+
+
+  // Performatives and contents
+  message Arbitrage_Opportunity_Performative{
+    string buy_side_exchange_id = 1;
+    string sell_side_exchange_id = 2;
+    string market_name = 3;
+    double available_volume = 4;
+    double buy_price = 5;
+    double sell_price = 6;
+    string note = 7;
+    bool note_is_set = 8;
+  }
+
+  message Rejected_Performative{
+    RejectionReason reason = 1;
+  }
+
+  message Buy_Execution_Performative{
+    string exchange_id = 1;
+    string ledger_id = 2;
+    string tx_hash = 3;
+    double volume = 4;
+    double price = 5;
+    string token_a_address = 6;
+  }
+
+  message Sell_Execution_Performative{
+    string exchange_id = 1;
+    string ledger_id = 2;
+    string tx_hash = 3;
+    double volume = 4;
+    double price = 5;
+    string token_b_address = 6;
+  }
+
+  message Arbitrage_Result_Performative{
+    double profit = 1;
+    string note = 2;
+    bool note_is_set = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Arbitrage_Opportunity_Performative arbitrage_opportunity = 5;
+    Arbitrage_Result_Performative arbitrage_result = 6;
+    Buy_Execution_Performative buy_execution = 7;
+    Error_Performative error = 8;
+    Rejected_Performative rejected = 9;
+    Sell_Execution_Performative sell_execution = 10;
+  }
+}

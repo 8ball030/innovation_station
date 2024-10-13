@@ -1,0 +1,29 @@
+alphabet_in:
+- DONE
+- FAILED
+default_start_state: FetchCexMarketsRound
+final_states:
+- FailedCexRound
+- RetrievedCexDataRound
+label: CentralizedExchangeDataRetrievalAbciApp
+start_states:
+- FetchCexMarketsRound
+- RegistrationRound
+states:
+- RegistrationRound
+- FetchCexBalancesRound
+- FailedCexRound
+- RetrievedCexDataRound
+- FetchCexOrdersRound
+- FetchCexMarketsRound
+- FetchCexPositionsRound
+transition_func:
+  (RegistrationRound, DONE): FetchCexMarketsRound
+  (FetchCexBalancesRound, DONE): FetchCexPositionsRound
+  (FetchCexBalancesRound, FAILED): FailedCexRound
+  (FetchCexMarketsRound, DONE): FetchCexBalancesRound
+  (FetchCexMarketsRound, FAILED): FailedCexRound
+  (FetchCexOrdersRound, DONE): RetrievedCexDataRound
+  (FetchCexOrdersRound, FAILED): FailedCexRound
+  (FetchCexPositionsRound, DONE): FetchCexOrdersRound
+  (FetchCexPositionsRound, FAILED): FailedCexRound

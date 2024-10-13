@@ -1,0 +1,40 @@
+alphabet_in:
+- DONE
+- FAILED
+- NO_MAJORITY
+- ROUND_TIMEOUT
+- NO_OPPORTUNITIES
+default_start_state: CollectExchangeDataRound
+final_states:
+- SuccessfulArbitrageRound
+- FailedArbitrageRound
+- NoOpportunitiesRound
+label: ArbitrageExecutionAbciApp
+start_states:
+- CollectExchangeDataRound
+states:
+- CollectExchangeDataRound
+- AnalyzeDataRound
+- ExecuteBuyRound
+- ExecuteSellRound
+- SuccessfulArbitrageRound
+- FailedArbitrageRound
+- NoOpportunitiesRound
+transition_func:
+  (CollectExchangeDataRound, DONE): AnalyzeDataRound
+  (CollectExchangeDataRound, FAILED): FailedArbitrageRound
+  (CollectExchangeDataRound, NO_MAJORITY): CollectExchangeDataRound
+  (CollectExchangeDataRound, ROUND_TIMEOUT): CollectExchangeDataRound
+  (AnalyzeDataRound, DONE): ExecuteBuyRound
+  (AnalyzeDataRound, FAILED): FailedArbitrageRound
+  (AnalyzeDataRound, NO_MAJORITY): NoOpportunitiesRound
+  (AnalyzeDataRound, NO_OPPORTUNITIES): NoOpportunitiesRound
+  (AnalyzeDataRound, ROUND_TIMEOUT): FailedArbitrageRound
+  (ExecuteBuyRound, DONE): ExecuteSellRound
+  (ExecuteBuyRound, FAILED): FailedArbitrageRound
+  (ExecuteBuyRound, NO_MAJORITY): FailedArbitrageRound
+  (ExecuteBuyRound, ROUND_TIMEOUT): FailedArbitrageRound
+  (ExecuteSellRound, DONE): SuccessfulArbitrageRound
+  (ExecuteSellRound, FAILED): FailedArbitrageRound
+  (ExecuteSellRound, NO_MAJORITY): FailedArbitrageRound
+  (ExecuteSellRound, ROUND_TIMEOUT): FailedArbitrageRound

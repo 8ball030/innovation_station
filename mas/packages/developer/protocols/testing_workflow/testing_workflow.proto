@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package aea.developer.testing_workflow.v0_1_0;
+
+message TestingWorkflowMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_TEST_EXECUTION_FAILURE = 0;
+      ERROR_CODE_ENUM_INVALID_TEST_CASE = 1;
+      ERROR_CODE_ENUM_TIMEOUT_ERROR = 2;
+      ERROR_CODE_ENUM_SYSTEM_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Start_Tests_Performative{
+    string test_suite_name = 1;
+    repeated string test_cases = 2;
+  }
+
+  message Test_Case_Result_Performative{
+    string test_case_name = 1;
+    bool success = 2;
+    string output = 3;
+    bool output_is_set = 4;
+    repeated string errors = 5;
+    bool errors_is_set = 6;
+  }
+
+  message Tests_Completed_Performative{
+    string test_suite_name = 1;
+    int32 total_tests = 2;
+    int32 passed_tests = 3;
+    int32 failed_tests = 4;
+    string summary = 5;
+    bool summary_is_set = 6;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Start_Tests_Performative start_tests = 6;
+    Test_Case_Result_Performative test_case_result = 7;
+    Tests_Completed_Performative tests_completed = 8;
+  }
+}

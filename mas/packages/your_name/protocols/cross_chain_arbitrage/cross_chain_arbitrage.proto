@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package aea.your_name.cross_chain_arbitrage.v0_1_0;
+
+message CrossChainArbitrageMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INSUFFICIENT_FUNDS = 0;
+      ERROR_CODE_ENUM_TIMEOUT_ERROR = 1;
+      ERROR_CODE_ENUM_NETWORK_ERROR = 2;
+      ERROR_CODE_ENUM_INVALID_REQUEST = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Arbitrage_Opportunity_Performative{
+    string exchange_id = 1;
+    string ledger_id = 2;
+    double available_volume = 3;
+    map<string, double> prices = 4;
+  }
+
+  message Buy_Execution_Performative{
+    string exchange_id = 1;
+    string ledger_id = 2;
+    double volume = 3;
+    double price = 4;
+    string tx_hash = 5;
+  }
+
+  message Sell_Execution_Performative{
+    string exchange_id = 1;
+    string ledger_id = 2;
+    double volume = 3;
+    double price = 4;
+    string tx_hash = 5;
+  }
+
+  message Arbitrage_Result_Performative{
+    double profit = 1;
+    string summary = 2;
+  }
+
+  message Rejection_Performative{
+    string reason = 1;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Arbitrage_Opportunity_Performative arbitrage_opportunity = 5;
+    Arbitrage_Result_Performative arbitrage_result = 6;
+    Buy_Execution_Performative buy_execution = 7;
+    Error_Performative error = 8;
+    Rejection_Performative rejection = 9;
+    Sell_Execution_Performative sell_execution = 10;
+  }
+}

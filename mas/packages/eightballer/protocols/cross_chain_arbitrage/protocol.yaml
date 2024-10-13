@@ -1,0 +1,26 @@
+name: cross_chain_arbitrage
+author: eightballer
+version: 0.1.0
+protocol_specification_id: eightballer/cross_chain_arbitrage:0.1.0
+type: protocol
+description: A protocol for managing cross-chain arbitrage activities between an arbitrageur
+  and multiple exchanges.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeibdbgdyff6bihwlfsqtka75qwvdedaavefdev34e37qubim7ecvmi
+  __init__.py: bafybeiaopkpmv4vdmz6jf62ekufqhare5yv3vaohjealvgyqfqup75nsee
+  cross_chain_arbitrage.proto: bafybeia3qtjf7oj5i3gvpqvxxpqtryltydutloqyp6uaxdp7xiivn7nuzu
+  cross_chain_arbitrage_pb2.py: bafybeigi2p3wyach5cs2q2guaymbki4jlesxwdmsfyxr4vwi3ggkqqiauq
+  custom_types.py: bafybeibcvnbarkv7nd5unq3djzvdijskd6tbqjgx3bmyib2tzwcuximetu
+  dialogues.py: bafybeidrj6g37zvith3mytv44cckzkngymb7kyhnhdnhkradflfsfcxifi
+  message.py: bafybeib7xpmsryk36l6uokwaw6tzelz6msxajpkdkivvtvajdpccw4hura
+  protocol_spec.yaml: bafybeiehiwcwquxx66wjdvr2q6u6h4v725jgbolkpfh3kscr6xvqswau3u
+  serialization.py: bafybeica3zgvoe3oxbnutdovy5n4baxh6tuawfwt4wwbsuemuiifgjopza
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_cross_chain_arbitrage_dialogues.py: bafybeibti57afx3lf7v35736zj2dshlu5lcjq3upvi36ftimtxx2subo6y
+  tests/test_cross_chain_arbitrage_messages.py: bafybeihvpxnblfnk6yflnelqyqftngqqoqms2gywcivqmsmwp5lohw7qjy
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

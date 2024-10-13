@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package aea.your_name.message_encryption.v0_1_0;
+
+message MessageEncryptionMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_MESSAGE = 0;
+      ERROR_CODE_ENUM_UNSUPPORTED_ENCRYPTION_TYPE = 1;
+      ERROR_CODE_ENUM_ENCRYPTION_FAILURE = 2;
+      ERROR_CODE_ENUM_DECRYPTION_FAILURE = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Status{
+    enum StatusEnum {
+      STATUS_ENUM_ENCRYPTION_IN_PROGRESS = 0;
+      STATUS_ENUM_DECRYPTION_IN_PROGRESS = 1;
+      STATUS_ENUM_ENCRYPTION_COMPLETED = 2;
+      STATUS_ENUM_DECRYPTION_COMPLETED = 3;
+    }
+    StatusEnum status = 1;
+  }
+
+
+  // Performatives and contents
+  message Submit_Message_Performative{
+    string message = 1;
+    string encryption_type = 2;
+  }
+
+  message Encryption_Result_Performative{
+    string encrypted_message = 1;
+    string encryption_key = 2;
+    bool encryption_key_is_set = 3;
+  }
+
+  message Decryption_Result_Performative{
+    string decrypted_message = 1;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+  message Status_Update_Performative{
+    Status status = 1;
+  }
+
+
+  oneof performative{
+    Decryption_Result_Performative decryption_result = 5;
+    Encryption_Result_Performative encryption_result = 6;
+    Error_Performative error = 7;
+    Status_Update_Performative status_update = 8;
+    Submit_Message_Performative submit_message = 9;
+  }
+}

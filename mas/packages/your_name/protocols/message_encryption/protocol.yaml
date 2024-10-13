@@ -1,0 +1,26 @@
+name: message_encryption
+author: your_name
+version: 0.1.0
+protocol_specification_id: your_name/message_encryption:0.1.0
+type: protocol
+description: A protocol for encrypting a message through interactions between a user
+  and an encryption service.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeiepsbfzi46xj5awqeblhpgjhtlg6oly7laud2utittcqxcyve6tpa
+  __init__.py: bafybeig4o5tuqfgetqkxv3cukbq4sceapcgjedpgb7ewu3no76mty32gam
+  custom_types.py: bafybeick6qyeml4fxkvfhkgu3iawx6kg735ntto3lgyhg7xt5idfgggg4m
+  dialogues.py: bafybeif2gqczpetjrimugm2v7sf47hx3hhnzmpan7okukcch4nhqcxdhy4
+  message.py: bafybeifi3j74gvq53qcs543tssakde2rx4kcyu2fqenb237t7ma63y3fia
+  message_encryption.proto: bafybeidqe4g3v5hdsoo4wv5nx566aveeaom3wnnzl27lj6xn3wieuemugq
+  message_encryption_pb2.py: bafybeibh56p7sbi4z4muwxim4po25jdyodmbiqqxz7mmd5mj7shrit4enm
+  protocol_spec.yaml: bafybeibisbhur7m7xee6gt77n5iz57fqz6x62gbe4givxtyhupjagqtcv4
+  serialization.py: bafybeial2pwqymzvpxmbcav3sn5xxjaud7oaeabawtqnj7w7gdfhx7btcq
+  tests/__init__.py: bafybeifx566tk6dvmfqgthwjhbpsxvycqtmm2pvrgvi5tzoz6i7ecvhhg4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_message_encryption_dialogues.py: bafybeiblwjvltkgc3yel7crl4ht3k4q4wq3nume3grxvfhvexlvyoxbwyi
+  tests/test_message_encryption_messages.py: bafybeibr7ggrj3qq6vpdaml63jxq24xfbyseqg27ehnn2zdw7cqlj7cs2e
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

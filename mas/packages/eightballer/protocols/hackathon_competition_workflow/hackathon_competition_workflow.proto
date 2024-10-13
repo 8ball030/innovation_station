@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package aea.eightballer.hackathon_competition_workflow.v0_2_0;
+
+message HackathonCompetitionWorkflowMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_IDEA_GENERATION_FAILURE = 0;
+      ERROR_CODE_ENUM_TEAM_FORMATION_FAILURE = 1;
+      ERROR_CODE_ENUM_IDEA_SELECTION_FAILURE = 2;
+      ERROR_CODE_ENUM_UPDATE_FAILURE = 3;
+      ERROR_CODE_ENUM_SUBMISSION_FAILURE = 4;
+      ERROR_CODE_ENUM_FEEDBACK_ERROR = 5;
+      ERROR_CODE_ENUM_INVALID_INPUT = 6;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 7;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Idea_Generation_Performative{
+    string participant_id = 1;
+    string idea_description = 2;
+  }
+
+  message Team_Formation_Performative{
+    repeated string participant_ids = 1;
+    string team_name = 2;
+    string idea_description = 3;
+  }
+
+  message Idea_Selection_Performative{
+    string team_id = 1;
+    string selected_idea = 2;
+  }
+
+  message Progress_Update_Performative{
+    string team_id = 1;
+    string update_description = 2;
+  }
+
+  message Final_Submission_Performative{
+    string team_id = 1;
+    string project_link = 2;
+    string presentation_link = 3;
+    string documentation_link = 4;
+    bool documentation_link_is_set = 5;
+  }
+
+  message Feedback_Performative{
+    string team_id = 1;
+    string feedback = 2;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Feedback_Performative feedback = 6;
+    Final_Submission_Performative final_submission = 7;
+    Idea_Generation_Performative idea_generation = 8;
+    Idea_Selection_Performative idea_selection = 9;
+    Progress_Update_Performative progress_update = 10;
+    Team_Formation_Performative team_formation = 11;
+  }
+}

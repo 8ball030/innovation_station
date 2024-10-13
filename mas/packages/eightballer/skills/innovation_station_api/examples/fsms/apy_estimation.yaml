@@ -1,0 +1,89 @@
+alphabet_in:
+- DONE
+- FILE_ERROR
+- FULLY_TRAINED
+- NEGATIVE
+- NETWORK_ERROR
+- NONE
+- NO_MAJORITY
+- RANDOMNESS_INVALID
+- ROUND_TIMEOUT
+default_start_state: ModelStrategyRound
+final_states:
+- FailedAPYRound
+- FinishedAPYEstimationRound
+label: APYEstimationAbciApp
+start_states:
+- ModelStrategyRound
+states:
+- CollectHistoryRound
+- CollectLatestHistoryBatchRound
+- EmitRound
+- EstimateRound
+- FailedAPYRound
+- FinishedAPYEstimationRound
+- ModelStrategyRound
+- OptimizeRound
+- PrepareBatchRound
+- PreprocessRound
+- RandomnessRound
+- TestRound
+- TrainRound
+- TransformRound
+- UpdateForecasterRound
+transition_func:
+    (CollectHistoryRound, DONE): TransformRound
+    (CollectHistoryRound, FILE_ERROR): FailedAPYRound
+    (CollectHistoryRound, NETWORK_ERROR): FailedAPYRound
+    (CollectHistoryRound, NO_MAJORITY): CollectHistoryRound
+    (CollectHistoryRound, ROUND_TIMEOUT): CollectHistoryRound
+    (CollectLatestHistoryBatchRound, DONE): PrepareBatchRound
+    (CollectLatestHistoryBatchRound, FILE_ERROR): FailedAPYRound
+    (CollectLatestHistoryBatchRound, NETWORK_ERROR): FailedAPYRound
+    (CollectLatestHistoryBatchRound, NO_MAJORITY): CollectLatestHistoryBatchRound
+    (CollectLatestHistoryBatchRound, ROUND_TIMEOUT): CollectLatestHistoryBatchRound
+    (EmitRound, DONE): FinishedAPYEstimationRound
+    (EmitRound, NO_MAJORITY): EmitRound
+    (EmitRound, ROUND_TIMEOUT): EmitRound
+    (EstimateRound, DONE): EmitRound
+    (EstimateRound, FILE_ERROR): FailedAPYRound
+    (EstimateRound, NO_MAJORITY): EstimateRound
+    (EstimateRound, ROUND_TIMEOUT): EstimateRound
+    (ModelStrategyRound, DONE): CollectHistoryRound
+    (ModelStrategyRound, NEGATIVE): CollectLatestHistoryBatchRound
+    (ModelStrategyRound, NONE): ModelStrategyRound
+    (ModelStrategyRound, NO_MAJORITY): ModelStrategyRound
+    (ModelStrategyRound, ROUND_TIMEOUT): ModelStrategyRound
+    (OptimizeRound, DONE): TrainRound
+    (OptimizeRound, FILE_ERROR): FailedAPYRound
+    (OptimizeRound, NO_MAJORITY): OptimizeRound
+    (OptimizeRound, ROUND_TIMEOUT): OptimizeRound
+    (PrepareBatchRound, DONE): UpdateForecasterRound
+    (PrepareBatchRound, FILE_ERROR): FailedAPYRound
+    (PrepareBatchRound, NO_MAJORITY): PrepareBatchRound
+    (PrepareBatchRound, ROUND_TIMEOUT): PrepareBatchRound
+    (PreprocessRound, DONE): RandomnessRound
+    (PreprocessRound, FILE_ERROR): FailedAPYRound
+    (PreprocessRound, NO_MAJORITY): PreprocessRound
+    (PreprocessRound, ROUND_TIMEOUT): PreprocessRound
+    (RandomnessRound, DONE): OptimizeRound
+    (RandomnessRound, NO_MAJORITY): RandomnessRound
+    (RandomnessRound, RANDOMNESS_INVALID): RandomnessRound
+    (RandomnessRound, ROUND_TIMEOUT): RandomnessRound
+    (TestRound, DONE): TrainRound
+    (TestRound, FILE_ERROR): FailedAPYRound
+    (TestRound, NO_MAJORITY): TestRound
+    (TestRound, ROUND_TIMEOUT): TestRound
+    (TrainRound, DONE): TestRound
+    (TrainRound, FILE_ERROR): FailedAPYRound
+    (TrainRound, FULLY_TRAINED): EstimateRound
+    (TrainRound, NO_MAJORITY): TrainRound
+    (TrainRound, ROUND_TIMEOUT): TrainRound
+    (TransformRound, DONE): PreprocessRound
+    (TransformRound, FILE_ERROR): FailedAPYRound
+    (TransformRound, NO_MAJORITY): TransformRound
+    (TransformRound, ROUND_TIMEOUT): TransformRound
+    (UpdateForecasterRound, DONE): EstimateRound
+    (UpdateForecasterRound, FILE_ERROR): FailedAPYRound
+    (UpdateForecasterRound, NO_MAJORITY): UpdateForecasterRound
+    (UpdateForecasterRound, ROUND_TIMEOUT): UpdateForecasterRound

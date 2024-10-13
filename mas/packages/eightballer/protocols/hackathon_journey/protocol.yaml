@@ -1,0 +1,26 @@
+name: hackathon_journey
+author: eightballer
+version: 0.1.1
+protocol_specification_id: eightballer/hackathon_journey:0.1.1
+type: protocol
+description: A protocol for managing and documenting the journey of participants in
+  a hackathon, from initial idea generation to final project submission.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeid2xup6jzsf6g35icmrndo4bh3gq6fwqo77e2s5cf5ed64kistl4y
+  __init__.py: bafybeibnue4t26fl3mj6a4n7aks2ocfhzucbw5l4ixiytuns47yrs3pf7e
+  custom_types.py: bafybeigcun4qt4hvknezmsfwroidv2uxlmps4dezmt74iikw67b2yt3moe
+  dialogues.py: bafybeibk5rg2naqadfuvtr5gnej4r3v7cnem2hvi3c4jsqbmxlhuyvga6a
+  hackathon_journey.proto: bafybeia7cpoh4n6fkdz26abjydgmnrz2rtey2t4tlkhakiwqsfbemp4l7e
+  hackathon_journey_pb2.py: bafybeibjhowggsm5327c2gswopj4sx5nrm33q4qhobhm3jafdp32tl7vi4
+  message.py: bafybeiezyh5co455qlk6xdauewxhrxuv6x7qz34vsand3fc4vyscjqdl64
+  protocol_spec.yaml: bafybeicub73ypul43g6ogcejmmuikse4er6aqk33vv2ke2n2upm4ymgyry
+  serialization.py: bafybeicyitbfnhxsn3wtdrr3bv4bdk4ttp7jlgarfbihya4huafexa33au
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_journey_dialogues.py: bafybeifgxzzrcfzna4cgezk4rvsoybe3wu4krnj2cttgwf735kklocldbe
+  tests/test_hackathon_journey_messages.py: bafybeibvafwrug5mcojgainy6rv62xn63obwdvug2r7hvyexezjrhba6cq
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

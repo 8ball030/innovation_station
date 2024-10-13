@@ -1,0 +1,26 @@
+name: hackathon_process
+author: eightballer
+version: 1.0.0
+protocol_specification_id: eightballer/hackathon_process:1.0.0
+type: protocol
+description: A protocol for managing the lifecycle of a hackathon competition including
+  idea generation, ongoing submissions, and final presentation.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeiafqy5cldy54dml2v472szadnjsrm3ehtd7y3bnlupis3qrevydga
+  __init__.py: bafybeidf54i5sws6qd7ysqlqzivkzu2ngrydogsmpczfkysrimmmkjftbe
+  custom_types.py: bafybeie6t7dwebfztxrrbaaqxxphipraqtgxtilxwh2dunc4rwayw5c3na
+  dialogues.py: bafybeigtnmap4fmlsyowsy3vneauezwee54dyo2fb5zyidcwm54ngmjf6u
+  hackathon_process.proto: bafybeig4u7vxzkw2t7arwjk5jdprhmtka7viv2b5jnzhf6acmmcxthwrei
+  hackathon_process_pb2.py: bafybeiagmb7s2uyaezoermh7gdc4fppbmg6ps43zblmmw5pbww3j3r4ubq
+  message.py: bafybeicmpu4e722tq37woadwswqedgn6jj63ci3h2kj5bskkvfvihc6ine
+  protocol_spec.yaml: bafybeidvsydnmpwipvejlthsyh6pl23y5pv7agqjhchr2rc54wtqfaah2y
+  serialization.py: bafybeifv55olyytp7dn3pqsyhlrajwfbwdnwqhblqep6nvepr7j32r3w5i
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_hackathon_process_dialogues.py: bafybeifqqbjabjvepiui5ewsmbcst4yrmxw324uoanuwtn4mirpx44zwxq
+  tests/test_hackathon_process_messages.py: bafybeid2e6lwnqlyhftfa3ygb4vs7ro42bfdupjrkesbrbqd45urmk6wou
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

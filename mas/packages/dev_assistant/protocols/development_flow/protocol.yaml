@@ -1,0 +1,26 @@
+name: development_flow
+author: dev_assistant
+version: 0.1.0
+protocol_specification_id: dev_assistant/development_flow:0.1.0
+type: protocol
+description: A protocol for managing interactions involved in a simple development
+  workflow between a developer and a project manager.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeihkm4jcu3cav5wp2v4k2obn6exwhpv6m7zlkcklg4pxdh6jhvrvxi
+  __init__.py: bafybeicjx522gr7ctnc3fe3mw5xrndku2px6onirqdgrklggh7ewxxqdq4
+  custom_types.py: bafybeiesokubsq7p4gaxz7qy4gq3hz2deknb364gvovhpqruwkccmmkjoa
+  development_flow.proto: bafybeiapiye3snmxgjo4ftmh5ajimojjgdpbpm3fb27toc4hzxljvthiza
+  development_flow_pb2.py: bafybeihxrujhdsnachsyxc7lt6kktehlsmkdypsaky37ecmuzms5y6rqna
+  dialogues.py: bafybeifvcpeatuv2ar7agnohvmtnrnuqizzwbgi5xa4x23cb5refmxpvse
+  message.py: bafybeiek6vlvscq4t4lsgvb2rrzbbrrsibwppwtbixmmfhe6oadshk42he
+  protocol_spec.yaml: bafybeiaksvh3avj7whbeov2ziixxnvr55jrnlidbm3muyd4a5y7ntepbry
+  serialization.py: bafybeieim4n23chx4iq2yftszpdzl3nfxeat4rxxbohkmq6nzideuvt53y
+  tests/__init__.py: bafybeihypmee47s3ygndrpu3porxyhg2wbbhioqw6y7vddnecezz3qvuk4
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_development_flow_dialogues.py: bafybeifqgdh6tn2e7menxgfzh6txu3j7obh4n4omq7jlkxlyh6p2bqoyeu
+  tests/test_development_flow_messages.py: bafybeidmp2d2iqnyhyarpcqnyffe2n2yp6igkr5fypq4vghb5x7g7mmfeu
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

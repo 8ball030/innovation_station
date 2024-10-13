@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package aea.cryptor.encrypted_communication.v1_0_0;
+
+message EncryptedCommunicationMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_PUBLIC_KEY = 0;
+      ERROR_CODE_ENUM_ENCRYPTION_ERROR = 1;
+      ERROR_CODE_ENUM_DECRYPTION_ERROR = 2;
+      ERROR_CODE_ENUM_INVALID_MESSAGE = 3;
+      ERROR_CODE_ENUM_COMMUNICATION_ERROR = 4;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Initiate_Communication_Performative{
+    string public_key = 1;
+  }
+
+  message Communication_Request_Performative{
+    string encrypted_message = 1;
+    string nonce = 2;
+  }
+
+  message Communication_Response_Performative{
+    string encrypted_message = 1;
+    string nonce = 2;
+  }
+
+  message End_Communication_Performative{
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Communication_Request_Performative communication_request = 5;
+    Communication_Response_Performative communication_response = 6;
+    End_Communication_Performative end_communication = 7;
+    Error_Performative error = 8;
+    Initiate_Communication_Performative initiate_communication = 9;
+  }
+}

@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package aea.your_name.trello_interaction.v0_1_0;
+
+message TrelloInteractionMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_REQUEST = 0;
+      ERROR_CODE_ENUM_NOT_FOUND = 1;
+      ERROR_CODE_ENUM_PERMISSION_DENIED = 2;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Status{
+    enum StatusEnum {
+      STATUS_ENUM_SUCCESS = 0;
+      STATUS_ENUM_PENDING = 1;
+      STATUS_ENUM_REJECTED = 2;
+    }
+    StatusEnum status = 1;
+  }
+
+
+  // Performatives and contents
+  message Create_Board_Performative{
+    string board_name = 1;
+    string organization_id = 2;
+    bool organization_id_is_set = 3;
+    string permission_level = 4;
+    bool permission_level_is_set = 5;
+  }
+
+  message Fetch_Board_Performative{
+    string board_id = 1;
+  }
+
+  message List_Boards_Performative{
+    string board_filter = 1;
+    bool board_filter_is_set = 2;
+  }
+
+  message Add_Member_Performative{
+    string board_id = 1;
+    string member_id = 2;
+    string member_type = 3;
+    bool member_type_is_set = 4;
+  }
+
+  message List_Cards_Performative{
+    string board_id = 1;
+    string card_filter = 2;
+    bool card_filter_is_set = 3;
+  }
+
+  message Add_Card_Performative{
+    string list_id = 1;
+    string card_name = 2;
+    string desc = 3;
+    bool desc_is_set = 4;
+    repeated string labels = 5;
+    bool labels_is_set = 6;
+    string due = 7;
+    bool due_is_set = 8;
+  }
+
+  message Fetch_Actions_Performative{
+    string board_id = 1;
+    string action_filter = 2;
+    bool action_filter_is_set = 3;
+  }
+
+  message Action_Result_Performative{
+    Status status = 1;
+    bytes result_data = 2;
+    bool result_data_is_set = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Action_Result_Performative action_result = 5;
+    Add_Card_Performative add_card = 6;
+    Add_Member_Performative add_member = 7;
+    Create_Board_Performative create_board = 8;
+    Error_Performative error = 9;
+    Fetch_Actions_Performative fetch_actions = 10;
+    Fetch_Board_Performative fetch_board = 11;
+    List_Boards_Performative list_boards = 12;
+    List_Cards_Performative list_cards = 13;
+  }
+}

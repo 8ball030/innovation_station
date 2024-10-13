@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package aea.devteam.lint_protocol.v1_0_0;
+
+message LintProtocolMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_CONFIG_ERROR = 0;
+      ERROR_CODE_ENUM_LINT_FAILURE = 1;
+      ERROR_CODE_ENUM_PATH_ERROR = 2;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Severity{
+    enum SeverityEnum {
+      SEVERITY_ENUM_INFO = 0;
+      SEVERITY_ENUM_WARNING = 1;
+      SEVERITY_ENUM_ERROR = 2;
+    }
+    SeverityEnum severity = 1;
+  }
+
+
+  // Performatives and contents
+  message Initiate_Lint_Performative{
+    string project_path = 1;
+    string config = 2;
+    bool config_is_set = 3;
+  }
+
+  message Lint_Issue_Performative{
+    string issue_id = 1;
+    Severity severity = 2;
+    string message = 3;
+    int32 line = 4;
+    int32 column = 5;
+    string file_path = 6;
+  }
+
+  message Lint_Complete_Performative{
+    string summary = 1;
+  }
+
+  message Lint_Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Initiate_Lint_Performative initiate_lint = 5;
+    Lint_Complete_Performative lint_complete = 6;
+    Lint_Error_Performative lint_error = 7;
+    Lint_Issue_Performative lint_issue = 8;
+  }
+}

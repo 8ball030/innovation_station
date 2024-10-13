@@ -1,0 +1,26 @@
+name: encrypted_communication
+author: eightballer
+version: 0.1.0
+protocol_specification_id: eightballer/encrypted_communication:0.1.0
+type: protocol
+description: A protocol for establishing encrypted communication between two parties
+  using a challenge-response mechanism and web3 keys.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeierryjqomm7f7xjzlhsznuylml7ryabk3qrx4hj3g3fhx5s2srf7u
+  __init__.py: bafybeibk72ekcryr4htjvxqwhse5gcb6cnzbe2r5guxwlgguccdgz4ojmy
+  custom_types.py: bafybeiajijfqwin2kikp44gnsqbnsczuby4g5j3hsu2fpdjvrzj4fed4tu
+  dialogues.py: bafybeifpmumha4ovm43fsgljy2uf4ai5knevmcjpww5bqydc5iaqdjnx6a
+  encrypted_communication.proto: bafybeifpcavunsh7vvuljyv6757i6zuli7lvkljn6peyxpj5luis5qlg5y
+  encrypted_communication_pb2.py: bafybeiegrluaucyhnctzs26pnwzbyt3w7zh2fytwqqcdizv7qprmivrppu
+  message.py: bafybeihupd7ucpdlc7l6la5ikn2drxyetije23sofmfio6ndkhsiwx6qhu
+  protocol_spec.yaml: bafybeicxno3ujbd3spybynl7yyig3axzcja2zy53bltnebe6qnq4bynsxa
+  serialization.py: bafybeibjfvrggogk7nbhrh2t4peoil3hpabza6xoov4wahlw2rcrafjamu
+  tests/__init__.py: bafybeig7bnllehxlaz56ue5amshk6mm3osy7gjeufzgwfufw3feopra2ya
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_encrypted_communication_dialogues.py: bafybeidpe3fi4azxxkk5md73uvcf44gx6ehi3yo3i7ueyfmujdco4vmwhm
+  tests/test_encrypted_communication_messages.py: bafybeia5ultvvib5e4sh7kvgqr2rvlgonwmw3nt5bop5osrvovjnjmdary
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

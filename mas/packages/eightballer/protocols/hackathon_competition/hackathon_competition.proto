@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package aea.eightballer.hackathon_competition.v0_1_0;
+
+message HackathonCompetitionMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_NOT_FOUND = 0;
+      ERROR_CODE_ENUM_INVALID_SUBMISSION = 1;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 2;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message Status{
+    enum StatusEnum {
+      STATUS_ENUM_SUCCESS = 0;
+      STATUS_ENUM_PENDING = 1;
+      STATUS_ENUM_REJECTED = 2;
+    }
+    StatusEnum status = 1;
+  }
+
+  message SubmissionType{
+    enum SubmissionTypeEnum {
+      SUBMISSION_TYPE_ENUM_IDEA = 0;
+      SUBMISSION_TYPE_ENUM_PROGRESS = 1;
+      SUBMISSION_TYPE_ENUM_FINAL = 2;
+    }
+    SubmissionTypeEnum submission_type = 1;
+  }
+
+
+  // Performatives and contents
+  message Register_Team_Performative{
+    string team_name = 1;
+    repeated string members = 2;
+  }
+
+  message Idea_Submission_Performative{
+    string team_id = 1;
+    string idea_description = 2;
+  }
+
+  message Progress_Update_Performative{
+    string team_id = 1;
+    string update_description = 2;
+  }
+
+  message Final_Submission_Performative{
+    string team_id = 1;
+    string project_link = 2;
+    string presentation_link = 3;
+    bool presentation_link_is_set = 4;
+  }
+
+  message Registration_Acknowledgement_Performative{
+    string team_id = 1;
+    Status status = 2;
+  }
+
+  message Submission_Response_Performative{
+    string team_id = 1;
+    SubmissionType submission_type = 2;
+    Status status = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Final_Submission_Performative final_submission = 6;
+    Idea_Submission_Performative idea_submission = 7;
+    Progress_Update_Performative progress_update = 8;
+    Register_Team_Performative register_team = 9;
+    Registration_Acknowledgement_Performative registration_acknowledgement = 10;
+    Submission_Response_Performative submission_response = 11;
+  }
+}

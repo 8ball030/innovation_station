@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package aea.eightballer.hackathon_journey.v0_1_1;
+
+message HackathonJourneyMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_OPERATION = 0;
+      ERROR_CODE_ENUM_NOT_FOUND = 1;
+      ERROR_CODE_ENUM_INVALID_SUBMISSION = 2;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+  message OperationType{
+    enum OperationTypeEnum {
+      OPERATION_TYPE_ENUM_IDEA_GENERATION = 0;
+      OPERATION_TYPE_ENUM_TEAM_FORMATION = 1;
+      OPERATION_TYPE_ENUM_IDEA_SELECTION = 2;
+      OPERATION_TYPE_ENUM_PROGRESS_UPDATE = 3;
+      OPERATION_TYPE_ENUM_FINAL_SUBMISSION = 4;
+    }
+    OperationTypeEnum operation_type = 1;
+  }
+
+  message Status{
+    enum StatusEnum {
+      STATUS_ENUM_ACCEPTED = 0;
+      STATUS_ENUM_UNDER_REVIEW = 1;
+      STATUS_ENUM_REJECTED = 2;
+      STATUS_ENUM_COMPLETED = 3;
+    }
+    StatusEnum status = 1;
+  }
+
+
+  // Performatives and contents
+  message Idea_Generation_Performative{
+    string participant_id = 1;
+    string idea_description = 2;
+  }
+
+  message Team_Formation_Performative{
+    string participant_id = 1;
+    string team_name = 2;
+    repeated string team_members = 3;
+  }
+
+  message Idea_Selection_Performative{
+    string team_id = 1;
+    string selected_idea = 2;
+  }
+
+  message Progress_Update_Performative{
+    string team_id = 1;
+    string update_description = 2;
+  }
+
+  message Final_Submission_Performative{
+    string team_id = 1;
+    string project_link = 2;
+    string presentation_link = 3;
+    bool presentation_link_is_set = 4;
+  }
+
+  message Operation_Response_Performative{
+    OperationType operation_type = 1;
+    string team_id = 2;
+    Status status = 3;
+    string message = 4;
+    bool message_is_set = 5;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Final_Submission_Performative final_submission = 6;
+    Idea_Generation_Performative idea_generation = 7;
+    Idea_Selection_Performative idea_selection = 8;
+    Operation_Response_Performative operation_response = 9;
+    Progress_Update_Performative progress_update = 10;
+    Team_Formation_Performative team_formation = 11;
+  }
+}

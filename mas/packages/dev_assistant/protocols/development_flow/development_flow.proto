@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package aea.dev_assistant.development_flow.v0_1_0;
+
+message DevelopmentFlowMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_REQUEST = 0;
+      ERROR_CODE_ENUM_NOT_FOUND = 1;
+      ERROR_CODE_ENUM_INCOMPLETE_SPECIFICATION = 2;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Request_Feature_Performative{
+    string feature_description = 1;
+  }
+
+  message Feature_Spec_Performative{
+    string feature_id = 1;
+    string spec_description = 2;
+  }
+
+  message Progress_Update_Performative{
+    string feature_id = 1;
+    string update_description = 2;
+  }
+
+  message Feature_Review_Performative{
+    string feature_id = 1;
+    string reviewer_comments = 2;
+  }
+
+  message Feature_Approved_Performative{
+    string feature_id = 1;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Feature_Approved_Performative feature_approved = 6;
+    Feature_Review_Performative feature_review = 7;
+    Feature_Spec_Performative feature_spec = 8;
+    Progress_Update_Performative progress_update = 9;
+    Request_Feature_Performative request_feature = 10;
+  }
+}

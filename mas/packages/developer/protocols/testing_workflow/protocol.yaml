@@ -1,0 +1,26 @@
+name: testing_workflow
+author: developer
+version: 0.1.0
+protocol_specification_id: developer/testing_workflow:0.1.0
+type: protocol
+description: A protocol for managing a testing workflow between a tester and a testing
+  system.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeielhzg4its4yu6pqbhfelfmklfywydikxcccdddjm42mfdy2usjle
+  __init__.py: bafybeigoqjmvknqzriv6ng66dvgy4hpf3yoylieadmskoiofwwpintk2x4
+  custom_types.py: bafybeialzz7uhp56ghwovjdm74cprom7i6vohnphpks2ena5scf2uaesli
+  dialogues.py: bafybeicknfk6iucvhme4t5x34qifc7cbttfmsjmjifi34552dlglnqiqlq
+  message.py: bafybeih6jefkkm47gkkuxvn3rghc2f4sjt2yur57autzjsrzkrydp3v76q
+  protocol_spec.yaml: bafybeihze6p2nyxr2sqxfkvbx2ls7afxx6wuvzp4oy4r3q5edm5noyynke
+  serialization.py: bafybeibec4ua2hkel2pyml4h7nvifgse72zavto4hl75yga2lp6jy5i77e
+  testing_workflow.proto: bafybeihpyehzlffo2vnovvlx72hxdrw55ahb7fbvtjaphvbosjjfyfjcla
+  testing_workflow_pb2.py: bafybeigafwcjgmguzwf5fgexbvdduf5rcis5masgsjovelkynfae2uivui
+  tests/__init__.py: bafybeiammdfjpddmcshryphxwkqj22mzj37uixv3zzabpk2mckzzdftbky
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_testing_workflow_dialogues.py: bafybeifgixzdaeijrcds4mcymtirlgez2nhzmj5oncbhyyeqg4yc73vj5q
+  tests/test_testing_workflow_messages.py: bafybeih7yz5qnudf6fjk3gy4r7fo7j75odikuujfaolsttefbcuqbe3lg4
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}
