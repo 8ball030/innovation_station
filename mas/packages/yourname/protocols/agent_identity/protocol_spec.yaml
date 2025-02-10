@@ -1,0 +1,58 @@
+name: agent_identity
+author: yourname
+version: 0.1.0
+description: A protocol for representing an agent with various public and private identities.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+protocol_specification_id: yourname/agent_identity:0.1.0
+
+speech_acts:
+  set_identity:
+    ethereum_public_address: pt:str
+    solana_public_address: pt:optional[pt:str]
+    cosmos_public_address: pt:optional[pt:str]
+    gpg: pt:optional[pt:str]
+    rsa: pt:optional[pt:str]
+    role: pt:optional[pt:str]
+    public_endpoint: pt:optional[pt:str]
+    private_endpoint: pt:optional[pt:str]
+    public_ws_endpoint: pt:optional[pt:str]
+    private_ws_endpoint: pt:optional[pt:str]
+  get_identity:
+    identity_type: pt:str
+  identity_response:
+    ethereum_public_address: pt:str
+    solana_public_address: pt:optional[pt:str]
+    cosmos_public_address: pt:optional[pt:str]
+    gpg: pt:optional[pt:str]
+    rsa: pt:optional[pt:str]
+    role: pt:optional[pt:str]
+    public_endpoint: pt:optional[pt:str]
+    private_endpoint: pt:optional[pt:str]
+    public_ws_endpoint: pt:optional[pt:str]
+    private_ws_endpoint: pt:optional[pt:str]
+  error:
+    error_code: ct:ErrorCode
+    error_msg: pt:str
+
+---
+ct:ErrorCode: |
+  enum ErrorCodeEnum {
+      INVALID_IDENTITY = 0;
+      UNSUPPORTED_IDENTITY_TYPE = 1;
+      AUTHENTICATION_FAILURE = 2;
+      INTERNAL_ERROR = 3;
+    }
+  ErrorCodeEnum error_code = 1;
+---
+initiation: [set_identity, get_identity]
+reply:
+  set_identity: [identity_response, error]
+  get_identity: [identity_response, error]
+  identity_response: []
+  error: []
+termination: [identity_response, error]
+roles: { agent, identity_manager }
+end_states: [ identity_response, error ]
+keep_terminal_state_dialogues: true
+...

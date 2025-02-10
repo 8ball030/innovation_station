@@ -12,15 +12,23 @@ fingerprint:
   behaviours.py: bafybeifwrfjpojll4znnobn54rmvtjlj5kpps6spta5xnebgn7y2l3gxwe
   data.py: bafybeihy5edig732gbdrlv2eomnaeq25lof4zuqvinqhpbbpg673el5opi
   dialogues.py: bafybeihpitrmlmwukpdtpj7c7ieyr67i2res54ig3xuk4qyrspj6ahmfr4
-  examples/ccxt_protocol.txt: bafybeierslod5hokqlmv6owgp5cfy6q36vhajfcgykhnjnab6fb5f25xdy
-  examples/ccxt_protocol.yaml: bafybeierslod5hokqlmv6owgp5cfy6q36vhajfcgykhnjnab6fb5f25xdy
-  examples/ohlcv_protocol.txt: bafybeiadohai3emoipafl5zfwckltw77hqtrt5u3mzmzvmkbhmveu4vhti
-  examples/ohlcv_protocol.yaml: bafybeiadohai3emoipafl5zfwckltw77hqtrt5u3mzmzvmkbhmveu4vhti
-  examples/order_protocol.yaml: bafybeib5hnptnxk3ahuanz6sjyydftxgzn7hahbinvlfv5qluakhiglnvu
-  examples/spot_asset_protocol.yaml: bafybeih3mcnc3bt55kqqr5653cvnx72mcnekn7ay6wtdailitifknse424
-  examples/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
+  examples/fsms/apy_estimation.yaml: bafybeiabhug2h6a4cyrj2i7k32r5xgudkt6bpz4uhh6kqeuku43l73ou6y
+  examples/fsms/arbitrage_spec.yaml: bafybeibtsgboekoxr4y6psi7olll6d2opzibr5xntody5jeduqyyx23r6u
+  examples/fsms/check_cex_balances.yaml: bafybeibzfwfdszf2dytq3piqhaym6yd3lqznlolz42v3pdclaceev7f2au
+  examples/fsms/check_rysk_fsm_spec.yaml: bafybeigif7ncjmjiveazk4kazyjqg4il2bxy23vyvp3rwkssj4x5blehki
+  examples/fsms/price_estimation_spec.yaml: bafybeibvbvkjf6q7xsgicqidll4wms24u6zudpfuxocwyqemudrj24ei24
+  examples/protocols/docker_command_execution.yaml: bafybeiglcd2jqi7fydrhc77syd3islrz4tfm4kuwguctf7rm2htnx7sfia
+  examples/protocols/fmt_protocol.yaml: bafybeidjopdgyxzm6bhhnsyhaqvdoiolqe75oa3qedmsas3epc6jx7ciui
+  examples/protocols/hackathon_spec.yaml: bafybeigqn3kfvjxcaxwz2vkvmzraqjpncpyoxd3yx5d5cro47sh43pqpya
+  examples/protocols/lint_protocol.yaml: bafybeig2oblmlf46wt7a3hjvqrxmwkrgimsundxkucun5klllkrydmphry
+  examples/protocols/order_protocol.yaml: bafybeib5hnptnxk3ahuanz6sjyydftxgzn7hahbinvlfv5qluakhiglnvu
+  examples/protocols/readme.txt: bafybeiducsq22rztouctqnz3bfcztm7dzqgek4vz43gutgbjorz4rjnm64
+  examples/protocols/shell_command_execution.yaml: bafybeihxtaujovynvfi5lopocnqgp3lmwjiiglyajc7kmqm4x6dgwqqrdu
+  examples/protocols/spot_asset_protocol.yaml: bafybeih3mcnc3bt55kqqr5653cvnx72mcnekn7ay6wtdailitifknse424
+  examples/protocols/ticker_protocol.yaml: bafybeidscn6uj6avy3frdeh4ilycm6lxxtclsfyn35br7h5jhce4z4mtlu
   handlers.py: bafybeidtw2fvt2mz2wfn6pcqw66wt4oewwihkkz72tumfzeygy3m45qqze
-  llm_workflows/protocol.py: bafybeihc7pqqsuyqfae5sqdjwrwhvb6g3wrmjyib2uqj52dx7eurdf5khu
+  llm_workflows/fsm.py: bafybeiesyfmpbdbn6et6db7lhsic27e2iyvjokghp6mrtili2ong55wiwq
+  llm_workflows/protocol.py: bafybeigqq5l6jqnfvutnn2dkdha2mgt7ao46hoowmzodcrugncdzc4zu6i
   strategy.py: bafybeia2wbd7z6elao3szz2o75vn4kijb4rjwyzjqaohpodriadnxi4yci
 fingerprint_ignore_patterns: []
 connections: []
@@ -54,3 +62,4 @@ handlers:
   http_handler:
     args: {}
     class_name: HttpHandler
+customs: []

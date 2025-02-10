@@ -1,0 +1,25 @@
+name: agent_identity
+author: your_name
+version: 0.1.0
+protocol_specification_id: your_name/agent_identity:0.1.0
+type: protocol
+description: A protocol for representing various public identities of an agent.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeida6p3332lkdh2fi4mkd73t4gdzggdzojyll3bq65qtvxg7v64hsm
+  __init__.py: bafybeihv5oeqt6hyj2wssw7qzojs6vfqbjdtscluu5sppchs6u7vvhiorm
+  agent_identity.proto: bafybeiegvdz5bom2ajckae2bdkhecjcncdirsd62cxexoje2cwglidryii
+  agent_identity_pb2.py: bafybeidmklhtbif7nxp22v5oypjluwwfm75fnmaaq6jdnyduhsexph4sgq
+  custom_types.py: bafybeihhgvcd6mghm3ujngtct52jq7bk7a7fxgh6xteuttpcrn2dlsrmni
+  dialogues.py: bafybeidjcndqn4x6qxf55lpjbevpa5rijlibqwsd3hz3n2y57tdfx5i254
+  message.py: bafybeihmpxhfzwou377acmox3pwq76urb4n7vdzgsxxyreq36h3gk7dp2a
+  protocol_spec.yaml: bafybeiaubklqgqmzogkunqkdvvj36pmgfuran5mbpyo5xldldeqrpmch6u
+  serialization.py: bafybeihk3fvg6p6ig6nkqwbjedk5vjvhi3adnt3r4s5w5ffxxbfgjkdgdq
+  tests/__init__.py: bafybeifx566tk6dvmfqgthwjhbpsxvycqtmm2pvrgvi5tzoz6i7ecvhhg4
+  tests/dummy_data.yaml: bafybeidbrxizntxukajbafjjjczave3ujjsiz7annp6b3yj6oocpkqjusq
+  tests/test_agent_identity_dialogues.py: bafybeie6row2yotujxzmbiihlng2luykdrxdqfy6ptva4ilii4f7vgadry
+  tests/test_agent_identity_messages.py: bafybeiczn2vgkc4pn7h6ixrhp4prt3pmpuwhitnjdc4lbzwglbr5tacjrm
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}

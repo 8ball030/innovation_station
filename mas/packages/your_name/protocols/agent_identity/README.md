@@ -1,0 +1,54 @@
+# Agent Identity Protocol
+
+## Description
+
+...
+
+## Specification
+
+```yaml
+name: agent_identity
+author: your_name
+version: 0.1.0
+description: A protocol for representing various public identities of an agent.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+protocol_specification_id: your_name/agent_identity:0.1.0
+speech_acts:
+  request_identity:
+    identity_type: pt:str
+  provide_identity:
+    ethereum_public_address: ct:EthAddress
+    solana_public_address: pt:optional[pt:str]
+    cosmos_public_address: pt:optional[pt:str]
+    gpg: pt:optional[pt:str]
+    rsa: pt:optional[pt:str]
+    role: pt:optional[pt:str]
+    public_endpoint: pt:optional[pt:str]
+    private_endpoint: pt:optional[pt:str]
+    public_ws_endpoint: pt:optional[pt:str]
+    private_ws_endpoint: pt:optional[pt:str]
+  error:
+    error_code: ct:ErrorCode
+    error_msg: pt:str
+---
+ct:EthAddress: |
+  string eth_address = 1;
+ct:ErrorCode: |
+  enum ErrorCodeEnum {
+      INVALID_REQUEST = 0;
+      IDENTITY_NOT_FOUND = 1;
+      INTERNAL_ERROR = 2;
+    }
+  ErrorCodeEnum error_code = 1;
+---
+initiation: [request_identity]
+reply:
+  request_identity: [provide_identity, error]
+  provide_identity: []
+  error: []
+termination: [provide_identity, error]
+roles: { agent, requester }
+end_states: [provide_identity, error]
+keep_terminal_state_dialogues: false
+```

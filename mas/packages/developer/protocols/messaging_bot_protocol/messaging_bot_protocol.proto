@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package aea.developer.messaging_bot_protocol.v0_1_0;
+
+message MessagingBotProtocolMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_MESSAGE_SEND_FAILURE = 0;
+      ERROR_CODE_ENUM_MESSAGE_RECEIVE_FAILURE = 1;
+      ERROR_CODE_ENUM_BOT_RESPONSE_FAILURE = 2;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Send_Message_Performative{
+    string recipient_id = 1;
+    string message_content = 2;
+    int32 timestamp = 3;
+  }
+
+  message Receive_Message_Performative{
+    string sender_id = 1;
+    string message_content = 2;
+    int32 timestamp = 3;
+  }
+
+  message Bot_Response_Performative{
+    string bot_id = 1;
+    string response_content = 2;
+    int32 timestamp = 3;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+    bool error_msg_is_set = 3;
+  }
+
+
+  oneof performative{
+    Bot_Response_Performative bot_response = 5;
+    Error_Performative error = 6;
+    Receive_Message_Performative receive_message = 7;
+    Send_Message_Performative send_message = 8;
+  }
+}

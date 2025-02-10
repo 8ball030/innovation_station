@@ -23,7 +23,7 @@ def generate(initial_prompt: str) -> str:
 
     # chat_assistant = OpenAIServerChat(endpoint_url="http://localhost:7869/v1", api_key='ollama')
     # chat_assistant.model_name = 'deepseek-coder-v2:latest'
-    chat_assistant = OpenAIChat(model_name='gpt-4o')
+    chat_assistant = OpenAIChat(model_name='gpt-4o-2024-05-13')
 
     def prompt_template(user_prompt: str) -> str:
         """A templating function to provide a prompt to the user."""

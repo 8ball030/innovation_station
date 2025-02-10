@@ -32,7 +32,7 @@ protocols:
 - valory/http:1.0.0:bafybeieshrrplt5oadws5tz3rhjo6m2spchdyhkwa2z6ze2bs4ivauusfq
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- valory/abstract_round_abci:0.1.0:bafybeih2eokievudt4a7x7dwd6uyan7cgwr3y2t4dtvzy4xsubbbumf34m
+- valory/abstract_round_abci:0.1.0:bafybeibx4rf2lc73sumnvwepfeuag5iyykmov33lkrrjacrjviscprjhhm
 behaviours:
   main:
     args: {}
@@ -143,3 +143,4 @@ models:
     class_name: TendermintDialogues
 dependencies: {}
 is_abstract: true
+customs: []

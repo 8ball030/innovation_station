@@ -18,10 +18,10 @@ connections: []
 contracts: []
 protocols: []
 skills:
-- eightballer/innovation_abci:0.1.0:bafybeifiuzjsct4gn5jvpai6q2ifvrkuc6mygo3acjo27emyswaa3gdd7e
-- valory/abstract_round_abci:0.1.0:bafybeih2eokievudt4a7x7dwd6uyan7cgwr3y2t4dtvzy4xsubbbumf34m
-- valory/registration_abci:0.1.0:bafybeig3jo3fhcxz7xgwpxnmf74ann2bwlqyaq2466wrkg5mbc33wmpk6y
-- valory/reset_pause_abci:0.1.0:bafybeicuma62mkfb36ygsycufhjqt6jqffi7zhhuxdlgdvmq6kcjl2ebm4
+- eightballer/innovation_abci:0.1.0:bafybeibc5tfvxhfchcwjgxkltuowh4im2dl7w6qgcthmmy6jtabthiqqu4
+- valory/abstract_round_abci:0.1.0:bafybeibx4rf2lc73sumnvwepfeuag5iyykmov33lkrrjacrjviscprjhhm
+- valory/registration_abci:0.1.0:bafybeicodyxxiodawfeubjrjjspfst6l5vqtgn43zotyvyq46pstk2ikxy
+- valory/reset_pause_abci:0.1.0:bafybeibonp7r6lzyroz4diylnpmnqfti6q2sohzgl6xqga3zb5vahrzio4
 behaviours:
   main:
     args: {}
@@ -148,3 +148,4 @@ models:
     class_name: TendermintDialogues
 dependencies: {}
 is_abstract: false
+customs: []

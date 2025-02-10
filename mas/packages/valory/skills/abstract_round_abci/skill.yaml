@@ -76,7 +76,7 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- valory/abstract_abci:0.1.0:bafybeiexad4gxpw4g3443lb5aufw477lgcpgtx44lklyo5hay2vhwz5g3e
+- valory/abstract_abci:0.1.0:bafybeig4om3nkmo6hyqll26auvnmkrzgl4gjhnuziiqy5mmhn5xpailzsu
 behaviours:
   main:
     args: {}
@@ -159,3 +159,4 @@ dependencies:
   typing_extensions:
     version: '>=3.10.0.2'
 is_abstract: true
+customs: []

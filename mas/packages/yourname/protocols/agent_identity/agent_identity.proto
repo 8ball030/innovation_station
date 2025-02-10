@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package aea.yourname.agent_identity.v0_1_0;
+
+message AgentIdentityMessage{
+
+  // Custom Types
+  message ErrorCode{
+    enum ErrorCodeEnum {
+      ERROR_CODE_ENUM_INVALID_IDENTITY = 0;
+      ERROR_CODE_ENUM_UNSUPPORTED_IDENTITY_TYPE = 1;
+      ERROR_CODE_ENUM_AUTHENTICATION_FAILURE = 2;
+      ERROR_CODE_ENUM_INTERNAL_ERROR = 3;
+    }
+    ErrorCodeEnum error_code = 1;
+  }
+
+
+  // Performatives and contents
+  message Set_Identity_Performative{
+    string ethereum_public_address = 1;
+    string solana_public_address = 2;
+    bool solana_public_address_is_set = 3;
+    string cosmos_public_address = 4;
+    bool cosmos_public_address_is_set = 5;
+    string gpg = 6;
+    bool gpg_is_set = 7;
+    string rsa = 8;
+    bool rsa_is_set = 9;
+    string role = 10;
+    bool role_is_set = 11;
+    string public_endpoint = 12;
+    bool public_endpoint_is_set = 13;
+    string private_endpoint = 14;
+    bool private_endpoint_is_set = 15;
+    string public_ws_endpoint = 16;
+    bool public_ws_endpoint_is_set = 17;
+    string private_ws_endpoint = 18;
+    bool private_ws_endpoint_is_set = 19;
+  }
+
+  message Get_Identity_Performative{
+    string identity_type = 1;
+  }
+
+  message Identity_Response_Performative{
+    string ethereum_public_address = 1;
+    string solana_public_address = 2;
+    bool solana_public_address_is_set = 3;
+    string cosmos_public_address = 4;
+    bool cosmos_public_address_is_set = 5;
+    string gpg = 6;
+    bool gpg_is_set = 7;
+    string rsa = 8;
+    bool rsa_is_set = 9;
+    string role = 10;
+    bool role_is_set = 11;
+    string public_endpoint = 12;
+    bool public_endpoint_is_set = 13;
+    string private_endpoint = 14;
+    bool private_endpoint_is_set = 15;
+    string public_ws_endpoint = 16;
+    bool public_ws_endpoint_is_set = 17;
+    string private_ws_endpoint = 18;
+    bool private_ws_endpoint_is_set = 19;
+  }
+
+  message Error_Performative{
+    ErrorCode error_code = 1;
+    string error_msg = 2;
+  }
+
+
+  oneof performative{
+    Error_Performative error = 5;
+    Get_Identity_Performative get_identity = 6;
+    Identity_Response_Performative identity_response = 7;
+    Set_Identity_Performative set_identity = 8;
+  }
+}

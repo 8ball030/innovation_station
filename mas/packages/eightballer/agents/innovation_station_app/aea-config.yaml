@@ -27,13 +27,13 @@ protocols:
 - valory/ledger_api:1.0.0:bafybeidltb2fvcfokf7a2i3jnrf4kmmsn5bxmcrwdtbz2nrrzhpj4dlzwe
 - valory/tendermint:0.1.0:bafybeib25ulpp3tri3ppexk4t6yttuajhr7wpgs7wajpsnbbnzo256ubem
 skills:
-- eightballer/innovation_abci:0.1.0:bafybeifiuzjsct4gn5jvpai6q2ifvrkuc6mygo3acjo27emyswaa3gdd7e
-- eightballer/innovation_station_api:0.1.0:bafybeic3w2vre55px6d6ug7pfvgrocyb2rfxurofkhu2u2nzhduzfp3txy
-- eightballer/innovation_station_chained_app:0.1.0:bafybeieyuwmou32tlemqyitlhmtyk37xdebgpciycjdjrtamhhraabsiam
-- valory/abstract_abci:0.1.0:bafybeiexad4gxpw4g3443lb5aufw477lgcpgtx44lklyo5hay2vhwz5g3e
-- valory/abstract_round_abci:0.1.0:bafybeih2eokievudt4a7x7dwd6uyan7cgwr3y2t4dtvzy4xsubbbumf34m
-- valory/registration_abci:0.1.0:bafybeig3jo3fhcxz7xgwpxnmf74ann2bwlqyaq2466wrkg5mbc33wmpk6y
-- valory/reset_pause_abci:0.1.0:bafybeicuma62mkfb36ygsycufhjqt6jqffi7zhhuxdlgdvmq6kcjl2ebm4
+- eightballer/innovation_abci:0.1.0:bafybeibc5tfvxhfchcwjgxkltuowh4im2dl7w6qgcthmmy6jtabthiqqu4
+- eightballer/innovation_station_api:0.1.0:bafybeibgfy6sttclc667ctfansn73tj6mqt5ig7shyukzqhvkal6bc4k44
+- eightballer/innovation_station_chained_app:0.1.0:bafybeiabunkg5y2an4oe3gibgvatcyywaltrndab5sfjkgdkixcnmr5ray
+- valory/abstract_abci:0.1.0:bafybeig4om3nkmo6hyqll26auvnmkrzgl4gjhnuziiqy5mmhn5xpailzsu
+- valory/abstract_round_abci:0.1.0:bafybeibx4rf2lc73sumnvwepfeuag5iyykmov33lkrrjacrjviscprjhhm
+- valory/registration_abci:0.1.0:bafybeicodyxxiodawfeubjrjjspfst6l5vqtgn43zotyvyq46pstk2ikxy
+- valory/reset_pause_abci:0.1.0:bafybeibonp7r6lzyroz4diylnpmnqfti6q2sohzgl6xqga3zb5vahrzio4
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -45,6 +45,7 @@ logging_config:
   version: 1
 dependencies:
   open-aea-ledger-ethereum: {}
+customs: []
 default_connection: null
 ---
 public_id: valory/abci:0.1.0:bafybeihofnsokowicviac6yz3uhur52l3mf54s2hz4i2je5ie4vlruouga

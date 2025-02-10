@@ -1,0 +1,26 @@
+name: messaging_bot_protocol
+author: developer
+version: 0.1.0
+protocol_specification_id: developer/messaging_bot_protocol:0.1.0
+type: protocol
+description: A protocol for building and managing messaging bots on XMTP using MessageKit,
+  which simplifies the process of creating messaging interactions.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  README.md: bafybeihif7ulqdemqggzncytdfimhzev6l6pgjkksf6ct5jrznpowadwk4
+  __init__.py: bafybeienu4bo4aw6r53ebceskz5tea5tfdvx5boaywrdpoviu2grd2ibye
+  custom_types.py: bafybeifejzw6poafv42mzpgnuh6owxoqmvcvxn2lwtpneskwkfaa23qybu
+  dialogues.py: bafybeicf6babwtsqkrqjvoevcsoucyfaf6vfwj32oyauxmmi6t34ff72mu
+  message.py: bafybeianfmpn5d7esmhcstsd6gbvq6ay72hlrrrh5mvp7qf5kj7ewq3454
+  messaging_bot_protocol.proto: bafybeiggjhyci6prikqlspbp6awtxaj2uprpxfmx3itsdeo332ifumkxei
+  messaging_bot_protocol_pb2.py: bafybeihxr46sd5gd4rh4o7xzkwplnswsyehwo6wsexotclm6zj7fryvqiu
+  protocol_spec.yaml: bafybeieb7zyn2l7lsah6wzsd37pd3rus6kbxlnciadwzsfy3ijl7oezzs4
+  serialization.py: bafybeiacr5uigzcp3hxf3pznrbbstdh4675cyuhrx6hxvme4srbnthmsa4
+  tests/__init__.py: bafybeiammdfjpddmcshryphxwkqj22mzj37uixv3zzabpk2mckzzdftbky
+  tests/dummy_data.yaml: bafybeih6fc3n2tryigv6qszptvbgyk6rfloeovllaqy4xwba6slwmcmgsu
+  tests/test_messaging_bot_protocol_dialogues.py: bafybeignba5wnns6d3azqzqksmlbegrkor4gxux7hpmb6t73bitj2gcvam
+  tests/test_messaging_bot_protocol_messages.py: bafybeigy63ppe636isbso2lozjf7efgzlv44u4xmsne2hi2osmkh3exa64
+fingerprint_ignore_patterns: []
+dependencies:
+  protobuf: {}
